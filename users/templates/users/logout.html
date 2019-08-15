@@ -1,0 +1,18 @@
+{% extends "blog/base.html" %}
+{% block title %}Logout{% endblock title %}
+{% block content %}
+  <div class="card">
+    <div class="header">
+      <div class="heading">
+        You have logged out successfully.
+      </div>
+      <div class="subheading">
+        You can now explore the blog as a reader.
+      </div>
+    </div>
+    <a href="{% url 'blog-home'%}">Back to blog homepage.</a>
+  </div>
+  <div class="card minimal">
+    <a href="{% url 'login'%}"><small>Log in again?</small></a>
+  </div>
+{% endblock content%}

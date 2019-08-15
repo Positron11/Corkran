@@ -1,0 +1,16 @@
+{% extends "blog/base.html" %}
+{% block title %}Login{% endblock title %}
+{% block content %}
+  <form method="POST">
+    {% csrf_token %}
+    <fieldset class="card">
+      <legend>Log In</legend>
+      {{ form.as_p }}
+      <a href="{% url 'password_reset'%}">Forgot your password?</a>
+      <button type="submit" name="button" class="button invert-color right">Login</button>
+    </fieldset>
+  </form>
+  <div class="card minimal">
+    <a href="{% url 'register'%}">Create a new account?</a>
+  </div>
+{% endblock content%}
