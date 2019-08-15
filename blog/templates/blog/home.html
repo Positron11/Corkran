@@ -1,0 +1,25 @@
+{% extends "blog/base.html" %}
+{% block title %}Home{% endblock title %}
+{% block latest %}{{ posts.first.title }}{% endblock latest %}
+{% block content %}
+
+  <div class="posts">
+    {% for post in posts %}
+      <div class="post card preview-post">
+        <div class="header">
+          <img class="profile-pic" src="{{ post.author.profile.profile_image.url }}" alt="profile_picture">
+          <div class="heading"><a href="{% url 'post-detail' post.id %}">{{post.title}}</a></div>
+          <div class="subheading">By <a href="{% url 'user-posts' post.author.username %}">{{post.author}}</a> on {{post.date}}</div>
+        </div>
+        <p>{{post.content}}</p>
+      </div>
+    {% endfor %}
+  </div>
+
+{% endblock content %}
+
+{% block newpost %}
+  {% if user.is_authenticated %}
+    <div class="new-post clickable card" onclick="location.href='{% url 'post-create'%}'""><i class="fas fa-plus"></i></div>
+  {% endif %}
+{% endblock newpost %}

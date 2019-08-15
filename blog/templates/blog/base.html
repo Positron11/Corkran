@@ -1,0 +1,103 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <script src="https://kit.fontawesome.com/9923a3ef21.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
+    <title>Corkran - {% block title %}{% endblock %}</title>
+  </head>
+
+  <body {% if user.setting.dark_mode %}class="dark-mode"{% endif %}>
+
+    <div class="navbar unselectable">
+      <div class="button" onclick="location.href='{% url 'blog-home'%}'">Home</div>
+      <div class="button" onclick="location.href='{% url 'blog-about'%}'">About</div>
+      <div class="heading clickable" onclick="location.href='{% url 'blog-home'%}'">Corkran</div>
+      {% if user.is_authenticated %}
+        <div class="button" onclick="location.href='{% url 'profile'%}'">Profile</div>
+        <div class="button" onclick="location.href='{% url 'logout'%}'">Logout</div>
+      {% else %}
+        <div class="button" onclick="location.href='{% url 'register'%}'">Register</div>
+        <div class="button" onclick="location.href='{% url 'login'%}'">Login</div>
+      {% endif %}
+      <div class="button expand-btn">Menu</div>
+    </div>
+
+    <div class="page">
+      <div class="content">
+        {% if messages %}
+          {% for message in messages%}
+            <div class="alert">{{ message }}</div>
+          {% endfor%}
+        {% endif %}
+        {% block content %}{% endblock %}
+      </div>
+      <div class="sidebar card">
+        <div class="header">
+          <div class="heading">
+            Savoir
+          </div>
+          <div class="subheading">
+            Important blog updates
+          </div>
+        </div>
+        <div class="information">
+          <div class="latest-posts">
+            <label>latest post:</label>
+            {% block latest %}{% endblock %}
+          </div>
+          <div class="announcements">
+            <label>Announcements: </label>None
+          </div>
+          <div class="calendars">
+            <label>Calendars: </label>None
+          </div>
+        </div>
+        {% if is_paginated %}
+          <div class="paginator unselectable">
+            <a href="?page=1"><i class="fas fa-angle-double-left"></i></a>
+
+            {% if page_obj.has_previous %}
+              <a href="?page={{page_obj.previous_page_number}}"><i class="fas fa-angle-left"></i></a>
+            {% else %}
+              <a disabled="disabled"><i class="fas fa-angle-left"></i></a>
+            {% endif %}
+
+            {% for num in page_obj.paginator.page_range %}
+              {% if page_obj.number == num %}
+                <a href="#" class="current">{{ num }}</a>
+              {% elif num > page_obj.number|add:"-3" and num < page_obj.number|add:"3" %}
+                <a href="?page={{ num }}">{{ num }}</a>
+              {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+              <a href="?page={{page_obj.next_page_number}}"><i class="fas fa-angle-right"></i></a>
+              {% else %}
+                <a disabled="disabled"><i class="fas fa-angle-right"></i></a>
+            {% endif %}
+
+            <a href="?page={{page_obj.paginator.num_pages}}"><i class="fas fa-angle-double-right"></i></a>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    {% block newpost %}{% endblock %}
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $(document).on('click', '.navbar .button', function(e) {
+          if ($(window).width() < 911) {
+            $(".button:not(.expand-btn)").toggleClass("unhide");
+          }
+         });
+      });
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,20 @@
+{% extends "blog/base.html" %}
+{% block title %}{{object.title}}{% endblock title %}
+{% block content %}
+  <div class="post card">
+    <div class="header">
+      <img class="profile-pic" src="{{ post.author.profile.profile_image.url }}" alt="profile_picture">
+      <div class="heading">{{object.title}}</div>
+      <div class="subheading">By <a href="{% url 'user-posts' object.author.username %}">{{post.author}}</a> on {{object.date}}</div>
+    </div>
+    <p>{{object.content}}</p>
+  </div>
+  {% if user == object.author %}
+    <div class="card">
+      <div class="confirm-buttons">
+        <a href="{% url 'post-update' object.id %}" class="button">Update</a>
+        <a href="{% url 'post-delete' object.id %}" class="button danger">Delete</a>
+      </div>
+    </div>
+  {% endif %}
+{% endblock content%}
