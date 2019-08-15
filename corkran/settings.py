@@ -25,7 +25,7 @@ SECRET_KEY = '6u@6ga3#^)9tmp4g!(@60!^8%^zqmigx$%@n)&_fw90a89c^1*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["corkran.pythonanywhere.com"]
+ALLOWED_HOSTS = ["corkran.pythonanywhere.com", "localhost"]
 
 
 # Application definition
