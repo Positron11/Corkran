@@ -95,7 +95,13 @@
           if ($(window).width() < 911) {
             $(".button:not(.expand-btn)").toggleClass("unhide");
           }
-         });
+        });
+
+        $(document).on('click', '.page', function(e) {
+          if ($(".button:not(.expand-btn)").hasClass("unhide")) {
+            $(".button:not(.expand-btn)").removeClass("unhide");
+          }
+        });
       });
     </script>
   </body>

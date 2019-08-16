@@ -239,7 +239,7 @@ a[disabled], .inactive {
     "content sidebar"
     / 7fr 3fr;
   place-items: start stretch;
-  margin: 2em 4em;
+  padding: 2em 4em;
   grid-column-gap: 4em;
 }
 
@@ -492,7 +492,7 @@ a[disabled], .inactive {
 /* Mobiles */
 @media only screen and (max-width: 600px) {
   .page {
-    margin: 2em 1em;
+    padding: 1em 1em;
   }
   .navbar {
     padding: 0.5em 1em;
