@@ -35,7 +35,7 @@ body * {
   border-color: inherit;
   color: inherit;
 }
-body .dark-mode {
+.dark-mode {
   background-color: #2D2E38;
   color: white;
   border-color: grey;
