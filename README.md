@@ -1,2 +1,2 @@
 # Corkran
-A repositroy containing the source code for the Corkran blog webapp
+A repository containing the source code for the Corkran blog webapp
