@@ -309,6 +309,9 @@ a[disabled], .inactive {
   grid-area: pic;
   margin: 0em 1em;
 }
+.post p {
+  white-space: pre-wrap;
+}
 
 /* Comments ==============================================================*/
 .comments {
