@@ -330,9 +330,10 @@ a[disabled], .inactive {
 
 .comment-box {
   display: grid;
-  grid-template: "comment submit" / 80% 10%;
+  grid-template: "comment submit" / 8fr 1fr;
   align-items: center;
   justify-content: space-between;
+  grid-column-gap: 1em;
 }
 
 /* New Post Button =======================================================*/
@@ -534,5 +535,13 @@ a[disabled], .inactive {
   }
   .new-post {
     right: 0.5em;
+  }
+  .comment-box {
+    grid-template:
+      "comment"
+      "submit"
+      / 1fr;
+    place-items: center stretch;
+    grid-row-gap: 0.5em;
   }
 }
