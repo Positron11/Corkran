@@ -386,6 +386,15 @@ a[disabled], .inactive {
   grid-area: email;
 }
 
+.profile-form p:last-of-type {
+  font-size: 0;
+  margin-top: 16px;
+}
+
+.profile-form p:last-of-type label {
+  font-size: 16px;
+}
+
 /* Delete Post ===========================================================*/
 .confirm-buttons {
   display: grid;
