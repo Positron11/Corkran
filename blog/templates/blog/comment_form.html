@@ -1,0 +1,12 @@
+{% extends "blog/base.html" %}
+{% block title %}New Post{% endblock title %}
+{% block content %}
+  <form method="POST">
+    {% csrf_token %}
+    <fieldset class="card">
+      <legend>Comment</legend>
+      {{ form.as_p }}
+      <button type="submit" name="button" class="button invert-color right">Post</button>
+    </fieldset>
+  </form>
+{% endblock content%}

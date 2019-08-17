@@ -185,6 +185,7 @@ input, textarea, .helptext, ul:not(.errorlist), .subheading {
   cursor: pointer;
   display: inline-block;
   background-color: inherit;
+  border-color: inherit;
   color: inherit;
 }
 .danger {
@@ -307,6 +308,28 @@ a[disabled], .inactive {
 .post .header .profile-pic {
   grid-area: pic;
   margin: 0em 1em;
+}
+
+/* Comments ==============================================================*/
+.comments {
+  font-size: 0.8em;
+  box-shadow: none;
+}
+
+.comments p {
+  padding: 0em 0.5em 0.8em 0.5em;
+}
+
+.comments p:not(:last-child) {
+  border-bottom-width: 1px;
+  border-bottom-style: dotted;
+}
+
+.comment-box {
+  display: grid;
+  grid-template: "comment submit" / 80% 10%;
+  align-items: center;
+  justify-content: space-between;
 }
 
 /* New Post Button =======================================================*/
