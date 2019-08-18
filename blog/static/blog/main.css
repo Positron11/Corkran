@@ -92,15 +92,18 @@ input, textarea {
 }
 
 /* Common Styling */
-input, button, fieldset, legend, textarea, input[type="checkbox"], .button, .card, .navbar .heading, .profile-pic, .paginator .current, .alert, .errorlist, .new-post {
+input, button, fieldset, legend, textarea, input[type="checkbox"], .button, .card,  .profile-pic, .paginator .current, .alert, .errorlist, .new-post {
   border-width: 1px;
   border-style: dashed;
 }
 input, button, fieldset, legend, textarea, input[type="checkbox"], .button, .card, .alert, .errorlist, .paginator .current {
-  border-radius: 6px;
+  border-radius: 1em;
 }
 input, textarea, .helptext, ul:not(.errorlist), .subheading {
   color: grey;
+}
+.errorlist *, .special *, .new-post i {
+  background-color: transparent;
 }
 
 /* Form Helptext */
@@ -126,9 +129,6 @@ input, textarea, .helptext, ul:not(.errorlist), .subheading {
   list-style-type: none;
   padding: 0.5em;
 }
-.errorlist * {
-  background-color: transparent;
-}
 
 /* Cards */
 .card {
@@ -143,11 +143,11 @@ input, textarea, .helptext, ul:not(.errorlist), .subheading {
   border: 1px dashed rgb(0, 163, 44);
   background-color: rgba(4, 222, 63,0.2);
 }
-.special * {
-  background-color: transparent;
-}
 .special, .special * {
   color: rgb(0, 163, 44)! important;
+}
+.card:not(.post-preview) {
+  margin-bottom: 1em;
 }
 
 /* Headers */
@@ -157,8 +157,8 @@ input, textarea, .helptext, ul:not(.errorlist), .subheading {
     "heading"
     "subheading"
     / auto;
-  border-bottom: 1px dashed;
-  border-color: inherit;
+  border-bottom-width: 1px;
+  border-bottom-style: dashed;
   padding-bottom: 0.5em;
   margin-bottom: 0.5em;
   align-items: center;
@@ -180,13 +180,11 @@ input, textarea, .helptext, ul:not(.errorlist), .subheading {
 
 /* Custom Buttons */
 .button {
-  padding: 0.4em 1em;
+  padding: 0.5em 1em;
   transition: 0.2s ease-in-out;
   cursor: pointer;
   display: inline-block;
-  background-color: inherit;
   border-color: inherit;
-  color: inherit;
 }
 .danger {
   color: white;
@@ -212,8 +210,8 @@ a[disabled], .inactive {
   position: sticky;
   top: 0;
   display: grid;
-  grid-template: "btn1 btn2 heading btn3 btn4" / 1fr 1fr 2fr 1fr 1fr;
-  place-items: center start;
+  align-items: center;
+  justify-content: space-between;
   box-shadow: 0px 2px 7px rgba(0,0,0,0.5);
   border-bottom-width: 1px;
   border-bottom-style: dashed;
@@ -225,11 +223,12 @@ a[disabled], .inactive {
   text-align: center;
 }
 .navbar .heading {
-  padding: 0em 0.2em;
+  margin: 0.1em;
   grid-area: heading;
+  width: 2em;
+  height: auto;
 }
 .navbar .expand-btn {
-  justify-self: end;
   grid-area: expand-btn;
 }
 
@@ -247,7 +246,7 @@ a[disabled], .inactive {
 /* Sidebar ===============================================================*/
 .sidebar {
   position: sticky;
-  top: 95px;
+  top: 7em;
   display: inline-grid;
   grid-template:
     "heading"
@@ -309,14 +308,9 @@ a[disabled], .inactive {
   grid-area: pic;
   margin: 0em 1em;
 }
-.post p {
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
-}
 
 /* Comments ==============================================================*/
 .comments {
-  font-size: 0.8em;
   box-shadow: none;
 }
 
@@ -352,14 +346,8 @@ a[disabled], .inactive {
   position: fixed;
   padding: 0.2em 0.3em;
 }
-.new-post i {
-  background-color: transparent;
-}
 
 /* Forms =================================================================*/
-.card:not(.post-preview) {
-  margin-bottom: 1em;
-}
 .profile-form label:not(:first-of-type) {
   margin-top: 1em;
 }
@@ -387,12 +375,10 @@ a[disabled], .inactive {
 .profile .email {
   grid-area: email;
 }
-
 .profile-form p:last-of-type {
   font-size: 0;
   margin-top: 16px;
 }
-
 .profile-form p:last-of-type label {
   font-size: 16px;
 }
@@ -415,45 +401,34 @@ a[disabled], .inactive {
 /* Breakpoints -----------------------------------------------------------*/
 /* Desktops */
 @media only screen and (min-width: 1000px) {
-  .navbar .heading {
-    justify-self: center;
+  .navbar {
+    grid-template: "btn1 btn2 heading btn3 btn4" / auto auto auto auto;
   }
-
   .navbar .expand-btn {
     display: none;
   }
-
-  .navbar .button:nth-last-child(2), .navbar .button:nth-last-child(3) {
-    justify-self: end;
-  }
-
   .button:not(.inactive):not(.danger):hover {
     -webkit-filter: invert(100%);
     filter: invert(100%);
   }
-
   .invert-color.button:not(.inactive):not(.danger):hover {
     -webkit-filter: invert(0%);
     filter: invert(0%);
   }
-
   .danger:hover {
     color: rgb(255,0,0);
     border: 1px dashed rgb(255,0,0);
     background-color: inherit;
   }
-
   .new-post i {
     animation-name: spin-reverse;
     animation-duration: 600ms;
     animation-iteration-count: 1;
     animation-timing-function: ease;
   }
-
   .new-post:hover i {
     animation-name: spin;
   }
-
   @keyframes spin {
       from {
           transform:rotate(0deg);
@@ -462,7 +437,6 @@ a[disabled], .inactive {
           transform:rotate(270deg);
       }
   }
-
   @keyframes spin-reverse {
       from {
           transform:rotate(270deg);
@@ -492,7 +466,7 @@ a[disabled], .inactive {
   .page {
     grid-template:
       "content"
-      / auto;
+      / 1fr;
   }
   .sidebar {
     display: none;
@@ -512,7 +486,6 @@ a[disabled], .inactive {
       / auto;
     place-items: center;
   }
-
   .post .header {
     grid-template:
       "pic"
@@ -521,7 +494,6 @@ a[disabled], .inactive {
       / auto;
     place-items: center;
   }
-
   .header * {
     text-align: center;
   }

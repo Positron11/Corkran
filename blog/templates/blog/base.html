@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -11,10 +12,11 @@
     <title>Corkran - {% block title %}{% endblock %}</title>
   </head>
   <body {% if user.setting.dark_mode %}class="dark-mode"{% endif %}>
+    <!-- Navbar -->
     <div class="navbar unselectable">
       <div class="button" onclick="location.href='{% url 'blog-home'%}'">Home</div>
       <div class="button" onclick="location.href='{% url 'blog-about'%}'">About</div>
-      <div class="heading clickable" onclick="location.href='{% url 'blog-home'%}'">Corkran</div>
+      <img src="{% static 'blog/website_icon.png' %}" class="heading clickable" onclick="location.href='{% url 'blog-home'%}'">
       {% if user.is_authenticated %}
         <div class="button" onclick="location.href='{% url 'profile'%}'">Profile</div>
         <div class="button" onclick="location.href='{% url 'logout'%}'">Logout</div>
@@ -24,16 +26,22 @@
       {% endif %}
       <div class="button expand-btn">Menu</div>
     </div>
+    <!-- Page -->
     <div class="page">
+      <!-- Content -->
       <div class="content">
+        <!-- Messages -->
         {% if messages %}
           {% for message in messages%}
             <div class="alert">{{ message }}</div>
           {% endfor%}
         {% endif %}
+        <!-- Main Content -->
         {% block content %}{% endblock %}
       </div>
+      <!-- Sidebar -->
       <div class="sidebar card">
+        <!-- Header -->
         <div class="header">
           <div class="heading">
             Savoir
@@ -42,6 +50,7 @@
             Important blog updates
           </div>
         </div>
+        <!-- Information -->
         <div class="information">
           <div class="latest-posts">
             <label>latest post:</label>
@@ -54,6 +63,7 @@
             <label>Calendars: </label>None
           </div>
         </div>
+        <!-- Paginator -->
         {% if is_paginated %}
           <div class="paginator unselectable">
             <a href="?page=1"><i class="fas fa-angle-double-left"></i></a>
@@ -83,19 +93,24 @@
         {% endif %}
       </div>
     </div>
+    <!-- New Post Button -->
     {% block newpost %}{% endblock %}
+    <!-- Scripts -->
     <script type="text/javascript">
       $(document).ready(function(){
+        // Responsive Navbar
         $(document).on('click', '.navbar .button', function(e) {
-          if ($(window).width() < 911) {
+          if ($(window).width() < 999) {
             $(".button:not(.expand-btn)").toggleClass("unhide");
           }
         });
+        // Close Navbar
         $(document).on('click', '.page', function(e) {
           if ($(".button:not(.expand-btn)").hasClass("unhide")) {
             $(".button:not(.expand-btn)").removeClass("unhide");
           }
         });
+        // Prevent Empty Textarea
         $("textarea").on("keydown", function (e) {
           var c = $("textarea").val().length;
           if(c == 0)

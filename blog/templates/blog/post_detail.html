@@ -1,6 +1,7 @@
 {% extends "blog/base.html" %}
 {% block title %}{{object.title}}{% endblock title %}
 {% block content %}
+  <!-- Main Post -->
   <div class="post card">
     <div class="header">
       <img class="profile-pic" src="{{ post.author.profile.profile_image.url }}" alt="profile_picture">
@@ -9,6 +10,7 @@
     </div>
     <p>{{object.content}}</p>
   </div>
+  <!-- Comment Form -->
   {% if user.is_authenticated %}
     <form method="POST">
       {% csrf_token %}
@@ -21,7 +23,9 @@
       </fieldset>
     </form>
   {% endif %}
+  <!-- Comments -->
   <div class="card comments">
+    <!-- Header -->
     <div class="header">
       <div class="heading">
         Comments ({{ object.comment_set.count }})
@@ -30,14 +34,20 @@
         Comments by other users for this post.
       </div>
     </div>
+    <!-- Comment List -->
     {% if object.comment_set.count > 0 %}
       {% for comment in object.comment_set.all %}
-        <p><a href="{% url 'user-posts' comment.user.username %}">{{ comment.user }}</a>: "{{ comment.content }}"</p>
+        <div class="comment">
+          <a href="{% url 'user-posts' comment.user.username %}">{{ comment.user }}:</a>
+          <p>"{{ comment.content }}"</p>
+        </div>
       {% endfor %}
     {% else %}
+      <!-- No Comments Placeholder Text -->
       No comments... yet
     {% endif %}
   </div>
+  <!-- Delete/Update Post -->
   {% if user == object.author %}
     <div class="card">
       <div class="confirm-buttons">
