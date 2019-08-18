@@ -100,7 +100,7 @@ class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def test_func(self):
         comment = self.get_object()
-        if self.request.user == comment.user:
+        if self.request.user == comment.user or self.request.user == comment.post.author:
             return True
         else:
             return False
