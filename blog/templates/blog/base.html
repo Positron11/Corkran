@@ -96,6 +96,11 @@
             $(".button:not(.expand-btn)").removeClass("unhide");
           }
         });
+        $("textarea").on("keydown", function (e) {
+          var c = $("textarea").val().length;
+          if(c == 0)
+            return (e.which !== 13 && e.which !== 32);
+        });
       });
     </script>
   </body>
