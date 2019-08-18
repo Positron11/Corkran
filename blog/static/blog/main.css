@@ -313,16 +313,32 @@ a[disabled], .inactive {
 .comments {
   box-shadow: none;
 }
-
-.comments p {
+.comments .comment {
   padding: 0em 0.5em 0.8em 0.5em;
+  display: grid;
+  grid-template:
+    "author text trash"
+    / auto 1fr auto;
+  grid-column-gap: 0.5em;
 }
-
-.comments p:not(:last-child) {
+.comments .comment .author {
+  grid-area: author;
+}
+.comments .comment .text {
+  grid-area: text;
+}
+.comments .comment .trash-icon {
+  grid-area: trash;
+  transition: 0.2s ease-in-out;
+}
+.comments .comment * {
+  display: inline;
+}
+.comments .comment:not(:last-child) {
   border-bottom-width: 1px;
   border-bottom-style: dotted;
+  margin-bottom: 0.5em;
 }
-
 .comment-box {
   display: grid;
   grid-template: "comment submit" / 8fr 1fr;
@@ -420,6 +436,9 @@ a[disabled], .inactive {
     border: 1px dashed rgb(255,0,0);
     background-color: inherit;
   }
+  .trash-icon:hover {
+    color: rgb(255,0,0);
+  }
   .new-post i {
     animation-name: spin-reverse;
     animation-duration: 600ms;
@@ -515,6 +534,14 @@ a[disabled], .inactive {
       "submit"
       / 1fr;
     place-items: center stretch;
+    grid-row-gap: 0.5em;
+  }
+  .comments .comment {
+    grid-template:
+      "author trash"
+      "text text"
+      / 1fr auto;
+    justify-content: space-between;
     grid-row-gap: 0.5em;
   }
 }

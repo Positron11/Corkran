@@ -95,13 +95,18 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             return False
 
 
-# class CommentCreateView(LoginRequiredMixin, CreateView):
-#     model = Comment
-#     fields = ["content"]
-#
-#     def form_valid(self, form):
-#         form.instance.author = self.request.user
-#         return super().form_valid(form)
+class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Comment
+
+    def test_func(self):
+        comment = self.get_object()
+        if self.request.user == comment.user:
+            return True
+        else:
+            return False
+
+    def get_success_url(self):
+        return reverse_lazy('post-detail', kwargs={'pk': self.get_object(Comment.objects.all()).post.pk})
 
 
 def about(request):

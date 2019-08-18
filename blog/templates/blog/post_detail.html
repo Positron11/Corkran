@@ -38,8 +38,13 @@
     {% if object.comment_set.count > 0 %}
       {% for comment in object.comment_set.all %}
         <div class="comment">
-          <a href="{% url 'user-posts' comment.user.username %}">{{ comment.user }}:</a>
-          <p>"{{ comment.content }}"</p>
+          <div class="author"><a href="{% url 'user-posts' comment.user.username %}">{{ comment.user }}</a>:</div>
+          <div class="text"><p>"{{ comment.content }}"</p></div>
+          <div class="trash-icon clickable">
+            {% if user == object.author or user == comment.user %}
+              <i class="far fa-trash-alt trash-icon" onclick="location.href='{% url 'comment-delete' comment.id %}'"></i>
+            {% endif %}
+          </div>
         </div>
       {% endfor %}
     {% else %}

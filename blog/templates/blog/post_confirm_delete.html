@@ -1,21 +1,5 @@
-{% extends "blog/base.html" %}
-{% block title %}Delete Post{% endblock title %}
-{% block content %}
-  <form method="POST">
-    {% csrf_token %}
-    <div class="card">
-      <div class="header">
-        <div class="heading">
-          Delete Post
-        </div>
-        <div class="subheading">
-          Are you sure you want to delete this post?
-        </div>
-      </div>
-      <div class="confirm-buttons">
-        <a href="{% url 'post-detail' object.id %}" class="button">Go Back</a>
-        <button type="submit" name="button" class="button danger">Delete</button>
-      </div>
-    </div>
-  </form>
-{% endblock content%}
+{% extends "blog/confirm_delete.html" %}
+{% block title1 %}Delete Post{% endblock title1 %}
+{% block heading %}Delete Post{% endblock heading %}
+{% block subheading %}Are you sure you want to delete this post?{% endblock subheading %}
+{% block return-url %}{% url 'post-detail' object.id %}{% endblock return-url%}
