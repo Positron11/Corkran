@@ -341,10 +341,10 @@ a[disabled], .inactive {
 }
 .comment-box {
   display: grid;
-  grid-template: "comment submit" / 8fr 1fr;
+  grid-template: "comment submit" / 1fr auto;
   align-items: center;
   justify-content: space-between;
-  grid-column-gap: 1em;
+  grid-column-gap: 2em;
 }
 
 /* New Post Button =======================================================*/
