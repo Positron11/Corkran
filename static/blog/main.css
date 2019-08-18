@@ -49,6 +49,10 @@ a {
   border-bottom: 2px dotted #17a2ff;
 }
 
+p {
+  white-space: pre-wrap;
+}
+
 /* Forms */
 form *:not(a) {
   display: block;
