@@ -41,6 +41,16 @@ body * {
   border-color: grey;
 }
 
+/* Emphasis */
+mark {
+  box-sizing: content-box;
+  font-style: normal;
+  padding: 0em 0.1em;
+  transition: 0.3s ease-in-out;
+  border-radius: 2px;
+  border-bottom: 2px solid rgba(34, 116, 247, 0.3);
+}
+
 /* Links */
 a {
   text-decoration: inherit;
@@ -442,6 +452,10 @@ a[disabled], .inactive {
   }
   .trash-icon:hover {
     color: rgb(255,0,0);
+  }
+  mark:hover {
+    background-color: rgba(34, 116, 247, 0.3);
+    border-bottom: 2px solid rgba(92, 92, 214, 0);
   }
   .new-post i {
     animation-name: spin-reverse;

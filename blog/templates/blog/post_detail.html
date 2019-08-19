@@ -1,4 +1,5 @@
 {% extends "blog/base.html" %}
+{% load custom_tags %}
 {% block title %}{{object.title}}{% endblock title %}
 {% block content %}
   <!-- Main Post -->
@@ -8,7 +9,7 @@
       <div class="heading">{{object.title}}</div>
       <div class="subheading">By <a href="{% url 'user-posts' object.author.username %}">{{post.author}}</a> on {{object.date}}</div>
     </div>
-    <p>{{object.content}}</p>
+    <p>{{object.content|post_formatter|urlize }}</p>
   </div>
   <!-- Comment Form -->
   {% if user.is_authenticated %}
