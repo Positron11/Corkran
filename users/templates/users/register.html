@@ -5,7 +5,7 @@
     {% csrf_token %}
     <fieldset class="card">
       <legend>New User Registration</legend>
-      {{ form.as_p }}
+      {{ form.as_ul }}
       <button type="submit" name="button" class="button invert-color right">Sign Up</button>
     </fieldset>
   </form>

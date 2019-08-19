@@ -5,7 +5,7 @@
     {% csrf_token %}
     <fieldset class="card">
       <legend>Log In</legend>
-      {{ form.as_p }}
+      {{ form.as_ul }}
       <a href="{% url 'password_reset'%}">Forgot your password?</a>
       <button type="submit" name="button" class="button invert-color right">Login</button>
     </fieldset>

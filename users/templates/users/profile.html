@@ -18,8 +18,8 @@
       {% csrf_token %}
       <fieldset class="card">
         <legend>Update Profile</legend>
-        {{ u_form }}
-        {{ p_form.as_p }}
+        {{ u_form.as_ul}}
+        {{ p_form.as_ul }}
         <button type="submit" name="profile_submit" class="button invert-color right">Update</button>
       </fieldset>
     </form>
@@ -28,7 +28,7 @@
     {% csrf_token %}
     <fieldset class="card">
       <legend>Site Settings</legend>
-      {{ s_form }}
+      {{ s_form.as_ul }}
       <button type="submit" name="settings_submit" class="button invert-color right">Update</button>
     </fieldset>
   </form>

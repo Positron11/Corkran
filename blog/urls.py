@@ -1,4 +1,5 @@
-from django.urls import path
+from django.urls import path, include
+from django.conf.urls import url
 from .views import PostListView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView, UserPostListView, CommentDeleteView
 from . import views
 
@@ -11,5 +12,6 @@ urlpatterns = [
     path('post/<int:pk>/delete/', PostDeleteView.as_view(), name="post-delete"),
     path('delete-comment/<int:pk>', CommentDeleteView.as_view(), name="comment-delete"),
     path('about/', views.about, name="blog-about"),
+    url(r'^tinymce/', include('tinymce.urls')),
 ]
 

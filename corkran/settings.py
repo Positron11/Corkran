@@ -39,7 +39,33 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
+CKEDITOR_CONFIGS = {
+    "default": {
+        'width': 'auto',
+        "toolbar": "custom",
+        "toolbar_custom": [
+            {'name': 'basicstyles',
+             'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript']},
+            {'name': 'paragraph',
+             'items': ['NumberedList', 'BulletedList', '-', 'Blockquote', '-',
+                       'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']},
+            {'name': 'links', 'items': ['Link']},
+            {'name': 'insert',
+             'items': ['Image', "Youtube", 'HorizontalRule', 'Smiley', 'SpecialChar', "CodeSnippet", 'Iframe']},
+            '/',
+            {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize']},
+            {'name': 'colors', 'items': ['TextColor', 'BGColor']},
+            {'name': 'tools', 'items': ['Maximize', 'ShowBlocks', 'Preview']},
+        ],
+        "extraPlugins": ",".join(["codesnippet", "youtube"]),
+    }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -120,16 +146,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 LOGIN_REDIRECT_URL = "blog-home"
-
 LOGIN_URL = "login"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-
 MEDIA_URL = "/media/"
+
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"

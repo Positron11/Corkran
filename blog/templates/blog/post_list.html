@@ -3,10 +3,14 @@
     <div class="post card post-preview">
       <div class="header">
         <img class="profile-pic" src="{{ post.author.profile.profile_image.url }}" alt="profile_picture">
-        <div class="heading"><a href="{% url 'post-detail' post.id %}">{{post.title}}</a></div>
-        <div class="subheading">By <a href="{% url 'user-posts' post.author.username %}">{{post.author}}</a> on {{post.date}}</div>
+        <div class="heading">
+          <a href="{% url 'post-detail' post.id %}">{{post.title}}</a>
+        </div>
+        <div class="subheading">
+          By <a href="{% url 'user-posts' post.author.username %}">{{post.author}}</a> on {{post.date}}
+        </div>
       </div>
-      <p class="truncate clickable" onclick="location.href='{% url 'post-detail' post.id %}'">{{post.content}}</p>
+      <div class="truncate clickable" onclick="location.href='{% url 'post-detail' post.id %}'">{{ post.content|safe }}</div>
     </div>
     <script type="text/javascript">
       $(document).ready(function(){

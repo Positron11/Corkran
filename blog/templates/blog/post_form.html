@@ -5,7 +5,8 @@
     {% csrf_token %}
     <fieldset class="card">
       <legend>Create New Post</legend>
-      {{ form.as_p }}
+      {{ form.media }}
+      {{ form.as_ul }}
       <button type="submit" name="button" class="button invert-color right">Post</button>
     </fieldset>
   </form>
