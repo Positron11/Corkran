@@ -52,6 +52,8 @@ CKEDITOR_CONFIGS = {
         "toolbar_custom": [
             {'name': 'basicstyles',
              'items': ['Bold', 'Italic', 'Underline']},
+            {'name': 'structure',
+             'items': ['BulletedList', "NumberedList"]},
             {'name': 'links',
              'items': ['Link']},
             {'name': 'insert',

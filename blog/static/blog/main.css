@@ -411,11 +411,11 @@ a[disabled], .inactive {
 .profile .email {
   grid-area: email;
 }
-.profile-form p:last-of-type {
+.profile-form li:last-of-type {
   font-size: 0;
   margin-top: 16px;
 }
-.profile-form p:last-of-type label {
+.profile-form li:last-of-type label {
   font-size: 16px;
 }
 
