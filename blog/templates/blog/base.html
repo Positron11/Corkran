@@ -13,18 +13,20 @@
   </head>
   <body {% if user.setting.dark_mode %}class="dark-mode"{% endif %}>
     <!-- Navbar -->
-    <div class="navbar unselectable">
-      <div class="button" onclick="location.href='{% url 'blog-home'%}'">Home</div>
-      <div class="button" onclick="location.href='{% url 'blog-about'%}'">About</div>
-      <img src="{% static 'blog/website_icon.png' %}" class="heading clickable" onclick="location.href='{% url 'blog-home'%}'">
-      {% if user.is_authenticated %}
-        <div class="button" onclick="location.href='{% url 'profile'%}'">Profile</div>
-        <div class="button" onclick="location.href='{% url 'logout'%}'">Logout</div>
-      {% else %}
-        <div class="button" onclick="location.href='{% url 'register'%}'">Register</div>
-        <div class="button" onclick="location.href='{% url 'login'%}'">Login</div>
-      {% endif %}
-      <div class="button expand-btn">Menu</div>
+    <div class="navbar-box">
+      <div class="navbar unselectable">
+        <div class="button" onclick="location.href='{% url 'blog-home'%}'">Home</div>
+        <div class="button" onclick="location.href='{% url 'blog-about'%}'">About</div>
+        <img src="{% static 'blog/website_icon.png' %}" class="heading clickable" onclick="location.href='{% url 'blog-home'%}'">
+        {% if user.is_authenticated %}
+          <div class="button" onclick="location.href='{% url 'profile'%}'">Profile</div>
+          <div class="button" onclick="location.href='{% url 'logout'%}'">Logout</div>
+        {% else %}
+          <div class="button" onclick="location.href='{% url 'register'%}'">Register</div>
+          <div class="button" onclick="location.href='{% url 'login'%}'">Login</div>
+        {% endif %}
+        <div class="button expand-btn">Menu</div>
+      </div>
     </div>
     <!-- Page -->
     <div class="page">
