@@ -3,6 +3,9 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+
+<link href="https://fonts.googleapis.com/css?family=Crimson+Text|Open+Sans+Condensed:300|Playfair+Display&display=swap" rel="stylesheet">
+
     <link rel="icon" href="{% static 'blog/website_icon.png' %}">
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://kit.fontawesome.com/9923a3ef21.js"></script>
@@ -17,7 +20,7 @@
       <div class="navbar unselectable">
         <div class="button" onclick="location.href='{% url 'blog-home'%}'">Home</div>
         <div class="button" onclick="location.href='{% url 'blog-about'%}'">About</div>
-        <img src="{% static 'blog/website_icon.png' %}" class="heading clickable" onclick="location.href='{% url 'blog-home'%}'">
+        <img src="{% static 'blog/website_icon.png' %}" class="website-icon clickable" onclick="location.href='{% url 'blog-home'%}'">
         {% if user.is_authenticated %}
           <div class="button" onclick="location.href='{% url 'profile'%}'">Profile</div>
           <div class="button" onclick="location.href='{% url 'logout'%}'">Logout</div>
@@ -59,10 +62,12 @@
             {% block latest %}{% endblock %}
           </div>
           <div class="announcements">
-            <label>Announcements: </label>If you find you can't log in, just create a new account; I'll delete the old accounts.
+            <label>Announcements: </label>
+            If you find you can't log in, just create a new account; I'll delete the old accounts.
           </div>
           <div class="calendars">
-            <label>Calendars: </label>None
+            <label>Calendars: </label>
+            None
           </div>
         </div>
         <!-- Paginator -->
@@ -118,6 +123,7 @@
           if(c == 0)
             return (e.which !== 13 && e.which !== 32);
         });
+
       });
     </script>
   </body>

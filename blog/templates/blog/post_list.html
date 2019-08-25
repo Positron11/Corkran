@@ -7,7 +7,9 @@
           <a href="{% url 'post-detail' post.id %}">{{post.title}}</a>
         </div>
         <div class="subheading">
-          By <a href="{% url 'user-posts' post.author.username %}">{{post.author}}</a> on {{post.date}}
+          By <a href="{% url 'user-posts' post.author.username %}">{{post.author}}</a>
+          on {{post.date}}
+          -<label>&nbsp{{post.comment_set.count}}&nbspComment(s)</label>
         </div>
       </div>
       <div class="truncate clickable text" onclick="location.href='{% url "post-detail" post.id %}'">{{ post.content|safe }}</div>
