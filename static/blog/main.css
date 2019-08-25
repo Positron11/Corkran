@@ -229,7 +229,7 @@ a[disabled], .inactive {
 }
 .navbar .website-icon {
   grid-area: heading;
-  height: 4em;
+  height: 4.5em;
   width: auto;
 }
 .navbar .expand-btn {
