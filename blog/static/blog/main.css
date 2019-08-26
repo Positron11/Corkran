@@ -250,7 +250,7 @@ a[disabled], .inactive {
 /* Sidebar ===============================================================*/
 .sidebar {
   position: sticky;
-  top: 9em + 1px;
+  top: 8.6em;
   display: inline-grid;
   grid-template:
     "heading"
