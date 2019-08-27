@@ -1,6 +1,10 @@
 {% extends "blog/base.html" %}
 {% block title %}Posts By {{ view.kwargs.username }}{% endblock title %}
-{% block latest %}<label>latest post: </label><a href="{% url 'post-detail' posts.first.id %}">{{ posts.first.title }}</a>{% endblock latest %}
+{% block latest %}
+{% if posts %}
+  <label>latest post: </label><a href="{% url 'post-detail' posts.first.id %}">{{ posts.first.title }}</a>
+{% endif %}
+{% endblock latest %}
 {% block content %}
   <div class="card special">
     <div class="header">
