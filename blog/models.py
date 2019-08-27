@@ -30,3 +30,10 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.content
+
+
+class Announcement(models.Model):
+    content = models.TextField()
+
+    def __str__(self):
+        return self.content

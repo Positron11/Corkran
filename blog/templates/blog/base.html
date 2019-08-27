@@ -1,4 +1,5 @@
 {% load static %}
+{% load custom_tags %}
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -62,7 +63,7 @@
           </div>
           <div class="announcements">
             <label>Announcements: </label>
-            If you find you can't log in, just create a new account; I'll delete the old accounts.
+            {% announcement %}
           </div>
           <div class="calendars">
             <label>Calendars: </label>
