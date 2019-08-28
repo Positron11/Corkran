@@ -5,7 +5,7 @@
 <html lang="en" dir="ltr">
   <head>
     <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Open+Sans+Condensed:300|Playfair+Display&display=swap" rel="stylesheet">
-    <link rel="icon" href="{% static 'blog/corkran_icon.png' %}">
+    <link rel="icon" href="{% static 'blog/corkran_icon_dark.png' %}">
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://kit.fontawesome.com/9923a3ef21.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -20,7 +20,12 @@
       <div class="navbar unselectable">
         <div class="button" onclick="location.href='{% url 'blog-home'%}'">Home</div>
         <div class="button" onclick="location.href='{% url 'blog-about'%}'">About</div>
-        <img src="{% static 'blog/corkran_icon.png' %}" class="website-icon clickable" onclick="location.href='{% url 'blog-home'%}'">
+        <img src="{% if user.setting.dark_mode %}
+                    {% static 'blog/corkran_icon_light.png' %}
+                  {% else %}
+                    {% static 'blog/corkran_icon_dark.png' %}
+                  {% endif %}"
+        class="website-icon clickable" onclick="location.href='{% url 'blog-home'%}'">
         {% if user.is_authenticated %}
           <div class="button" onclick="location.href='{% url 'profile'%}'">Profile</div>
           <div class="button" onclick="location.href='{% url 'logout'%}'">Logout</div>
