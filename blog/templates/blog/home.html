@@ -1,9 +1,10 @@
 {% extends "blog/base.html" %}
+{% load custom_tags %}
 {% block title %}Home{% endblock title %}
 {% block latest %}
-{% if posts %}
-  <label>latest post: </label><a href="{% url 'post-detail' posts.first.id %}">{{ posts.first.title }}</a>
-{% endif %}
+  {% if posts %}
+    <label>Latest Post: </label>{% latest_post %}
+  {% endif %}
 {% endblock latest %}
 {% block content %}
   {% include "blog/post_list.html" %}

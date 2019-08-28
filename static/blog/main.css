@@ -130,7 +130,6 @@ input, textarea, .helptext, .subheading {
 /* Cards */
 .card {
   padding: 1em;
-  /* box-shadow: 1px 1px 7px rgba(0,0,0,0.7); */
 }
 .special {
   border-color: rgb(0, 163, 44);
@@ -170,7 +169,6 @@ input, textarea, .helptext, .subheading {
 }
 .subheading {
   font-family: 'Open Sans Condensed', sans-serif;
-
 }
 
 /* Custom Buttons */
@@ -270,21 +268,17 @@ a[disabled], .inactive {
 
 /* Paginator =============================================================*/
 .paginator {
-  margin-top: 0.5em;
-  border-top-width: 1px;
-  border-top-style: dashed;
-  font-family: latin_modern_mono_bold;
   text-align: center;
-  font-size: 1.1em;
-  padding: 1em 0.3em 0.3em 0.3em;
+  font-size: 1.3em;
+  margin: 1em 0em;
 }
-.paginator a:not(.current) {
-  border-bottom: none;
+.paginator * {
+  border: none;
 }
 .paginator .current {
   padding: 0em 0.4em;
+  border-radius: 50%;
   background-color: black;
-  border-color: inherit;
   color: white;
 }
 

@@ -4,9 +4,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-
-<link href="https://fonts.googleapis.com/css?family=Crimson+Text|Open+Sans+Condensed:300|Playfair+Display&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Open+Sans+Condensed:300|Playfair+Display&display=swap" rel="stylesheet">
     <link rel="icon" href="{% static 'blog/corkran_icon.png' %}">
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://kit.fontawesome.com/9923a3ef21.js"></script>
@@ -15,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
     <title>Corkran - {% block title %}{% endblock %}</title>
   </head>
+
   <body {% if user.setting.dark_mode %}class="dark-mode"{% endif %}>
     <!-- Navbar -->
     <div class="navbar-box">
@@ -42,8 +41,12 @@
             <div class="alert">{{ message }}</div>
           {% endfor%}
         {% endif %}
+        <!-- Paginator -->
+        {% include "blog/paginator.html" %}
         <!-- Main Content -->
         {% block content %}{% endblock %}
+        <!-- Paginator -->
+        {% include "blog/paginator.html" %}
       </div>
       <!-- Sidebar -->
       <div class="sidebar card">
@@ -70,34 +73,6 @@
             None
           </div>
         </div>
-        <!-- Paginator -->
-        {% if is_paginated %}
-          <div class="paginator unselectable">
-            <a href="?page=1"><i class="fas fa-angle-double-left"></i></a>
-
-            {% if page_obj.has_previous %}
-              <a href="?page={{page_obj.previous_page_number}}"><i class="fas fa-angle-left"></i></a>
-            {% else %}
-              <a disabled="disabled"><i class="fas fa-angle-left"></i></a>
-            {% endif %}
-
-            {% for num in page_obj.paginator.page_range %}
-              {% if page_obj.number == num %}
-                <a href="#" class="current">{{ num }}</a>
-              {% elif num > page_obj.number|add:"-3" and num < page_obj.number|add:"3" %}
-                <a href="?page={{ num }}">{{ num }}</a>
-              {% endif %}
-            {% endfor %}
-
-            {% if page_obj.has_next %}
-              <a href="?page={{page_obj.next_page_number}}"><i class="fas fa-angle-right"></i></a>
-              {% else %}
-                <a disabled="disabled"><i class="fas fa-angle-right"></i></a>
-            {% endif %}
-
-            <a href="?page={{page_obj.paginator.num_pages}}"><i class="fas fa-angle-double-right"></i></a>
-          </div>
-        {% endif %}
       </div>
     </div>
     <!-- New Post Button -->
