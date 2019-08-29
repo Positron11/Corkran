@@ -278,8 +278,8 @@ a[disabled], .inactive {
 .paginator .current {
   padding: 0em 0.4em;
   border-radius: 50%;
-  background-color: black;
-  color: white;
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
 }
 
 /* Content ===============================================================*/
