@@ -11,6 +11,6 @@
 {% endblock content %}
 {% block newpost %}
   {% if user.is_authenticated %}
-    <div class="new-post clickable card" onclick="location.href='{% url 'post-create'%}'""><i class="fas fa-plus"></i></div>
+    <div class="new-post clickable card" title="New Post" onclick="location.href='{% url 'post-create'%}'""><i class="fas fa-plus"></i></div>
   {% endif %}
 {% endblock newpost %}

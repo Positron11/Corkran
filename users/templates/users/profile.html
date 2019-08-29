@@ -20,8 +20,8 @@
         <legend>Update Profile</legend>
         {{ u_form.as_ul}}
         {{ p_form.as_ul }}
-        <p>Profile pictures from <a href="https://drive.google.com/drive/folders/11opD0m2Qm1mQwuGzxOyl2GvtCIEh_b0o?usp=sharing">here</a> are recommended.</p>
-        <button type="submit" name="profile_submit" class="button invert-color right">Update</button>
+        <p>Profile pictures from <a href="https://drive.google.com/drive/folders/11opD0m2Qm1mQwuGzxOyl2GvtCIEh_b0o?usp=sharing" title="Recommended Profile Pictures">here</a> are recommended.</p>
+        <button type="submit" name="profile_submit" class="button invert-color right" title="Update Profile">Update</button>
       </fieldset>
     </form>
   </div>
@@ -30,7 +30,7 @@
     <fieldset class="card">
       <legend>Site Settings</legend>
       {{ s_form.as_ul }}
-      <button type="submit" name="settings_submit" class="button invert-color right">Update</button>
+      <button type="submit" name="settings_submit" class="button invert-color right" title="Update Site Settings">Update</button>
     </fieldset>
   </form>
 {% endblock content%}

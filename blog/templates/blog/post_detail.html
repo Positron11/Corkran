@@ -19,7 +19,7 @@
         <legend>Comment</legend>
         <div class="comment-box">
           <textarea name="content" rows="1" required id="id_content"></textarea>
-          <button type="submit" name="button" class="button invert-color">Post</button>
+          <button type="submit" name="button" class="button invert-color" title="Post Comment">Post</button>
         </div>
       </fieldset>
     </form>
@@ -43,7 +43,7 @@
           <div class="text"><p>"{{ comment.content }}"</p></div>
           <div class="trash-icon clickable">
             {% if user == object.author or user == comment.user %}
-              <i class="far fa-trash-alt trash-icon" onclick="location.href='{% url 'comment-delete' comment.id %}'"></i>
+              <i class="far fa-trash-alt trash-icon" title="Delete Comment" onclick="location.href='{% url 'comment-delete' comment.id %}'"></i>
             {% endif %}
           </div>
         </div>
@@ -57,8 +57,8 @@
   {% if user == object.author %}
     <div class="card">
       <div class="confirm-buttons">
-        <a href="{% url 'post-update' object.id %}" class="button">Update</a>
-        <a href="{% url 'post-delete' object.id %}" class="button danger">Delete</a>
+        <a href="{% url 'post-update' object.id %}" class="button" title="Update Post">Update</a>
+        <a href="{% url 'post-delete' object.id %}" class="button danger" title="Delete Post">Delete</a>
       </div>
     </div>
   {% endif %}
