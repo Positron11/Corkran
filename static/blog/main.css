@@ -315,9 +315,11 @@ a[disabled], .inactive {
   padding: 0em 0.5em 0.8em 0.5em;
   display: grid;
   grid-template:
-    "author text date trash"
-    / auto 1fr auto auto;
+    "author author author"
+    "text date trash"
+    / 1fr auto auto;
   grid-column-gap: 0.5em;
+  grid-row-gap: 0.5em;
 }
 .comments .comment .date {
   grid-area: date;
