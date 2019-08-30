@@ -39,6 +39,7 @@
     {% if object.comment_set.count > 0 %}
       {% for comment in object.comment_set.all %}
         <div class="comment">
+          <div class="date">({{ comment.date|date:"F jS, Y" }})</div>
           <div class="author"><a href="{% url 'user-posts' comment.user.username %}">{{ comment.user }}</a>:</div>
           <div class="text"><p>"{{ comment.content }}"</p></div>
           <div class="trash-icon clickable">
