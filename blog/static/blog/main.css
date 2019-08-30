@@ -352,7 +352,7 @@ a[disabled], .inactive {
   place-items: center;
   color: rgb(0, 163, 44);
   border-color: rgb(0, 163, 44);
-  background-color: rgba(4, 222, 63,0.3);
+  background-color: rgba(4, 222, 63,0.2);
   font-size: 2em;
   right: 2em;
   bottom: 0em;
