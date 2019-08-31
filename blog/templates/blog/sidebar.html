@@ -1,0 +1,32 @@
+{% load custom_tags %}
+<div class="sidebar card">
+  <!-- Header -->
+  <div class="header">
+    <div class="heading">
+      Savoir
+    </div>
+    <div class="subheading">
+      Important blog updates
+    </div>
+  </div>
+  <!-- Information -->
+  <div class="information">
+    <div class="latest-posts">
+      {% if posts %}
+        {% if view.kwargs.username %}
+          <label>{{view.kwargs.username}}'s Latest: </label>{% user_latest_post view.kwargs.username %}
+        {% else %}
+          <label>Latest Post: </label>{% latest_post %}
+        {% endif %}
+      {% endif %}
+    </div>
+    <div class="announcements">
+      <label>Announcements: </label>
+      {% announcement %}
+    </div>
+    <div class="calendars">
+      <label>Calendars: </label>
+      None
+    </div>
+  </div>
+</div>

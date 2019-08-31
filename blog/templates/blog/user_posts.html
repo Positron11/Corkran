@@ -1,11 +1,6 @@
 {% extends "blog/base.html" %}
 {% load custom_tags %}
 {% block title %}Posts By {{ view.kwargs.username }}{% endblock title %}
-{% block latest %}
-  {% if posts %}
-    <label>Latest Post: </label>{% user_latest_post view.kwargs.username %}
-  {% endif %}
-{% endblock latest %}
 {% block content %}
   <div class="card special">
     <div class="header">

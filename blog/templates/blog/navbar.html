@@ -1,0 +1,29 @@
+{% load static %}
+<!-- Main Box -->
+<div class="navbar-box">
+  <!-- Navbar Grid -->
+  <div class="navbar unselectable">
+    <!-- Home Button -->
+    <div class="button" onclick="location.href='{% url 'blog-home'%}'">Home</div>
+    <!-- About Button -->
+    <div class="button" onclick="location.href='{% url 'blog-about'%}'">About</div>
+    <!-- Website Icon -->
+    <img src="{% if user.setting.dark_mode %}
+                {% static 'blog/corkran_icon_light.png' %}
+              {% else %}
+                {% static 'blog/corkran_icon_dark.png' %}
+              {% endif %}"
+         class="website-icon clickable"
+         onclick="location.href='{% url 'blog-home'%}'">
+    <!-- Profile & Logout or Register & Login -->
+    {% if user.is_authenticated %}
+      <div class="button" onclick="location.href='{% url 'profile'%}'">Profile</div>
+      <div class="button" onclick="location.href='{% url 'logout'%}'">Logout</div>
+    {% else %}
+      <div class="button" onclick="location.href='{% url 'register'%}'">Register</div>
+      <div class="button" onclick="location.href='{% url 'login'%}'">Login</div>
+    {% endif %}
+    <!-- Responsive Menu Button -->
+    <div class="button expand-btn">Menu</div>
+  </div>
+</div>
