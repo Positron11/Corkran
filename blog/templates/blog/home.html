@@ -2,10 +2,12 @@
 {% load custom_tags %}
 {% block title %}Home{% endblock title %}
 {% block content %}
+  <!-- Search -->
+  {% include "blog/search_bar.html" %}
   {% include "blog/post_list.html" %}
 {% endblock content %}
 {% block newpost %}
   {% if user.is_authenticated %}
-    <div class="new-post clickable card" title="New Post" onclick="location.href='{% url 'post-create'%}'""><i class="fas fa-plus"></i></div>
+    <div class="new-post clickable" title="New Post" onclick="location.href='{% url 'post-create'%}'""><i class="fas fa-plus"></i></div>
   {% endif %}
 {% endblock newpost %}

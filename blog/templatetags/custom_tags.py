@@ -20,6 +20,12 @@ def user_latest_post(username):
 
 
 @register.simple_tag
+def user_post_count(username):
+    count = User.objects.filter(username=username).first().post_set.count()
+    return count
+
+
+@register.simple_tag
 def announcement():
     return Announcement.objects.last().content
 

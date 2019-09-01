@@ -1,7 +1,8 @@
 {% extends "blog/base.html" %}
 {% block title %}Profile{% endblock title %}
 {% block content %}
-  <div class="card">
+
+  <div class="card margin-bottom">
     <div class="header">
       <div class="heading">Your Profile</div>
       <div class="subheading">View and edit your details</div>
@@ -13,24 +14,25 @@
       <div class="email">{{ user.email }}</div>
     </div>
   </div>
-  <div class="profile-form">
-    <form method="POST" enctype="multipart/form-data">
-      {% csrf_token %}
-      <fieldset class="card">
-        <legend>Update Profile</legend>
-        {{ u_form.as_ul}}
-        {{ p_form.as_ul }}
-        <p>Profile pictures from <a href="https://drive.google.com/drive/folders/11opD0m2Qm1mQwuGzxOyl2GvtCIEh_b0o?usp=sharing" title="Recommended Profile Pictures">here</a> are recommended.</p>
-        <button type="submit" name="profile_submit" class="button invert-color right" title="Update Profile">Update</button>
-      </fieldset>
-    </form>
-  </div>
+
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <fieldset class="card margin-bottom">
+      <legend>Update Profile</legend>
+      {{ u_form.as_ul}}
+      {{ p_form.as_ul }}
+      <p>Profile pictures from <a href="https://drive.google.com/drive/folders/11opD0m2Qm1mQwuGzxOyl2GvtCIEh_b0o?usp=sharing" title="Recommended Profile Pictures">here</a> are recommended.</p>
+      <button type="submit" name="profile_submit" class="button bottom invert-color right" title="Update Profile">Update</button>
+    </fieldset>
+  </form>
+
   <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <fieldset class="card">
       <legend>Site Settings</legend>
       {{ s_form.as_ul }}
-      <button type="submit" name="settings_submit" class="button invert-color right" title="Update Site Settings">Update</button>
+      <button type="submit" name="settings_submit" class="button bottom invert-color right" title="Update Site Settings">Update</button>
     </fieldset>
   </form>
+
 {% endblock content%}

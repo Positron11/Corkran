@@ -11,7 +11,9 @@
         Read everything {{ view.kwargs.username }} has posted until now.
       </div>
     </div>
-    {{ view.kwargs.username }} has {{ page_obj.paginator.count }} post(s).
+    {{ view.kwargs.username }} has {% user_post_count view.kwargs.username %} post(s).
   </div>
+  <!-- Search -->
+  {% include "blog/search_bar.html" %}
   {% include "blog/post_list.html" %}
 {% endblock content %}

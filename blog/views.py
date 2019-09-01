@@ -1,4 +1,5 @@
 from .models import Post, Comment
+from django.db.models import Q
 from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 from django.shortcuts import render, get_object_or_404
@@ -13,20 +14,28 @@ class PostListView(ListView):
     ordering = ["-date"]
     paginate_by = 5
 
+    def get_queryset(self):
+        if self.request.method == 'GET':
+            search_query = self.request.GET.get('search_box', "")
+            return Post.objects.filter(Q(tags__name__in=[search_query]) | Q(title__icontains=search_query)).distinct().order_by("-date")
+        else:
+            return Post.objects.order_by("-date")
+
 
 class UserPostListView(ListView):
     model = Post
     template_name = "blog/user_posts.html"
     context_object_name = "posts"
+    ordering = ["-date"]
     paginate_by = 5
 
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get("username"))
-        return Post.objects.filter(author=user).order_by("-date")
-
-
-# class PostDetailView(DetailView):
-#     model = Post
+        if self.request.method == 'GET':
+            search_query = self.request.GET.get('search_box', "")
+            return Post.objects.filter(author=user).filter(Q(tags__name__in=[search_query]) | Q(title__icontains=search_query)).distinct().order_by("-date")
+        else:
+            return Post.objects.filter(author=user).order_by("-date")
 
 
 class PostView(DetailView):
@@ -60,7 +69,7 @@ class PostDetailView(View):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ["title", "content"]
+    fields = ["title", "content", "tags"]
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -69,7 +78,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    fields = ["title", "content"]
+    fields = ["title", "content", "tags"]
 
     def form_valid(self, form):
         form.instance.author = self.request.user

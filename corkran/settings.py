@@ -41,9 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ckeditor',
     'ckeditor_uploader',
+    "taggit",
 ]
-
-CKEDITOR_UPLOAD_PATH = "uploads/"
 
 CKEDITOR_CONFIGS = {
     "default": {
@@ -159,3 +158,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "aarushbeleren11@gmail.com"
 EMAIL_HOST_PASSWORD = "hgixxcsbueguorgs"
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
+TAGGIT_CASE_INSENSITIVE = True

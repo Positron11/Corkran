@@ -138,7 +138,7 @@ input, textarea, .helptext, .subheading, .date {
 .special, .special * {
   color: rgb(0, 163, 44)! important;
 }
-.card:not(.post-preview) {
+.card.margin-bottom {
   margin-bottom: 2em;
 }
 
@@ -210,7 +210,7 @@ a[disabled], .inactive {
 .navbar-box {
   z-index: 10;
   position: sticky;
-  padding: 0em 5em;
+  padding: 0em 4em;
   top: 0;
 }
 .navbar {
@@ -247,7 +247,9 @@ a[disabled], .inactive {
 
 /* Sidebar ===============================================================*/
 .sidebar {
+  grid-area: sidebar;
   position: sticky;
+  padding-top: 0em;
   top: 8.6em;
   display: inline-grid;
   grid-template:
@@ -269,8 +271,9 @@ a[disabled], .inactive {
 /* Paginator =============================================================*/
 .paginator {
   text-align: center;
-  font-size: 1.3em;
-  margin: 1em 0em;
+  font-size: 1.4em;
+  margin-top: 2em;
+  margin-bottom: 1em;
 }
 .paginator * {
   border: none;
@@ -283,6 +286,9 @@ a[disabled], .inactive {
 }
 
 /* Content ===============================================================*/
+.content {
+  grid-area: content;
+}
 .content .posts {
   display: grid;
   grid-template:
@@ -305,6 +311,27 @@ a[disabled], .inactive {
 .post .header .profile-pic {
   grid-area: pic;
   margin: 0em 1em;
+}
+
+/* Search =============================================================== */
+.search-bar {
+  margin-top: 1em;
+}
+.search-bar form {
+  max-width: 100%;
+  display: grid;
+  grid-template:
+    "search-bar search_button"
+    / 1fr auto;
+  align-content: space-between;
+  grid-column-gap: 1em;
+  grid-row-gap: 0.5em;
+}
+.search-bar form input {
+  grid-area: search-bar;
+}
+.search-bar form button {
+  grid-area: search_button;
 }
 
 /* Comments ==============================================================*/
@@ -359,8 +386,6 @@ a[disabled], .inactive {
   border-color: rgb(0, 163, 44);
   background-color: rgba(4, 222, 63,0.2);
   font-size: 2em;
-  right: 2em;
-  bottom: 0em;
   border-radius: 50%;
   position: fixed;
   padding: 0.2em 0.3em;
@@ -443,6 +468,10 @@ a[disabled], .inactive {
   .trash-icon:hover {
     color: rgb(255,0,0);
   }
+  .new-post {
+    right: 2em;
+    bottom: 2em;
+  }
   .new-post i {
     animation-name: spin-reverse;
     animation-duration: 600ms;
@@ -496,6 +525,7 @@ a[disabled], .inactive {
   }
   .new-post {
     right: 1em;
+    bottom: 1em;
   }
   .comments .comment {
     grid-template:
@@ -546,6 +576,7 @@ a[disabled], .inactive {
   }
   .new-post {
     right: 0.5em;
+    bottom: 0.5em;
   }
   .comment-box {
     grid-template:
@@ -554,5 +585,9 @@ a[disabled], .inactive {
       / 1fr;
     place-items: center stretch;
     grid-row-gap: 0.5em;
+  }
+  .button.bottom {
+    width: 100%;
+    margin-top: 2em;
   }
 }

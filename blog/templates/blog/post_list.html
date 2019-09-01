@@ -1,28 +1,42 @@
+<!-- Paginator -->
+{% include "blog/paginator.html" %}
 <div class="posts">
-  {% for post in posts %}
-    <div class="post card post-preview">
-      <div class="header">
-        <img class="profile-pic" src="{{ post.author.profile.profile_image.url }}" alt="profile_picture">
-        <div class="heading">
-          <a href="{% url 'post-detail' post.id %}" title="{{post.title}} - {{post.author}}">{{post.title}}</a>
+  {% if posts %}
+    {% for post in posts %}
+      <div class="post card post-preview">
+        <div class="header">
+          <img class="profile-pic" src="{{ post.author.profile.profile_image.url }}" alt="profile_picture">
+          <div class="heading">
+            <a href="{% url 'post-detail' post.id %}" title="{{post.title}} - {{post.author}}">{{post.title}}</a>
+          </div>
+          <div class="subheading">
+            By <a href="{% url 'user-posts' post.author.username %}" title="{{ post.author }}'s Posts">{{post.author}}</a>
+            on {{post.date}}
+            -<label>&nbsp{{post.comment_set.count}}&nbspComment(s)</label>
+          </div>
         </div>
-        <div class="subheading">
-          By <a href="{% url 'user-posts' post.author.username %}" title="{{ post.author }}'s Posts">{{post.author}}</a>
-          on {{post.date}}
-          -<label>&nbsp{{post.comment_set.count}}&nbspComment(s)</label>
-        </div>
+        <div class="truncate clickable text" title="Full Post" onclick="location.href='{% url "post-detail" post.id %}'">{{ post.content|safe }}</div>
       </div>
-      <div class="truncate clickable text" title="Full Post" onclick="location.href='{% url "post-detail" post.id %}'">{{ post.content|safe }}</div>
-    </div>
-    <script type="text/javascript">
-      $(document).ready(function(){
-        $(function(){
-            $('.truncate').succinct({
-                omission: '...&nbspRead&nbspMore',
-                size: 500
-            });
+      <script type="text/javascript">
+        $(document).ready(function(){
+          $(function(){
+              $('.truncate').succinct({
+                  omission: '...&nbspRead&nbspMore',
+                  size: 500
+              });
+          });
         });
-      });
-    </script>
-  {% endfor %}
+      </script>
+    {% endfor %}
+  {% else %}
+    <div class="card">
+      <div class="header">
+        <div class="heading">Eh, what?</div>
+        <div class="subheading">What you seek, simply put, does not exist.</div>
+      </div>
+      <div class="text">Head over to the <a href="{% url 'blog-about' %}">about</a> page, perhaps? Or not?</div>
+    </div>
+  {% endif %}
 </div>
+<!-- Paginator -->
+{% include "blog/paginator.html" %}

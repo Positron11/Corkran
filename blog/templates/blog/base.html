@@ -16,6 +16,7 @@
   <body {% if user.setting.dark_mode %}class="dark-mode"{% endif %}>
     <!-- Navbar -->
     {% include "blog/navbar.html" %}
+
     <!-- Page -->
     <div class="page">
       <!-- Content -->
@@ -26,18 +27,16 @@
             <div class="alert">{{ message }}</div>
           {% endfor%}
         {% endif %}
-        <!-- Paginator -->
-        {% include "blog/paginator.html" %}
         <!-- Main Content -->
         {% block content %}{% endblock %}
-        <!-- Paginator -->
-        {% include "blog/paginator.html" %}
       </div>
       <!-- Sidebar -->
       {% include "blog/sidebar.html" %}
     </div>
+
     <!-- New Post Button -->
     {% block newpost %}{% endblock %}
+
     <!-- Scripts -->
     <script type="text/javascript">
       $(document).ready(function(){
@@ -59,8 +58,13 @@
           if(c == 0)
             return (e.which !== 13 && e.which !== 32);
         });
-
+        // Force Lowercase Tags
+        $("#id_tags").attr("onkeyup", "return forceLower(this);");
       });
+
+      function forceLower(strInput) {
+        strInput.value=strInput.value.toLowerCase();
+      }
     </script>
   </body>
 </html>

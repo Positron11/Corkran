@@ -3,11 +3,11 @@
 {% block content %}
   <form method="POST">
     {% csrf_token %}
-    <fieldset class="card">
+    <fieldset class="card margin-bottom">
       <legend>Log In</legend>
       {{ form.as_ul }}
       <a href="{% url 'password_reset'%}">Forgot your password?</a>
-      <button type="submit" name="button" class="button invert-color right">Login</button>
+      <button type="submit" name="button" class="button bottom invert-color right">Login</button>
     </fieldset>
   </form>
   <a href="{% url 'register'%}">Create a new account?</a>
