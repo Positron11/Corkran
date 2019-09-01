@@ -26,6 +26,13 @@
     </fieldset>
   </form>
 
+  <fieldset class="card user-post-list margin-bottom">
+    <legend>Your Posts</legend>
+    {% for post in user.post_set.all reversed %}
+      <div class="user-post-title"><a href="{% url 'post-detail' post.id %}">{{ post.title }}</a></div>
+    {% endfor %}
+  </fieldset>
+
   <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <fieldset class="card">
