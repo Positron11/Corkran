@@ -263,7 +263,6 @@ a[disabled], .inactive {
   grid-template:
     "latest-posts"
     "announcements"
-    "calendars"
     / auto;
   grid-row-gap: 0.5em;
 }
