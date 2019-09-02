@@ -26,6 +26,12 @@ def user_post_count(username):
 
 
 @register.simple_tag
+def tag_post_count(tag):
+    count = Post.objects.filter(tags__name__in=[tag]).count()
+    return count
+
+
+@register.simple_tag
 def announcement():
     if Announcement.objects.count() != 0:
         return Announcement.objects.last().content

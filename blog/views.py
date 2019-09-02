@@ -32,6 +32,14 @@ class UserPostListView(PostListView):
         return super().get_queryset().filter(author=user)
 
 
+class TagPostListView(PostListView):
+    template_name = "blog/tag_posts.html"
+
+    def get_queryset(self):
+        tag = self.kwargs.get("tag")
+        return super().get_queryset().filter(tags__name__in=[tag])
+
+
 class PostView(DetailView):
     model = Post
     pass

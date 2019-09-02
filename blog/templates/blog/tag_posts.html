@@ -1,0 +1,19 @@
+{% extends "blog/base.html" %}
+{% load custom_tags %}
+{% block title %}{{ view.kwargs.tag }}{% endblock title %}
+{% block content %}
+  <div class="card special">
+    <div class="header">
+      <div class="heading">
+        {{ view.kwargs.tag }}
+      </div>
+      <div class="subheading">
+        Posts with tagged with "{{ view.kwargs.tag }}".
+      </div>
+    </div>
+    There are {% tag_post_count view.kwargs.tag %} posts tagged with "{{ view.kwargs.tag }}".
+  </div>
+  <!-- Search -->
+  {% include "blog/search_bar.html" %}
+  {% include "blog/post_list.html" %}
+{% endblock content %}

@@ -16,7 +16,7 @@
     <legend>Tags</legend>
     {% for tag in object.tags.all %}
       <div class="tag">
-        {{ tag }}
+        <a href="{% url 'tag-posts' tag %}">{{ tag }}</a>
       </div>
     {% endfor %}
   </fieldset>

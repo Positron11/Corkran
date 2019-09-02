@@ -92,7 +92,7 @@ input, textarea {
 input, textarea, .helptext, .subheading, .date {
   color: grey;
 }
-.errorlist *, .special *, .new-post i, .subheading * {
+.errorlist *, .special *, .new-post i, .subheading *, .tag * {
   background-color: transparent;
 }
 
@@ -304,7 +304,7 @@ a[disabled], .inactive {
     "pic subheading"
     / auto 1fr;
 }
-.post .header .heading a {
+.post .header .heading a, .tag a {
   border-bottom: none;
 }
 .post .header .profile-pic {
