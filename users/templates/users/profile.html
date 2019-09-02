@@ -29,7 +29,7 @@
   <fieldset class="card user-post-list margin-bottom">
     <legend>Your Posts</legend>
     {% for post in user.post_set.all reversed %}
-      <div class="user-post-title"><a href="{% url 'post-detail' post.id %}">{{ post.title }}</a></div>
+      <div class="user-post-title"><a href="{% url 'post-detail' pk=post.id slug=post.slug %}">{{ post.title }}</a></div>
     {% endfor %}
   </fieldset>
 
