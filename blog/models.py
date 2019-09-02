@@ -8,6 +8,7 @@ from taggit.managers import TaggableManager
 
 class Post(models.Model):
     title = models.CharField(max_length=100)
+    slug = models.SlugField()
     content = RichTextUploadingField(external_plugin_resources=[(
                                         "youtube",
                                         "/static/blog/vendor/ckeditor/youtube/youtube/",
