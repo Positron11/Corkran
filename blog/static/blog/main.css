@@ -241,7 +241,7 @@ a[disabled], .inactive {
     "content sidebar"
     / 7fr 3fr;
   place-items: start stretch;
-  padding: 2em 4em;
+  padding: 1em 4em;
   grid-column-gap: 4em;
 }
 
@@ -249,8 +249,7 @@ a[disabled], .inactive {
 .sidebar {
   grid-area: sidebar;
   position: sticky;
-  padding-top: 0em;
-  top: 8.6em;
+  top: 7.6em;
   display: inline-grid;
   grid-template:
     "heading"
@@ -288,7 +287,7 @@ a[disabled], .inactive {
 .content {
   grid-area: content;
 }
-.content .posts {
+.content .posts, .content .announcements {
   display: grid;
   grid-template:
     "post"
@@ -322,9 +321,6 @@ a[disabled], .inactive {
 }
 
 /* Search =============================================================== */
-.search-bar {
-  margin-top: 1em;
-}
 .search-bar form {
   max-width: 100%;
   display: grid;
@@ -466,6 +462,9 @@ a[disabled], .inactive {
 /* Breakpoints -----------------------------------------------------------*/
 /* Desktops */
 @media only screen and (min-width: 1000px) {
+  .search-bar {
+    margin-top: 2em;
+  }
   .navbar {
     grid-template: "btn1 btn2 heading btn3 btn4" / auto auto auto auto;
   }

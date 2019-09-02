@@ -1,0 +1,35 @@
+{% extends "blog/base.html" %}
+{% load custom_tags %}
+{% block title %}Home{% endblock title %}
+{% block content %}
+<!-- Paginator -->
+{% include "blog/paginator.html" %}
+  <div class="announcements">
+    {% if announcements %}
+      {% for announcement in announcements %}
+        <div class="card">
+          <div class="header">
+            <div class="heading">{{announcement.date|date:"F jS, Y"}}</div>
+            <div class="subheading">Posted at {{announcement.date|date:"P e"}}</div>
+          </div>
+          <div class="text">{{announcement.content}}</div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <div class="card">
+        <div class="header">
+          <div class="heading">Ahem...</div>
+          <div class="subheading">You seem to have arrived at an awkward time.</div>
+        </div>
+        <div class="text">There are simply no announcement. Nothing more is mine to say.</div>
+      </div>
+    {% endif %}
+  </div>
+  <!-- Paginator -->
+  {% include "blog/paginator.html" %}
+{% endblock content %}
+{% block newpost %}
+  {% if user.is_authenticated %}
+    <div class="new-post clickable" title="New Post" onclick="location.href='{% url 'post-create'%}'""><i class="fas fa-plus"></i></div>
+  {% endif %}
+{% endblock newpost %}

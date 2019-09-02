@@ -11,17 +11,17 @@
   </div>
   <!-- Information -->
   <div class="information">
-    <div class="latest-posts">
-      {% if posts %}
-        {% if view.kwargs.username %}
-          <label>{{view.kwargs.username}}'s Latest: </label>{% user_latest_post view.kwargs.username %}
-        {% else %}
-          <label>Latest Post: </label>{% latest_post %}
-        {% endif %}
-      {% endif %}
-    </div>
+    {% if posts %}
+      <div class="latest-posts">
+          {% if view.kwargs.username %}
+            <label>{{view.kwargs.username}}'s Latest: </label>{% user_latest_post view.kwargs.username %}
+          {% else %}
+            <label>Latest Post: </label>{% latest_post %}
+          {% endif %}
+      </div>
+    {% endif %}
     <div class="announcements">
-      <label>Announcements: </label>
+      <label><a href="{% url 'blog-announcements' %}">Announcements:</a> </label>
       {% announcement %}
     </div>
   </div>

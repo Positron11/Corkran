@@ -1,4 +1,4 @@
-from .models import Post, Comment
+from .models import Post, Comment, Announcement
 from django.db.models import Q
 from django.urls import reverse_lazy
 from django.contrib.auth.models import User
@@ -121,6 +121,14 @@ class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def get_success_url(self):
         return reverse_lazy('post-detail', kwargs={'slug': self.get_object(Comment.objects.all()).post.slug,
                                                    'pk': self.get_object(Comment.objects.all()).post.id})
+
+
+class AnnouncementListView(ListView):
+    model = Announcement
+    template_name = "blog/announcements.html"
+    context_object_name = "announcements"
+    ordering = ["-date"]
+    paginate_by = 10
 
 
 def about(request):
