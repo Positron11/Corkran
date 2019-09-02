@@ -15,27 +15,20 @@ class PostListView(ListView):
     paginate_by = 5
 
     def get_queryset(self):
-        if self.request.method == 'GET':
-            search_query = self.request.GET.get('search_box', "")
-            return Post.objects.filter(Q(tags__name__in=[search_query]) | Q(title__icontains=search_query)).distinct().order_by("-date")
+        if "search" in self.request.GET:
+            search_query = self.request.GET.get('search_box', "").lower()
+            posts = Post.objects.filter(Q(tags__name__in=search_query.split()) | Q(title__icontains=search_query))
         else:
-            return Post.objects.order_by("-date")
+            posts = Post.objects
+        return posts.distinct().order_by("-date")
 
 
-class UserPostListView(ListView):
-    model = Post
+class UserPostListView(PostListView):
     template_name = "blog/user_posts.html"
-    context_object_name = "posts"
-    ordering = ["-date"]
-    paginate_by = 5
 
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get("username"))
-        if self.request.method == 'GET':
-            search_query = self.request.GET.get('search_box', "")
-            return Post.objects.filter(author=user).filter(Q(tags__name__in=[search_query]) | Q(title__icontains=search_query)).distinct().order_by("-date")
-        else:
-            return Post.objects.filter(author=user).order_by("-date")
+        return super().get_queryset().filter(author=user)
 
 
 class PostView(DetailView):
