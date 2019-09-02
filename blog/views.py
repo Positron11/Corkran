@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, View
+from django.template.defaultfilters import slugify
 
 
 class PostListView(ListView):
@@ -46,7 +47,8 @@ class CommentView(CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse_lazy('post-detail', kwargs={'pk': self.get_object(Post.objects.all()).pk})
+        return reverse_lazy('post-detail', kwargs={'slug': self.get_object(Post.objects.all()).slug,
+                                                   'pk': self.get_object(Post.objects.all()).id})
     pass
 
 
@@ -66,6 +68,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
+        form.instance.slug = slugify(form.instance.title)
         return super().form_valid(form)
 
 
@@ -108,7 +111,8 @@ class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             return False
 
     def get_success_url(self):
-        return reverse_lazy('post-detail', kwargs={'pk': self.get_object(Comment.objects.all()).post.pk})
+        return reverse_lazy('post-detail', kwargs={'slug': self.get_object(Comment.objects.all()).post.slug,
+                                                   'pk': self.get_object(Comment.objects.all()).post.id})
 
 
 def about(request):

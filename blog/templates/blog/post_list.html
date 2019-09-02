@@ -7,7 +7,7 @@
         <div class="header">
           <img class="profile-pic" src="{{ post.author.profile.profile_image.url }}" alt="profile_picture">
           <div class="heading">
-            <a href="{% url 'post-detail' post.id %}" title="{{post.title}} - {{post.author}}">{{post.title}}</a>
+            <a href="{% url 'post-detail' pk=post.id slug=post.slug %}" title="{{post.title}} - {{post.author}}">{{post.title}}</a>
           </div>
           <div class="subheading">
             By <a href="{% url 'user-posts' post.author.username %}" title="{{ post.author }}'s Posts">{{post.author}}</a>
@@ -15,7 +15,7 @@
             -<label>&nbsp{{post.comment_set.count}}&nbspComment(s)</label>
           </div>
         </div>
-        <div class="truncate clickable text" title="Full Post" onclick="location.href='{% url "post-detail" post.id %}'">{{ post.content|safe }}</div>
+        <div class="truncate clickable text" title="Full Post" onclick="location.href='{% url "post-detail" pk=post.id slug=post.slug %}'">{{ post.content|safe }}</div>
       </div>
       <script type="text/javascript">
         $(document).ready(function(){

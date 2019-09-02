@@ -10,13 +10,13 @@ register = template.Library()
 @register.simple_tag
 def latest_post():
     post = Post.objects.last()
-    return mark_safe(f"<a href='{reverse_lazy('post-detail', kwargs={'pk': post.pk})}'>{post.title}</a>")
+    return mark_safe(f"<a href='{reverse_lazy('post-detail', kwargs={'slug': post.slug, 'pk': post.id})}'>{post.title}</a>",)
 
 
 @register.simple_tag
 def user_latest_post(username):
     post = User.objects.filter(username=username).first().post_set.last()
-    return mark_safe(f"<a href='{reverse_lazy('post-detail', kwargs={'pk': post.pk})}'>{post.title}</a>")
+    return mark_safe(f"<a href='{reverse_lazy('post-detail', kwargs={'slug': post.slug, 'pk': post.id})}'>{post.title}</a>")
 
 
 @register.simple_tag
