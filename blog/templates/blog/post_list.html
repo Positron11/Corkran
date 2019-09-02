@@ -11,7 +11,7 @@
           </div>
           <div class="subheading">
             By <a href="{% url 'user-posts' post.author.username %}" title="{{ post.author }}'s Posts">{{post.author}}</a>
-            on {{post.date}}
+            on {{post.date|date:"F jS, Y"}}
             -<label>&nbsp{{post.comment_set.count}}&nbspComment(s)</label>
           </div>
         </div>
