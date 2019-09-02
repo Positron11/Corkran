@@ -17,7 +17,7 @@
 
   <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    <fieldset class="card margin-bottom">
+    <fieldset class="card profile-form margin-bottom">
       <legend>Update Profile</legend>
       {{ u_form.as_ul}}
       {{ p_form.as_ul }}

@@ -421,10 +421,10 @@ a[disabled], .inactive {
 }
 .profile-form li:last-of-type {
   font-size: 0;
-  margin-top: 16px;
+  margin-top: 18px;
 }
 .profile-form li:last-of-type label {
-  font-size: 16px;
+  font-size: 18px;
 }
 .user-post-list {
   display: grid;
