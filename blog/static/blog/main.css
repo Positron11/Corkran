@@ -85,7 +85,7 @@ input, textarea {
 }
 
 /* Common Styling */
-#cke_id_content, fieldset, input, textarea, button, .button {
+#cke_id_content, fieldset, input, textarea, button, .button, .tag {
   border-style: dashed;
   border-width: 1px;
 }
@@ -131,11 +131,11 @@ input, textarea, .helptext, .subheading, .date {
 .card {
   padding: 1em;
 }
-.special {
+.special, .tag {
   border-color: rgb(0, 163, 44);
   background-color: rgba(4, 222, 63,0.2);
 }
-.special, .special * {
+.special, .special *, .tag {
   color: rgb(0, 163, 44)! important;
 }
 .card.margin-bottom {
@@ -310,6 +310,15 @@ a[disabled], .inactive {
 .post .header .profile-pic {
   grid-area: pic;
   margin: 0em 1em;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+}
+.tags .tag {
+  text-align: center;
+  margin: 0.5em;
+  padding: 0.1em 0.5em;
 }
 
 /* Search =============================================================== */

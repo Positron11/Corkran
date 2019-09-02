@@ -11,6 +11,15 @@
     </div>
     <div>{{ object.content|safe }}</div>
   </div>
+  <!-- Tags -->
+  <fieldset class="tags">
+    <legend>Tags</legend>
+    {% for tag in object.tags.all %}
+      <div class="tag">
+        {{ tag }}
+      </div>
+    {% endfor %}
+  </fieldset>
   <!-- Comment Form -->
   {% if user.is_authenticated %}
     <form method="POST">
