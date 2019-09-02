@@ -27,6 +27,9 @@ def user_post_count(username):
 
 @register.simple_tag
 def announcement():
-    return Announcement.objects.last().content
+    if Announcement.objects.count() != 0:
+        return Announcement.objects.last().content
+    else:
+        return "No Announcements"
 
 
