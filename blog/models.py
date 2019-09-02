@@ -37,6 +37,7 @@ class Comment(models.Model):
 
 class Announcement(models.Model):
     content = models.TextField()
+    date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.content
