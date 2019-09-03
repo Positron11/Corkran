@@ -514,6 +514,9 @@ a[disabled], .inactive {
 }
 /* Landcape Tablets */
 @media only screen and (max-width: 999px) {
+  .search-bar {
+    margin-top: 1em;
+  }
   .navbar {
     grid-template:
       "heading expand-btn"
