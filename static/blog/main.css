@@ -95,10 +95,7 @@ input, textarea, .helptext, .subheading, .date {
 .errorlist *, .special *, .new-post i, .subheading *, .tag * {
   background-color: transparent;
 }
-.tags, .user-post-list {
-  display: flex;
-  flex-wrap: wrap;
-}
+
 
 /* CKEditor */
 
@@ -439,6 +436,7 @@ a[disabled], .inactive {
 .user-post-list .user-post-title {
   white-space: nowrap;
   margin: 0em 0.5em 1em 0.5em;
+  display: inline-block;
 }
 
 /* Delete Post ===========================================================*/
