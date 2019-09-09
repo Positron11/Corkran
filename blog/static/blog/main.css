@@ -501,7 +501,8 @@ p, span, .card.special *, i, a {
   }
   .navbar .navbar-button:not(.expand-btn):not(:last-of-type) {
     padding-bottom: 0.5em;
-    border-bottom: 1px solid #DDD;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
     margin-bottom: 0.5em;
   }
   .sidebar {
