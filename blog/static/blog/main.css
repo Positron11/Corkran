@@ -252,6 +252,7 @@ p, span, .card.special *, i, a {
     "announcement"
     / auto;
   grid-row-gap: 0.5em;
+  line-height: 1.5em;
 }
 
 .page {
