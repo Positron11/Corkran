@@ -1,32 +1,17 @@
 <!-- Paginator -->
 {% include "blog/paginator.html" %}
+
 <div class="posts">
   {% if posts %}
     {% for post in posts %}
-      <div class="post card post-preview">
+      <div class="post post-preview card">
         <div class="header">
           <img class="profile-pic" src="{{ post.author.profile.profile_image.url }}" alt="profile_picture">
-          <div class="heading">
-            <a href="{% url 'post-detail' pk=post.id slug=post.slug %}" title="{{post.title}} - {{post.author}}">{{post.title}}</a>
-          </div>
-          <div class="subheading">
-            By <a href="{% url 'user-posts' post.author.username %}" title="{{ post.author }}'s Posts">{{post.author}}</a>
-            on {{post.date|date:"F jS, Y"}}
-            -<label>&nbsp{{post.comment_set.count}}&nbspComment(s)</label>
-          </div>
+          <div class="heading"><a href="{% url 'post-detail' pk=post.id slug=post.slug %}" title="{{post.title}} - {{post.author}}">{{post.title}}</a></div>
+          <div class="subheading">By <a href="{% url 'user-posts' post.author.username %}" title="{{ post.author }}'s Posts">{{post.author}}</a> on {{post.date|date:"F jS, Y"}} -<label>&nbsp{{post.comment_set.count}}&nbspComment(s)</label></div>
         </div>
-        <div class="truncate clickable text" title="Full Post" onclick="location.href='{% url "post-detail" pk=post.id slug=post.slug %}'">{{ post.content|safe }}</div>
+        <div class="truncate clickable" title="Full Post" onclick="location.href='{% url "post-detail" pk=post.id slug=post.slug %}'">{{ post.content|safe }}</div>
       </div>
-      <script type="text/javascript">
-        $(document).ready(function(){
-          $(function(){
-              $('.truncate').succinct({
-                  omission: '...&nbspRead&nbspMore',
-                  size: 500
-              });
-          });
-        });
-      </script>
     {% endfor %}
   {% else %}
     <div class="card">
@@ -34,9 +19,21 @@
         <div class="heading">Eh, what?</div>
         <div class="subheading">What you seek, simply put, does not exist.</div>
       </div>
-      <div class="text">Head over to the <a href="{% url 'blog-about' %}">about</a> page, perhaps? Or not?</div>
+      <p>Head over to the <a href="{% url 'blog-about' %}">about</a> page, perhaps? Or not?</p>
     </div>
   {% endif %}
 </div>
+
 <!-- Paginator -->
 {% include "blog/paginator.html" %}
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(function(){
+        $('.truncate').succinct({
+            omission: '...&nbsp<span class="read-more">Read&nbspMore</span>',
+            size: 500
+        });
+    });
+  });
+</script>

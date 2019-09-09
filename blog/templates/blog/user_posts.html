@@ -1,19 +1,6 @@
-{% extends "blog/base.html" %}
+{% extends "blog/sorted_posts.html" %}
 {% load custom_tags %}
-{% block title %}Posts By {{ view.kwargs.username }}{% endblock title %}
-{% block content %}
-  <div class="card special">
-    <div class="header">
-      <div class="heading">
-        Posts by {{ view.kwargs.username }}
-      </div>
-      <div class="subheading">
-        Read everything {{ view.kwargs.username }} has posted until now.
-      </div>
-    </div>
-    {{ view.kwargs.username }} has {% user_post_count view.kwargs.username %} post(s).
-  </div>
-  <!-- Search -->
-  {% include "blog/search_bar.html" %}
-  {% include "blog/post_list.html" %}
-{% endblock content %}
+{% block pagetitle %}Posts By {{ view.kwargs.username }}{% endblock pagetitle %}
+{% block heading %}Posts by {{ view.kwargs.username }}{% endblock heading %}
+{% block subheading %}Read everything {{ view.kwargs.username }} has posted until now.{% endblock subheading %}
+{% block info %}{{ view.kwargs.username }} has {% user_post_count view.kwargs.username %} post(s).{% endblock info %}

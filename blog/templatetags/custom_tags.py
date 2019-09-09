@@ -34,7 +34,7 @@ def tag_post_count(tag):
 @register.simple_tag
 def announcement():
     if Announcement.objects.count() != 0:
-        return mark_safe(f"{Announcement.objects.last().content} <span class='subheading right'>-{Announcement.objects.last().date.strftime('%B %-d, %Y')}</span>")
+        return mark_safe(f"{Announcement.objects.last().content} <span class='date'>-{Announcement.objects.last().date.strftime('%B %-d, %Y')}</span>")
     else:
         return "No Announcements"
 

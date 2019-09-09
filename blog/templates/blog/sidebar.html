@@ -1,28 +1,24 @@
 {% load custom_tags %}
 <div class="sidebar card">
-  <!-- Header -->
-  <div class="header">
-    <div class="heading">
-      Savoir
-    </div>
-    <div class="subheading">
-      Important blog updates
-    </div>
+  <div class="sidebar-tab clickable">
+    <i class="fas fa-chevron-left"></i>
   </div>
-  <!-- Information -->
+  <div class="header">
+    <div class="heading">Savoir</div>
+    <div class="subheading">Important blog updates</div>
+  </div>
   <div class="information">
     {% if posts %}
-      <div class="latest-posts">
-          {% if view.kwargs.username %}
-            <label>{{view.kwargs.username}}'s Latest: </label>{% user_latest_post view.kwargs.username %}
-          {% else %}
-            <label>Latest Post: </label>{% latest_post %}
-          {% endif %}
+      <div class="latest-post">
+        {% if view.kwargs.username %}
+          <label>{{view.kwargs.username}}'s Latest: </label><span>{% user_latest_post view.kwargs.username %}</span>
+        {% else %}
+          <label>Latest Post: </label><span>{% latest_post %}<span>
+        {% endif %}
       </div>
     {% endif %}
-    <div class="announcements">
-      <label><a href="{% url 'blog-announcements' %}">Announcements:</a> </label>
-      {% announcement %}
+    <div class="announcement">
+      <label><a href="{% url 'blog-announcements' %}">Announcements:</a> </label><span>{% announcement %}<span>
     </div>
   </div>
 </div>

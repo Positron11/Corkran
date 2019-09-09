@@ -1,5 +1,9 @@
 {% extends "blog/confirm_delete.html" %}
+
 {% block title1 %}Delete Post{% endblock title1 %}
+
 {% block heading %}Delete Post{% endblock heading %}
+
 {% block subheading %}Are you sure you want to delete this post?{% endblock subheading %}
+
 {% block return-url %}{% url 'post-detail' pk=post.id slug=post.slug %}{% endblock return-url%}

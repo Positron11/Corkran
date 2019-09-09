@@ -1,7 +1,7 @@
-<div class="search-bar">
-  <form type="get" action="." style="margin: 0">
-    {% csrf_token %}
+<form type="get" action="." style="margin: 0">
+  {% csrf_token %}
+  <div class="search-bar card">
     <input  id="search_box" type="text" name="search_box"  placeholder="Search..." >
     <button id="search_submit" name="search" type="submit" class="button invert-color"><i class="fas fa-search"></i></button>
-  </form>
-</div>
+  </div>
+</form>

@@ -22,14 +22,14 @@
       {{ u_form.as_ul}}
       {{ p_form.as_ul }}
       <p>Profile pictures from <a href="https://drive.google.com/drive/folders/11opD0m2Qm1mQwuGzxOyl2GvtCIEh_b0o?usp=sharing" title="Recommended Profile Pictures">here</a> are recommended.</p>
-      <button type="submit" name="profile_submit" class="button bottom invert-color right" title="Update Profile">Update</button>
+      <button type="submit" name="profile_submit" class="button bottom invert-color right" title="Update Profile">Update <i class="fas fa-pen-alt"></i></button>
     </fieldset>
   </form>
 
-  <fieldset class="card user-post-list margin-bottom">
+  <fieldset class="card list-box margin-bottom">
     <legend>Your Posts</legend>
     {% for post in user.post_set.all reversed %}
-      <div class="user-post-title"><a href="{% url 'post-detail' pk=post.id slug=post.slug %}">{{ post.title }}</a></div>
+      <div class="list-item user-post-title"><a href="{% url 'post-detail' pk=post.id slug=post.slug %}">{{ post.title }}</a></div>
     {% endfor %}
   </fieldset>
 
@@ -38,7 +38,7 @@
     <fieldset class="card">
       <legend>Site Settings</legend>
       {{ s_form.as_ul }}
-      <button type="submit" name="settings_submit" class="button bottom invert-color right" title="Update Site Settings">Update</button>
+      <button type="submit" name="settings_submit" class="button bottom invert-color right" title="Update Site Settings">Update <i class="fas fa-pen-alt"></i></button>
     </fieldset>
   </form>
 

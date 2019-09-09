@@ -1,21 +1,30 @@
 {% extends "blog/base.html" %}
 {% load custom_tags %}
+
 {% block title %}{{object.title}}{% endblock title %}
+
 {% block content %}
+<!-- Delete/Update Post -->
+{% if user == object.author %}
+  <div class="decision-box margin-bottom">
+    <a href="{% url 'post-update' object.id %}" class="button" title="Update Post">Update <i class="fas fa-edit"></i></a>
+    <a href="{% url 'post-delete' object.id %}" class="button danger" title="Delete Post">Delete <i class="fas fa-trash-alt"></i></a>
+  </div>
+{% endif %}
   <!-- Main Post -->
-  <div class="post card">
+  <div class="post card margin-bottom">
     <div class="header">
       <img class="profile-pic" src="{{ post.author.profile.profile_image.url }}" alt="profile_picture">
       <div class="heading">{{object.title}}</div>
       <div class="subheading">By <a href="{% url 'user-posts' object.author.username %}">{{post.author}}</a> on {{object.date|date:"F jS, Y"}}</div>
     </div>
-    <div>{{ object.content|safe }}</div>
+    <p>{{ object.content|safe }}</p>
   </div>
   <!-- Tags -->
-  <fieldset class="tags card margin-bottom">
+  <fieldset class="list-box card margin-bottom">
     <legend>Tags</legend>
     {% for tag in object.tags.all %}
-      <div class="tag">
+      <div class="tag list-item">
         <a href="{% url 'tag-posts' tag %}" title='Posts tagged with "{{ tag }}"'>{{ tag }}</a>
       </div>
     {% endfor %}
@@ -24,38 +33,38 @@
   {% if user.is_authenticated %}
     <form method="POST">
       {% csrf_token %}
-      <fieldset class="card">
+      <fieldset class="card margin-bottom">
         <legend>Comment</legend>
         <div class="comment-box">
           <textarea name="content" rows="1" required id="id_content"></textarea>
-          <button type="submit" name="button" class="button invert-color" title="Post Comment">Post</button>
+          <button type="submit" name="button" class="button invert-color" title="Post Comment">Post <i class="fas fa-pen"></i></button>
         </div>
       </fieldset>
     </form>
   {% endif %}
   <!-- Comments -->
-  <div class="card comments">
+  <div class="card comments margin-bottom">
     <!-- Header -->
     <div class="header">
       <div class="heading">
         Comments ({{ object.comment_set.count }})
       </div>
       <div class="subheading">
-        Comments by other users for this post.
+        Comments on "{{object.title}}".
       </div>
     </div>
     <!-- Comment List -->
     {% if object.comment_set.count > 0 %}
       {% for comment in object.comment_set.all %}
         <div class="comment">
-          <div class="date">({{ comment.date|date:"M. jS, Y P e" }})</div>
           <div class="author"><a href="{% url 'user-posts' comment.user.username %}">{{ comment.user }}</a>:</div>
-          <div class="text"><p>"{{ comment.content }}"</p></div>
-          <div class="trash-icon clickable">
-            {% if user == object.author or user == comment.user %}
-              <i class="far fa-trash-alt trash-icon" title="Delete Comment" onclick="location.href='{% url 'comment-delete' comment.id %}'"></i>
-            {% endif %}
-          </div>
+          <div class="text">"{{ comment.content }}"</div>
+          <div class="date">-{{ comment.date|date:"M. jS, Y P e" }}</div>
+          {% if user == object.author or user == comment.user %}
+            <div class="trash-icon clickable">
+                <i class="far fa-trash-alt trash-icon danger" title="Delete Comment" onclick="location.href='{% url 'comment-delete' comment.id %}'"></i>
+            </div>
+          {% endif %}
         </div>
       {% endfor %}
     {% else %}
@@ -63,13 +72,4 @@
       No comments... yet
     {% endif %}
   </div>
-  <!-- Delete/Update Post -->
-  {% if user == object.author %}
-    <div class="card">
-      <div class="confirm-buttons">
-        <a href="{% url 'post-update' object.id %}" class="button" title="Update Post">Update</a>
-        <a href="{% url 'post-delete' object.id %}" class="button danger" title="Delete Post">Delete</a>
-      </div>
-    </div>
-  {% endif %}
 {% endblock content%}

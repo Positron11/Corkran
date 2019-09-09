@@ -5,7 +5,7 @@
     {% if page_obj.has_previous %}
       <a href="?page={{page_obj.previous_page_number}}"><i class="fas fa-angle-left" title="Previous Page"></i></a>
     {% else %}
-      <a disabled="disabled"><i class="fas fa-angle-left"></i></a>
+      <a disabled="disabled" class="disabled"><i class="fas fa-angle-left"></i></a>
     {% endif %}
 
     {% for num in page_obj.paginator.page_range %}
@@ -19,7 +19,7 @@
     {% if page_obj.has_next %}
       <a href="?page={{page_obj.next_page_number}}"><i class="fas fa-angle-right" title="Next Page"></i></a>
       {% else %}
-        <a disabled="disabled"><i class="fas fa-angle-right"></i></a>
+        <a disabled="disabled" class="disabled"><i class="fas fa-angle-right"></i></a>
     {% endif %}
 
     <a href="?page={{page_obj.paginator.num_pages}}"><i class="fas fa-angle-double-right" title="Last Page"></i></a>

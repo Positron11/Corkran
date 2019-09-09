@@ -1,20 +1,18 @@
 {% extends "blog/base.html" %}
+
 {% block title %}{% block title1 %}{% endblock title1 %}{% endblock title %}
+
 {% block content %}
   <form method="POST">
     {% csrf_token %}
     <div class="card">
       <div class="header">
-        <div class="heading">
-          {% block heading %}{% endblock heading %}
-        </div>
-        <div class="subheading">
-          {% block subheading %}{% endblock subheading %}
-        </div>
+        <div class="heading">{% block heading %}{% endblock heading %}</div>
+        <div class="subheading">{% block subheading %}{% endblock subheading %}</div>
       </div>
-      <div class="confirm-buttons">
-        <a href="{% block return-url %}{% endblock return-url %}" class="button" title="Go Back">Go Back</a>
-        <button type="submit" name="button" class="button danger" title="Delete">Delete</button>
+      <div class="decision-box">
+        <a href="{% block return-url %}{% endblock return-url %}" class="button" title="Go Back"><i class="fas fa-arrow-left"></i> Go Back</a>
+        <button type="submit" name="submit" class="button danger" title="Delete">Delete <i class="fas fa-trash-alt"></i></button>
       </div>
     </div>
   </form>

@@ -1,12 +1,12 @@
 {% load static %}
 <!-- Main Box -->
-<div class="navbar-box">
+<div class="navbar-box unselectable">
   <!-- Navbar Grid -->
-  <div class="navbar unselectable">
+  <div class="navbar">
     <!-- Home Button -->
-    <div class="button" onclick="location.href='{% url 'blog-home'%}'">Home</div>
+    <div class="navbar-button clickable" onclick="location.href='{% url 'blog-home'%}'"><span>Home</span></div>
     <!-- About Button -->
-    <div class="button" onclick="location.href='{% url 'blog-about'%}'">About</div>
+    <div class="navbar-button clickable" onclick="location.href='{% url 'blog-about'%}'"><span>About</span></div>
     <!-- Website Icon -->
     <img src="{% if user.setting.dark_mode %}
                 {% static 'blog/corkran_icon_light.png' %}
@@ -15,15 +15,15 @@
               {% endif %}"
          class="website-icon clickable"
          onclick="location.href='{% url 'blog-home'%}'">
+    <!-- Responsive Menu Button -->
+    <div class="navbar-button clickable expand-btn">Menu</div>
     <!-- Profile & Logout or Register & Login -->
     {% if user.is_authenticated %}
-      <div class="button" onclick="location.href='{% url 'profile'%}'">Profile</div>
-      <div class="button" onclick="location.href='{% url 'logout'%}'">Logout</div>
+      <div class="navbar-button clickable" onclick="location.href='{% url 'profile'%}'"><span>Profile</span></div>
+      <div class="navbar-button clickable" onclick="location.href='{% url 'logout'%}'"><span>Logout</span></div>
     {% else %}
-      <div class="button" onclick="location.href='{% url 'register'%}'">Register</div>
-      <div class="button" onclick="location.href='{% url 'login'%}'">Login</div>
+      <div class="navbar-button clickable" onclick="location.href='{% url 'register'%}'"><span>Register</span></div>
+      <div class="navbar-button clickable" onclick="location.href='{% url 'login'%}'"><span>Login</span></div>
     {% endif %}
-    <!-- Responsive Menu Button -->
-    <div class="button expand-btn">Menu</div>
   </div>
 </div>

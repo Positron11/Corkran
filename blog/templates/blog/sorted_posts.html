@@ -1,0 +1,14 @@
+{% extends "blog/base.html" %}
+{% block title %}{% block pagetitle %}{% endblock pagetitle %}{% endblock title %}
+{% block content %}
+  <div class="card special infobox">
+    <div class="header">
+      <div class="heading">{% block heading %}{% endblock heading %}</div>
+      <div class="subheading">{% block subheading %}{% endblock subheading %}</div>
+    </div>
+    {% block info %}{% endblock info %}
+  </div>
+  <!-- Search -->
+  {% include "blog/search_bar.html" %}
+  {% include "blog/post_list.html" %}
+{% endblock content %}
