@@ -7,6 +7,8 @@
     <div class="navbar-button clickable" onclick="location.href='{% url 'blog-home'%}'"><span>Home</span></div>
     <!-- About Button -->
     <div class="navbar-button clickable" onclick="location.href='{% url 'blog-about'%}'"><span>About</span></div>
+    <!-- About Button -->
+    <div class="navbar-button announcements clickable" onclick="location.href='{% url 'blog-announcements'%}'"><span>Announcements</span></div>
     <!-- Website Icon -->
     <img src="{% if user.setting.dark_mode %}
                 {% static 'blog/corkran_icon_light.png' %}

@@ -49,11 +49,6 @@
             $(".navbar-button:not(.expand-btn)").toggleClass("navbar-hidden");
           }
         });
-        $(document).on('click', '.page .sidebar .sidebar-tab', function(e) {
-          if ($(window).width() < 999) {
-            $(".sidebar").toggleClass("sidebar-hidden");
-          }
-        });
         // Close Navbar
         $(document).on('click', '.page', function(e) {
           if ($(".navbar-button:not(.expand-btn)").hasClass("navbar-hidden")) {

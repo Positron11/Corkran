@@ -243,8 +243,6 @@ p, span, .card.special *, i, a {
 }
 .sidebar .header {
   grid-area: header;
-  text-align: left! important;
-  justify-items: start! important;
 }
 .sidebar .information {
   grid-area: information;
@@ -254,46 +252,6 @@ p, span, .card.special *, i, a {
     "announcement"
     / auto;
   grid-row-gap: 0.5em;
-}
-.sidebar .sidebar-tab {
-  grid-area: tab;
-  align-self: center;
-  padding: 0.5em 1em;
-  border-radius: 50%;
-  background-color: #fff;
-}
-.dark-mode .sidebar .sidebar-tab {
-  background-color: #404654;
-}
-.sidebar.sidebar-hidden .sidebar-tab {
-  border-color: rgba(0, 0, 0, 0);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-}
-.sidebar .sidebar-tab i {
-  animation-name: flip;
-  animation-duration: 600ms;
-  animation-iteration-count: 1;
-  animation-timing-function: ease;
-  animation-fill-mode: forwards;
-}
-.sidebar.sidebar-hidden .sidebar-tab i {
-  animation-name: flip-reverse;
-}
-@keyframes flip {
-    from {
-        transform:rotate(0deg);
-    }
-    to {
-        transform:rotate(180deg);
-    }
-}
-@keyframes flip-reverse {
-    from {
-        transform:rotate(180deg);
-    }
-    to {
-        transform:rotate(360deg);
-    }
 }
 
 .page {
@@ -500,6 +458,9 @@ p, span, .card.special *, i, a {
       "btn1 btn2 icon btn3 btn4"
       / auto auto auto auto auto;
   }
+  .navbar .navbar-button.announcements {
+    display: none;
+  }
   .navbar .navbar-button:hover {
     color: #A2A2A2;
   }
@@ -543,29 +504,7 @@ p, span, .card.special *, i, a {
     margin-bottom: 0.5em;
   }
   .sidebar {
-    width: 20em;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    border-radius: 0.3em 0em 0em 0.3em;
-    display: inline-grid;
-    grid-template:
-      "tab header"
-      "tab information"
-      / auto 1fr;
-    grid-column-gap: 2em;
-    position: fixed;
-    right: -1px;
-    top: 8.5em;
-    bottom: 2em;
-  }
-  .sidebar-hidden {
-    -webkit-transform: translateX(77%);
-    transform: translateX(77%);
-    border-color: rgba(0,0,0,0);
-    box-shadow: 0 1px 3px rgba(0,0,0,0), 0 1px 2px rgba(0,0,0,0);
-    background-color: rgba(0,0,0,0);
-  }
-  .sidebar .information {
-    overflow-y: auto;
+    display: none;
   }
   .page {
     grid-template:
@@ -628,12 +567,5 @@ p, span, .card.special *, i, a {
   }
   .card {
     padding: 1em;
-  }
-  .sidebar {
-    width: 15em;
-  }
-  .sidebar-hidden {
-    -webkit-transform: translateX(75%);
-    transform: translateX(75%);
   }
 }
