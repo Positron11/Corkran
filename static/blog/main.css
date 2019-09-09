@@ -264,7 +264,7 @@ p, span, .card.special *, i, a {
 .page .alert {
   grid-area: alert;
 }
-.page .content .posts {
+.page .content .posts, .page .content .announcements {
   display: grid;
   grid-template:
     "post"
