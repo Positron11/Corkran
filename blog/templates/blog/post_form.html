@@ -1,10 +1,10 @@
 {% extends "blog/base.html" %}
-{% block title %}New Post{% endblock title %}
+{% block title %}Post Editor{% endblock title %}
 {% block content %}
   <form method="POST">
     {% csrf_token %}
     <fieldset class="card">
-      <legend>Create New Post</legend>
+      <legend>Post Editor</legend>
       {{ form.media }}
       {{ form.as_ul }}
       <button type="submit" name="button" class="button invert-color right">Post <i class="fas fa-pen"></i></button>
