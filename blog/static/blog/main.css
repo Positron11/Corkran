@@ -12,7 +12,7 @@ body {
 }
 body.dark-mode {
   background-color: #404654;
-  border-color: #a7adbb;
+  border-color: #383c4a;
   color: #a7adbb;
 }
 body * {
@@ -42,13 +42,14 @@ input, textarea {
   border: none;
   padding: 0.5em 1em;
   outline: 1px solid #ddd;
-  color: #A2A2A2;
+  color: #888;
   font-size: 1em;
   font-family: 'Poiret One', cursive;
   min-width: 0px;
 }
 .dark-mode input, .dark-mode textarea {
-  outline-color: #a7adbb;
+  color: #a7adbb;
+  outline-color: #383c4a;
 }
 form button[type="submit"]:not(.search-bar button) {
   margin-top: 2em;
@@ -58,7 +59,7 @@ label {
   font-family: 'Cormorant SC', serif;
 }
 .helptext {
-  color: #A2A2A2;
+  color: #888;
   font-style: italic;
   font-size: 0.9em;
   font-family: 'Poiret One', cursive;
@@ -80,6 +81,9 @@ label {
 }
 .disabled {
   color: #A2A2A2;
+}
+.dark-mode .disabled {
+  color: #383c4a;
 }
 .clickable {
   cursor: pointer;
@@ -104,7 +108,7 @@ label {
   border-radius: 0.5em! important;
   border-bottom-color: inherit;
   font-family: 'Poiret One', cursive;
-  color: #888;
+  color: #A2A2A2;
 }
 .dark-mode .button, .dark-mode button {
   color: #a7adbb;
@@ -184,7 +188,7 @@ p, .sidebar .information, .text, .subheading {
   line-height: 1.7em;
 }
 .date, .subheading, .read-more {
-  color: #999;
+  color: #888;
   font-family: 'Poiret One', cursive;
 }
 .dark-mode .date, .dark-mode .subheading, .dark-mode .read-more {
@@ -367,7 +371,8 @@ p, span, .card.special *, i, a {
   padding: 1em 0em;
 }
 .comment:not(:last-of-type) {
-  border-bottom: 1px dotted #DDD;
+  border-bottom-width: 1px;
+  border-bottom-style: dotted;
 }
 .comment .author {
   grid-area: author;
@@ -464,7 +469,7 @@ p, span, .card.special *, i, a {
       / auto auto auto auto auto;
   }
   .navbar .navbar-button:hover {
-    color: #A2A2A2;
+    color: #888;
   }
   .dark-mode .navbar .navbar-button:hover {
     color: #fff;
