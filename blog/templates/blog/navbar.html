@@ -18,7 +18,7 @@
          class="website-icon clickable"
          onclick="location.href='{% url 'blog-home'%}'">
     <!-- Responsive Menu Button -->
-    <div class="navbar-button clickable expand-btn">Menu</div>
+    <div class="navbar-button clickable expand-btn"><i class="fas fa-bars"></i></div>
     <!-- Profile & Logout or Register & Login -->
     {% if user.is_authenticated %}
       <div class="navbar-button clickable" onclick="location.href='{% url 'profile'%}'"><span>Profile</span></div>

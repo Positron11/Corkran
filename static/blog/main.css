@@ -234,11 +234,13 @@ p, span, .card.special *, i, a {
   height: 4.5em;
   width: auto;
 }
-.navbar .expand-btn {
-  grid-area: expand-btn;
-}
 .navbar .navbar-button {
   padding: 0em 2em;
+}
+.navbar .expand-btn {
+  grid-area: expand-btn;
+  padding-right: 1em;
+  justify-self: end;
 }
 
 .sidebar {
@@ -493,6 +495,9 @@ p, span, .card.special *, i, a {
       "icon expand-btn"
       / auto auto;
     justify-items: center;
+  }
+  .navbar .website-icon {
+    justify-self: start;
   }
   .navbar .navbar-button:not(.expand-btn):first-of-type {
     margin-top: 1em;
