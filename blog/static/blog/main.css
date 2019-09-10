@@ -420,7 +420,7 @@ p, span, .card.special *, i, a {
 }
 
 /* Only Large Screens */
-@media only screen and (min-width: 999px) {
+@media only screen and (min-width: 1200px) {
   .new-post i {
     animation-name: spin-reverse;
     animation-duration: 600ms;
@@ -479,7 +479,7 @@ p, span, .card.special *, i, a {
   }
 }
 /* Landcape Tablets */
-@media only screen and (max-width: 999px) {
+@media only screen and (max-width: 1200px) {
   .danger {
   	color: rgba(243,41,41,1);
   }
