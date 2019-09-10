@@ -235,9 +235,6 @@ p, span, .card.special *, i, a {
 .navbar .navbar-button {
   padding: 0em 2em;
 }
-.navbar-hidden {
-  display: block !important;
-}
 
 .sidebar {
   grid-area: sidebar;
@@ -462,16 +459,13 @@ p, span, .card.special *, i, a {
       "btn1 btn2 icon btn3 btn4"
       / auto auto auto auto auto;
   }
-  .navbar .navbar-button.announcements {
-    display: none;
-  }
   .navbar .navbar-button:hover {
     color: #A2A2A2;
   }
   .dark-mode .navbar .navbar-button:hover {
     color: #fff;
   }
-  .navbar .expand-btn {
+  .navbar .expand-btn, .navbar .announcements-button {
     display: none;
   }
   .page {
@@ -507,6 +501,9 @@ p, span, .card.special *, i, a {
     border-bottom-width: 1px;
     border-bottom-style: solid;
     margin-bottom: 0.5em;
+  }
+  .navbar-hidden {
+    display: block !important;
   }
   .sidebar {
     display: none;
