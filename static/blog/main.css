@@ -50,9 +50,6 @@ input, textarea {
 .dark-mode input, .dark-mode textarea {
   outline-color: #a7adbb;
 }
-form input[type="file"] {
-  width: 15em;
-}
 form button[type="submit"]:not(.search-bar button) {
   margin-top: 2em;
 }
@@ -155,7 +152,7 @@ label {
 }
 .list-box .list-item {
   display: inline-block;
-  margin: 0em 0.5em 0.5em 0em;
+  margin: 0em 0.5em 1em 0em;
 }
 
 .infobox {
@@ -422,8 +419,8 @@ p, span, .card.special *, i, a {
 .profile-form li:last-of-type {
   font-size: 0px;
 }
-.profile-form li:last-of-type label {
-  font-size: 18px;
+.profile-form li:last-of-type label, .profile-form li:last-of-type input {
+  font-size: 20px;
 }
 
 /* Only Large Screens */
