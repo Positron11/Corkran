@@ -229,9 +229,6 @@ p, span, .card.special *, i, a {
   height: 4.5em;
   width: auto;
 }
-.dark-mode .navbar .website-icon {
-  opacity: 0.7;
-}
 .navbar .expand-btn {
   grid-area: expand-btn;
 }
