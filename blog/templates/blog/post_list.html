@@ -10,7 +10,7 @@
           <div class="heading"><a href="{% url 'post-detail' pk=post.id slug=post.slug %}" title="{{post.title}} - {{post.author}}">{{post.title}}</a></div>
           <div class="subheading">By <a href="{% url 'user-posts' post.author.username %}" title="{{ post.author }}'s Posts">{{post.author}}</a> on {{post.date|date:"F jS, Y"}} -<label>&nbsp{{post.comment_set.count}}&nbspComment(s)</label></div>
         </div>
-        <div class="truncate clickable" title="Full Post" onclick="location.href='{% url "post-detail" pk=post.id slug=post.slug %}'">{{ post.content|safe }}</div>
+        <div class="truncate-post clickable" title="Full Post" onclick="location.href='{% url "post-detail" pk=post.id slug=post.slug %}'">{{ post.content|safe }}</div>
       </div>
     {% endfor %}
   {% else %}
@@ -30,7 +30,7 @@
 <script type="text/javascript">
   $(document).ready(function(){
     $(function(){
-        $('.truncate').succinct({
+        $('.truncate-post').succinct({
             omission: '...&nbsp<span class="read-more">Read&nbspMore</span>',
             size: 500
         });

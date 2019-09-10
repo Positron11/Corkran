@@ -15,7 +15,19 @@
       </div>
     {% endif %}
     <div class="announcement">
-      <label><a href="{% url 'blog-announcements' %}">Announcements:</a> </label><span>{% announcement %}<span>
+      <label><a href="{% url 'blog-announcements' %}">Announcements:</a> </label>
+      <span class="truncate-announcement clickable" title="Full Announcement" onclick="location.href='{% url 'blog-announcements' %}'">{% announcement %}</span>
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(function(){
+        $('.truncate-announcement').succinct({
+            omission: '...&nbsp<span class="read-more">Read&nbspMore</span>',
+            size: 150
+        });
+    });
+  });
+</script>

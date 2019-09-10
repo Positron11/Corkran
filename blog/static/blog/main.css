@@ -3,12 +3,12 @@
 body {
   margin: 0px;
   color: #000000;
-  font-size: 18px;
+  font-size: 20px;
   font-family: 'Cormorant Infant', serif;
   background-color: #FFFFFF;
   border-color: #DDD;
   overflow-y: scroll;
-  overflow-x: hidden;
+  overflow-x: auto;
 }
 body.dark-mode {
   background-color: #404654;
@@ -44,12 +44,16 @@ input, textarea {
   outline: 1px solid #ddd;
   color: #A2A2A2;
   font-family: 'Poiret One', cursive;
+  min-width: 0px;
 }
 .dark-mode input, .dark-mode textarea {
   outline-color: #a7adbb;
 }
-input[type="file"] {
+form input[type="file"] {
   width: 15em;
+}
+form button[type="submit"]:not(.search-bar button) {
+  margin-top: 2em;
 }
 label {
   margin-bottom: 0.5em;
@@ -174,7 +178,7 @@ label {
   font-size: 0.9em;
 }
 
-p, .sidebar .information {
+p, .sidebar .information, .text, .subheading {
   line-height: 1.7em;
 }
 .date, .subheading, .read-more {
@@ -243,6 +247,7 @@ p, span, .card.special *, i, a {
   position: sticky;
   top: 8.6em;
   overflow: hidden;
+  padding-bottom: 1em;
 }
 .sidebar .header {
   grid-area: header;
@@ -296,7 +301,6 @@ p, span, .card.special *, i, a {
   margin-bottom: 1em;
   font-family: 'Poiret One', cursive;
   font-size: 1.2em;
-  padding: 0.5em;
 }
 .paginator a {
   padding: 0em 0.4em;
@@ -567,7 +571,13 @@ p, span, .card.special *, i, a {
 /* Mobiles */
 @media only screen and (max-width: 600px) {
   body {
-    font-size: 16px;
+    font-size: 18px;
+  }
+  .heading {
+    font-size: 2em;
+  }
+  .paginator {
+    font-size: 1em;
   }
   .card {
     padding: 1em;
