@@ -4,7 +4,7 @@ body {
   margin: 0px;
   color: #000000;
   font-size: 18px;
-  font-family: 'Crimson Text', serif;
+  font-family: 'Cormorant Infant', serif;
   background-color: #FFFFFF;
   border-color: #DDD;
   overflow-y: scroll;
@@ -43,7 +43,7 @@ input, textarea {
   padding: 0.5em 1em;
   outline: 1px solid #ddd;
   color: #A2A2A2;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Poiret One', cursive;
 }
 .dark-mode input, .dark-mode textarea {
   outline-color: #a7adbb;
@@ -53,13 +53,13 @@ input[type="file"] {
 }
 label {
   margin-bottom: 0.5em;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cormorant SC', serif;
 }
 .helptext {
   color: #A2A2A2;
   font-style: italic;
   font-size: 0.9em;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Poiret One', cursive;
   margin: 0.5em 1em;
 }
 .dark-mode .helptext {
@@ -101,7 +101,7 @@ label {
   padding: 0.5em 1em;
   border-radius: 0.5em! important;
   border-bottom-color: inherit;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Poiret One', cursive;
   color: #888;
 }
 .dark-mode .button, .dark-mode button {
@@ -179,14 +179,14 @@ p, .sidebar .information {
 }
 .date, .subheading, .read-more {
   color: #999;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Poiret One', cursive;
 }
 .dark-mode .date, .dark-mode .subheading, .dark-mode .read-more {
   color: #a7adbb;
 }
 .heading, legend {
   font-size: 3em;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cormorant SC', serif;
 }
 p, span, .card.special *, i, a {
   background-color: transparent;
@@ -294,7 +294,7 @@ p, span, .card.special *, i, a {
 .paginator {
   text-align: center;
   margin-bottom: 1em;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Poiret One', cursive;
   font-size: 1.2em;
   padding: 0.5em;
 }
@@ -341,7 +341,7 @@ p, span, .card.special *, i, a {
 
 .tag {
   font-size: 0.9em;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Poiret One', cursive;
   padding: 0.3em 0.5em;
   color: rgb(0, 163, 44);
   background-color: rgba(4, 222, 63,0.2);
@@ -388,7 +388,7 @@ p, span, .card.special *, i, a {
   border-radius: 50%;
   color: rgb(0, 163, 44);
   background-color: rgba(4, 222, 63,0.2);
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Poiret One', cursive;
   font-weight: bold;
 }
 
