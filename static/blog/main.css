@@ -174,6 +174,9 @@ label {
   font-size: 0.9em;
 }
 
+p, .sidebar .information {
+  line-height: 1.7em;
+}
 .date, .subheading, .read-more {
   color: #999;
   font-family: 'Raleway', sans-serif;
@@ -252,7 +255,6 @@ p, span, .card.special *, i, a {
     "announcement"
     / auto;
   grid-row-gap: 0.5em;
-  line-height: 1.5em;
 }
 
 .page {
@@ -517,6 +519,13 @@ p, span, .card.special *, i, a {
   .new-post {
     right: 1em;
   }
+  .comment {
+    grid-template:
+      "author delete"
+      "content content"
+      "date date"
+      / auto auto;
+  }
 }
 /* Portrait Tablets */
 @media only screen and (max-width: 700px) {
@@ -554,13 +563,6 @@ p, span, .card.special *, i, a {
       / auto;
     grid-row-gap: 0.5em;
   }
-  .comment {
-    grid-template:
-      "author delete"
-      "content content"
-      "date date"
-      / auto auto;
-  }
 }
 /* Mobiles */
 @media only screen and (max-width: 600px) {
@@ -569,5 +571,8 @@ p, span, .card.special *, i, a {
   }
   .card {
     padding: 1em;
+  }
+  .post {
+    padding: 2em;
   }
 }
