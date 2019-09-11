@@ -131,6 +131,13 @@ label {
   margin-bottom: 2em;
 }
 
+.errorlist {
+  color: rgba(243,41,41,1);
+  background: rgba(242, 38, 38, 0.2);
+  padding: 1em;
+  border-radius: 0.3em;
+}
+
 .header {
   display: grid;
   grid-template:
@@ -198,7 +205,7 @@ p, .sidebar .information, .text, .subheading {
   font-size: 3em;
   font-family: 'Cormorant SC', serif;
 }
-p, span, .card.special *, i, a {
+p, span, .card.special *, .errorlist *, i, a {
   background-color: transparent;
 }
 .post .header .heading a, .paginator a, .tag a {
