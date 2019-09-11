@@ -2,7 +2,7 @@
 
 body {
   margin: 0px;
-  color: #000000;
+  color: #000;
   font-size: 20px;
   font-family: 'Cormorant Infant', serif;
   background-color: #FFFFFF;
@@ -10,16 +10,42 @@ body {
   overflow-y: scroll;
   overflow-x: auto;
 }
-body.dark-mode {
-  background-color: #404654;
-  border-color: #383c4a;
-  color: #a7adbb;
-}
 body * {
-  transition: all 0.3s ease;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   background-color: inherit;
   border-color: inherit;
   color: inherit;
+}
+
+.header, .heading, .infobox {
+  overflow-x: auto;
+}
+.page, .navbar-box {
+  max-width: 2000px;
+  margin: auto;
+}
+p, .sidebar .information, .text, .subheading, span {
+  line-height: 1.7em;
+}
+.date, .subheading, .read-more, .helptext, input, textarea {
+  color: #888;
+  font-family: 'Poiret One', cursive;
+}
+.heading, legend {
+  font-size: 3em;
+  font-family: 'Cormorant SC', serif;
+}
+p, span, .card.special *, .errorlist *, i, a {
+  background-color: transparent;
+}
+.post .header .heading a, .paginator a, .tag a {
+  border-bottom: none;
+}
+.button, button, fieldset, .card, .sidebar .sidebar-tab {
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 0.3em;
 }
 
 a {
@@ -39,34 +65,20 @@ form li:not(:first-of-type) label {
   margin-top: 1em;
 }
 input, textarea {
-  border: none;
-  padding: 0.5em 1em;
-  outline: 1px solid #ddd;
-  color: #888;
-  font-size: 1em;
-  font-family: 'Poiret One', cursive;
   min-width: 0px;
-}
-.dark-mode input, .dark-mode textarea {
-  color: #a7adbb;
-  outline-color: #383c4a;
-}
-form button[type="submit"]:not(.search-bar button) {
-  margin-top: 2em;
+  border: none;
+  outline: 1px solid #ddd;
+  padding: 0.5em 1em;
+  font-size: 1em;
 }
 label {
   margin-bottom: 0.5em;
   font-family: 'Cormorant SC', serif;
 }
 .helptext {
-  color: #888;
   font-style: italic;
   font-size: 0.9em;
-  font-family: 'Poiret One', cursive;
   margin: 0.5em 1em;
-}
-.dark-mode .helptext {
-  color: #a7adbb;
 }
 .helptext ul {
   padding-left: 0px;
@@ -80,10 +92,7 @@ label {
   -o-user-select: none;
 }
 .disabled {
-  color: #A2A2A2;
-}
-.dark-mode .disabled {
-  color: #383c4a;
+  color: #DDD;
 }
 .clickable {
   cursor: pointer;
@@ -99,19 +108,25 @@ label {
   margin-bottom: 1em;
   text-align: center;
 }
+.errorlist {
+  color: rgba(243,41,41,1);
+  background: rgba(242, 38, 38, 0.2);
+  padding: 1em;
+  border-radius: 0.3em;
+}
 
 .button, button {
   font-size: 0.8em;
   font-weight: bold;
+  font-family: 'Poiret One', cursive;
   cursor: pointer;
   padding: 0.5em 1em;
-  border-radius: 0.5em! important;
+  border-radius: 0.5em;
   border-bottom-color: inherit;
-  font-family: 'Poiret One', cursive;
   color: #A2A2A2;
 }
-.dark-mode .button, .dark-mode button {
-  color: #a7adbb;
+form button[type="submit"]:not(.search-button):not(.comment-button) {
+  margin-top: 2em;
 }
 
 .card {
@@ -129,13 +144,6 @@ label {
 }
 .card.margin-bottom {
   margin-bottom: 2em;
-}
-
-.errorlist {
-  color: rgba(243,41,41,1);
-  background: rgba(242, 38, 38, 0.2);
-  padding: 1em;
-  border-radius: 0.3em;
 }
 
 .header {
@@ -167,7 +175,6 @@ label {
 }
 
 .infobox {
-  word-break: break-all;
   margin-bottom: 1em;
 }
 
@@ -185,36 +192,6 @@ label {
 
 .date {
   font-size: 0.9em;
-}
-
-.page, .navbar-box {
-  max-width: 2000px;
-  margin: auto;
-}
-p, .sidebar .information, .text, .subheading {
-  line-height: 1.7em;
-}
-.date, .subheading, .read-more {
-  color: #888;
-  font-family: 'Poiret One', cursive;
-}
-.dark-mode .date, .dark-mode .subheading, .dark-mode .read-more {
-  color: #a7adbb;
-}
-.heading, legend {
-  font-size: 3em;
-  font-family: 'Cormorant SC', serif;
-}
-p, span, .card.special *, .errorlist *, i, a {
-  background-color: transparent;
-}
-.post .header .heading a, .paginator a, .tag a {
-  border-bottom: none;
-}
-.button, button, fieldset, .card, .sidebar .sidebar-tab {
-  border-width: 1px;
-  border-style: solid;
-  border-radius: 0.3em;
 }
 
 /* ========================================================================== */
@@ -319,10 +296,6 @@ p, span, .card.special *, .errorlist *, i, a {
   background-color: #000;
   color: #FFF;
 }
-.dark-mode .paginator .current {
-  background-color: #e2e3e7;
-  color: #404654;
-}
 .paginator:last-of-type {
   margin-top: 1em;
   margin-bottom: 0em;
@@ -368,6 +341,10 @@ p, span, .card.special *, .errorlist *, i, a {
     / 1fr auto;
   grid-column-gap: 1em;
 }
+.comment-box textarea {
+  height: 1.2em;
+  resize:
+}
 
 .comment {
   display: grid;
@@ -392,6 +369,9 @@ p, span, .card.special *, .errorlist *, i, a {
   background: transparent! important;
   justify-self: end;
 }
+.comment .date {
+  grid-area: date;
+}
 
 .new-post {
   position: fixed;
@@ -402,8 +382,6 @@ p, span, .card.special *, .errorlist *, i, a {
   border-radius: 50%;
   color: rgb(0, 163, 44);
   background-color: rgba(4, 222, 63,0.2);
-  font-family: 'Poiret One', cursive;
-  font-weight: bold;
 }
 
 .profile {
@@ -435,6 +413,24 @@ p, span, .card.special *, .errorlist *, i, a {
   font-size: 20px;
 }
 
+body.dark-mode, .dark-mode input, .dark-mode textarea, .dark-mode .helptext, .dark-mode .button, .dark-mode button, .dark-mode .date, .dark-mode .subheading, .dark-mode .read-more {
+  color: #a7adbb;
+}
+body.dark-mode {
+  background-color: #404654;
+  border-color: #383c4a;
+}
+.dark-mode input, .dark-mode textarea {
+  outline-color: #383c4a;
+}
+.dark-mode .disabled {
+  color: #383c4a;
+}
+.dark-mode .paginator .current {
+  background-color: #a7adbb;
+  color: #404654;
+}
+
 /* Only Large Screens */
 @media only screen and (min-width: 1200px) {
   .new-post i {
@@ -462,20 +458,32 @@ p, span, .card.special *, .errorlist *, i, a {
           transform:rotate(0deg);
       }
   }
+  .button:hover i, button:hover i {
+    color: rgb(0, 163, 44);
+  }
   .button:hover, button:hover {
     color: rgb(0, 163, 44);
     background-color: rgba(4, 222, 63,0.2);
   }
+  .danger:hover i {
+  	color: rgba(243,41,41,1);
+  }
   .danger:hover {
   	color: rgba(243,41,41,1);
   	background: rgba(242, 38, 38, 0.2);
+  }
+  .paginator i:hover {
+    color: #A2A2A2;
+  }
+  .dark-mode .paginator i:hover {
+    color: #FFF;
   }
   .navbar {
     grid-template:
       "btn1 btn2 icon btn3 btn4"
       / auto auto auto auto auto;
   }
-  .navbar .navbar-button:hover {
+  .navbar .navbar-button:hover span {
     color: #888;
   }
   .dark-mode .navbar .navbar-button:hover {
@@ -497,7 +505,7 @@ p, span, .card.special *, .errorlist *, i, a {
 /* Landcape Tablets */
 @media only screen and (max-width: 1200px) {
   .danger {
-  	color: rgba(243,41,41,1);
+  	color: rgba(243,41,41,1) !important;
   }
   .navbar {
     grid-template:
@@ -552,7 +560,7 @@ p, span, .card.special *, .errorlist *, i, a {
   .page {
     padding: 1em;
   }
-  .header {
+  .header, .infobox {
     text-align: center;
     justify-items: center;
   }

@@ -37,10 +37,14 @@
         <legend>Comment</legend>
         <div class="comment-box">
           <textarea name="content" rows="1" required id="id_content"></textarea>
-          <button type="submit" name="button" class="button invert-color" title="Post Comment">Post <i class="fas fa-pen"></i></button>
+          <button type="submit" name="button" class="button comment-button invert-color" title="Post Comment">Post <i class="fas fa-pen"></i></button>
         </div>
       </fieldset>
     </form>
+  {% else %}
+  <div class="card margin-bottom">
+    <span class="subheading"><a href="{% url 'login' %}?next={{ request.path }}">Sign in</a> to comment.</span>
+  </div>
   {% endif %}
   <!-- Comments -->
   <div class="card comments margin-bottom">
