@@ -486,7 +486,7 @@ body.dark-mode {
   .navbar .navbar-button:hover span {
     color: #888;
   }
-  .dark-mode .navbar .navbar-button:hover {
+  .dark-mode .navbar .navbar-button:hover span {
     color: #fff;
   }
   .navbar .expand-btn, .navbar .announcements-button {
