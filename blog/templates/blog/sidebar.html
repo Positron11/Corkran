@@ -24,10 +24,12 @@
 <script type="text/javascript">
   $(document).ready(function(){
     $(function(){
+      if ($(window).height() < 1000) {
         $('.truncate-announcement').succinct({
             omission: '...&nbsp<span class="read-more">Read&nbspMore</span>',
             size: 120
         });
+      }
     });
   });
 </script>

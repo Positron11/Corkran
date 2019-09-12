@@ -30,10 +30,17 @@
 <script type="text/javascript">
   $(document).ready(function(){
     $(function(){
+      if ($(window).width() >= 1200) {
         $('.truncate-post').succinct({
             omission: '...&nbsp<span class="read-more">Read&nbspMore</span>',
             size: 500
         });
+      } else {
+        $('.truncate-post').succinct({
+            omission: '...&nbsp<span class="read-more">Read&nbspMore</span>',
+            size: 200
+        });
+      }
     });
   });
 </script>

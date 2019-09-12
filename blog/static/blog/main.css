@@ -1,7 +1,8 @@
 {% load static %}
 
 body {
-  margin: 0px;
+  max-width: 2000px;
+  margin: auto;
   color: #000;
   font-size: 20px;
   font-family: 'Cormorant Infant', serif;
@@ -20,10 +21,6 @@ body * {
 
 .header, .heading, .infobox {
   overflow-x: auto;
-}
-.page, .navbar-box {
-  max-width: 2000px;
-  margin: auto;
 }
 p, .sidebar .information, .text, .subheading, span {
   line-height: 1.7em;
