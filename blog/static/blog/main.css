@@ -3,9 +3,11 @@
 body {
   max-width: 2000px;
   margin: auto;
+  padding: 0em 4em;
   color: #000;
   font-size: 20px;
   font-family: 'Cormorant Infant', serif;
+  -webkit-transition: 0.3s;
   background-color: #FFFFFF;
   border-color: #DDD;
   overflow-y: scroll;
@@ -14,6 +16,7 @@ body {
 body * {
   -webkit-transition: 0.3s;
   transition: 0.3s;
+  box-sizing: border-box;
   background-color: inherit;
   border-color: inherit;
   color: inherit;
@@ -193,13 +196,10 @@ form button[type="submit"]:not(.search-button):not(.comment-button) {
 
 /* ========================================================================== */
 
-.navbar-box {
+.navbar {
   z-index: 10;
   position: sticky;
-  padding: 0em 4em;
   top: 0;
-}
-.navbar {
   padding: 1em 0em;
   display: grid;
   align-items: center;
@@ -246,7 +246,7 @@ form button[type="submit"]:not(.search-button):not(.comment-button) {
 }
 
 .page {
-  padding: 2em 4em;
+  padding: 2em 0em;
   display: grid;
   grid-column-gap: 4em;
   place-items: start stretch;
@@ -300,6 +300,18 @@ form button[type="submit"]:not(.search-button):not(.comment-button) {
 
 .content {
   grid-area: content;
+}
+
+.progress-bar-container {
+  width: 100%;
+  position: sticky;
+  top: 6.5em;
+}
+.progress-bar {
+  padding: 0.2em 0em;
+  background-color: rgba(4, 222, 63,0.2);
+  width: 0%;
+  max-width: 100%;
 }
 
 .post {
@@ -551,11 +563,11 @@ body.dark-mode {
 }
 /* Portrait Tablets */
 @media only screen and (max-width: 700px) {
-  .navbar-box {
+  body {
     padding: 0em 1em;
   }
   .page {
-    padding: 1em;
+    padding: 1em 0em;
   }
   .header, .infobox {
     text-align: center;

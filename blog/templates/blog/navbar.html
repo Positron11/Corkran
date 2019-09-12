@@ -1,31 +1,26 @@
 {% load static %}
-<!-- Main Box -->
-<div class="navbar-box unselectable">
-  <!-- Navbar Grid -->
-  <div class="navbar">
-    <!-- Home Button -->
-    <div class="navbar-button clickable" onclick="location.href='{% url 'blog-home'%}'"><span>Home</span></div>
-    <!-- About Button -->
-    <div class="navbar-button clickable" onclick="location.href='{% url 'blog-about'%}'"><span>About</span></div>
-    <!-- About Button -->
-    <div class="navbar-button announcements-button clickable" onclick="location.href='{% url 'blog-announcements'%}'"><span>Announcements</span></div>
-    <!-- Website Icon -->
-    <img src="{% if user.setting.dark_mode %}
+<!-- Navbar Grid -->
+<div class="navbar">
+  <!-- Home Button -->
+  <div class="navbar-button clickable" onclick="location.href='{% url 'blog-home'%}'"><span>Home</span></div>
+  <!-- About Button -->
+  <div class="navbar-button clickable" onclick="location.href='{% url 'blog-about'%}'"><span>About</span></div>
+  <!-- About Button -->
+  <div class="navbar-button announcements-button clickable" onclick="location.href='{% url 'blog-announcements'%}'"><span>Announcements</span></div>
+  <!-- Website Icon -->
+  <img src="{% if user.setting.dark_mode %}
                 {% static 'blog/corkran_light_logo.png' %}
               {% else %}
                 {% static 'blog/corkran_dark_logo.png' %}
-              {% endif %}"
-         class="website-icon clickable"
-         onclick="location.href='{% url 'blog-home'%}'">
-    <!-- Responsive Menu Button -->
-    <div class="navbar-button clickable expand-btn"><i class="fas fa-bars"></i></div>
-    <!-- Profile & Logout or Register & Login -->
-    {% if user.is_authenticated %}
-      <div class="navbar-button clickable" onclick="location.href='{% url 'profile'%}'"><span>Profile</span></div>
-      <div class="navbar-button clickable" onclick="location.href='{% url 'logout'%}'"><span>Logout</span></div>
-    {% else %}
-      <div class="navbar-button clickable" onclick="location.href='{% url 'register'%}'"><span>Register</span></div>
-      <div class="navbar-button clickable" onclick="location.href='{% url 'login'%}'"><span>Login</span></div>
-    {% endif %}
-  </div>
+              {% endif %}" class="website-icon clickable" onclick="location.href='{% url 'blog-home'%}'">
+  <!-- Responsive Menu Button -->
+  <div class="navbar-button clickable expand-btn"><i class="fas fa-bars"></i></div>
+  <!-- Profile & Logout or Register & Login -->
+  {% if user.is_authenticated %}
+  <div class="navbar-button clickable" onclick="location.href='{% url 'profile'%}'"><span>Profile</span></div>
+  <div class="navbar-button clickable" onclick="location.href='{% url 'logout'%}'"><span>Logout</span></div>
+  {% else %}
+  <div class="navbar-button clickable" onclick="location.href='{% url 'register'%}'"><span>Register</span></div>
+  <div class="navbar-button clickable" onclick="location.href='{% url 'login'%}'"><span>Login</span></div>
+  {% endif %}
 </div>

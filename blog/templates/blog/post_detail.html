@@ -3,6 +3,12 @@
 
 {% block title %}{{object.title}}{% endblock title %}
 
+{% block progress %}
+  <div class="progress-bar-container">
+    <div class="progress-bar"></div>
+  </div>
+{% endblock progress %}
+
 {% block content %}
 <!-- Delete/Update Post -->
 {% if user == object.author %}
