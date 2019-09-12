@@ -309,10 +309,11 @@ form button[type="submit"]:not(.search-button):not(.comment-button) {
   width: 100%;
   position: sticky;
   top: 6.5em;
+  background: transparent;
 }
 .progress-bar {
   padding: 0.2em 0em;
-  background-color: rgba(4, 222, 63,0.2);
+  background-color: #ccf9d8;
   width: 0%;
   max-width: 100%;
 }
@@ -449,6 +450,9 @@ body.dark-mode {
 .dark-mode .paginator .current {
   background-color: #a7adbb;
   color: #404654;
+}
+.dark-mode .progress-bar {
+  background-color: #33654f;
 }
 
 /* Only Large Screens */
