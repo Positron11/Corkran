@@ -327,6 +327,10 @@ form button[type="submit"]:not(.search-button):not(.comment-button) {
 .post {
   padding: 4em;
 }
+.post p img {
+  max-width: 100% !important;
+  height: auto !important;
+}
 .post .header {
   grid-template:
     "image heading"
