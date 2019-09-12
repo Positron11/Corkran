@@ -393,7 +393,7 @@ form button[type="submit"]:not(.search-button):not(.comment-button) {
   grid-area: date;
 }
 
-.new-post {
+.new-post, .scroll-to-top {
   z-index: 2;
   position: fixed;
   bottom: 1em;
@@ -482,6 +482,37 @@ body.dark-mode {
           transform:rotate(0deg);
       }
   }
+  .scroll-to-top i {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    -webkit-animation-iteration-count: 1;
+  }
+  .scroll-to-top:hover i {
+    animation-name: bounce;
+    -moz-animation-name: bounce;
+  }
+  @keyframes bounce {
+  	0%, 100%, 20%, 50%, 80% {
+  		-webkit-transform: translateY(0);
+  		-ms-transform:     translateY(0);
+  		transform:         translateY(0)
+  	}
+  	40% {
+  		-webkit-transform: translateY(-12px);
+  		-ms-transform:     translateY(-12px);
+  		transform:         translateY(-12px)
+  	}
+  	60% {
+  		-webkit-transform: translateY(-6px);
+  		-ms-transform:     translateY(-6px);
+  		transform:         translateY(-6px)
+  	}
+  }
   .button:hover i, button:hover i {
     color: rgb(0, 163, 44);
   }
@@ -522,8 +553,8 @@ body.dark-mode {
       "content sidebar"
       / 7fr 3fr;
   }
-  .sidebar .sidebar-tab {
-    display: none;
+  .share-buttons .button {
+   margin-right: 0.5em;
   }
 }
 /* Landcape Tablets */
@@ -565,7 +596,7 @@ body.dark-mode {
       "content"
       / auto;
   }
-  .new-post {
+  .new-post, .scroll-to-top {
     right: 1em;
   }
   .comment {
@@ -632,7 +663,10 @@ body.dark-mode {
   }
   .share-buttons {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+  }
+  .share-buttons .button {
+    padding: 0.5em 2em;
   }
   .post {
     padding: 2em;

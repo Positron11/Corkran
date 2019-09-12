@@ -41,6 +41,8 @@
 
     <!-- New Post Button -->
     {% block newpost %}{% endblock %}
+    <!-- Scroll To Top Button -->
+    {% block scrolltop %}{% endblock %}
 
     <!-- Scripts -->
     <script type="text/javascript">
@@ -80,8 +82,18 @@
             $(".progress-bar").css("width", completed + "%");
           }
         });
+        // Scroll To Top
+        const scrollToTop = () => {
+          const c = document.documentElement.scrollTop || document.body.scrollTop;
+          if (c > 0) {
+            window.requestAnimationFrame(scrollToTop);
+            window.scrollTo(0, c - c / 8);
+          }
+        };
+        $(".scroll-to-top").on('click', function(event) {
+          scrollToTop();
+        });
       });
-
       function forceLower(strInput) {
         strInput.value=strInput.value.toLowerCase();
       }
