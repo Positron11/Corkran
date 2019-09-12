@@ -10,13 +10,16 @@
 {% endblock progress %}
 
 {% block content %}
-<!-- Delete/Update Post -->
-{% if user == object.author %}
-  <div class="decision-box margin-bottom">
-    <a href="{% url 'post-update' object.id %}" class="button" title="Update Post">Update <i class="fas fa-edit"></i></a>
-    <a href="{% url 'post-delete' object.id %}" class="button danger" title="Delete Post">Delete <i class="fas fa-trash-alt"></i></a>
-  </div>
-{% endif %}
+  <!-- Delete/Update Post -->
+  {% if user == object.author %}
+    <div class="decision-box margin-bottom">
+      <a href="{% url 'post-update' object.id %}" class="button" title="Update Post">Update <i class="fas fa-edit"></i></a>
+      <a href="{% url 'post-delete' object.id %}" class="button danger" title="Delete Post">Delete <i class="fas fa-trash-alt"></i></a>
+    </div>
+  {% endif %}
+
+  {% include "blog/share_buttons.html" %}
+
   <!-- Main Post -->
   <div class="post card margin-bottom">
     <div class="header">

@@ -1,0 +1,17 @@
+<div class="share-buttons">
+  <a href="https://twitter.com/share?url={{request.build_absolute_uri}}&text={{object.title}}" target="_blank" class="share-btn twitter">
+    <div class="button">
+      <i class="fab fa-twitter"></i>
+    </div>
+  </a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}" target="_blank" class="share-btn facebook">
+    <div class="button">
+      <i class="fab fa-facebook-f"></i>
+    </div>
+  </a>
+  <a href="mailto:?subject={{object.title}}&body={{object.title}} - From the Corkran blog. ({{request.build_absolute_uri}})" target="_blank" class="share-btn email">
+    <div class="button">
+      <i class="fas fa-envelope"></i>
+    </div>
+  </a>
+</div>

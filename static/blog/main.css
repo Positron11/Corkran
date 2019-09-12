@@ -39,7 +39,7 @@ p, .sidebar .information, .text, .subheading, span {
 p, span, .card.special *, .errorlist *, i, a {
   background-color: transparent;
 }
-.post .header .heading a, .paginator a, .tag a {
+.post .header .heading a, .paginator a, .tag a, .share-buttons a {
   border-bottom: none;
 }
 .button, button, fieldset, .card, .sidebar .sidebar-tab {
@@ -116,6 +116,7 @@ label {
 }
 
 .button, button {
+  display: inline-block;
   font-size: 0.8em;
   font-weight: bold;
   font-family: 'Poiret One', cursive;
@@ -197,7 +198,7 @@ form button[type="submit"]:not(.search-button):not(.comment-button) {
 /* ========================================================================== */
 
 .navbar {
-  z-index: 10;
+  z-index: 4;
   position: sticky;
   top: 0;
   padding: 1em 0em;
@@ -226,6 +227,7 @@ form button[type="submit"]:not(.search-button):not(.comment-button) {
 }
 
 .sidebar {
+  z-index: 1;
   grid-area: sidebar;
   position: sticky;
   top: 8.6em;
@@ -303,6 +305,7 @@ form button[type="submit"]:not(.search-button):not(.comment-button) {
 }
 
 .progress-bar-container {
+  z-index: 3;
   width: 100%;
   position: sticky;
   top: 6.5em;
@@ -312,6 +315,13 @@ form button[type="submit"]:not(.search-button):not(.comment-button) {
   background-color: rgba(4, 222, 63,0.2);
   width: 0%;
   max-width: 100%;
+}
+
+.share-buttons {
+  margin-bottom: 1em;
+}
+.share-buttons a {
+ border-color: inherit;
 }
 
 .post {
@@ -351,8 +361,8 @@ form button[type="submit"]:not(.search-button):not(.comment-button) {
   grid-column-gap: 1em;
 }
 .comment-box textarea {
-  height: 1.2em;
-  resize:
+  transition: none;
+  resize: vertical;
 }
 
 .comment {
@@ -383,6 +393,7 @@ form button[type="submit"]:not(.search-button):not(.comment-button) {
 }
 
 .new-post {
+  z-index: 2;
   position: fixed;
   bottom: 1em;
   right: 4em;
@@ -614,6 +625,10 @@ body.dark-mode {
   }
   .card {
     padding: 1em;
+  }
+  .share-buttons {
+    display: flex;
+    justify-content: space-around;
   }
   .post {
     padding: 2em;
