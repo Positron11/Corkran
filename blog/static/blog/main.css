@@ -351,8 +351,8 @@ form button[type="submit"]:not(.search-button):not(.comment-button) {
   grid-column-gap: 1em;
 }
 .comment-box textarea {
-  height: 1.2em;
-  resize:
+  transition: none;
+  resize: vertical;
 }
 
 .comment {
