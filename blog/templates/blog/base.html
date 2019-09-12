@@ -67,10 +67,18 @@
         $("#id_tags").attr("onkeyup", "return forceLower(this);");
         // Progress Bar
         $(window).on("scroll", function() {
-          var height = $(".post").outerHeight();
-          var y_offset = -($(".post").offset().top - $(window).scrollTop() - 130);
-          var completed = y_offset / height * 100;
-          $(".progress-bar").css("width", completed + "%");
+          var bottom_height = $(document).height() - $(".post").outerHeight() - 127;
+          if (bottom_height > $(window).height()) {
+            var height = $(".post").outerHeight();
+            var y_offset = -($(".post").offset().top - $(window).scrollTop() - 127);
+            var completed = y_offset / height * 100;
+            $(".progress-bar").css("width", completed + "%");
+          } else {
+            var y_offset = window.pageYOffset;
+            var height = $(document).height() - $(window).height();
+            var completed = y_offset / height * 100;
+            $(".progress-bar").css("width", completed + "%");
+          }
         });
       });
 

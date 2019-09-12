@@ -197,7 +197,7 @@ form button[type="submit"]:not(.search-button):not(.comment-button) {
 /* ========================================================================== */
 
 .navbar {
-  z-index: 10;
+  z-index: 4;
   position: sticky;
   top: 0;
   padding: 1em 0em;
@@ -226,6 +226,7 @@ form button[type="submit"]:not(.search-button):not(.comment-button) {
 }
 
 .sidebar {
+  z-index: 1;
   grid-area: sidebar;
   position: sticky;
   top: 8.6em;
@@ -303,6 +304,7 @@ form button[type="submit"]:not(.search-button):not(.comment-button) {
 }
 
 .progress-bar-container {
+  z-index: 3;
   width: 100%;
   position: sticky;
   top: 6.5em;
@@ -383,6 +385,7 @@ form button[type="submit"]:not(.search-button):not(.comment-button) {
 }
 
 .new-post {
+  z-index: 2;
   position: fixed;
   bottom: 1em;
   right: 4em;
