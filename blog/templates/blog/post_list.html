@@ -1,5 +1,15 @@
+{% load custom_tags %}
+
 <!-- Paginator -->
 {% include "blog/paginator.html" %}
+
+{% if posts %}
+  {% if is_search == True %}
+    <div class="results-counter">
+      Results {% results_counter posts.count page_obj.number %} of {{page_obj.paginator.count}}
+    </div>
+  {% endif %}
+{% endif %}
 
 <div class="posts">
   {% if posts %}

@@ -28,7 +28,7 @@ body * {
 p, .sidebar .information, .text, .subheading, span {
   line-height: 1.7em;
 }
-.date, .subheading, .read-more, .helptext, input, textarea {
+.date, .subheading, .read-more, .helptext, input, textarea, .results-counter {
   color: #888;
   font-family: 'Poiret One', cursive;
 }
@@ -38,6 +38,9 @@ p, .sidebar .information, .text, .subheading, span {
 }
 p, span, .card.special *, .errorlist *, i, a {
   background-color: transparent;
+}
+.infobox, .alert, .decision-box, .search-bar, .paginator, .share-buttons, .results-counter {
+  margin-bottom: 1em;
 }
 .post .header .heading a, .paginator a, .tag a, .share-buttons a {
   border-bottom: none;
@@ -105,7 +108,6 @@ label {
   padding: 0.5em;
   color: rgb(0, 163, 44);
   background-color: rgba(4, 222, 63,0.2);
-  margin-bottom: 1em;
   text-align: center;
 }
 .errorlist {
@@ -175,10 +177,6 @@ form button[type="submit"]:not(.search-button):not(.comment-button) {
   margin: 0em 0.5em 1em 0em;
 }
 
-.infobox {
-  margin-bottom: 1em;
-}
-
 .profile-pic {
   height: 5em;
   width: auto;
@@ -186,7 +184,6 @@ form button[type="submit"]:not(.search-button):not(.comment-button) {
 }
 
 .decision-box {
-  margin-bottom: 1em;
   display: flex;
   justify-content: space-between;
 }
@@ -271,7 +268,6 @@ form button[type="submit"]:not(.search-button):not(.comment-button) {
   grid-template:
     "search-box submit-button"
     / 1fr auto;
-  margin-bottom: 1em;
 }
 .search-bar input {
   padding: 0em 2em;
@@ -283,7 +279,6 @@ form button[type="submit"]:not(.search-button):not(.comment-button) {
 
 .paginator {
   text-align: center;
-  margin-bottom: 1em;
   font-family: 'Poiret One', cursive;
   font-weight: bold;
   font-size: 1.1em;
@@ -300,6 +295,11 @@ form button[type="submit"]:not(.search-button):not(.comment-button) {
 .paginator:last-of-type {
   margin-top: 1em;
   margin-bottom: 0em;
+}
+
+.results-counter {
+  text-align: right;
+  font-size: 0.9em;
 }
 
 .content {
@@ -320,9 +320,6 @@ form button[type="submit"]:not(.search-button):not(.comment-button) {
   max-width: 100%;
 }
 
-.share-buttons {
-  margin-bottom: 1em;
-}
 .share-buttons a {
  border-color: inherit;
 }
@@ -436,7 +433,7 @@ form button[type="submit"]:not(.search-button):not(.comment-button) {
   font-size: 20px;
 }
 
-body.dark-mode, .dark-mode input, .dark-mode textarea, .dark-mode .helptext, .dark-mode .button, .dark-mode button, .dark-mode .date, .dark-mode .subheading, .dark-mode .read-more {
+body.dark-mode, .dark-mode input, .dark-mode textarea, .dark-mode .helptext, .dark-mode .button, .dark-mode button, .dark-mode .date, .dark-mode .subheading, .dark-mode .read-more, .dark-mode .paginator, .dark-mode .results-counter {
   color: #a7adbb;
 }
 body.dark-mode {

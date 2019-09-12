@@ -49,3 +49,9 @@ def param_replace(context, **kwargs):
     return d.urlencode()
 
 
+@register.simple_tag
+def results_counter(count, page):
+    start = (page - 1) * 5 if (page - 1) > 0 else 1
+    return f"{start} - {count + 5 * (page - 1)}"
+
+

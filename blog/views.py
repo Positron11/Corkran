@@ -13,14 +13,17 @@ class PostListView(ListView):
     template_name = "blog/home.html"
     context_object_name = "posts"
     paginate_by = 5
+    is_search = bool
 
     def get_queryset(self):
         if "search" in self.request.GET:
             search_query = self.request.GET.get('search', "").lower()
             users = User.objects.filter(username__icontains=search_query).all()
             posts = Post.objects.filter(Q(tags__name__in=search_query.split()) | Q(title__icontains=search_query) | Q(author__in=users)).order_by("tags", "title", "author")
+            self.extra_context = {'is_search': True}
         else:
             posts = Post.objects.all()
+            self.extra_context = {'is_search': False}
         return posts.order_by("-date").distinct()
 
 
