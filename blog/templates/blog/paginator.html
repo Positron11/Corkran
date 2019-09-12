@@ -1,9 +1,10 @@
+{% load custom_tags %}
 {% if is_paginated %}
   <div class="paginator unselectable">
-    <a href="?page=1"><i class="fas fa-angle-double-left" title="First Page"></i></a>
+    <a href="?{% param_replace page=1 %}"><i class="fas fa-angle-double-left" title="First Page"></i></a>
 
     {% if page_obj.has_previous %}
-      <a href="?page={{page_obj.previous_page_number}}"><i class="fas fa-angle-left" title="Previous Page"></i></a>
+      <a href="?{% param_replace page=page_obj.previous_page_number %}"><i class="fas fa-angle-left" title="Previous Page"></i></a>
     {% else %}
       <a disabled="disabled" class="disabled"><i class="fas fa-angle-left"></i></a>
     {% endif %}
@@ -12,16 +13,16 @@
       {% if page_obj.number == num %}
         <a href="#" class="current" title="Page {{ num }}">{{ num }}</a>
       {% elif num > page_obj.number|add:"-3" and num < page_obj.number|add:"3" %}
-        <a href="?page={{ num }}" title="Page {{ num }}">{{ num }}</a>
+        <a href="?{% param_replace page=num %}" title="Page {{ num }}">{{ num }}</a>
       {% endif %}
     {% endfor %}
 
     {% if page_obj.has_next %}
-      <a href="?page={{page_obj.next_page_number}}"><i class="fas fa-angle-right" title="Next Page"></i></a>
+      <a href="?{% param_replace page=page_obj.next_page_number %}"><i class="fas fa-angle-right" title="Next Page"></i></a>
       {% else %}
         <a disabled="disabled" class="disabled"><i class="fas fa-angle-right"></i></a>
     {% endif %}
 
-    <a href="?page={{page_obj.paginator.num_pages}}"><i class="fas fa-angle-double-right" title="Last Page"></i></a>
+    <a href="?{% param_replace page=page_obj.paginator.num_pages %}"><i class="fas fa-angle-double-right" title="Last Page"></i></a>
   </div>
 {% endif %}
