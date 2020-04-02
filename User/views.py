@@ -47,8 +47,14 @@ def profile(request):
 				# success message
 				messages.success(request, "Password successfully updated.")
 			else:
+				# get first field that has an error 
+				first = list(password_form.errors.as_data().keys())[0]
+
+				# get first error message string from field
+				message = "".join(password_form.errors.as_data()[first][0])
+
 				# error message
-				messages.error(request, "Error updating password.")
+				messages.error(request, f"{message}")
 		else:
 			user_form = UserUpdateForm(request.POST, instance=request.user)
 			profile_form = ProfileUpdateForm(request.POST, instance=request.user.profile)
