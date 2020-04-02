@@ -5,7 +5,7 @@
 {% block content %}
 
 <!-- ANNOUNCEMENTS LIST -->
-{% for announcement in object_list %}
+{% for announcement in announcdements %}
 <div class="card">
 	<!-- HEADER -->
 	<div class="header">
@@ -15,6 +15,17 @@
 
 	<!-- CONTENT -->
 	<p>{{ announcement.content|linebreaks }}</p>
+</div>
+{% empty %}
+<!-- HEADER -->
+<div class="special card">
+	<div class="header">
+		<div class="heading">No Announcements.</div>
+		<div class="subheading">Absolutely none, we assure you.</div>
+	</div>
+
+	<!-- CONTENT -->
+	<div class="text">You're either here very early, or something has gone horribly wrong. In either case, go ahead and relax.</div>
 </div>
 {% endfor %}
 

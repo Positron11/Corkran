@@ -105,6 +105,7 @@ def about(request):
 class Announcements(ListView):
 	model = Announcement
 	sort_by = ["-date"]
+	context_object_name = "announcements"
 
 
 # article detail
