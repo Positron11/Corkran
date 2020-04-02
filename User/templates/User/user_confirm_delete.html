@@ -1,0 +1,26 @@
+{% extends 'Blog/base.html' %}
+
+{% block title %}Delete Account{% endblock %}
+
+{% block content %}
+
+<div class="card">
+	<!-- HEADER -->
+	<div class="header">
+		<div class="heading">Take a Minute, Now...</div>
+		<div class="subheading">
+			Deleting this is irreversible. That's made worse by the fact that along with your account, go all your 
+			posts, and comments - in short, you'll be wiped off the face of Corkran, with nothing to show for it.
+		</div>
+	</div>
+
+	<!-- CONFIRM OR CANCEL FORM -->
+	<form method="post">{% csrf_token %}
+		<div class="dual-option-container">
+			<button class="danger button" type="submit">Delete</button>
+			<a href="{% url 'profile' %}" class="button">Cancel</a>
+		</div>
+	</form>
+</div>
+
+{% endblock %}

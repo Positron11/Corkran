@@ -1,0 +1,29 @@
+{% extends 'Blog/article_list.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block no-articles-card %}
+<div class="special card">
+	<!-- HEADER -->
+	<div class="header">
+		<div class="heading">No articles here, yet.</div>
+		<div class="subheading">It would seem you'll have to wait a bit.</div>
+	</div>
+
+	<!-- CONTENT -->
+	<div class="text">Maybe consider heading over to the about page, or writing the first article yourself?</div>
+</div>
+{% endblock %}
+
+{% block empty-search-card %}
+<div class="special card">
+	<!-- HEADER -->
+	<div class="header">
+		<div class="heading">No Articles Found</div>
+		<div class="subheading">It's unlikely to be our fault.</div>
+	</div>
+
+	<!-- CONTENT -->
+	<div class="text">You should probaby check your search query. Things like "k3e#$%jbjvd" aren't likely to get you anywhere.</div>
+</div>
+{% endblock %}

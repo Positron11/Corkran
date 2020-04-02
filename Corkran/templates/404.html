@@ -1,0 +1,21 @@
+{% extends 'Blog/base.html' %}
+
+{% block title %}404{% endblock %}
+
+{% block content %}
+
+<!-- HEADER -->
+<div class="special card">
+	<div class="header">
+		<div class="heading">How did you even get here?</div>
+		<div class="subheading">No, really. How?</div>
+	</div>
+
+	<!-- CONTENT -->
+	<div class="text">
+		Consider going <a href="{% url 'home' %}">home</a>, using the link, or as you seem to prefer, by manipulating the URL.
+		If that isn't the case, and you've arrived here by some strange link, it's probably safe to say that either the link is ancient, or at least the website has evolved. 
+	</div>
+</div>
+
+{% endblock %}

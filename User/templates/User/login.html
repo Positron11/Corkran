@@ -1,0 +1,28 @@
+{% extends 'Blog/base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+<Fieldset class="card">
+	<!-- HEADING -->
+	<legend class="heading">Log In</legend>
+
+	<!-- FORM -->
+	<form method="post">{% csrf_token %}
+		{{ form.as_table }}
+		<div class="submit-btn-container">
+			<button class="button" type="submit">Log In</button>
+		</div>
+	</form>
+</Fieldset>
+
+<!-- LOGIN PORTAL CARD -->
+<div class="special compact card">
+	<div class="text">
+		Don't already have an account? <a href="{% url 'registration' %}">Register.</a><br>
+		Forgot your password? <a href="{% url 'password-reset' %}">Ask for a new one.</a>
+	</div>
+</div>
+
+{% endblock %}

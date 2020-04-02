@@ -1,0 +1,213 @@
+{% extends 'Blog/base.html' %}
+
+{% load mptt_tags %}
+{% load corkran_tags %}
+
+{% block title %}"{{ article.title }}"{% endblock %}
+
+{% block content %}
+
+<!-- IF CURRENT USER IS ARTICLE AUTHOR -->
+{% if user == article.author %}
+<!--ARTICLE EDIT BUTTONS-->
+<div class="dual-option-container closer-below">
+	<a href="{% url 'edit-article' article.id %}" class="button">Edit</a>
+	<a href="{% url 'delete-article' article.id %}" class="danger button">Delete</a>
+</div>
+{% endif %}
+
+
+<!--MEDIA BUTTONS-->
+<div class="media-btn-container closer-below">
+	<!-- TWITTER -->
+	<a href='https://twitter.com/share?url={{request.build_absolute_uri}}&text="{{article.title}}" by {{article.author}}'
+		target="_blank" class="unformatted share-btn twitter">
+		<div class="button">
+			<i class="fab fa-twitter"></i>
+		</div>
+	</a>
+
+	<!-- FACEBOOK -->
+	<a href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}" target="_blank"
+		class="unformatted share-btn facebook">
+		<div class="button">
+			<i class="fab fa-facebook-f"></i>
+		</div>
+	</a>
+
+	<!-- EMAIL -->
+	<a href="mailto:?subject={{article.title}}&body={{article.title}} - From the Corkran blog. ({{request.build_absolute_uri}})"
+		target="_blank" class="unformatted share-btn email">
+		<div class="button">
+			<i class="fas fa-envelope"></i>
+		</div>
+	</a>
+</div>
+
+
+<!--POST NAVIGATION BUTTONS-->
+<div class="article-navigation-btn-container closer-below">
+	<!-- NEXT POST -->
+	<a href="{% previous_article_link article %}" class="button prev-post">
+		<i class="fas fa-arrow-circle-left"></i>&nbsp;&nbsp;{% previous_article_title article %}
+	</a>
+
+	<!-- PREVIOUS POST -->
+	<a href="{% next_article_link article %}" class="button next-post">
+		<i class="fas fa-arrow-circle-right"></i>&nbsp;&nbsp;<bdi>{% next_article_title article %}</bdi>
+	</a>
+</div>
+
+
+<!--ARTICLE-->
+<div class="main article card">
+	<!--HEADER-->
+	<div class="header">
+		<div class="heading">{{ article.title }}</div>
+		<span class="subheading">
+			{{ article.date|date:"F jS, Y, g:i a e" }} - By
+			<a href="{% url 'author-sorted-articles' article.author %}"
+				title="Articles by {{ article.author.username }}">
+				{{ article.author.username }}
+			</a>
+		</span>
+	</div>
+	
+	<!--CONTENT-->
+	<div class="content text">{{ article.content|linebreaks }}</div>
+</div>
+
+
+<!--TAGS BOX -->
+<fieldset class="compact card">
+	<!-- HEADING -->
+	<legend class="heading">Tags</legend>
+
+	<!-- TAGS LIST -->
+	<div class="list-box">
+		<!-- TAGS LIST -->
+		{% for tag in article.tags.all %}
+		<a href="{% url 'tag-sorted-articles' tag %}" class="clickable tag">{{ tag }}</a>
+		{% endfor %}
+	</div>
+</fieldset>
+
+
+<!--COMMENTS BOX -->
+<fieldset class="comments card" id="comments">
+	<!-- HEADING -->
+	<legend class="heading">Comments ({{article.comment_set.count}})</legend>
+
+	<!-- IF ANY COMMENTS EXIST -->
+	{% if article.comment_set.count > 0 %}
+	<!-- COMMENTS TREE -->
+	<ul>
+		{% recursetree article.comment_set.all %}
+		<li>
+			<!-- COMMENT -->
+			<div class="comment" id="{{ node.id }}">
+				<!-- TOP BAR -->
+				<div class="info-container">
+					<a href="{% url 'author-sorted-articles' node.author %}"
+						title="Articles by {{ article.author.username }}">{{ node.author }}</a>
+					<span class="date">- {{ node.date }}</span>
+				</div>
+
+				<!-- COMMENT CONTENT -->
+				<div class="content">{{ node.content }}</div>
+
+				<!-- COMMENT EDITING EDITOR -->
+				<div class="edit editor">
+					<form method="post" autocomplete="off">{% csrf_token %}
+						<!-- COMMENT TEXT AREA -->
+						<textarea name="content" rows="2" required="true">{{ node.content }}</textarea>
+
+						<!-- SCROLL POSITION AND PARENT ID -->
+						<input type="hidden" name="id" value="{{ node.id }}">
+						<input type="hidden" name="scroll_pos" value="{{ node.id }}">
+
+						<!-- SUBMIT BUTTON -->
+						<button class="small button" type="submit" name="edit">Edit</button>
+					</form>
+				</div>
+
+				<!-- IF USER IS LOGGED IN -->
+				{% if user.is_authenticated %}
+				<!-- COMMENT BUTTONS -->
+				<div class="comment-btn-container">
+					<!-- REPLY BUTTON -->
+					<div class="small button reply toggle-btn">Reply</div>
+
+					<!-- IF USER IS EITHER COMMENT OR ARTICLE AUTHOR -->
+					{% if user == article.author or user == node.author %}
+
+					<!-- ONLY IF USER IS COMMENT AUTHOR -->
+					{% if user == node.author %}
+					<!-- EDIT BUTTON -->
+					<div class="small button edit toggle-btn">Edit</div>
+					{% endif %}
+
+					<!-- DELETE BUTTON -->
+					<a href="{% url 'delete-comment' node.id %}" class="small danger button">Delete</a>
+					{% endif %}
+				</div>
+				{% endif %}
+
+				<!-- COMMENT REPLY EDITOR -->
+				<div class="reply editor">
+					<form method="post" autocomplete="off">{% csrf_token %}
+						<!-- COMMENT TEXT AREA -->
+						<textarea name="content" rows="2" placeholder='Reply to: "{{ node.content|truncatechars:25 }}"'
+							required="true"></textarea>
+
+						<!-- SCROLL POSITION AND PARENT ID -->
+						<input type="hidden" name="parent_id" value="{{ node.id }}">
+						<input type="hidden" name="scroll_pos" value="{{ node.id }}">
+
+						<!-- SUBMIT BUTTON -->
+						<button class="small button" type="submit">Post</button>
+					</form>
+				</div>
+			</div>
+
+			{% if not node.is_leaf_node %}
+			<ul class="children">
+				{{ children }}
+			</ul>
+			{% endif %}
+		</li>
+		{% endrecursetree %}
+	</ul>
+	{% else %}
+	<!-- IF NO COMMENTS -->
+	<div class="subheading">No comments, yet.</div>
+	{% endif %}
+
+	<!-- IF USER IS LOGGED IN -->
+	{% if user.is_authenticated %}
+	<!-- COMMENT FORM -->
+	<div class="new-comment-form">
+		<form method="post">{% csrf_token %}
+			<!-- COMMENT TEXT AREA -->
+			<textarea name="content" rows="4" required="true" autocomplete="off"
+				placeholder="New comment..."></textarea>
+
+			<!-- SCROLL POSITION -->
+			<input type="hidden" name="scroll_pos" value="comments">
+
+			<!-- SUBMIT BUTTON -->
+			<div class="submit-btn-container">
+				<button class="button" type="submit">Comment</button>
+			</div>
+		</form>
+	</div>
+	{% endif %}
+</fieldset>
+
+
+<!--SCROLL TO TOP BUTTON-->
+<div class="clickable floating-btn scroll-top-btn" onclick="scrollToTop()" title="Back to Top">
+	<i class="fas fa-angle-double-up"></i>
+</div>
+
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'Blog/base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+
+<!-- HEADER CARD -->
+<div class="special card">
+	<!-- HEADER -->
+	<div class="header">
+		<div class="heading">"{{ user.username }}"</div>
+		<div class="subheading">That's your identity here on Corkran.</div>
+	</div>
+
+	<!-- CONTENT -->
+	<div class="text">Manage and view your personal details here.</div>
+</div>
+
+
+<!-- GROUPED UPDATE FORM -->
+<fieldset class="card">
+	<!-- HEADING -->
+	<legend class="heading">Profile</legend>
+
+	<!-- PROFILE AND USER FORMS -->
+	<form method="post" enctype="multipart/form-data">{% csrf_token %}
+		<!-- USER FORM -->
+		{{ user_form.as_table }}
+
+		<!-- PROFILE FORM -->
+		<label for="id_bio">Bio:</label>
+		<textarea name="bio" id="id_bio" rows="10" maxlength="500" required="true"
+			placeholder="About yourself...">{{ user.profile.bio }}</textarea>
+
+		<!-- SUBMIT BUTTON -->
+		<div class="submit-btn-container">
+			<button class="button" type="submit">Update</button>
+		</div>
+	</form>
+</fieldset>
+
+
+<!-- CHANGE PASSWORD -->
+<fieldset class="card">
+	<legend class="heading">Password</legend>
+
+	<form method="post">{% csrf_token %}
+		<!-- PASSWORD FORM -->
+		{{ password_form.as_table }}
+
+		<!-- SUBMIT BUTTON -->
+		<div class="submit-btn-container">
+			<button class="button" type="submit" name="change_password">Update Password</button>
+		</div>
+	</form>
+</fieldset>
+
+
+<!-- DELETE ACCOUNT -->
+<fieldset class="card">
+	<legend class="heading">Danger!</legend>
+	<a href="{% url 'delete-user' user.id %}" class="danger button">Delete Account</a>
+</fieldset>
+
+{% endblock %}

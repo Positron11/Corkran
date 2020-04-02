@@ -1,0 +1,25 @@
+{% extends 'Blog/base.html' %}
+
+{% block title %}Registration{% endblock %}
+
+{% block content %}
+
+<fieldset class="card">
+	<!-- HEADING -->
+	<legend class="heading">Register</legend>
+	
+	<!-- FORM -->
+	<form method="post">{% csrf_token %}
+		{{ form.as_table }}
+		<div class="submit-btn-container">
+			<button class="button" type="submit">Register</button>
+		</div>
+	</form>
+</fieldset>
+
+<!-- REGISTRATION PORTAL CARD -->
+<div class="special compact card">
+	<div class="text">Already have an account? <a href="{% url 'login' %}">Login.</a></div>
+</div>
+
+{% endblock %}

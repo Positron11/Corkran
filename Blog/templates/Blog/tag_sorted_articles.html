@@ -1,0 +1,29 @@
+{% extends 'Blog/article_list.html' %}
+
+{% block title %}Posts tagged with {{ tag }}.{% endblock %}
+
+{% block header-card %}
+<div class="special card">
+	<!-- HEADER -->
+	<div class="header">
+		<div class="heading"><i class="fas fa-tags"></i> "{{ tag }}"</div>
+		<div class="subheading">{{ page_obj.paginator.count }} article(s) are tagged with "{{ tag }}".</div>
+	</div>
+
+	<!-- CONTENT -->
+	<div class="text">It's hardly the most popular tag, but it should do, for now.</div>
+</div>
+{% endblock %}
+
+{% block empty-search-card %}
+<!-- HEADER -->
+<div class="special card">
+	<div class="header">
+		<div class="heading">No Articles Found</div>
+		<div class="subheading">It's unlikely to be our fault.</div>
+	</div>
+
+	<!-- CONTENT -->
+	<div class="text">You should probaby check your search query. Things like "k3e#$%jbjvd" aren't likely to get you anywhere.</div>
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'Blog/base.html' %}
+
+{% block title %}404{% endblock %}
+
+{% block content %}
+
+<!-- HEADER -->
+<div class="special card">
+	<div class="header">
+		<div class="heading">We seem to have a problem.</div>
+		<div class="subheading">Our server seems to have thrown us an error.</div>
+	</div>
+
+	<!-- CONTENT -->
+	<div class="text">
+		Consider going <a href="{% url 'home' %}">home</a>, safe in the knowledge that it wasn't your fault. 
+	</div>
+</div>
+
+{% endblock %}

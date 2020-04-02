@@ -1,0 +1,21 @@
+{% extends 'Blog/base.html' %}
+
+{% block title %}Announcements{% endblock %}
+
+{% block content %}
+
+<!-- ANNOUNCEMENTS LIST -->
+{% for announcement in object_list %}
+<div class="card">
+	<!-- HEADER -->
+	<div class="header">
+		<div class="heading">{{ announcement.date|date:"F jS, Y" }}</div>
+		<div class="subheading">{{ announcement.date|date:"F jS, Y, g:i a e" }}</div>
+	</div>
+
+	<!-- CONTENT -->
+	<p>{{ announcement.content|linebreaks }}</p>
+</div>
+{% endfor %}
+
+{% endblock %}

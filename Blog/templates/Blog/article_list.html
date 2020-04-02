@@ -1,0 +1,116 @@
+{% extends 'Blog/base.html' %}
+
+{% load corkran_tags %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+{% if articles or searched %}
+<!-- PAGE HEADER IF PAGE EXISTS -->
+{% block header-card %}{% endblock %}
+{% endif %}
+
+
+<!--SEARCH-->
+<form type="get">
+	<div class="search-bar">
+		<input class="search-box" type="text" name="search" placeholder="Search...">
+		<button class="search-button button" type="submit"><i class="fas fa-search"></i></button>
+	</div>
+</form>
+
+
+<!-- SEARCH COUNTER -->
+{% if searched and articles %}
+<div class="closer-below search-info">
+	Result(s) {{ page_obj.start_index }} to {{ page_obj.end_index }} of {{ page_obj.paginator.count }}
+</div>
+{% endif %}
+
+
+<!-- ARTICLE LIST -->
+{% for article in articles %}
+<!--ARTICLE-->
+<div class="article preview card">
+	<!--HEADER-->
+	<div class="header">
+		<!-- DATE -->
+		<div class="date subheading">{{ article.date|date:"F jS, Y" }}</div>
+
+		<!-- TITLE -->
+		<div class="heading">
+			<a href="{% url 'article-detail' article.id article.slug %}" class="unformatted"
+				title='Read "{{ article.title }}"'>
+				{{ article.title }}
+			</a>
+		</div>
+
+		<!-- AUTHOR -->
+		<div class="subheading">
+			By
+			<a href="{% url 'author-sorted-articles' article.author %}"
+				title="Articles by {{ article.author.username }}">{{ article.author.username }}
+			</a>
+		</div>
+	</div>
+
+	<a class="unformatted" href="{% url 'article-detail' article.id article.title %}"
+		title='Read "{{ article.title }}"'>
+		<!-- TRUNCATED CONTENT -->
+		<p class="clickable">{{ article.content|linebreaks|truncatechars:1000 }}</p>
+
+		<!-- FADE TRUNCATE -->
+		{% if article.content|length > 1000 %}
+		<div class="fade"></div>
+		{% endif %}
+	</a>
+</div>
+{% empty %}
+<!--HEADER BLOCK IF NO ARTICLES OR EMPTY SEARCH-->
+{% if searched %}
+{% block empty-search-card %}{% endblock %}
+{% else %}
+{% block no-articles-card %}{% endblock %}
+{% endif %}
+{% endfor %}
+
+
+<!--PAGINATOR-->
+{% if page_obj.paginator.num_pages > 1 %}
+<div class="paginator">
+	<!-- FIRST PAGE -->
+	<a href="?{% param_replace page=1 %}" title="First Page" class="unformatted">
+		<i class="fas fa-arrow-circle-left"></i>
+	</a>
+
+	<!-- NUMBERED LINKS -->
+	{% for page in page_obj.paginator.page_range|cut_page_range:page_obj.number %}
+	{% if page == page_obj.number %}
+	<!-- CURRENT PAGE ICON -->
+	<i class="current fas fa-map-marker-alt" title="Page {{ page_obj.number }}"></i>
+	{% else %}
+	<!-- PAGE LINKS -->
+	<a href="?{% param_replace page=page %}" title="Page {{ page }}" class="unformatted">{{ page }}</a>
+	{% endif %}
+	{% endfor %}
+
+	<!-- LAST PAGE -->
+	<a href="?{% param_replace page=page_obj.paginator.num_pages %}" title="Last Page" class="unformatted">
+		<i class="fas fa-arrow-circle-right"></i>
+	</a>
+</div>
+{% endif %}
+
+
+<!-- IF USER IS LOGGED IN -->
+{% if user.is_authenticated %}
+<!--NEW POST BUTTON-->
+<a href="{% url 'create-article' %}" title="New Article" class="unformatted">
+	<div class="clickable floating-btn">
+		<i class="fas fa-pen-nib"></i>
+	</div>
+</a>
+{% endif %}
+
+{% endblock %}

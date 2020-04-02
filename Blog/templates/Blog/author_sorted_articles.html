@@ -1,0 +1,47 @@
+{% extends 'Blog/article_list.html' %}
+
+{% block title %}Articles by {{ author }}{% endblock %}
+
+{% block header-card %}
+<div class="special card">
+	<!-- HEADER -->
+	<div class="header">
+		<div class="heading">Posts by {{ author }}.</div>
+		<div class="subheading">{{ author }} has {{ page_obj.paginator.count }} post(s), as of yet.</div>
+	</div>
+
+	<!-- BIO -->
+	<div class="text">
+		{% if author.profile.bio %}
+		<i class="fas fa-quote-left" title='"'></i>
+		{{ author.profile.bio }}&nbsp;
+		<i class="fas fa-quote-right" title='"'></i>
+		{% else %}
+		They're either an enigma, or too lazy to fill in their bio.
+		{% endif %}
+	</div>
+</div>
+{% endblock %}
+
+{% block no-articles-card %}
+<div class="special card">
+	<div class="header">
+		<div class="heading">They have naught to offer, it would seem.</div>
+		<div class="subheading">Perhaps they content themselves with mere commenting. Do they even exist?</div>
+	</div>
+	<div class="text">Consider going <a href="{% url 'home' %}">home</a>, to find some writers that do indeed write.</div>
+</div>
+{% endblock %}
+
+{% block empty-search-card %}
+<div class="special card">
+	<div class="header">
+		<div class="heading">No Articles Found</div>
+		<div class="subheading">It's unlikely to be our fault.</div>
+	</div>
+	<div class="text">
+		You should probaby check your search query. Things like "k3e#$%jbjvd" aren't likely to get you anywhere. 
+		Or perhaps it is simply that the author has not what you seek.
+	</div>
+</div>
+{% endblock %}

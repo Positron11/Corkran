@@ -1,0 +1,23 @@
+{% extends 'Blog/base.html' %}
+
+{% block title %}Delete "{{ object.title }}"{% endblock %}
+
+{% block content %}
+
+<div class="card">
+	<!-- HEADER -->
+	<div class="header">
+		<div class="heading">Are you sure you want to remove your comment?</div>
+		<div class="subheading">In case you've forgotten, it begins "{{ object.content|truncatechars:25 }}"</div>
+	</div>
+
+	<!-- FORM -->
+	<form method="post">{% csrf_token %}
+		<div class="dual-option-container">
+			<button class="danger button" type="submit">Delete</button>
+			<a href="{% url 'article-detail' object.article.id object.article.slug %}" class="button">Cancel</a>
+		</div>
+	</form>
+</div>
+
+{% endblock %}
