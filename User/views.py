@@ -96,10 +96,10 @@ class UserDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 # show message on login
 @receiver(user_logged_in)
 def on_user_logged_in(sender, request, **kwargs):
-    messages.success(request, f"Welcome, {request.user.username}.")
+    return messages.success(request, f"Welcome, {request.user.username}.")
 
 
 # show message on logout
 @receiver(user_logged_out)
 def on_user_logged_out(sender, request, **kwargs):
-    messages.success(request, "Logged out.")
+    return messages.success(request, "Logged out.")
