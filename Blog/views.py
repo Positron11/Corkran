@@ -214,10 +214,3 @@ class DeleteComment(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	# check if currently logged in user is author
 	def test_func(self):
 		return self.request.user == self.get_object().author
-
-
-def handler404(request):
-    return render(request, '404.html', status=404)
-
-def handler500(request):
-    return render(request, '500.html', status=500)
