@@ -667,7 +667,7 @@ fieldset.card {
 	.navbar .links-container .link {
 		display: none;
 		grid-column: 1 / span 2;
-		margin: 1em 0em 0em 0.5em;
+		margin: 1em 0em 0.5em 0.5em;
 	}
 	
 	/* Move banner to beginning and make smaller */
@@ -737,6 +737,11 @@ fieldset.card {
 	/* Make global font size smaller */
 	body {
 		font-size: 18px;
+	}
+
+	/* Make navbar links bigger */
+	.navbar .links-container .link {
+		font-size: 0.75em;
 	}
 
 	/* Further reduce page padding */
