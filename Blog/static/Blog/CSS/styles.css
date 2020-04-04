@@ -456,6 +456,7 @@ fieldset.card {
 	border-radius: 0.5em;
 	text-decoration: none;
 	background-color: rgba(4, 222, 63,0.2);
+	font-family: 'Cormorant Garamond', serif;
 }
 
 /***********************************************************************COMMENTS*/
@@ -578,6 +579,13 @@ fieldset.card {
 .floating-btn .scroll-top-btn {
 	opacity: 0;
 	transform: scale(0);
+}
+
+/****************************************************************************IDS*/
+
+#suggested_tags {
+	display: none;
+	margin-top: 1em;
 }
 
 /******************************************************************MEDIA QUERIES*/

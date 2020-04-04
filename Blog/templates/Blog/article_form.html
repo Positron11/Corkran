@@ -7,10 +7,29 @@
 <fieldset class="card">
 	<!-- HEADING -->
 	<legend class="heading">Editor</legend>
-	
-	<!-- FORM -->
-	<form method="post">{% csrf_token %}
-		{{ form.as_table }}
+
+	<form id="article_form" method="post" autocomplete="off">{% csrf_token %}
+		<!-- FORM -->
+		<label>{{ form.title.label }}:</label>
+		{{ form.title }}
+
+		<label>{{ form.content.label }}:</label>
+		{{ form.content }}
+
+		<label>Tags separated by spaces:</label>
+		{{ form.tags }}
+
+		<!-- TAGS BOX -->
+		<div id="suggested_tags">
+			<label>Similar popular tags:</label>
+			<div class="list-box">
+				{% for tag in tags %}
+				<div class="clickable tag">{{ tag }}</div>
+				{% endfor %}
+			</div>
+		</div>
+
+		<!-- SUBMIT BUTTON -->
 		<div class="submit-btn-container">
 			<button class="button" type="submit">Post</button>
 		</div>

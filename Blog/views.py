@@ -170,6 +170,12 @@ class CreateArticle(LoginRequiredMixin, CreateView):
 	model = Article
 	fields = ["title", "content", "tags"]
 
+	# all tags as context
+	def get_context_data(self, **kwargs):          
+		context = super().get_context_data(**kwargs)                     
+		context["tags"] = Article.tags.most_common()[:100]
+		return context
+
 	# set post author to currently logged in user
 	def form_valid(self, form):
 		form.instance.author = self.request.user

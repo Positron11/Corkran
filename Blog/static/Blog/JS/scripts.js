@@ -3,11 +3,34 @@ $(function () {
 	truncateAnnouncement();
 	calculateProgressBar();
 
+
+	// fade out and remove alert
+	if ($(".alert").length) {
+		// Fade
+		$(".alert").css("opacity", "0");
+
+		// When fade transition over
+		$(".alert").on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function (e) {
+			// Shrink vertically
+			$(this).css("transition", "0.3s ease-out");
+			$(this).css("height", "0px");
+			$(this).css("margin", "0px");
+			$(this).css("padding", "0px");
+
+			// When shrink transition over, remove
+			$(".alert").on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function (e) {
+				$(this).hide();
+			})
+		})
+	}
+
+
 	// toggle mobile navbar links
 	$(document).on('click', '.menu-btn', function (e) {
 		e.preventDefault();
 		$(".navbar").toggleClass("mobile-show");
 	});
+
 
 	// toggle comment reply box
 	$(document).on('click', '.toggle-btn.reply', function (e) {
@@ -21,6 +44,7 @@ $(function () {
 		toggleCommentEditor("edit", $(this));
 	});
 
+
 	// on scroll...
 	$(window).on("scroll", function () {
 		calculateProgressBar();
@@ -30,6 +54,7 @@ $(function () {
 	$(window).on("resize", function () {
 		truncateAnnouncement();
 	});
+
 
 	// prevent empty textarea
 	$("textarea").each(function () {
@@ -51,20 +76,78 @@ $(function () {
 		this.style.height = (this.scrollHeight) + 5 + 'px';
 	});
 
-	// fade out and remove alert
-	if ($(".alert").length) {
-		$(".alert").css("opacity", "0");
-		$(".alert").on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function (e) {
-			$(this).css("transition", "0.3s ease-out");
-			$(this).css("height", "0px");
-			$(this).css("margin", "0px");
-			$(this).css("padding", "0px");
-			$(".alert").on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function (e) {
-				$(this).hide();
-			})
-		})
-	}
+
+	// Show tag suggestions
+	$("#id_tags").on('input', function () {
+		// replace all other separators with spaces
+		$("#id_tags").val($("#id_tags").val().replace(/[\s,]+/g, " "));
+
+		// split sentence by possible delimiters
+		var words = $("#id_tags").val().toLowerCase().split(/[\s,]+/);
+
+		// get last word
+		var word = words.pop();
+
+		// if not empty and currently typing a word, get suggestions
+		if (word) {
+			// show main block
+			$("#suggested_tags").show();
+
+			// show matching tags
+			$("#suggested_tags .list-box .tag").each(function () {
+				// get tag text as lowercase
+				var text = $(this).text().toLowerCase();
+
+				// if tag matches input and tag doesn't already exist
+				if (text.includes(word) && $.inArray(text, words) < 0) {
+					// show tag in suggestions
+					$(this).show();
+				} else {
+					// remove tag from suggestions
+					$(this).hide();
+				}
+			});
+		} else {
+			// hide entire block
+			$("#suggested_tags").hide();
+		}
+
+		// if no suggestions, hide entire block
+		if (!$("#suggested_tags .list-box .tag:visible").length) {
+			$("#suggested_tags").hide();
+		}
+	});
+
+	// put clicked tag in textbox
+	$("#suggested_tags .list-box .tag").on("click", function () {
+		// get all words in input
+		var words = $("#id_tags").val().split(/[\s,]+/);
+
+		// remove unfinished tag from words list
+		words.pop();
+
+		// add tag to end of words list
+		words.push($(this).text());
+
+		// replace input box value with current tags 
+		$("#id_tags").val(words.join(" ") + " ");
+
+		// focus and move to end of input
+		$("#id_tags").each(function () {
+			$(this).focus();
+			if (this.setSelectionRange) {
+				var len = $(this).val().length * 2;
+				this.setSelectionRange(len, len);
+			} else {
+				$(this).val($(this).val());
+			}
+		});
+
+		// Hide suggestions
+		$("#suggested_tags").hide();
+	});
 });
+
 
 // CALCULATE PROGRESS BAR
 function calculateProgressBar() {
@@ -94,6 +177,7 @@ function calculateProgressBar() {
 	}
 }
 
+
 // SHOW OR HIDE SCROLL TOP BUTTON
 function scrollTopButton(state) {
 	if (state == "show") {
@@ -105,6 +189,7 @@ function scrollTopButton(state) {
 	}
 }
 
+
 // SCROLL TO TOP
 function scrollToTop() {
 	const c = document.documentElement.scrollTop || document.body.scrollTop;
@@ -114,6 +199,7 @@ function scrollToTop() {
 	}
 }
 
+
 // TRUNCATE ANNOUNCEMENT IN SIDEBAR
 function truncateAnnouncement() {
 	// approximate fixed value for distance from top of sidebar to bottom of page
@@ -122,6 +208,7 @@ function truncateAnnouncement() {
 	// set sidebar height
 	$('.sidebar .announcement').css("height", height);
 }
+
 
 // TOGGLE COMMENT EDITORS
 function toggleCommentEditor(editor, button) {
