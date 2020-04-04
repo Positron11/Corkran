@@ -28,7 +28,7 @@ class Article(models.Model):
 		# create slug
 		self.slug = slugify(self.title)
 		# save 
-		super(Article, self).save() 
+		super().save() 
 	
 	# get this article's absolute url
 	def get_absolute_url(self):

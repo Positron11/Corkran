@@ -16,7 +16,7 @@ class UserRegistrationForm(UserCreationForm):
 
 	# remove all helptext from form
 	def __init__(self, *args, **kwargs):
-		super(UserRegistrationForm, self).__init__(*args, **kwargs)
+		super().__init__(*args, **kwargs)
 		for fieldname in self.fields:
 			self.fields[fieldname].help_text = None
 
@@ -33,7 +33,7 @@ class UserUpdateForm(forms.ModelForm):
 
 	# remove all helptext from form
 	def __init__(self, *args, **kwargs):
-		super(UserUpdateForm, self).__init__(*args, **kwargs)
+		super().__init__(*args, **kwargs)
 		for fieldname in self.fields:
 			self.fields[fieldname].help_text = None
 
@@ -51,7 +51,7 @@ class PasswordForm(PasswordChangeForm):
 
 	# remove all helptext from form and disable autofocus
 	def __init__(self, *args, **kwargs):
-		super(PasswordForm, self).__init__(*args, **kwargs)
+		super().__init__(*args, **kwargs)
 		for fieldname in self.fields:
 			self.fields[fieldname].help_text = None
 			self.fields[fieldname].widget.attrs.pop("autofocus", None)
