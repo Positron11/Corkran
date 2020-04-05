@@ -30,37 +30,8 @@ p, .text {
 /**************************************************************************FORMS*/
 
 /* All form elements */
-form *:not(i) {
-	color: #333;
+form * {
 	display: block;
-	font-family: 'Montserrat Alternates', sans-serif;
-}
-
-/* Labels */
-form label {
-	font-size: 0.7em;
-	font-weight: 700;
-	margin-bottom: 0.5em;
-}
-
-/* Label top margin for spacing form elements */
-form label:not(:first-of-type) {
-	margin-top: 2em;
-}
-
-/* Textareas */
-form textarea {
-    width: 100%;
-	height: 100%;
-	resize: vertical;
-	line-height: 1.7em;
-	box-sizing: border-box;
-}
-
-/* Submit button container */
-form .submit-btn-container {
-	margin-top: 1em;
-	text-align: right;
 }
 
 /* Reset form list left margin */
@@ -79,16 +50,22 @@ form ul.errorlist li {
 	background: rgba(242, 38, 38, 0.2);
 }
 
-/* Helptext */
-form .helptext {
-	padding: 0.5em;
-	margin: 1em 0em;
+/* Form label spacing */
+form label {
+	margin-bottom: 0.5em;
+}
+
+/* Label top margin for spacing form elements */
+form label:not(:first-of-type) {
+	margin-top: 2em;
+}
+
+/* Labels */
+label {
+	color: #333;
 	font-size: 0.7em;
-	font-style: italic;
-	border-radius: 1em;
-	display: inline-block;
-	color: rgb(0, 163, 44);
-	background-color: rgba(4, 222, 63,0.2);
+	font-weight: 700;
+	font-family: 'Montserrat Alternates', sans-serif;
 }
 
 /* General form item stylings */
@@ -100,6 +77,15 @@ form .helptext {
 	border-radius: 1em;
 	border: 1px solid #dedede;
 	font-family: 'Montserrat Alternates', sans-serif;
+}
+
+/* Textareas */
+textarea {
+	width: 100%;
+	height: 100%;
+	resize: vertical;
+	line-height: 1.7em;
+	box-sizing: border-box;
 }
 
 /* Buttons */
@@ -131,6 +117,12 @@ form .helptext {
 	border-color: #dedede !important;
 	background-color: white !important;
 	cursor: default;
+}
+
+/* Submit button container */
+.submit-btn-container {
+	margin-top: 1em;
+	text-align: right;
 }
 
 /************************************************************************GENERIC*/
@@ -326,11 +318,8 @@ fieldset.card {
 }
 
 /* Sidebar labels */
-.sidebar .label {
-	color: #333;
+.sidebar label {
 	font-size: 0.8em;
-	font-weight: 700;
-	font-family: 'Montserrat Alternates', sans-serif;
 }
 
 /* Margin between latest post block and announcement block in the sidebar */

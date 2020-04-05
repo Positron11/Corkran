@@ -70,13 +70,13 @@
 
 				<!--LATEST POST-->
 				<div class="latest-post text">
-					<div class="label">Latest Post:</div>
+					<label>Latest Post:</label><br>
 					<a href="{% latest_article_link %}">{% latest_article_title %}</a>
 				</div>
 
 				<!--ANNOUNCEMENT-->
 				<div class="announcement text">
-					<div class="label">Announcement:</div>
+					<label>Announcement:</label><br>
 					<a class="unformatted" href="{% url 'announcements' %}" title="Lastest Announcement">
 						{% latest_announcement %}
 					</a>
