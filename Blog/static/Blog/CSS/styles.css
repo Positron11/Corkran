@@ -39,7 +39,7 @@ form ul {
 	padding: 0em;
 }
 
-/* Errorlists */
+/* Errorlists or error items */
 form ul.errorlist li {
 	font-size: 0.7em;
 	font-weight: 600;
@@ -50,12 +50,12 @@ form ul.errorlist li {
 	background: rgba(242, 38, 38, 0.2);
 }
 
-/* Form label spacing */
+/* Form label spacing from associated element */
 form label {
 	margin-bottom: 0.5em;
 }
 
-/* Label top margin for spacing form elements */
+/* Label top margin for spacing from other form elements */
 form label:not(:first-of-type) {
 	margin-top: 2em;
 }
@@ -300,18 +300,20 @@ fieldset.card {
 
 /* Content container */
 .content {
-	flex: 3;
 	order: 1;
+	flex: 3 1 0;
+    min-width: 0;
 }
 
 /************************************************************************SIDEBAR*/
 
 /* Sidebar element */
 .sidebar {
-	flex: 1;
 	order: 2;
 	top: 8em;
 	z-index: 1;
+	flex: 1 1 0;
+	min-width: 0;
 	padding: 0em 2em;
 	position: sticky;
 	align-self: flex-start;
@@ -326,6 +328,12 @@ fieldset.card {
 .sidebar .latest-post {
 	margin-bottom: 0.5em;
 	text-align: left;
+}
+
+.sidebar .latest-post {
+	max-width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 /* Hide announcement overflow */
