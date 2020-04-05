@@ -26,8 +26,8 @@
 </head>
 
 <body>
-	<!--PAGE-->
-	<div class="page">
+	<!-- MAIN CONTAINER -->
+	<div class="main">
 
 		<!--NAVBAR-->
 		<div class="navbar">
@@ -58,39 +58,41 @@
 			</div>
 		</div>
 
+		<!-- PAGE -->
+		<div class="page">
+			<!--SIDEBAR-->
+			<div class="sidebar">
+				<!--HEADER-->
+				<div class="header">
+					<div class="heading">Savoir.</div>
+					<div class="subheading">Important blog updates</div>
+				</div>
 
-		<!--SIDEBAR-->
-		<div class="sidebar">
-			<!--HEADER-->
-			<div class="header">
-				<div class="heading">Savoir.</div>
-				<div class="subheading">Important blog updates</div>
+				<!--LATEST POST-->
+				<div class="latest-post text">
+					<div class="label">Latest Post:</div>
+					<a href="{% latest_article_link %}">{% latest_article_title %}</a>
+				</div>
+
+				<!--ANNOUNCEMENT-->
+				<div class="announcement text">
+					<div class="label">Announcement:</div>
+					<a class="unformatted" href="{% url 'announcements' %}" title="Lastest Announcement">
+						{% latest_announcement %}
+					</a>
+				</div>
 			</div>
 
-			<!--LATEST POST-->
-			<div class="latest-post text">
-				<div class="label">Latest Post:</div>
-				<a href="{% latest_article_link %}">{% latest_article_title %}</a>
+			<!--CONTENT-->
+			<div class="content vertically-space-items">
+				<!-- SHOW MESSAGES AT TOP OF PAGE -->
+				{% for message in messages %}
+				<div class="alert {{ message.tags }}">{{ message }}</div>
+				{% endfor%}
+
+				<!-- PAGE CONTENT -->
+				{% block content %}{% endblock %}
 			</div>
-
-			<!--ANNOUNCEMENT-->
-			<div class="announcement text">
-				<div class="label">Announcement:</div>
-				<a class="unformatted" href="{% url 'announcements' %}" title="Lastest Announcement">
-					{% latest_announcement %}
-				</a>
-			</div>
-		</div>
-
-		<!--CONTENT-->
-		<div class="content vertically-space-items">
-			<!-- SHOW MESSAGES AT TOP OF PAGE -->
-			{% for message in messages %}
-			<div class="alert {{ message.tags }}">{{ message }}</div>
-			{% endfor%}
-
-			<!-- PAGE CONTENT -->
-			{% block content %}{% endblock %}
 		</div>
 	</div>
 

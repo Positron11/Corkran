@@ -246,9 +246,9 @@ fieldset.card {
 	top: 0;
 	z-index: 3;
 	position: sticky;
+	margin-bottom: 2em;
 	background-color: white;
 	border-bottom: 1px solid #dedede;
-	grid-area: navbar;
 }
 
 /* Navbar links container */
@@ -293,30 +293,36 @@ fieldset.card {
 
 /***************************************************************************PAGE*/
 
+/* Main container */
+.main {
+	margin: auto;
+	max-width: 1800px;
+	padding: 0em 4em 2em 4em;
+	transition: 0.3s ease;
+}
+
 /* Main page */
 .page {
-	margin: auto;
-	display: grid;
-	grid-gap: 2em;
-	max-width: 1800px;
-	align-items: start;
-	padding: 0em 4em 2em 4em;
+	display: flex;
 }
 
 /* Content container */
-.page .content {
-	grid-area: content
+.content {
+	flex: 3;
+	order: 1;
 }
 
 /************************************************************************SIDEBAR*/
 
 /* Sidebar element */
 .sidebar {
+	flex: 1;
+	order: 2;
 	top: 8em;
 	z-index: 1;
 	padding: 0em 2em;
 	position: sticky;
-	grid-area: sidebar;
+	align-self: flex-start;
 }
 
 /* Sidebar labels */
@@ -430,12 +436,12 @@ fieldset.card {
 /***********************************************************************ARTICLES*/
 
 /* Preview article on home page or search results */
-.article.preview {
+.article-preview {
 	position: relative;
 }
 
 /* Fade bottom of article to truncate content */
-.article.preview .fade {
+.article-preview .fade {
 	left: 0;
 	bottom: 2em;
 	content: "";
@@ -645,12 +651,9 @@ fieldset.card {
 		font-size: 3em;
 	}
 
-	/* Desktop page layout */
-	.page {
-		grid-template: 
-		"navbar navbar"
-		"content sidebar"
-		/ 7fr 3fr;
+	/* Space between content and sidebar */
+	.content {
+		margin-right: 2em;
 	}
 }
 
@@ -689,14 +692,6 @@ fieldset.card {
 		display: block;
 	}
 	
-	/* Change page grid to exclude sidebar */
-	.page {
-		grid-template:
-		"navbar" 
-		"content"
-		/ auto;
-	}
-	
 	/* Hide sidebar */
 	.sidebar {
 		display: none;
@@ -705,13 +700,7 @@ fieldset.card {
 
 
 /* PORTRAIT TABLETS AND BELOW */
-@media only screen and (max-width: 800px) {
-	/* Reduce page padding and inter-item gap */
-	.page {
-		padding: 0em 1em 1em 1em;
-		grid-gap: 1em;
-	}
-	
+@media only screen and (max-width: 800px) {	
 	/* Reduce inter-item gap */
 	.vertically-space-items > *:not(:last-child) {
 		margin-bottom: 1em;
@@ -737,6 +726,16 @@ fieldset.card {
 		right: 0.3em;
 		bottom: 0.3em;
 	}
+
+	/* Reduce webpage outer padding */
+	.main {
+		padding: 0em 1em 2em 1em;
+	}
+
+	/* Reduce navbar bottom padding */
+	.navbar {
+		margin-bottom: 1em;
+	}
 }
 
 
@@ -750,11 +749,6 @@ fieldset.card {
 	/* Make navbar links bigger */
 	.navbar .links-container .link {
 		font-size: 0.75em;
-	}
-
-	/* Further reduce page padding */
-	.page {
-		padding: 0em 1em 3em 1em;
 	}
 
 	/* Make headings smaller */

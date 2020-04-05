@@ -152,12 +152,12 @@ $(function () {
 // CALCULATE PROGRESS BAR
 function calculateProgressBar() {
 	// if on article detail page...
-	if ($(".main.article").length) {
-		var bottom_height = $(document).height() - $(".main.article .content").outerHeight() - 127;
+	if ($(".main-article").length) {
+		var bottom_height = $(document).height() - $(".main-article .content").outerHeight() - 127;
 		// if the article is substantially larger than page
 		if (bottom_height > $(window).height()) {
-			var height = $(".main.article .content").outerHeight();
-			var y_offset = -($(".main.article .content").offset().top - $(window).scrollTop() - 127);
+			var height = $(".main-article .content").outerHeight();
+			var y_offset = -($(".main-article .content").offset().top - $(window).scrollTop() - 127);
 			var completed = y_offset / height * 100;
 		} else {
 			var y_offset = window.pageYOffset;
