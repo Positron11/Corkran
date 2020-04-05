@@ -48,6 +48,7 @@ form ul.errorlist li {
 	text-align: center;
 	border-radius: 1em;
 	background: rgba(242, 38, 38, 0.2);
+	font-family: 'Montserrat Alternates', sans-serif;
 }
 
 /* Form label spacing from associated element */
