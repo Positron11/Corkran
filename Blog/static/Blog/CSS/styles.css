@@ -159,8 +159,7 @@ textarea {
 
 .dual-option-container {
 	display: flex;
-	flex-wrap: nowrap;
-	flex-direction: row;
+	flex-flow: row nowrap;
 	justify-content: space-between;
 }
 
@@ -195,21 +194,20 @@ textarea {
 	padding: 2em;
 }
 
-/* Fieldsets as cards */
+/* Special padding for fieldsets as cards */
 fieldset.card {
 	padding: 2em 4em 3em 4em;
 }
 
 /***** LIST BOXES *****/
 
-/* List block container */
+/* List box container */
 .list-box {
 	display: flex;
-	flex-wrap: wrap;
-	flex-direction: row;
+	flex-flow: row wrap;
 }
 
-/* List box items */
+/* List box items spacing */
 .list-box > * {
 	margin: 0em 0.5em 0.5em 0em;
 }
@@ -302,7 +300,7 @@ fieldset.card {
 .content {
 	order: 1;
 	flex: 3 1 0;
-    min-width: 0;
+	min-width: 0;
 }
 
 /************************************************************************SIDEBAR*/
@@ -327,9 +325,9 @@ fieldset.card {
 /* Margin between latest post block and announcement block in the sidebar */
 .sidebar .latest-post {
 	margin-bottom: 0.5em;
-	text-align: left;
 }
 
+/* Prevent overflow in case of over-long article heading */
 .sidebar .latest-post {
 	max-width: 100%;
 	overflow: hidden;
@@ -392,7 +390,7 @@ fieldset.card {
 	margin-right: 1.5em;
 }
 
-/* Search count inforemation */
+/* Search count information */
 .search-info { 
 	color: #888;
 	text-align: right;
@@ -402,7 +400,7 @@ fieldset.card {
 /******************************************************************MEDIA BUTTONS*/
 
 /* Article share buttons */
-.media-btn-container .button{
+.media-btn-container .button {
 	width: 1em;
 	margin-right: 1em;
 	text-align: center;
@@ -412,8 +410,7 @@ fieldset.card {
 
 /* Post navigation buttons container */
 .article-navigation-btn-container {
-	display: grid;
-	grid-gap: 1em;
+	display: flex;
 	grid-auto-flow: column;
 	justify-content: space-between;
 }
@@ -428,11 +425,12 @@ fieldset.card {
 /* Next post button */
 .article-navigation-btn-container a.next-post {
 	direction: rtl;
+	margin-left: 1em;
 }
 
 /***********************************************************************ARTICLES*/
 
-/* Preview article on home page or search results */
+/* Preview article on article list views */
 .article-preview {
 	position: relative;
 }
@@ -453,8 +451,8 @@ fieldset.card {
 
 /* Tags */
 .tag {
-	padding: 0.3em;
 	color: #00a32c;
+	padding: 0.3em 0.5em;
 	border-radius: 0.5em;
 	text-decoration: none;
 	background-color: rgba(4, 222, 63,0.2);
@@ -463,12 +461,12 @@ fieldset.card {
 
 /***********************************************************************COMMENTS*/
 
-/* Main comments container */
+/* Make comments container general font size smaller */
 .comments {
 	font-size: 0.95em;
 }
 
-/* Comment tree list */
+/* Comment tree */
 .comments ul {
 	list-style-type: none;
 	border-left: 2px solid #eee;
@@ -485,7 +483,7 @@ fieldset.card {
 	margin: 1em 0em;
 }
 
-/* Top-level items in comment */
+/* Top-level items spacing in comment */
 .comments .comment > * {
 	margin-bottom: 0.3em;
 }
@@ -497,11 +495,12 @@ fieldset.card {
 	color: #999;
 }
 
+/* Comment edit buttons horizontal spacing */
 .comments .comment .comment-btn-container .button {
 	margin-right: 0.5em;
 }
 
-/* Comment editor box */
+/* Hide comment editor box by default */
 .comments .comment .editor {
 	display: none;
 }
@@ -522,7 +521,7 @@ fieldset.card {
 	margin-bottom: 3em;
 }
 
-/* New comment form */
+/* New comment form spacing from rest of comments*/
 .comments .new-comment-form {
 	margin-top: 3em;
 }
@@ -557,24 +556,19 @@ fieldset.card {
 /* Floating button in bottom right */
 .floating-btn {
 	z-index: 2;
+	width: 2em;
+	height: 2em;
 	right: 0.7em;
 	bottom: 0.5em;
-	width: 1.6em;
-	height: 1.6em;
-	font-size: 2em;
 	position: fixed;
-	border-radius: 50%;
-	line-height: 1.6em;
-	text-align: center;
-	background-color: rgba(4, 222, 63,0.3);
-	transition: 0.3s ease;
-}
-
-/* Floating button icon */
-.floating-btn i {
 	color: #00a32c;
 	font-weight: 700;
-	font-size: 0.8em;
+	line-height: 2em;
+	font-size: 1.6em;
+	text-align: center;
+	border-radius: 50%;
+	background-color: rgba(4, 222, 63,0.3);
+	transition: 0.3s ease;
 }
 
 /* Set scroll top button hidden by default */
@@ -585,6 +579,7 @@ fieldset.card {
 
 /****************************************************************************IDS*/
 
+/* Article form tags suggestion box */
 #suggested_tags {
 	display: none;
 	margin-top: 1em;
@@ -623,7 +618,7 @@ fieldset.card {
 		box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.2);
 	}
 
-	/* adjust fade truncate bottom height */
+	/* Adjust fade truncate bottom height */
 	.article.preview .fade {
 		bottom: 4em;
 	}
@@ -726,10 +721,10 @@ fieldset.card {
 
 	/* Reduce webpage outer padding */
 	.main {
-		padding: 0em 1em 2em 1em;
+		padding: 0em 1em 3em 1em;
 	}
 
-	/* Reduce navbar bottom padding */
+	/* Reduce navbar bottom margin */
 	.navbar {
 		margin-bottom: 1em;
 	}
