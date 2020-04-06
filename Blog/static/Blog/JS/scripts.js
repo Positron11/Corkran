@@ -2,7 +2,10 @@ $(function () {
 	// initialize page
 	truncateAnnouncement();
 	calculateProgressBar();
-
+	
+	// initialize autosize
+	autosize($('textarea'));
+	
 
 	// fade out and remove alert
 	if ($(".alert").length) {
@@ -72,8 +75,7 @@ $(function () {
 
 	// Automatically resize textarea
 	$("textarea").on('input', function () {
-		this.style.height = 'auto';
-		this.style.height = (this.scrollHeight) + 5 + 'px';
+		autosize.update($("textarea"));
 	});
 
 
