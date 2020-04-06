@@ -1,13 +1,13 @@
 {% extends 'Blog/base.html' %}
 
-{% block title %}Delete "{{ object.title }}"{% endblock %}
+{% block title %}Delete Comment"{% endblock %}
 
 {% block content %}
 
 <div class="card">
 	<!-- HEADER -->
 	<div class="header">
-		<div class="heading">Are you sure you want to remove your comment?</div>
+		<div class="heading">Are you sure you want to remove this comment?</div>
 		<div class="subheading">In case you've forgotten, it begins "{{ object.content|truncatechars:25 }}"</div>
 	</div>
 

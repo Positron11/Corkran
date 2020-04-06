@@ -225,4 +225,4 @@ class DeleteComment(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 	# check if currently logged in user is author
 	def test_func(self):
-		return self.request.user == self.get_object().author
+		return self.request.user == self.get_object().author or self.request.user == self.get_object().article.author
