@@ -110,7 +110,7 @@ def about(request):
 # announcements page
 class Announcements(ListView):
 	model = Announcement
-	sort_by = ["-date"]
+	ordering = ['-date']
 	context_object_name = "announcements"
 
 
