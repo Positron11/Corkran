@@ -1,12 +1,16 @@
 {% extends 'Blog/article_list.html' %}
 
+{% load corkran_tags %}
+
 {% block title %}Home{% endblock %}
 
 <!-- LATEST ARTICLE THUMBNAIL AS FEATURE IMAGE -->
 {% block feature %}
 {% if latest_article.thumbnail %}
 <div class="feature" style="background-image: url('{{ latest_article.thumbnail.url }}');">
-	<div class="cutout-text">{{ latest_article.title|truncatechars:40 }}</div>
+	<a href="{% latest_article_link %}" class="unformatted">
+		<div class="cutout-text">{{ latest_article.title|truncatechars:40 }}</div>
+	</a>
 </div>
 {% endif %}
 {% endblock %}
@@ -33,6 +37,7 @@
 	</div>
 
 	<!-- CONTENT -->
-	<div class="text">You should probaby check your search query. Things like "k3e#$%jbjvd" aren't likely to get you anywhere.</div>
+	<div class="text">You should probaby check your search query. Things like "k3e#$%jbjvd" aren't likely to get you
+		anywhere.</div>
 </div>
 {% endblock %}
