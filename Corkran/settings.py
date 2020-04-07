@@ -43,6 +43,8 @@ INSTALLED_APPS = [
 	'User.apps.UserConfig',
 	'taggit',
 	'mptt',
+	'django_unused_media',
+	'django_cleanup',
 ]
 
 MIDDLEWARE = [
