@@ -362,7 +362,6 @@ fieldset.card.compact {
 	border-radius: 0.5em;
 	background-size: cover;
 	background-position: center;
-	background-attachment: fixed;
 }
 
 /* Darken feature image */
