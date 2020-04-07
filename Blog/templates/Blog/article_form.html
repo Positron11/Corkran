@@ -29,12 +29,14 @@
 			</div>
 		</div>
 		
+		{% if form.instance.thumbnail %}
 		<label>Remove thumbnail:</label>
 		<div>
 			<input type="checkbox" name="thumbnail-clear" id="thumbnail-clear_id" style="display: inline-block;">
 			<label for="thumbnail-clear_id">Remove</label>
 		</div>
-		
+		{% endif %}
+
 		<label id="id_thumbnail_label">Upload thumbnail (<span>no file selected</span>):</label>
 		<div>
 			<label id="thumbnail_button" for="id_thumbnail" class="button">Upload</label>
