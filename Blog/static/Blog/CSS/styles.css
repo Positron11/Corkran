@@ -350,12 +350,15 @@ fieldset.card.compact {
 	background-color: #ccf9d8;
 }
 
+/************************************************************************FEATURE*/
+
 /* Feature image at top of page */
 .feature {
 	width: 100%;
 	height: 15em;
-	position: relative;
+	overflow: hidden;
 	padding: 1em 0em;
+	position: relative;
 	border-radius: 0.5em;
 	background-size: cover;
 	background-position: center;
@@ -841,6 +844,7 @@ fieldset.card.compact {
 	/* Feature overlay cutout text */
 	.feature .cutout-text {
 		left: 50%;
+		max-height: 80%;
 		transform: translate(-50%, -50%); 
 	}
 }
