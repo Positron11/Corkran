@@ -7,11 +7,9 @@
 
 <!-- ARTICLE THUMBNAIL AS FEATURE IMAGE -->
 {% block feature %}
-{% if article.thumbnail %}
-<div class="feature" style="background-image: url('{{ article.thumbnail.url }}');">
+<div class="feature" style="background-image: url('{% if article.thumbnail %} {{ article.thumbnail.url }} {% else %} /media/defaults/feature.jpg {% endif %}');">
 	<div class="cutout-text">{{ article.title|truncatechars:40 }}</div>
 </div>
-{% endif %}
 {% endblock %}
 
 {% block content %}
