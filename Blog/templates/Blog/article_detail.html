@@ -5,6 +5,15 @@
 
 {% block title %}"{{ article.title }}"{% endblock %}
 
+<!-- ARTICLE THUMBNAIL AS FEATURE IMAGE -->
+{% block feature %}
+{% if article.thumbnail %}
+<div class="feature" style="background-image: url('{{ article.thumbnail.url }}');">
+	<div class="cutout-text">{{ article.title|truncatechars:40 }}</div>
+</div>
+{% endif %}
+{% endblock %}
+
 {% block content %}
 
 <!-- IF CURRENT USER IS ARTICLE AUTHOR -->

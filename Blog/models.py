@@ -10,6 +10,7 @@ from mptt.models import MPTTModel, TreeForeignKey
 
 # article model
 class Article(models.Model):
+	thumbnail = models.ImageField(upload_to="thumbnails", blank=True)
 	date = models.DateTimeField(default=datetime.now, blank=True)
 	author = models.ForeignKey(User, on_delete=models.CASCADE)
 	title = models.CharField(max_length=50)

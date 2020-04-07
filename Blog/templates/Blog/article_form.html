@@ -8,17 +8,17 @@
 	<!-- HEADING -->
 	<legend class="heading">Editor</legend>
 
-	<form id="article_form" method="post" autocomplete="off">{% csrf_token %}
+	<form id="article_form" method="post" autocomplete="off" enctype="multipart/form-data">{% csrf_token %}
 		<!-- FORM -->
 		<label>{{ form.title.label }}:</label>
 		{{ form.title }}
 
 		<label>{{ form.content.label }}:</label>
 		{{ form.content }}
-
+		
 		<label>Tags separated by spaces:</label>
 		{{ form.tags }}
-
+		
 		<!-- TAGS BOX -->
 		<div id="suggested_tags">
 			<label>Similar popular tags:</label>
@@ -27,6 +27,18 @@
 				<div class="clickable tag">{{ tag }}</div>
 				{% endfor %}
 			</div>
+		</div>
+		
+		<label>Remove thumbnail:</label>
+		<div>
+			<input type="checkbox" name="thumbnail-clear" id="thumbnail-clear_id" style="display: inline-block;">
+			<label for="thumbnail-clear_id">Remove</label>
+		</div>
+		
+		<label id="id_thumbnail_label">Upload thumbnail (<span>no file selected</span>):</label>
+		<div>
+			<label id="thumbnail_button" for="id_thumbnail" class="button">Upload</label>
+			<input type="file" name="thumbnail" accept="image/*" id="id_thumbnail">
 		</div>
 
 		<!-- SUBMIT BUTTON -->

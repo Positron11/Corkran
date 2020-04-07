@@ -60,6 +60,12 @@ class ArticleListView(ListView):
 class Home(ArticleListView):
 	template_name = "Blog/home.html"
 
+	# latest article as context
+	def get_context_data(self, **kwargs):          
+		context = super().get_context_data(**kwargs)                    
+		context["latest_article"] = Article.objects.order_by('-date').first()
+		return context
+
 
 # sort articles by author
 class AuthorSortedArticles(ArticleListView):
@@ -168,7 +174,7 @@ def detail(request, pk, slug):
 # create article
 class CreateArticle(LoginRequiredMixin, CreateView):
 	model = Article
-	fields = ["title", "content", "tags"]
+	fields = ["thumbnail", "title", "content", "tags"]
 
 	# all tags as context
 	def get_context_data(self, **kwargs):          
@@ -186,7 +192,7 @@ class CreateArticle(LoginRequiredMixin, CreateView):
 # edit article
 class EditArticle(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = Article
-	fields = ["title", "content", "tags"]
+	fields = ["thumbnail", "title", "content", "tags"]
 	template_name_suffix = "_form"
 
 	# all tags as context

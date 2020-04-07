@@ -31,6 +31,11 @@
 {% for article in articles %}
 <!--ARTICLE-->
 <div class="article article-preview card">
+	<!-- THUMBNAIL -->
+	{% if article.thumbnail %}
+	<div class="article-thumbnail" style="background-image: url('{{ article.thumbnail.url }}');" alt=""></div>
+	{% endif %}
+
 	<!--HEADER-->
 	<div class="header">
 		<!-- DATE -->

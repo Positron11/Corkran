@@ -2,6 +2,15 @@
 
 {% block title %}Home{% endblock %}
 
+<!-- LATEST ARTICLE THUMBNAIL AS FEATURE IMAGE -->
+{% block feature %}
+{% if latest_article.thumbnail %}
+<div class="feature" style="background-image: url('{{ latest_article.thumbnail.url }}');">
+	<div class="cutout-text">{{ latest_article.title|truncatechars:40 }}</div>
+</div>
+{% endif %}
+{% endblock %}
+
 {% block no-articles-card %}
 <div class="special card">
 	<!-- HEADER -->

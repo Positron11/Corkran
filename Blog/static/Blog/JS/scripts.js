@@ -148,6 +148,24 @@ $(function () {
 		// Hide suggestions
 		$("#suggested_tags").hide();
 	});
+
+
+	// Show uploaded file in file input label
+	$('input[type="file"]'). change(function(e){
+		var fileName = e. target. files[0]. name;
+		var label = $("label[id='" + $(this).attr('id') + "_label']");
+		label.children("span").text(fileName);
+	});
+
+	// Disable thumbnail upload button if remove thumbnail checked
+	$('#thumbnail-clear_id').click(function(){
+		if ($(this).prop("checked") == true) {
+			$("#thumbnail_button").addClass("disabled");
+		}
+		else {
+			$("#thumbnail_button").removeClass("disabled");
+		}
+	});
 });
 
 

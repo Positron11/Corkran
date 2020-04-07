@@ -29,9 +29,19 @@ p, .text {
 
 /**************************************************************************FORMS*/
 
-/* All form elements */
-form * {
+/* All top-level form elements */
+form > * {
 	display: block;
+}
+
+/* All but last top level form elements excluding labels */
+form > *:not(:last-child):not(label) {
+	margin-bottom: 2em;
+}
+
+/* Form label spacing from associated element */
+form > label {
+	margin-bottom: 0.5em;
 }
 
 /* Reset form list left margin */
@@ -49,16 +59,6 @@ form ul.errorlist li {
 	border-radius: 1em;
 	background: rgba(242, 38, 38, 0.2);
 	font-family: 'Montserrat Alternates', sans-serif;
-}
-
-/* Form label spacing from associated element */
-form label {
-	margin-bottom: 0.5em;
-}
-
-/* Label top margin for spacing from other form elements */
-form label:not(:first-of-type) {
-	margin-top: 2em;
 }
 
 /* Labels */
@@ -113,10 +113,11 @@ textarea {
 }
 
 /* Disabled buttons */
-.button[disabled] {
+.button[disabled], .button.disabled {
 	color: #999 !important; 
 	border-color: #dedede !important;
 	background-color: white !important;
+	pointer-events: none;
 	cursor: default;
 }
 
@@ -124,6 +125,69 @@ textarea {
 .submit-btn-container {
 	margin-top: 1em;
 	text-align: right;
+}
+
+/* Hide actual checkbox */
+[type="checkbox"] {
+	opacity: 0;
+}
+
+/* Base for checkbox styling */
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+	position: absolute;
+}
+
+/* Base for label styling */
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+	cursor: pointer;
+	position: relative;
+	padding: 0.1em 0em 0.1em 2em;
+}
+
+/* Pseudo checkbox */
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+	top: 0;
+	left: 0; 
+	content: '';
+	position: absolute;
+	background: white;
+	border-radius: 0.5em;
+	transition: 0.2s ease;
+	border: 2px solid #ddd;
+	width: 1.25em; height: 1.2em;
+}
+
+/* Pseudo checkbox check mark */
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+	top: 0em; 
+	left: 0.22em;
+	color: #333;
+	font-size: 1.3em;
+	position: absolute;
+	transition: all .2s;
+	content: '\2713\0020';
+	font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', Arial;
+}
+
+/* check mark hide */
+[type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+
+/* check mark show */
+[type="checkbox"]:checked + label:after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Hide file input */
+input[type="file"] {
+    display: none;
 }
 
 /************************************************************************GENERIC*/
@@ -181,7 +245,7 @@ textarea {
 
 /* Special card text */
 .card.special * {
-	color: rgb(0, 163, 44);
+	color: #00a32c;
 }
 
 /* Special card header */
@@ -198,6 +262,11 @@ textarea {
 /* Special padding for fieldsets as cards */
 fieldset.card {
 	padding: 2em 4em 3em 4em;
+}
+
+/* Special padding for compact fieldsets as cards */
+fieldset.card.compact {
+	padding: 1em 2em 2em 2em;
 }
 
 /***** LIST BOXES *****/
@@ -237,7 +306,6 @@ fieldset.card {
 	top: 0;
 	z-index: 3;
 	position: sticky;
-	margin-bottom: 2em;
 	background-color: white;
 	border-bottom: 1px solid #dedede;
 }
@@ -280,6 +348,48 @@ fieldset.card {
 	padding: 0.1em 0em;
 	margin-bottom: -1px;
 	background-color: #ccf9d8;
+}
+
+/* Feature image at top of page */
+.feature {
+	width: 100%;
+	height: 15em;
+	position: relative;
+	padding: 1em 0em;
+	border-radius: 0.5em;
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+}
+
+/* Darken feature image */
+.feature:after {
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	content: '';
+	position: absolute;
+	border-radius: 0.45em;
+	background-color: rgba(0, 0, 0, 0.1);
+	transition: 0.3s ease;
+}
+
+/* Feature overlay cutout text */
+.feature .cutout-text {
+	top: 50%;
+	z-index: 1;
+	color: black;
+	font-size: 3em;
+	padding: 0.2em;
+	overflow: hidden;
+	font-weight: 700;
+	position: absolute;
+	border-radius: 0.15em;
+	mix-blend-mode: screen;
+	text-overflow: ellipsis;
+	background-color: white;
+	font-family: 'Montserrat Alternates', sans-serif;
 }
 
 /***************************************************************************PAGE*/
@@ -430,6 +540,15 @@ fieldset.card {
 }
 
 /***********************************************************************ARTICLES*/
+/* Article thumbnail */
+.article-thumbnail {
+	width: 100%;
+	height: 15em;
+	margin-bottom: 2em;
+	border-radius: 0.5em;
+	background-size: cover;
+	background-position: center;
+}
 
 /* Preview article on article list views */
 .article-preview {
@@ -618,6 +737,11 @@ fieldset.card {
 	.button.danger:hover {
 		background: rgba(242, 38, 38, 0.2);
 	}
+
+	/* hover checkbox */
+	label:hover:before {
+		border: 2px solid #333 !important;
+	}
 	
 	/* On floating button hover */
 	.floating-btn:hover {
@@ -654,6 +778,18 @@ fieldset.card {
 	/* Large desktop banner */
 	.navbar .links-container .banner {
 		font-size: 3em;
+	}
+
+	/* Further darken feature image */
+	.feature:hover:after {
+		background-color: rgba(0, 0, 0, 0.2);
+	}
+
+	/* Feature overlay cutout text */
+	.feature .cutout-text {
+		left: 5%;
+		max-width: 50%;
+		transform: translate(0%, -50%); 
 	}
 
 	/* Space between content and sidebar */
@@ -701,6 +837,12 @@ fieldset.card {
 	.sidebar {
 		display: none;
 	}
+
+	/* Feature overlay cutout text */
+	.feature .cutout-text {
+		left: 50%;
+		transform: translate(-50%, -50%); 
+	}
 }
 
 
@@ -723,7 +865,7 @@ fieldset.card {
 	
 	/* Reduce fieldset card padding */
 	fieldset.card {
-		padding: 1em 2em 1.5em 2em;
+		padding: 1em 1.5em 1.5em 1.5em;
 	}
 	
 	/* Move floating button closer to edge */
@@ -737,9 +879,19 @@ fieldset.card {
 		padding: 0em 1em 3em 1em;
 	}
 
-	/* Reduce navbar bottom margin */
-	.navbar {
-		margin-bottom: 1em;
+	/* Make feature smaller */
+	.feature {
+		height: 10em;
+	}
+
+	/* Make feature cutout text smaller */
+	.feature .cutout-text {
+		font-size: 2em;
+	}
+
+	/* Article thumbnail */
+	.article-thumbnail {
+		height: 8em;
 	}
 }
 
