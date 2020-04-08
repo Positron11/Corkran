@@ -289,6 +289,15 @@ fieldset.card.compact {
 	cursor: pointer;
 }
 
+/* Unselectable text */
+.unselectable {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
 /* Vertically space items in container */
 .vertically-space-items > *:not(:last-child) {
 	margin-bottom: 2em;
@@ -373,12 +382,11 @@ fieldset.card.compact {
 	content: '';
 	position: absolute;
 	border-radius: 0.45em;
-	background-color: rgba(0, 0, 0, 0.1);
 	transition: 0.3s ease;
 }
 
 /* Feature overlay cutout text */
-.feature .cutout-text {
+.feature .overlay {
 	top: 50%;
 	z-index: 1;
 	color: black;
@@ -392,6 +400,7 @@ fieldset.card.compact {
 	text-overflow: ellipsis;
 	background-color: white;
 	font-family: 'Montserrat Alternates', sans-serif;
+	transition: 0.5s ease;
 }
 
 /***************************************************************************PAGE*/
@@ -727,6 +736,50 @@ fieldset.card.compact {
 	.navbar .links-container a:not(.banner):hover {
 		color: #999;
 	}
+
+	/* Navbar links container */
+	.navbar .links-container {
+		padding: 1em 1em;
+		place-items: center;
+
+		grid-template:
+		"link1 link2 banner link3 link4"
+		/ auto auto auto auto auto;
+	}
+
+	/* Hide mobile navbar menu button and announcements button*/
+	.navbar .links-container .menu-btn, .navbar .links-container .announcements-btn {
+		display: none;
+	}
+
+	/* Large desktop banner */
+	.navbar .links-container .banner {
+		font-size: 3em;
+	}
+	
+	/* Further darken feature image */
+	.feature:hover:after {
+		background-color: rgba(0, 0, 0, 0.2);
+	}
+	
+	/* Invert feature overlay */
+	.feature .overlay:hover {
+		color: white;
+		background-color: transparent;
+		text-shadow: 3px 3px 3px rgba(0,0,0,0.2);
+	}
+
+	/* Darken feature image */
+	.feature:after {
+		background-color: rgba(0, 0, 0, 0.1);
+	}
+	
+	/* Feature overlay text */
+	.feature .overlay {
+		left: 5%;
+		max-width: 50%;
+		transform: translate(0%, -50%); 
+	}
 	
 	/* On regular button hover */
 	.button:hover {
@@ -734,12 +787,12 @@ fieldset.card.compact {
 		border-color: transparent;
 		background-color: rgba(4, 222, 63,0.2);
 	}
-
+	
 	/* On danger button hover */
 	.button.danger:hover {
 		background: rgba(242, 38, 38, 0.2);
 	}
-
+	
 	/* hover checkbox */
 	label:hover:before {
 		border: 2px solid #333 !important;
@@ -761,39 +814,7 @@ fieldset.card.compact {
 	.article.preview .fade {
 		bottom: 4em;
 	}
-
-	/* Navbar links container */
-	.navbar .links-container {
-		padding: 1em 1em;
-		place-items: center;
-
-		grid-template:
-		"link1 link2 banner link3 link4"
-		/ auto auto auto auto auto;
-	}
-
-	/* Hide mobile navbar menu button and announcements button*/
-	.navbar .links-container .menu-btn, .navbar .links-container .announcements-btn {
-		display: none;
-	}
-
-	/* Large desktop banner */
-	.navbar .links-container .banner {
-		font-size: 3em;
-	}
-
-	/* Further darken feature image */
-	.feature:hover:after {
-		background-color: rgba(0, 0, 0, 0.2);
-	}
-
-	/* Feature overlay cutout text */
-	.feature .cutout-text {
-		left: 5%;
-		max-width: 50%;
-		transform: translate(0%, -50%); 
-	}
-
+	
 	/* Space between content and sidebar */
 	.content {
 		margin-right: 2em;
@@ -840,11 +861,16 @@ fieldset.card.compact {
 		display: none;
 	}
 
-	/* Feature overlay cutout text */
-	.feature .cutout-text {
+	/* Feature overlay text */
+	.feature .overlay {
 		left: 50%;
 		max-height: 80%;
 		transform: translate(-50%, -50%); 
+	}
+
+	/* Darken feature image */
+	.feature:after {
+		background-color: rgba(0, 0, 0, 0.3);
 	}
 }
 
@@ -887,8 +913,8 @@ fieldset.card.compact {
 		height: 10em;
 	}
 
-	/* Make feature cutout text smaller */
-	.feature .cutout-text {
+	/* Make feature overlay text smaller */
+	.feature .overlay {
 		font-size: 2em;
 	}
 
