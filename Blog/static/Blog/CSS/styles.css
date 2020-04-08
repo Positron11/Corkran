@@ -439,6 +439,10 @@ fieldset.card.compact {
 	align-self: flex-start;
 }
 
+.sidebar .header .heading {
+	margin-top: 0em;
+}
+
 /* Sidebar labels */
 .sidebar label {
 	font-size: 0.8em;
@@ -470,7 +474,7 @@ fieldset.card.compact {
 	height: 10em;
 	position: absolute;
 	pointer-events: none;
-	background: linear-gradient(0deg, rgba(255,255,255,1) 5%, rgba(255,255,255,0.5004201509705445) 50%, rgba(255,255,255,0) 100%);
+	background: linear-gradient(0deg, rgba(255,255,255,1) 10%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0) 100%);
 }
 
 /*************************************************************************ALERTS*/
