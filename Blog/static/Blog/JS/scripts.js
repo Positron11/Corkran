@@ -1,3 +1,13 @@
+// Hide overlay when page finished loading
+jQuery(window).on("load", function () {
+	$(".loading-overlay").css("opacity", "0");
+	
+	// Remove overlay when hide animation finished
+	$(".loading-overlay").on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function (e) {
+		$(this).remove();
+	});
+});
+
 $(function () {
 	// initialize page
 	truncateAnnouncement();
@@ -22,7 +32,7 @@ $(function () {
 
 			// When shrink transition over, remove
 			$(".alert").on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function (e) {
-				$(this).hide();
+				$(this).remove();
 			})
 		})
 	}
