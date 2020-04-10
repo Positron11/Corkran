@@ -81,7 +81,7 @@
 	</div>
 	
 	<!--CONTENT-->
-	<div class="content text">{{ article.content|linebreaks }}</div>
+	<div class="content text">{{ article.content|urlizetrunc:40|linebreaks }}</div>
 </div>
 
 
@@ -121,7 +121,7 @@
 				</div>
 
 				<!-- COMMENT CONTENT -->
-				<div class="content">{{ node.content }}</div>
+				<div class="content">{{ node.content|urlizetrunc:30 }}</div>
 
 				<!-- COMMENT EDITING EDITOR -->
 				<div class="edit editor">

@@ -61,7 +61,7 @@
 	<a class="unformatted" href="{% url 'article-detail' article.id article.title %}"
 		title='Read "{{ article.title }}"'>
 		<!-- TRUNCATED CONTENT -->
-		<p class="clickable">{{ article.content|linebreaks|truncatechars:1000 }}</p>
+		<p class="clickable">{{ article.content|urlizetrunc:30|linebreaks|truncatechars:1000 }}</p>
 
 		<!-- FADE TRUNCATE -->
 		{% if article.content|length > 1000 %}

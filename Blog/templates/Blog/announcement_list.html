@@ -14,7 +14,7 @@
 	</div>
 
 	<!-- CONTENT -->
-	<p>{{ announcement.content|linebreaks }}</p>
+	<p>{{ announcement.content|urlizetrunc:40|linebreaks }}</p>
 </div>
 {% empty %}
 <!-- HEADER -->

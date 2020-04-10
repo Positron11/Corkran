@@ -14,7 +14,7 @@
 	<div class="text">
 		{% if author.profile.bio %}
 		<i class="fas fa-quote-left" title='"'></i>
-		{{ author.profile.bio }}&nbsp;
+		{{ author.profile.bio|urlizetrunc:40 }}&nbsp;
 		<i class="fas fa-quote-right" title='"'></i>
 		{% else %}
 		They're either an enigma, or too lazy to fill in their bio.
