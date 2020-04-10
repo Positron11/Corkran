@@ -1,21 +1,22 @@
 // Hide overlay when page finished loading
-jQuery(window).on("load", function () {
+jQuery(window).on("load", function() {
 	$(".loading-overlay").css("opacity", "0");
-	
+
 	// Remove overlay when hide animation finished
-	$(".loading-overlay").on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function (e) {
+	$(".loading-overlay").on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function() {
 		$(this).remove();
 	});
 });
 
-$(function () {
-	// initialize page
+
+$(function() {
+	// Initialize page
 	truncateAnnouncement();
 	calculateProgressBar();
-	
-	// initialize autosize
+
+	// Initialize autosize
 	autosize($('textarea'));
-	
+
 
 	// fade out and remove alert
 	if ($(".alert").length) {
@@ -23,7 +24,7 @@ $(function () {
 		$(".alert").css("opacity", "0");
 
 		// When fade transition over
-		$(".alert").on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function (e) {
+		$(".alert").on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function() {
 			// Shrink vertically
 			$(this).css("transition", "0.3s ease-out");
 			$(this).css("height", "0px");
@@ -31,66 +32,66 @@ $(function () {
 			$(this).css("padding", "0px");
 
 			// When shrink transition over, remove
-			$(".alert").on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function (e) {
+			$(".alert").on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function() {
 				$(this).remove();
-			})
-		})
+			});
+		});
 	}
 
 
-	// toggle mobile navbar links
-	$(document).on('click', '.menu-btn', function (e) {
+	// Toggle mobile navbar links
+	$(document).on('click', '.menu-btn', function(e) {
 		e.preventDefault();
 		$(".navbar").toggleClass("mobile-show");
 	});
 
 
-	// toggle comment reply box
-	$(document).on('click', '.toggle-btn.reply', function (e) {
+	// Toggle comment reply box
+	$(document).on('click', '.toggle-btn.reply', function(e) {
 		e.preventDefault();
 		toggleCommentEditor("reply", $(this));
 	});
 
-	// toggle comment edit box
-	$(document).on('click', '.toggle-btn.edit', function (e) {
+	// Toggle comment edit box
+	$(document).on('click', '.toggle-btn.edit', function(e) {
 		e.preventDefault();
 		toggleCommentEditor("edit", $(this));
 	});
 
 
-	// on scroll...
-	$(window).on("scroll", function () {
+	// On scroll...
+	$(window).on("scroll", function() {
 		calculateProgressBar();
 	});
 
-	// on resize...
-	$(window).on("resize", function () {
+	// On resize...
+	$(window).on("resize", function() {
 		truncateAnnouncement();
 	});
 
 
-	// prevent empty textarea
-	$("textarea").each(function () {
-		$(this).on("keydown", function (e) {
+	// Prevent empty textarea
+	$("textarea").each(function() {
+		$(this).on("keydown", function(e) {
 			var c = $(this).val().length;
 
 			// prevent directly typing leading spaces or newlines
-			if (c == 0)
+			if (c === 0)
 				return (e.which !== "13" && e.which !== 32);
 
 			// disable submit button if empty
-			$(this).parent().find("button").prop("disabled", ($.trim($(this).val()) == ""));
+			$(this).parent().find("button").prop("disabled", ($.trim($(this).val()) === ""));
 		});
 	});
 
 	// Automatically resize textarea
-	$("textarea").on('input', function () {
+	$("textarea").on('input', function() {
 		autosize.update($("textarea"));
 	});
 
 
 	// Show tag suggestions
-	$("#id_tags").on('input', function () {
+	$("#id_tags").on('input', function() {
 		// replace all other separators with spaces
 		$("#id_tags").val($("#id_tags").val().replace(/[\s,]+/g, " "));
 
@@ -106,7 +107,7 @@ $(function () {
 			$("#suggested_tags").show();
 
 			// show matching tags
-			$("#suggested_tags .list-box .tag").each(function () {
+			$("#suggested_tags .list-box .tag").each(function() {
 				// get tag text as lowercase
 				var text = $(this).text().toLowerCase();
 
@@ -130,8 +131,8 @@ $(function () {
 		}
 	});
 
-	// put clicked tag in textbox
-	$("#suggested_tags .list-box .tag").on("click", function () {
+	// Put clicked tag in textbox
+	$("#suggested_tags .list-box .tag").on("click", function() {
 		// get all words in input
 		var words = $("#id_tags").val().split(/[\s,]+/);
 
@@ -145,7 +146,7 @@ $(function () {
 		$("#id_tags").val(words.join(" ") + " ");
 
 		// focus and move to end of input
-		$("#id_tags").each(function () {
+		$("#id_tags").each(function() {
 			$(this).focus();
 			if (this.setSelectionRange) {
 				var len = $(this).val().length * 2;
@@ -161,18 +162,17 @@ $(function () {
 
 
 	// Show uploaded file in file input label
-	$('input[type="file"]'). change(function(e){
-		var fileName = e. target. files[0]. name;
+	$('input[type="file"]').change(function(e) {
+		var fileName = e.target.files[0].name;
 		var label = $("label[id='" + $(this).attr('id') + "_label']");
 		label.children("span").text(fileName);
 	});
 
 	// Disable thumbnail upload button if remove thumbnail checked
-	$('#thumbnail-clear_id').click(function(){
-		if ($(this).prop("checked") == true) {
+	$('#thumbnail-clear_id').click(function() {
+		if ($(this).prop("checked") === true) {
 			$("#thumbnail_button").addClass("disabled");
-		}
-		else {
+		} else {
 			$("#thumbnail_button").removeClass("disabled");
 		}
 	});
@@ -183,16 +183,18 @@ $(function () {
 function calculateProgressBar() {
 	// if on article detail page...
 	if ($(".main-article").length) {
+		var y_offset, height, completed;
 		var bottom_height = $(document).height() - $(".main-article .content").outerHeight() - 127;
+
 		// if the article is substantially larger than page
 		if (bottom_height > $(window).height()) {
-			var height = $(".main-article .content").outerHeight();
-			var y_offset = -($(".main-article .content").offset().top - $(window).scrollTop() - 127);
-			var completed = y_offset / height * 100;
+			height = $(".main-article .content").outerHeight();
+			y_offset = -($(".main-article .content").offset().top - $(window).scrollTop() - 127);
+			completed = y_offset / height * 100;
 		} else {
-			var y_offset = window.pageYOffset;
-			var height = $(document).height() - $(window).height();
-			var completed = y_offset / height * 100;
+			y_offset = window.pageYOffset;
+			height = $(document).height() - $(window).height();
+			completed = y_offset / height * 100;
 		}
 
 		// update progress bar width
@@ -242,16 +244,18 @@ function truncateAnnouncement() {
 
 // TOGGLE COMMENT EDITORS
 function toggleCommentEditor(editor, button) {
+	var type, text, other, other_text;
+	
 	if (editor == "reply") {
-		var type = ".reply";
-		var text = "Reply";
-		var other = ".edit";
-		var other_text = "Edit";
+		type = ".reply";
+		text = "Reply";
+		other = ".edit";
+		other_text = "Edit";
 	} else {
-		var type = ".edit";
-		var text = "Edit";
-		var other = ".reply";
-		var other_text = "Reply"
+		type = ".edit";
+		text = "Edit";
+		other = ".reply";
+		other_text = "Reply";
 	}
 
 	// close all other editors of same type

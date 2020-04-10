@@ -1,55 +1,54 @@
-/* NOTE: Try to minimize grid usage for now, to normalize UI cross-platform */
+/* GLOBAL */
 
-/* Main body */
 body {
-	margin: 0em;
-	padding: 0em;
+	margin: 0;
+	padding: 0;
 	font-size: 20px;
-	background-color: white;
+	background: white;
 	font-family: 'Cormorant Garamond', serif;
+	transition: 0.3s ease;
 }
 
-/* Links */
+
+/* LINKS */
+
 a {
 	outline: none;
 	color: #729fcf;
 }
 
-/* Unformatted link */
 a.unformatted {
 	color: inherit;
 	text-decoration: none;
 }
 
-/* Text blocks */
+
+/* PARAGRAPHS & TEXT */
+
 p, .text {
 	line-height: 1.7em;
 	text-align: justify;
 }
 
-/**************************************************************************FORMS*/
 
-/* All top-level form elements */
-form > * {
+/* FORMS & FORM ELEMENTS */
+
+form>* {
 	display: block;
 }
 
-/* All but last top level form elements excluding labels */
-form > *:not(:last-child):not(label) {
+form>*:not(:last-child):not(label) {
 	margin-bottom: 2em;
 }
 
-/* Form label spacing from associated element */
-form > label {
+form>label {
 	margin-bottom: 0.5em;
 }
 
-/* Reset form list left margin */
 form ul {
-	padding: 0em;
+	padding: 0;
 }
 
-/* Errorlists or error items */
 form ul.errorlist li {
 	font-size: 0.7em;
 	font-weight: 600;
@@ -57,11 +56,10 @@ form ul.errorlist li {
 	padding: 0.8em 1em;
 	text-align: center;
 	border-radius: 1em;
-	background: rgba(242, 38, 38, 0.2);
+	background: rgb(242, 38, 38, 0.2);
 	font-family: 'Montserrat Alternates', sans-serif;
 }
 
-/* Labels */
 label {
 	color: #333;
 	font-size: 0.7em;
@@ -69,18 +67,16 @@ label {
 	font-family: 'Montserrat Alternates', sans-serif;
 }
 
-/* General form item stylings */
 .button, input, textarea {
 	padding: 1em;
 	color: #333;
 	outline: none;
 	font-size: 0.7em;
 	border-radius: 1em;
-	border: 1px solid #dedede;
+	border: #dedede solid 1px;
 	font-family: 'Montserrat Alternates', sans-serif;
 }
 
-/* Textareas */
 textarea {
 	width: 100%;
 	height: 100%;
@@ -89,9 +85,8 @@ textarea {
 	box-sizing: border-box;
 }
 
-/* Buttons */
 .button {
-	background-color: white;
+	background: white;
 	display: inline-block;
 	transition: 0.2s ease;
 	text-decoration: none;
@@ -99,102 +94,85 @@ textarea {
 	cursor: pointer;
 }
 
-/* Small buttons */
 .button.small {
 	border: none;
 	font-size: 0.6em;
 	padding: 0.2em 0.5em;
 }
 
-/* Danger buttons */
 .button.danger {
-	color: #f32929 !important; 
+	color: #f32929 !important;
 	border-color: #f32929;
 }
 
-/* Disabled buttons */
 .button[disabled], .button.disabled {
-	color: #999 !important; 
+	color: #999 !important;
 	border-color: #dedede !important;
-	background-color: white !important;
+	background: white !important;
 	pointer-events: none;
 	cursor: default;
 }
 
-/* Submit button container */
 .submit-btn-container {
 	margin-top: 1em;
 	text-align: right;
 }
 
-/* Hide actual checkbox */
-[type="checkbox"] {
+input[type="checkbox"] {
 	opacity: 0;
 }
 
-/* Base for checkbox styling */
-[type="checkbox"]:not(:checked),
-[type="checkbox"]:checked {
+input[type="checkbox"]:not(:checked), input[type="checkbox"]:checked {
 	position: absolute;
 }
 
-/* Base for label styling */
-[type="checkbox"]:not(:checked) + label,
-[type="checkbox"]:checked + label {
+input[type="checkbox"]:not(:checked)+label, input[type="checkbox"]:checked+label {
 	cursor: pointer;
 	position: relative;
-	padding: 0.1em 0em 0.1em 2em;
+	padding: 0.1em 0 0.1em 2em;
 }
 
-/* Pseudo checkbox */
-[type="checkbox"]:not(:checked) + label:before,
-[type="checkbox"]:checked + label:before {
+input[type="checkbox"]:not(:checked)+label:before, input[type="checkbox"]:checked+label:before {
 	top: 0;
-	left: 0; 
+	left: 0;
 	content: '';
 	position: absolute;
 	background: white;
 	border-radius: 0.5em;
 	transition: 0.2s ease;
-	border: 2px solid #ddd;
-	width: 1.25em; height: 1.2em;
+	border: #ddd solid 2px;
+	width: 1.25em;
+	height: 1.2em;
 }
 
-/* Pseudo checkbox check mark */
-[type="checkbox"]:not(:checked) + label:after,
-[type="checkbox"]:checked + label:after {
-	top: 0em; 
+input[type="checkbox"]:not(:checked)+label:after, input[type="checkbox"]:checked+label:after {
+	top: 0;
 	left: 0.22em;
 	color: #333;
 	font-size: 1.3em;
 	position: absolute;
-	transition: all .2s;
+	transition: all 0.2s;
 	content: '\2713\0020';
 	font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', Arial;
 }
 
-/* check mark hide */
-[type="checkbox"]:not(:checked) + label:after {
-  opacity: 0;
-  transform: scale(0);
+input[type="checkbox"]:not(:checked)+label:after {
+	opacity: 0;
+	transform: scale(0);
 }
 
-/* check mark show */
-[type="checkbox"]:checked + label:after {
-  opacity: 1;
-  transform: scale(1);
+input[type="checkbox"]:checked+label:after {
+	opacity: 1;
+	transform: scale(1);
 }
 
-/* Hide file input */
 input[type="file"] {
-    display: none;
+	display: none;
 }
 
-/************************************************************************GENERIC*/
 
-/***** HEADERS AND HEADINGS *****/
+/* HEADER & HEADER ELEMENTS */
 
-/* Header block */
 .header {
 	max-width: 100%;
 	overflow-x: auto;
@@ -204,15 +182,13 @@ input[type="file"] {
 	border-bottom: 1px solid #dedede;
 }
 
-/* Heading text */
 .heading {
 	color: #333;
 	font-size: 3em;
 	font-weight: 700;
-	margin: 0.1em 0em;
+	margin: 0.1em 0;
 }
 
-/* Subheading text */
 .subheading {
 	font-family: 'Montserrat Alternates', sans-serif;
 	letter-spacing: 0.05em;
@@ -220,7 +196,8 @@ input[type="file"] {
 	color: #999;
 }
 
-/***** DUAL OPTION BOXES *****/
+
+/* GENERIC CONTAINERS */
 
 .dual-option-container {
 	display: flex;
@@ -228,87 +205,70 @@ input[type="file"] {
 	justify-content: space-between;
 }
 
-/***** CARDS *****/
-
-/* Normal card */
-.card {
-	border: 1px solid #dedede;
-	border-radius: 0.5em;
-	padding: 4em;
-}
-
-/* Special card */
-.card.special {
-	border: none;
-	background-color: rgba(4, 222, 63,0.2);
-}
-
-/* Special card text */
-.card.special * {
-	color: #00a32c;
-}
-
-/* Special card header */
-.card.special .header {
-	text-align: left;
-	border-color: rgba(0, 163, 44, 0.5);
-}
-
-/* Compact card */
-.card.compact {
-	padding: 2em;
-}
-
-/* Special padding for fieldsets as cards */
-fieldset.card {
-	padding: 2em 4em 3em 4em;
-}
-
-/* Special padding for compact fieldsets as cards */
-fieldset.card.compact {
-	padding: 1em 2em 2em 2em;
-}
-
-/***** LIST BOXES *****/
-
-/* List box container */
 .list-box {
 	display: flex;
 	flex-flow: row wrap;
 }
 
-/* List box items spacing */
-.list-box > * {
-	margin: 0em 0.5em 0.5em 0em;
+.list-box>* {
+	margin: 0 0.5em 0.5em 0;
 }
 
-/***** GENERIC PROPERTIES *****/
+.vertically-space-items>*:not(:last-child) {
+	margin-bottom: 2em;
+}
 
-/* Clickable elements */
+.vertically-space-items>*:not(:last-child).closer-below {
+	margin-bottom: 1em;
+}
+
+
+/* CARDS */
+
+.card {
+	border: #dedede solid 1px;
+	border-radius: 0.5em;
+	padding: 4em;
+}
+
+.card.special {
+	border: none;
+	background: rgb(4, 222, 63, 0.2);
+}
+
+.card.special * {
+	color: #00a32c;
+}
+
+.card.special .header {
+	text-align: left;
+	border-color: rgb(0, 163, 44, 0.5);
+}
+
+.card.compact {
+	padding: 2em;
+}
+
+fieldset.card {
+	padding: 2em 4em 3em 4em;
+}
+
+fieldset.card.compact {
+	padding: 1em 2em 2em 2em;
+}
+
+
+/* GENERIC PROPERTIES */
+
 .clickable {
 	cursor: pointer;
 }
 
-/* Unselectable text */
 .unselectable {
-    -moz-user-select: -moz-none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -o-user-select: none;
-    user-select: none;
+	user-select: none;
 }
 
-/* Vertically space items in container */
-.vertically-space-items > *:not(:last-child) {
-	margin-bottom: 2em;
-}
-
-/* Position individual items more compactly */
-.vertically-space-items > *:not(:last-child).closer-below {
-	margin-bottom: 1em;
-}
-
-/*************************************************************************LOADER*/
+ /* PAGE LOADING OVERLAY */
 
 .loading-overlay {
 	top: 0;
@@ -316,12 +276,13 @@ fieldset.card.compact {
 	right: 0;
 	bottom: 0;
 	z-index: 4;
+	opacity: 0;
 	display: flex;
 	position: fixed;
+	background: white;
 	align-items: center;
 	justify-content: center;
-	background-color: white;
-	transition: 1s ease-out;
+	transition: 0.5s ease;
 }
 
 svg.tea {
@@ -346,60 +307,9 @@ svg.tea #steamR {
 	animation: steamSmall 2s infinite;
 }
 
-@-moz-keyframes swing {
-	50% {
-		transform: rotate(-3deg);
-	}
-}
-
-@-webkit-keyframes swing {
-	50% {
-		transform: rotate(-3deg);
-	}
-}
-
-@-o-keyframes swing {
-	50% {
-		transform: rotate(-3deg);
-	}
-}
-
 @keyframes swing {
 	50% {
 		transform: rotate(-3deg);
-	}
-}
-
-@-moz-keyframes steamLarge {
-	0% {
-		stroke-dashoffset: 13;
-		opacity: 0.6;
-	}
-	100% {
-		stroke-dashoffset: 39;
-		opacity: 0;
-	}
-}
-
-@-webkit-keyframes steamLarge {
-	0% {
-		stroke-dashoffset: 13;
-		opacity: 0.6;
-	}
-	100% {
-		stroke-dashoffset: 39;
-		opacity: 0;
-	}
-}
-
-@-o-keyframes steamLarge {
-	0% {
-		stroke-dashoffset: 13;
-		opacity: 0.6;
-	}
-	100% {
-		stroke-dashoffset: 39;
-		opacity: 0;
 	}
 }
 
@@ -410,51 +320,6 @@ svg.tea #steamR {
 	}
 	100% {
 		stroke-dashoffset: 39;
-		opacity: 0;
-	}
-}
-
-@-moz-keyframes steamSmall {
-	10% {
-		stroke-dashoffset: 9;
-		opacity: 0.6;
-	}
-	80% {
-		stroke-dashoffset: 27;
-		opacity: 0;
-	}
-	100% {
-		stroke-dashoffset: 27;
-		opacity: 0;
-	}
-}
-
-@-webkit-keyframes steamSmall {
-	10% {
-		stroke-dashoffset: 9;
-		opacity: 0.6;
-	}
-	80% {
-		stroke-dashoffset: 27;
-		opacity: 0;
-	}
-	100% {
-		stroke-dashoffset: 27;
-		opacity: 0;
-	}
-}
-
-@-o-keyframes steamSmall {
-	10% {
-		stroke-dashoffset: 9;
-		opacity: 0.6;
-	}
-	80% {
-		stroke-dashoffset: 27;
-		opacity: 0;
-	}
-	100% {
-		stroke-dashoffset: 27;
 		opacity: 0;
 	}
 }
@@ -474,41 +339,46 @@ svg.tea #steamR {
 	}
 }
 
-/*************************************************************************NAVBAR*/
 
-/* Main navbar element */
+/* MAIN CONTAINER CONTAINING NAVBAR, PAGE ETC. */
+
+.main {
+	margin: auto;
+	max-width: 1800px;
+	padding: 0 4em 2em 4em;
+	transition: 0.3s ease;
+}
+
+
+/* NAVBAR */
+
 .navbar {
 	top: 0;
 	z-index: 3;
 	position: sticky;
-	background-color: white;
+	background: white;
 	border-bottom: 1px solid #dedede;
 }
 
-/* Navbar links container */
 .navbar .links-container {
 	display: grid;
 	transition: 0.2s ease;
 }
 
-/* Navbar website banner */
 .navbar .links-container .banner {
 	color: #333;
 	font-weight: 700;
 	grid-area: banner;
 }
 
-/* Navbar links container */
 .navbar .links-container .link {
 	color: #333;
 	font-size: 0.7em;
-	font-weight: 400;
 	letter-spacing: 0.2em;
 	font-family: 'Montserrat Alternates', sans-serif;
 	transition: 0.3s ease;
 }
 
-/* Mobile navbar menu button */
 .navbar .links-container .menu-btn {
 	grid-area: menu;
 	font-size: 1.5em;
@@ -516,30 +386,28 @@ svg.tea #steamR {
 	margin-bottom: -0.2em;
 }
 
-/* Navbar article reading progress bar */
 .navbar .progress-bar-container .progress-bar {
 	width: 0%;
 	max-width: 100%;
-	padding: 0.1em 0em;
+	padding: 0.1em 0;
 	margin-bottom: -1px;
-	background-color: #ccf9d8;
+	background: #ccf9d8;
 }
 
-/************************************************************************FEATURE*/
 
-/* Feature image at top of page */
+/* FEATURE IMAGE */
+
 .feature {
 	width: 100%;
 	height: 15em;
 	overflow: hidden;
-	padding: 1em 0em;
+	padding: 1em 0;
 	position: relative;
 	border-radius: 0.5em;
 	background-size: cover;
 	background-position: center;
 }
 
-/* Darken feature image */
 .feature:after {
 	top: 0;
 	left: 0;
@@ -551,7 +419,6 @@ svg.tea #steamR {
 	transition: 0.3s ease;
 }
 
-/* Feature overlay cutout text */
 .feature .overlay {
 	top: 50%;
 	z-index: 1;
@@ -564,74 +431,63 @@ svg.tea #steamR {
 	border-radius: 0.15em;
 	mix-blend-mode: screen;
 	text-overflow: ellipsis;
-	background-color: white;
+	background: white;
 	font-family: 'Montserrat Alternates', sans-serif;
 	transition: 0.5s ease;
 }
 
-/***************************************************************************PAGE*/
 
-/* Main container */
-.main {
-	margin: auto;
-	max-width: 1800px;
-	padding: 0em 4em 2em 4em;
-	transition: 0.3s ease;
-}
+/* MAIN PAGE CONTAINING CONTENT AND SIDEBAR */
 
-/* Main page */
 .page {
 	display: flex;
 }
 
-/* Content container */
+
+/* CONTENT */
+
 .content {
 	order: 1;
 	flex: 3 1 0;
 	min-width: 0;
 }
 
-/************************************************************************SIDEBAR*/
 
-/* Sidebar element */
+/* SIDEBAR */
+
 .sidebar {
 	order: 2;
 	top: 8em;
 	z-index: 1;
 	flex: 1 1 0;
 	min-width: 0;
-	padding: 0em 2em;
+	padding: 0 2em;
 	position: sticky;
 	align-self: flex-start;
 }
 
 .sidebar .header .heading {
-	margin-top: 0em;
+	margin-top: 0;
 }
 
-/* Sidebar labels */
 .sidebar label {
 	font-size: 0.8em;
 }
 
-/* Margin between latest post block and announcement block in the sidebar */
 .sidebar .latest-post {
 	margin-bottom: 0.5em;
 }
 
-/* Prevent overflow in case of over-long article heading */
 .sidebar .latest-post {
 	max-width: 100%;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
 
-/* Hide announcement overflow */
 .sidebar .announcement {
 	overflow: hidden;
 }
 
-/* Fade bottom of announcement content */
 .sidebar .announcement:after {
 	left: 0;
 	bottom: 0;
@@ -640,12 +496,12 @@ svg.tea #steamR {
 	height: 10em;
 	position: absolute;
 	pointer-events: none;
-	background: linear-gradient(0deg, rgba(255,255,255,1) 10%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0) 100%);
+	background: linear-gradient(0deg, rgb(255, 255, 255, 1) 10%, rgb(255, 255, 255, 0.7) 50%, rgb(255, 255, 255, 0) 100%);
 }
 
-/*************************************************************************ALERTS*/
 
-/* Alert */
+/* ALERTS */
+
 .alert {
 	opacity: 1;
 	font-size: 0.7em;
@@ -657,71 +513,66 @@ svg.tea #steamR {
 	transition: 5s ease-in;
 }
 
-/* Success alert */
 .alert.success {
 	color: rgb(0, 163, 44);
-	background-color: rgba(4, 222, 63,0.2);
+	background: rgb(4, 222, 63, 0.2);
 }
 
-/* Error alert */
 .alert.error {
 	color: #f32929;
-	background: rgba(242, 38, 38, 0.2);
+	background: rgb(242, 38, 38, 0.2);
 }
 
-/*************************************************************************SEARCH*/
 
-/* Search bar container */
+/* SEARCH */
+
 .search-bar {
 	display: flex;
 }
 
-/* Search bar input */
 .search-bar .search-box {
 	flex-grow: 1;
 	margin-right: 1.5em;
 }
 
-/* Search count information */
-.search-info { 
+.search-info {
 	color: #888;
 	text-align: right;
 	font-size: 0.95em;
 }
 
-/******************************************************************MEDIA BUTTONS*/
 
-/* Article share buttons */
+/* SOCIAL MEDIA SHARE BUTTONS */
+
 .media-btn-container .button {
 	width: 1em;
 	margin-right: 1em;
 	text-align: center;
 }
 
-/*************************************************************ARTICLE NAVIGATION*/
 
-/* Post navigation buttons container */
+/* ARTICLE NAVIGATION */
+
 .article-navigation-btn-container {
 	display: flex;
 	grid-auto-flow: column;
 	justify-content: space-between;
 }
 
-/* Post navigation buttons */
 .article-navigation-btn-container a {
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
 }
 
-/* Next post button */
 .article-navigation-btn-container a.next-post {
 	direction: rtl;
 	margin-left: 1em;
 }
 
-/***********************************************************************ARTICLES*/
-/* Article thumbnail */
+
+/* ARTICLE THUMBNAILS */
+
 .article-thumbnail {
 	width: 100%;
 	height: 15em;
@@ -731,12 +582,13 @@ svg.tea #steamR {
 	background-position: center;
 }
 
-/* Preview article on article list views */
+
+/* ARTICLE PREVIEWS IN ARTICLE LISTS */
+
 .article-preview {
 	position: relative;
 }
 
-/* Fade bottom of article to truncate content */
 .article-preview .fade {
 	left: 0;
 	bottom: 2em;
@@ -745,23 +597,22 @@ svg.tea #steamR {
 	height: 10em;
 	position: absolute;
 	pointer-events: none;
-	background: linear-gradient(0deg, rgba(255,255,255,1) 30%, rgba(255,255,255,0.50) 80%, rgba(255,255,255,0) 100%);
+	background: linear-gradient(0deg, rgb(255, 255, 255, 1) 30%, rgb(255, 255, 255, 0.50) 80%, rgb(255, 255, 255, 0) 100%);
 }
 
-/***************************************************************************TAGS*/
 
-/* Tags */
+/* TAGS */
+
 .tag {
 	color: #00a32c;
 	position: relative;
 	padding: 0.3em 0.6em;
 	border-radius: 0.5em;
 	text-decoration: none;
-	background-color: rgba(4, 222, 63,0.2);
+	background: rgb(4, 222, 63, 0.2);
 	font-family: 'Cormorant Garamond', serif;
 }
 
-/* Punched-out hole on top right */
 .tag::after {
 	top: 5px;
 	right: 5px;
@@ -769,104 +620,91 @@ svg.tea #steamR {
 	padding: 0.15em;
 	border-radius: 50%;
 	position: absolute;
-	background-color: white;
+	background: white;
 }
 
-/***********************************************************************COMMENTS*/
 
-/* Make comments container general font size smaller */
+/* COMMENTS */
+
 .comments {
 	font-size: 0.95em;
 }
 
-/* Comment tree */
 .comments ul {
 	list-style-type: none;
 	border-left: 2px solid #eee;
 }
 
-/* Outer comment tree */
-.comments > ul {
-	padding: 0em;
+.comments>ul {
+	padding: 0;
 	border-left: none;
 }
 
-/* Individual comment margins */
 .comments ul li {
-	margin: 1em 0em;
+	margin: 1em 0;
 }
 
-/* Top-level items spacing in comment */
-.comments .comment > * {
+.comments .comment>* {
 	margin-bottom: 0.3em;
 }
 
-/* Comment date */
 .comments .comment .info-container .date {
 	font-family: 'Montserrat Alternates', sans-serif;
 	font-size: 0.65em;
 	color: #999;
 }
 
-/* Comment edit buttons horizontal spacing */
 .comments .comment .comment-btn-container .button {
 	margin-right: 0.5em;
 }
 
-/* Hide comment editor box by default */
 .comments .comment .editor {
 	display: none;
 }
 
-/* Comment editor box button */
 .comments .comment .editor button {
 	float: right;
 	margin-top: 0.9em;
 }
 
-/* Normalize reply submit button height */
 .comments .comment .editor.reply button {
 	margin-top: -3em;
 }
 
-/* Make space for reply button */
 .comments .comment .editor.reply textarea {
 	margin-bottom: 3em;
 }
 
-/* New comment form spacing from rest of comments*/
 .comments .new-comment-form {
 	margin-top: 3em;
 }
 
-/**********************************************************************PAGINATOR*/
 
-/* Paginator */
+/* PAGINATOR */
+
 .paginator {
 	color: #333;
 	text-align: center;
 	font-family: 'Montserrat Alternates', sans-serif;
 }
 
-/* Paginator button margins */
 .paginator * {
-	margin: 0em 0.5em;
+	margin: 0 0.5em;
 }
 
-/* Current page button */
 .paginator .current {
 	width: 1.5em;
 	height: 1.5em;
-	margin: 0em 0.2em;
+	margin: 0 0.2em;
 	line-height: 1.5em;
 	text-align: center;
 	border-radius: 50%;
-	background-color: rgba(4, 222, 63,0.3);
+	background: rgb(4, 222, 63, 0.3);
 }
 
-/****************************************************************FLOATING BUTTON*/
 
-/* Floating button in bottom right */
+/* FLOATING BUTTON IN BOTTOM RIGHT */
+
 .floating-btn {
 	z-index: 2;
 	width: 2em;
@@ -880,241 +718,166 @@ svg.tea #steamR {
 	font-size: 1.6em;
 	text-align: center;
 	border-radius: 50%;
-	background-color: rgba(4, 222, 63,0.3);
+	background: rgb(4, 222, 63, 0.3);
 	transition: 0.3s ease;
 }
 
-/* Set scroll top button hidden by default */
 .floating-btn .scroll-top-btn {
 	opacity: 0;
 	transform: scale(0);
 }
 
-/****************************************************************************IDS*/
 
-/* Article form tags suggestion box */
+/* TAGS SUGGESTION BOX IN ARTICLE FORMS */
+
 #suggested_tags {
 	display: none;
 	margin-top: 1em;
 }
 
-/******************************************************************MEDIA QUERIES*/
 
-/* ONLY LARGE SCREENS */
+/* LARGE SCREENS ONLY */
+
 @media only screen and (min-width: 1201px) {
-	/* On navbar link hover */
 	.navbar .links-container a:not(.banner):hover {
 		color: #999;
 	}
-
-	/* Navbar links container */
 	.navbar .links-container {
 		padding: 1em 1em;
 		place-items: center;
-
-		grid-template:
-		"link1 link2 banner link3 link4"
-		/ auto auto auto auto auto;
+		grid-template: "link1 link2 banner link3 link4" / auto auto auto auto auto;
 	}
-
-	/* Hide mobile navbar menu button and announcements button*/
 	.navbar .links-container .menu-btn, .navbar .links-container .announcements-btn {
 		display: none;
 	}
-
-	/* Large desktop banner */
 	.navbar .links-container .banner {
 		font-size: 3em;
 	}
-	
-	/* Further darken feature image */
 	.feature:hover:after {
-		background-color: rgba(0, 0, 0, 0.2);
+		background: rgb(0, 0, 0, 0.2);
 	}
-	
-	/* Invert feature overlay */
 	.feature .overlay:hover {
 		color: white;
-		background-color: transparent;
-		text-shadow: 3px 3px 3px rgba(0,0,0,0.2);
+		background: transparent;
+		text-shadow: 3px 3px 3px rgb(0, 0, 0, 0.2);
 	}
-
-	/* Darken feature image */
 	.feature:after {
-		background-color: rgba(0, 0, 0, 0.1);
+		background: rgb(0, 0, 0, 0.1);
 	}
-	
-	/* Feature overlay text */
 	.feature .overlay {
 		left: 5%;
 		max-width: 50%;
-		transform: translate(0%, -50%); 
+		transform: translate(0%, -50%);
 	}
-	
-	/* On regular button hover */
 	.button:hover {
 		color: #00a32c;
 		border-color: transparent;
-		background-color: rgba(4, 222, 63,0.2);
+		background: rgb(4, 222, 63, 0.2);
 	}
-	
-	/* On danger button hover */
 	.button.danger:hover {
-		background: rgba(242, 38, 38, 0.2);
+		background: rgb(242, 38, 38, 0.2);
 	}
-	
-	/* hover checkbox */
 	label:hover:before {
-		border: 2px solid #333 !important;
+		border: #333 solid 2px !important;
 	}
-	
-	/* On floating button hover */
 	.floating-btn:hover {
-		text-shadow: 3px 3px 3px rgba(0,0,0,0.3);
-		box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.2);
+		text-shadow: 3px 3px 3px rgb(0, 0, 0, 0.3);
+		box-shadow: 0 0 5px 3px rgb(0, 0, 0, 0.2);
 	}
-	
-	/* On floating button click */
 	.floating-btn:active {
-		text-shadow: 0px 0px 0px rgba(0,0,0,0.3);
-		box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.2);
+		text-shadow: 0 0 0 rgb(0, 0, 0, 0.3);
+		box-shadow: 0 0 0 0 rgb(0, 0, 0, 0.2);
 	}
-
-	/* Adjust fade truncate bottom height */
 	.article.preview .fade {
 		bottom: 4em;
 	}
-	
-	/* Space between content and sidebar */
 	.content {
 		margin-right: 2em;
 	}
 }
 
 
-/* LANDCAPE TABLETS AND BELOW */
-@media only screen and (max-width: 1200px) {	
-	/* Rearrange navbar by vertically stacking links */
+/* LANDSCAPE TABLETS */
+
+@media only screen and (max-width: 1200px) {
 	.navbar .links-container {
-		padding: 0.5em 0em;
+		padding: 0.5em 0;
 		place-items: center start;
-		
-		grid-template:
-		"banner menu"
-		"link1 link1"
-		"link2 link2"
-		"link3 link3"
-		"link4 link4"
-		/ auto;
+		grid-template: "banner menu" "link1 link1" "link2 link2" "link3 link3" "link4 link4" / auto;
 	}
-	
-	/* Hide navbar links container by default, span two cols and give vertical spacing*/
 	.navbar .links-container .link {
 		display: none;
 		grid-column: 1 / span 2;
-		margin: 1em 0em 0.5em 0.5em;
+		margin: 1em 0 0.5em 0.5em;
 	}
-	
-	/* Move banner to beginning and make smaller */
 	.navbar .links-container .banner {
 		justify-self: start;
 		font-size: 2.5em;
 	}
-	
-	/* Show mobile menu button */
 	.navbar .links-container .menu-btn, .navbar.mobile-show .links-container .link {
 		display: block;
 	}
-	
-	/* Hide sidebar */
 	.sidebar {
 		display: none;
 	}
-
-	/* Feature overlay text */
 	.feature .overlay {
 		left: 50%;
 		max-height: 80%;
-		transform: translate(-50%, -50%); 
+		transform: translate(-50%, -50%);
 	}
-
-	/* Darken feature image */
 	.feature:after {
-		background-color: rgba(0, 0, 0, 0.3);
+		background: rgb(0, 0, 0, 0.3);
 	}
 }
 
 
-/* PORTRAIT TABLETS AND BELOW */
-@media only screen and (max-width: 800px) {	
-	/* Reduce inter-item gap */
-	.vertically-space-items > *:not(:last-child) {
+/* PORTRAIT TABLETS */
+
+@media only screen and (max-width: 800px) {
+	.vertically-space-items>*:not(:last-child) {
 		margin-bottom: 1em;
 	}
-	
-	/* Reduce card padding */
 	.card {
 		padding: 2em;
 	}
-
-	/* Reduce compact card padding */
 	.card.compact {
 		padding: 1em;
 	}
-	
-	/* Reduce fieldset card padding */
 	fieldset.card {
 		padding: 1em 1.5em 1.5em 1.5em;
 	}
-	
-	/* Move floating button closer to edge */
 	.floating-btn {
 		right: 0.3em;
 		bottom: 0.3em;
 	}
-
-	/* Reduce webpage outer padding */
 	.main {
-		padding: 0em 1em 3em 1em;
+		padding: 0 1em 3em 1em;
 	}
-
-	/* Make feature smaller */
 	.feature {
 		height: 10em;
 	}
-
-	/* Make feature overlay text smaller */
 	.feature .overlay {
 		font-size: 2em;
 	}
-
-	/* Article thumbnail */
 	.article-thumbnail {
 		height: 8em;
 	}
 }
 
 
-/* MOBILE PHONES */
+/* MOBILES */
+
 @media only screen and (max-width: 600px) {
-	/* Make global font size smaller */
 	body {
 		font-size: 18px;
 	}
-
-	/* Make navbar links bigger */
 	.navbar .links-container .link {
 		font-size: 0.75em;
 	}
-
-	/* Make headings smaller */
 	.heading {
 		font-size: 2em;
 	}
-
-	/* Make fieldset headings even smaller */
 	fieldset .heading {
 		font-size: 1.8em;
 	}
 }
-
