@@ -30,6 +30,7 @@ $(function() {
 
 	// Initialize autosize
 	autosize($('textarea'));
+	autosize.update($("textarea"));
 
 
 	// fade out and remove alert
@@ -316,4 +317,7 @@ function toggleCommentEditor(editor, button) {
 	if (editor == "edit") {
 		button.closest(".comment").find(".content").toggle();
 	}
+
+	// resize editor textarea to fit comment
+	autosize.update($("textarea"));
 }
