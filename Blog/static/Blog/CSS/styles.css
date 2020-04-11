@@ -37,12 +37,8 @@ form>* {
 	display: block;
 }
 
-form>*:not(:last-child):not(label) {
-	margin-bottom: 2em;
-}
-
 form>label {
-	margin-bottom: 0.5em;
+	margin-bottom: 0.5em !important;
 }
 
 form ul {
@@ -735,6 +731,11 @@ svg.tea #steamR {
 	margin-top: 1em;
 }
 
+#suggested_tags label {
+	display: block;
+	margin-bottom: 0.5em;
+}
+
 
 /* LARGE SCREENS ONLY */
 
@@ -834,7 +835,7 @@ svg.tea #steamR {
 /* PORTRAIT TABLETS */
 
 @media only screen and (max-width: 800px) {
-	.vertically-space-items>*:not(:last-child) {
+	.vertically-space-items.responsive>*:not(:last-child) {
 		margin-bottom: 1em;
 	}
 	.card {

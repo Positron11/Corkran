@@ -23,14 +23,12 @@
 	<legend class="heading">Profile</legend>
 
 	<!-- PROFILE AND USER FORMS -->
-	<form method="post" enctype="multipart/form-data">{% csrf_token %}
+	<form class="vertically-space-items" method="post" enctype="multipart/form-data">{% csrf_token %}
 		<!-- USER FORM -->
 		{{ user_form.as_table }}
 
 		<!-- PROFILE FORM -->
-		<label for="id_bio">Bio:</label>
-		<textarea name="bio" id="id_bio" rows="10" maxlength="500" required="true"
-			placeholder="About yourself...">{{ user.profile.bio }}</textarea>
+		{{ profile_form.as_table }}
 
 		<!-- SUBMIT BUTTON -->
 		<div class="submit-btn-container">
@@ -44,7 +42,7 @@
 <fieldset class="card">
 	<legend class="heading">Password</legend>
 
-	<form method="post">{% csrf_token %}
+	<form class="vertically-space-items" method="post">{% csrf_token %}
 		<!-- PASSWORD FORM -->
 		{{ password_form.as_table }}
 

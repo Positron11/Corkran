@@ -8,7 +8,7 @@
 	<!-- HEADING -->
 	<legend class="heading">Editor</legend>
 
-	<form id="article_form" method="post" autocomplete="off" enctype="multipart/form-data">{% csrf_token %}
+	<form class="vertically-space-items" id="article_form" method="post" autocomplete="off" enctype="multipart/form-data">{% csrf_token %}
 		<!-- FORM -->
 		<label>{{ form.title.label }}:</label>
 		{{ form.title }}

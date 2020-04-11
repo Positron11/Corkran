@@ -9,7 +9,7 @@
 	<legend class="heading">Log In</legend>
 
 	<!-- FORM -->
-	<form method="post">{% csrf_token %}
+	<form class="vertically-space-items" method="post">{% csrf_token %}
 		{{ form.as_table }}
 		<div class="submit-btn-container">
 			<button class="button" type="submit">Log In</button>
