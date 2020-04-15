@@ -17,6 +17,10 @@ a {
 	color: #729fcf;
 }
 
+a:visited {
+	color: #333;
+}
+
 a.unformatted {
 	color: inherit;
 	text-decoration: none;
@@ -266,6 +270,10 @@ fieldset.card.compact {
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	-o-user-select: none;
+}
+
+::selection {
+	background: #ccf9d8;
 }
 
  /* PAGE LOADING OVERLAY */
@@ -607,6 +615,10 @@ svg.tea #steamR {
 	text-decoration: none;
 	background: rgb(4, 222, 63, 0.2);
 	font-family: 'Cormorant Garamond', serif;
+}
+
+a.tag {
+	color: #00a32c;
 }
 
 .tag::after {
