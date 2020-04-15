@@ -399,9 +399,8 @@ svg.tea #steamR {
 
 .feature {
 	width: 100%;
-	height: 15em;
+	height: 19em;
 	overflow: hidden;
-	padding: 1em 0;
 	position: relative;
 	border-radius: 0.5em;
 	background-size: cover;
@@ -423,15 +422,15 @@ svg.tea #steamR {
 	top: 50%;
 	z-index: 1;
 	color: black;
-	font-size: 3em;
 	padding: 0.2em;
+	font-size: 2.5em;
 	overflow: hidden;
-	font-weight: 700;
+	font-weight: 500;
 	position: absolute;
+	background: white;
 	border-radius: 0.15em;
 	mix-blend-mode: screen;
 	text-overflow: ellipsis;
-	background: white;
 	font-family: 'Montserrat Alternates', sans-serif;
 	transition: 0.5s ease;
 }
@@ -755,21 +754,20 @@ svg.tea #steamR {
 	.navbar .links-container .banner {
 		font-size: 3em;
 	}
-	.feature:hover:after {
-		background: rgb(0, 0, 0, 0.2);
-	}
-	.feature .overlay:hover {
-		color: white;
-		background: transparent;
-		text-shadow: 3px 3px 3px rgb(0, 0, 0, 0.2);
-	}
 	.feature:after {
 		background: rgb(0, 0, 0, 0.1);
+	}
+	.feature:hover:after {
+		background: rgb(0, 0, 0, 0.3);
 	}
 	.feature .overlay {
 		left: 5%;
 		max-width: 50%;
 		transform: translate(0%, -50%);
+	}
+	.feature .overlay:hover {
+		color: white;
+		background: transparent;
 	}
 	.button:hover {
 		color: #00a32c;
@@ -856,7 +854,7 @@ svg.tea #steamR {
 		padding: 0 1em 3em 1em;
 	}
 	.feature {
-		height: 10em;
+		height: 15em;
 	}
 	.feature .overlay {
 		font-size: 2em;
@@ -875,6 +873,9 @@ svg.tea #steamR {
 	}
 	.navbar .links-container .link {
 		font-size: 0.75em;
+	}
+	.feature {
+		height: 10em;
 	}
 	.heading {
 		font-size: 2em;

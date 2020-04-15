@@ -9,7 +9,7 @@
 <!-- Feature image -->
 <div class="feature unselectable" style="background-image: url('{% if latest_article.thumbnail %} {{ latest_article.thumbnail.url }} {% else %} /media/defaults/feature.jpg {% endif %}');">
 	<a href="{% latest_article_link %}" class="unformatted">
-		<div class="overlay">{{ latest_article.title|truncatechars:40 }}</div>
+		<div class="overlay" data-vertical-truncator="3">A Certain Room In A Dimly Lit New York</div>
 	</a>
 </div>
 

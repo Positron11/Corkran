@@ -24,8 +24,10 @@ jQuery(window).on("load", function() {
 
 
 $(function() {
+	
 	// Initialize page
-	truncateAnnouncement();
+	resizeSidebar();
+	vertically_truncate();
 	calculateProgressBar();
 
 	// Initialize autosize
@@ -248,7 +250,7 @@ function scrollToTop() {
 
 
 // TRUNCATE ANNOUNCEMENT IN SIDEBAR
-function truncateAnnouncement() {
+function resizeSidebar() {
 	// approximate fixed value for distance from top of sidebar to bottom of page
 	var height = window.innerHeight - 200;
 

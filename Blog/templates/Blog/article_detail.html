@@ -8,7 +8,7 @@
 <!-- Feature image -->
 {% block feature %}
 <div class="feature unselectable" style="background-image: url('{% if article.thumbnail %} {{ article.thumbnail.url }} {% else %} /media/defaults/feature.jpg {% endif %}');">
-	<div class="overlay">{{ article.title|truncatechars:40 }}</div>
+	<div class="overlay" data-vertical-truncator="3">{{ article.title|truncatechars:40 }}</div>
 </div>
 {% endblock %}
 
@@ -94,7 +94,7 @@
 	<!-- Tags box -->
 	<div class="list-box">
 		{% for tag in article.tags.all %}
-		<a href="{% url 'tag-sorted-articles' tag %}" class="clickable tag">{{ tag }}</a>
+		<a href="{% url 'tag-sorted-articles' tag %}" class="unselectable clickable tag">{{ tag }}</a>
 		{% endfor %}
 	</div>
 </fieldset>
