@@ -3,14 +3,16 @@
 {% block title %}Articles by {{ author }}{% endblock %}
 
 {% block header-card %}
+
+<!-- Header card -->
 <div class="special card">
-	<!-- HEADER -->
+	<!-- Header -->
 	<div class="header">
 		<div class="heading">Posts by {{ author }}.</div>
 		<div class="subheading">{{ author }} has {{ page_obj.paginator.count }} post(s), as of yet.</div>
 	</div>
 
-	<!-- BIO -->
+	<!-- author bio -->
 	<div class="text">
 		{% if author.profile.bio %}
 		<i class="fas fa-quote-left" title='"'></i>
@@ -21,27 +23,40 @@
 		{% endif %}
 	</div>
 </div>
+
 {% endblock %}
 
 {% block no-articles-card %}
+
+<!-- No articles -->
 <div class="special card">
+	<!-- Header -->
 	<div class="header">
 		<div class="heading">They have naught to offer, it would seem.</div>
 		<div class="subheading">Perhaps they content themselves with mere commenting. Do they even exist?</div>
 	</div>
+
+	<!-- Content -->
 	<div class="text">Consider going <a href="{% url 'home' %}">home</a>, to find some writers that do indeed write.</div>
 </div>
+
 {% endblock %}
 
 {% block empty-search-card %}
+
+<!-- Empty search -->
 <div class="special card">
+	<!-- Header -->
 	<div class="header">
 		<div class="heading">No Articles Found.</div>
 		<div class="subheading">It's unlikely to be our fault.</div>
 	</div>
+
+	<!-- Content -->
 	<div class="text">
 		You should probaby check your search query. Things like "k3e#$%jbjvd" aren't likely to get you anywhere. 
 		Or perhaps it is simply that the author has not what you seek.
 	</div>
 </div>
+
 {% endblock %}

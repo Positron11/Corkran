@@ -5,10 +5,10 @@
 {% block content %}
 
 <Fieldset class="card">
-	<!-- HEADING -->
+	<!-- Heading -->
 	<legend class="heading">Log In</legend>
 
-	<!-- FORM -->
+	<!-- Form -->
 	<form class="vertically-space-items" method="post">{% csrf_token %}
 		{{ form.as_table }}
 		<div class="submit-btn-container">
@@ -17,7 +17,7 @@
 	</form>
 </Fieldset>
 
-<!-- LOGIN PORTAL CARD -->
+<!-- Portal card -->
 <div class="special compact card">
 	<div class="text">
 		Don't already have an account? <a href="{% url 'registration' %}">Register.</a><br>

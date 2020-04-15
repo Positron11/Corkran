@@ -4,29 +4,34 @@
 
 {% block content %}
 
-<!-- ANNOUNCEMENTS LIST -->
 {% for announcement in announcements %}
+
+<!-- Announcement -->
 <div class="card">
-	<!-- HEADER -->
+	<!-- Header -->
 	<div class="header">
 		<div class="heading">{{ announcement.date|date:"F jS, Y" }}</div>
 		<div class="subheading">{{ announcement.date|date:"F jS, Y, g:i a e" }}</div>
 	</div>
 
-	<!-- CONTENT -->
-	<p>{{ announcement.content|urlizetrunc:40|linebreaks }}</p>
+	<!-- Content -->
+	{{ announcement.content|urlizetrunc:40|linebreaks }}
 </div>
+
 {% empty %}
-<!-- HEADER -->
+
+<!-- No announcements -->
 <div class="special card">
+	<!-- Header -->
 	<div class="header">
 		<div class="heading">No Announcements.</div>
 		<div class="subheading">Absolutely none, we assure you.</div>
 	</div>
 
-	<!-- CONTENT -->
+	<!-- Content -->
 	<div class="text">You're either here very early, or something has gone horribly wrong. In either case, go ahead and relax.</div>
 </div>
+
 {% endfor %}
 
 {% endblock %}

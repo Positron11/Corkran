@@ -4,22 +4,26 @@
 
 {% block content %}
 
+<!-- New article -->
 <fieldset class="card">
-	<!-- HEADING -->
+	<!-- Heading -->
 	<legend class="heading">Editor</legend>
 
+	<!-- Form -->
 	<form class="vertically-space-items" id="article_form" method="post" autocomplete="off" enctype="multipart/form-data">{% csrf_token %}
-		<!-- FORM -->
+		<!-- Title -->
 		<label>{{ form.title.label }}:</label>
 		{{ form.title }}
 
+		<!-- Content -->
 		<label>{{ form.content.label }}:</label>
 		{{ form.content }}
-		
+
+		<!-- Tags -->
 		<label>Tags separated by spaces:</label>
 		{{ form.tags }}
-		
-		<!-- TAGS BOX -->
+
+		<!-- Tag suggestion box -->
 		<div id="suggested_tags">
 			<label>Similar popular tags:</label>
 			<div class="list-box">
@@ -28,22 +32,24 @@
 				{% endfor %}
 			</div>
 		</div>
-		
+
 		{% if form.instance.thumbnail %}
+		<!-- Remove thumbnail -->
 		<label>Remove thumbnail:</label>
 		<div>
 			<input type="checkbox" name="thumbnail-clear" id="thumbnail-clear_id" style="display: inline-block;">
 			<label for="thumbnail-clear_id">Remove</label>
 		</div>
+		
 		{% endif %}
-
+		<!-- Upload thumbnail -->
 		<label id="id_thumbnail_label">Upload thumbnail (<span>no file selected</span>):</label>
 		<div>
 			<label id="thumbnail_button" for="id_thumbnail" class="button">Upload</label>
 			<input type="file" name="thumbnail" accept="image/*" id="id_thumbnail">
 		</div>
 
-		<!-- SUBMIT BUTTON -->
+		<!-- Submit button -->
 		<div class="submit-btn-container">
 			<button class="button" type="submit">Post</button>
 		</div>

@@ -4,14 +4,15 @@
 
 {% block content %}
 
+<!-- Confirm delete -->
 <div class="card">
-	<!-- HEADER -->
+	<!-- Header -->
 	<div class="header">
 		<div class="heading">Are you sure you want to delete this?</div>
 		<div class="subheading">In case you've forgotten, it's called "{{ object.title }}"</div>
 	</div>
 
-	<!-- CONFIRM OR CANCEL FORM -->
+	<!-- Confirm or cancel -->
 	<form method="post">{% csrf_token %}
 		<div class="dual-option-container">
 			<button class="danger button" type="submit">Delete</button>

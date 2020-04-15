@@ -4,20 +4,23 @@
 
 {% block content %}
 
+<!-- Registration container -->
 <fieldset class="card">
-	<!-- HEADING -->
+	<!-- Heading -->
 	<legend class="heading">Register</legend>
 	
-	<!-- FORM -->
 	<form class="vertically-space-items" method="post">{% csrf_token %}
+		<!-- Form -->
 		{{ form.as_table }}
+
+		<!-- Submit button -->
 		<div class="submit-btn-container">
 			<button class="button" type="submit">Register</button>
 		</div>
 	</form>
 </fieldset>
 
-<!-- REGISTRATION PORTAL CARD -->
+<!-- Portal card -->
 <div class="special compact card">
 	<div class="text">Already have an account? <a href="{% url 'login' %}">Login.</a></div>
 </div>

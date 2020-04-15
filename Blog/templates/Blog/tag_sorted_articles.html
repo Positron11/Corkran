@@ -3,27 +3,36 @@
 {% block title %}Posts tagged with {{ tag }}.{% endblock %}
 
 {% block header-card %}
+
+<!-- Header card -->
 <div class="special card">
-	<!-- HEADER -->
+	<!-- Header -->
 	<div class="header">
 		<div class="heading"><i class="fas fa-tags"></i> "{{ tag }}"</div>
 		<div class="subheading">{{ page_obj.paginator.count }} article(s) are tagged with "{{ tag }}".</div>
 	</div>
 
-	<!-- CONTENT -->
+	<!-- Content -->
 	<div class="text">One can only leave it to the judgement of the authors, and hope that the same tag means nearly the same thing, to each of them.</div>
 </div>
+
 {% endblock %}
 
 {% block empty-search-card %}
-<!-- HEADER -->
+
+<!-- Empty search -->
+
 <div class="special card">
+	<!-- Header -->
 	<div class="header">
 		<div class="heading">No Articles Found.</div>
 		<div class="subheading">It's unlikely to be our fault.</div>
 	</div>
 
-	<!-- CONTENT -->
-	<div class="text">You should probaby check your search query. Things like "k3e#$%jbjvd" aren't likely to get you anywhere.</div>
+	<!-- Content -->
+	<div class="text">
+		You should probaby check your search query. Things like "k3e#$%jbjvd" aren't likely to get you anywhere.
+	</div>
 </div>
+
 {% endblock %}

@@ -6,12 +6,11 @@
 
 {% block content %}
 
-<!-- PAGE HEADER -->
 {% block header-card %}{% endblock %}
 
 
-<!--SEARCH-->
-<form type="get">
+<!-- Search bar -->
+<form>
 	<div class="search-bar">
 		<input class="search-box" type="text" name="search" placeholder="Search...">
 		<button class="search-button button" type="submit"><i class="fas fa-search"></i></button>
@@ -19,29 +18,28 @@
 </form>
 
 
-<!-- SEARCH COUNTER -->
 {% if searched and articles %}
+<!-- Search results counter -->
 <div class="closer-below search-info">
 	Result(s) {{ page_obj.start_index }} to {{ page_obj.end_index }} of {{ page_obj.paginator.count }}
 </div>
 {% endif %}
 
 
-<!-- ARTICLE LIST -->
 {% for article in articles %}
-<!--ARTICLE-->
+<!-- Article preview -->
 <div class="article article-preview card">
-	<!-- THUMBNAIL -->
 	{% if article.thumbnail %}
-	<div class="article-thumbnail" style="background-image: url('{{ article.thumbnail.url }}');" alt=""></div>
+	<!-- Thumbnail -->
+	<div class="article-thumbnail" style="background-image: url('{{ article.thumbnail.url }}');"></div>
 	{% endif %}
 
-	<!--HEADER-->
+	<!-- Header -->
 	<div class="header">
-		<!-- DATE -->
+		<!-- Date -->
 		<div class="date subheading">{{ article.date|date:"F jS, Y" }}</div>
 
-		<!-- TITLE -->
+		<!-- Title -->
 		<div class="heading">
 			<a href="{% url 'article-detail' article.id article.slug %}" class="unformatted"
 				title='Read "{{ article.title }}"'>
@@ -49,7 +47,7 @@
 			</a>
 		</div>
 
-		<!-- AUTHOR -->
+		<!-- Author -->
 		<div class="subheading">
 			By
 			<a href="{% url 'author-sorted-articles' article.author %}"
@@ -58,47 +56,47 @@
 		</div>
 	</div>
 
-	<a class="unformatted" href="{% url 'article-detail' article.id article.title %}"
-		title='Read "{{ article.title }}"'>
-		<!-- TRUNCATED CONTENT -->
-		<p class="clickable">{{ article.content|urlizetrunc:30|linebreaks|truncatechars:1000 }}</p>
+	<!-- Content container -->
+	<a class="unformatted" href="{% url 'article-detail' article.id article.title %}" title='Read "{{ article.title }}"'>
+		<!-- Content -->
+		<div class="clickable">{{ article.content|urlizetrunc:30|linebreaks|truncatechars:1000 }}</div>
 
-		<!-- FADE TRUNCATE -->
 		{% if article.content|length > 1000 %}
+		<!-- Fade truncate -->
 		<div class="fade"></div>
 		{% endif %}
 	</a>
 </div>
 {% empty %}
-<!--HEADER BLOCK IF NO ARTICLES OR EMPTY SEARCH-->
 {% if searched %}
+<!-- Empty search -->
 {% block empty-search-card %}{% endblock %}
 {% else %}
+<!-- No articles and not a search -->
 {% block no-articles-card %}{% endblock %}
 {% endif %}
 {% endfor %}
 
 
-<!--PAGINATOR-->
 {% if page_obj.paginator.num_pages > 1 %}
+<!-- Paginator -->
 <div class="paginator">
-	<!-- FIRST PAGE -->
+	<!-- First page -->
 	<a href="?{% param_replace page=1 %}" title="First Page" class="unformatted">
 		<i class="fas fa-arrow-circle-left"></i>
 	</a>
 
-	<!-- NUMBERED LINKS -->
 	{% for page in page_obj.paginator.page_range|cut_page_range:page_obj.number %}
 	{% if page == page_obj.number %}
-	<!-- CURRENT PAGE ICON -->
+	<!-- Current page -->
 	<i class="current fas fa-map-marker-alt" title="Page {{ page_obj.number }}"></i>
 	{% else %}
-	<!-- PAGE LINKS -->
+	<!-- Page link -->
 	<a href="?{% param_replace page=page %}" title="Page {{ page }}" class="unformatted">{{ page }}</a>
 	{% endif %}
 	{% endfor %}
 
-	<!-- LAST PAGE -->
+	<!-- Last Page -->
 	<a href="?{% param_replace page=page_obj.paginator.num_pages %}" title="Last Page" class="unformatted">
 		<i class="fas fa-arrow-circle-right"></i>
 	</a>
@@ -106,9 +104,8 @@
 {% endif %}
 
 
-<!-- IF USER IS LOGGED IN -->
 {% if user.is_authenticated %}
-<!--NEW POST BUTTON-->
+<!-- New article button -->
 <a href="{% url 'create-article' %}" title="New Article" class="unformatted">
 	<div class="clickable floating-btn">
 		<i class="fas fa-pen-nib"></i>

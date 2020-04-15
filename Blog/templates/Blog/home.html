@@ -4,38 +4,47 @@
 
 {% block title %}Home{% endblock %}
 
-<!-- LATEST ARTICLE THUMBNAIL AS FEATURE IMAGE -->
 {% block feature %}
+
+<!-- Feature image -->
 <div class="feature unselectable" style="background-image: url('{% if latest_article.thumbnail %} {{ latest_article.thumbnail.url }} {% else %} /media/defaults/feature.jpg {% endif %}');">
 	<a href="{% latest_article_link %}" class="unformatted">
 		<div class="overlay">{{ latest_article.title|truncatechars:40 }}</div>
 	</a>
 </div>
+
 {% endblock %}
 
 {% block no-articles-card %}
+
+<!-- No articles -->
 <div class="special card">
-	<!-- HEADER -->
+	<!-- Header -->
 	<div class="header">
 		<div class="heading">No articles here, yet.</div>
 		<div class="subheading">It would seem you'll have to wait a bit.</div>
 	</div>
 
-	<!-- CONTENT -->
+	<!-- Content -->
 	<div class="text">Maybe consider heading over to the about page, or writing the first article yourself?</div>
 </div>
+
 {% endblock %}
 
 {% block empty-search-card %}
+
+<!-- Empty search -->
 <div class="special card">
-	<!-- HEADER -->
+	<!-- Header -->
 	<div class="header">
 		<div class="heading">No Articles Found.</div>
 		<div class="subheading">It's unlikely to be our fault.</div>
 	</div>
 
-	<!-- CONTENT -->
-	<div class="text">You should probaby check your search query. Things like "k3e#$%jbjvd" aren't likely to get you
-		anywhere.</div>
+	<!-- Content -->
+	<div class="text">
+		You should probaby check your search query. Things like "k3e#$%jbjvd" aren't likely to get you anywhere.
+	</div>
 </div>
+
 {% endblock %}

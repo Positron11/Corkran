@@ -4,8 +4,9 @@
 
 {% block content %}
 
+<!-- Delete account -->
 <div class="card">
-	<!-- HEADER -->
+	<!-- Header -->
 	<div class="header">
 		<div class="heading">Take a Minute, Now...</div>
 		<div class="subheading">
@@ -14,7 +15,7 @@
 		</div>
 	</div>
 
-	<!-- CONFIRM OR CANCEL FORM -->
+	<!-- Confirm or cancel -->
 	<form method="post">{% csrf_token %}
 		<div class="dual-option-container">
 			<button class="danger button" type="submit">Delete</button>

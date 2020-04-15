@@ -4,33 +4,32 @@
 
 {% block content %}
 
-<!-- HEADER CARD -->
+<!-- Header card -->
 <div class="special card">
-	<!-- HEADER -->
+	<!-- Header -->
 	<div class="header">
 		<div class="heading">"{{ user.username }}"</div>
 		<div class="subheading">That's your identity here on Corkran.</div>
 	</div>
 
-	<!-- CONTENT -->
+	<!-- Content -->
 	<div class="text">Manage and view your personal details here.</div>
 </div>
 
 
-<!-- GROUPED UPDATE FORM -->
+<!-- Profile update container -->
 <fieldset class="card">
-	<!-- HEADING -->
+	<!-- Heading -->
 	<legend class="heading">Profile</legend>
 
-	<!-- PROFILE AND USER FORMS -->
 	<form class="vertically-space-items" method="post" enctype="multipart/form-data">{% csrf_token %}
-		<!-- USER FORM -->
+		<!-- User info update form -->
 		{{ user_form.as_table }}
 
-		<!-- PROFILE FORM -->
+		<!-- Profile update form -->
 		{{ profile_form.as_table }}
 
-		<!-- SUBMIT BUTTON -->
+		<!-- Submit button -->
 		<div class="submit-btn-container">
 			<button class="button" type="submit">Update</button>
 		</div>
@@ -38,15 +37,16 @@
 </fieldset>
 
 
-<!-- CHANGE PASSWORD -->
+<!-- Change password container -->
 <fieldset class="card">
+	<!-- Heading -->
 	<legend class="heading">Password</legend>
 
 	<form class="vertically-space-items" method="post">{% csrf_token %}
-		<!-- PASSWORD FORM -->
+		<!-- Password form -->
 		{{ password_form.as_table }}
 
-		<!-- SUBMIT BUTTON -->
+		<!-- Submit button -->
 		<div class="submit-btn-container">
 			<button class="button" type="submit" name="change_password">Update Password</button>
 		</div>
@@ -54,7 +54,7 @@
 </fieldset>
 
 
-<!-- DELETE ACCOUNT -->
+<!-- Account deletion container -->
 <fieldset class="card">
 	<legend class="heading">Danger!</legend>
 	<a href="{% url 'delete-user' user.id %}" class="danger button">Delete Account</a>

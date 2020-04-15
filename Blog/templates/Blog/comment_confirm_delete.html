@@ -5,13 +5,13 @@
 {% block content %}
 
 <div class="card">
-	<!-- HEADER -->
+	<!-- Header -->
 	<div class="header">
 		<div class="heading">Are you sure you want to remove this comment?</div>
 		<div class="subheading">In case you've forgotten, it begins "{{ object.content|truncatechars:25 }}"</div>
 	</div>
 
-	<!-- FORM -->
+	<!-- Delete or cancel -->
 	<form method="post">{% csrf_token %}
 		<div class="dual-option-container">
 			<button class="danger button" type="submit">Delete</button>
