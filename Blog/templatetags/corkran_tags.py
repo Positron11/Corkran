@@ -1,4 +1,3 @@
-from next_prev import next_in_order, prev_in_order
 from Blog.models import Article, Announcement
 from django import template
 
@@ -29,46 +28,6 @@ def latest_announcement():
 		return content
 	else:
 		return "Here's an announcement: \"There's nothing here\"."
-
-
-@register.simple_tag
-def next_article_link(current):
-	article = next_in_order(current, Article.objects.order_by('pk'))
-	if article:
-		return article.get_absolute_url()
-	else:
-		# loop around
-		return Article.objects.order_by('pk').first().get_absolute_url()
-
-
-@register.simple_tag
-def previous_article_link(current):
-	article = prev_in_order(current, Article.objects.order_by('pk'))
-	if article:
-		return article.get_absolute_url()
-	else:
-		# loop around
-		return Article.objects.order_by('pk').last().get_absolute_url()
-
-
-@register.simple_tag
-def next_article_title(current):
-	article = next_in_order(current, Article.objects.order_by('pk'))
-	if article:
-		return article.title
-	else:
-		# loop around
-		return Article.objects.order_by('pk').first().title
-
-
-@register.simple_tag
-def previous_article_title(current):
-	article = prev_in_order(current, Article.objects.order_by('pk'))
-	if article:
-		return article.title
-	else:
-		# loop around
-		return Article.objects.order_by('pk').last().title
 
 
 @register.filter(is_safe=True)

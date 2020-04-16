@@ -1,15 +1,13 @@
 {% extends 'Blog/article_list.html' %}
 
-{% load corkran_tags %}
-
 {% block title %}Home{% endblock %}
 
 {% block feature %}
 
 <!-- Feature image -->
 <div class="feature unselectable" style="background-image: url('{% if latest_article.thumbnail %} {{ latest_article.thumbnail.url }} {% else %} /media/defaults/feature.jpg {% endif %}');">
-	<a href="{% latest_article_link %}" class="unformatted">
-		<div class="overlay" data-vertical-truncator="3">A Certain Room In A Dimly Lit New York</div>
+	<a href="{{ latest_article.get_absolute_url }}" class="unformatted">
+		<div class="overlay" data-vertical-truncator="3">{{ latest_article.title }}</div>
 	</a>
 </div>
 

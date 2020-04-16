@@ -2,6 +2,7 @@ from django.shortcuts import get_list_or_404, get_object_or_404, render, redirec
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Article, Announcement, Comment
+from next_prev import next_in_order, prev_in_order
 from django.views.generic.list import ListView
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
@@ -119,8 +120,24 @@ def detail(request, pk, slug):
 	article = get_object_or_404(Article, pk=pk)
 	form = CommentForm()
 
-	# single article and comment form
-	context = {"article": article, "form": form}
+	# all articles queryset
+	articles = Article.objects.order_by('-date')
+
+	# get next article, or loop around
+	if next_in_order(article, articles):
+		next_article = next_in_order(article, articles)
+	else:
+		next_article = articles.first()
+
+	# get previous article, or loop around
+	if prev_in_order(article, articles):
+		previous_article = prev_in_order(article, articles)
+	else:
+		previous_article = articles.last()
+
+
+	# current, next, and previous article, and comment form
+	context = {"article": article, "next_article": next_article, "previous_article": previous_article, "form": form}
 
 	if request.method == 'POST':
 		# if editing comment, set instance to specific comment

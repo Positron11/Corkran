@@ -53,14 +53,14 @@
 
 <!-- Post navigation -->
 <div class="article-navigation-btn-container closer-below">
-	<!-- Next post -->
-	<a href="{% previous_article_link article %}" class="button prev-post">
-		<i class="fas fa-arrow-circle-left"></i>&nbsp;&nbsp;{% previous_article_title article %}
-	</a>
-
 	<!-- Previous post -->
-	<a href="{% next_article_link article %}" class="button next-post">
-		<i class="fas fa-arrow-circle-right"></i>&nbsp;&nbsp;<bdi>{% next_article_title article %}</bdi>
+	<a href="{{ previous_article.get_absolute_url }}" class="button prev-post" title="Newer">
+		<i class="fas fa-arrow-circle-left"></i>&nbsp;&nbsp;{{ previous_article.title }}
+	</a>
+	
+	<!-- Next post -->
+	<a href="{{ next_article.get_absolute_url }}" class="button next-post" title="Older">
+		<i class="fas fa-arrow-circle-right"></i>&nbsp;&nbsp;<bdi>{{ next_article.title }}</bdi>
 	</a>
 </div>
 
