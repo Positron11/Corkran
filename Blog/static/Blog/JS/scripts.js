@@ -27,6 +27,7 @@ $(function() {
 	
 	// Initialize page
 	resizeSidebar();
+	vertically_truncate();
 	calculateProgressBar();
 
 	// Initialize autosize
