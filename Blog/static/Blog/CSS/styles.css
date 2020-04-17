@@ -477,6 +477,7 @@ svg.tea #steamR {
 
 .sidebar .header .heading {
 	margin-top: 0;
+	text-shadow: 3px 3px 0 #ccc;
 }
 
 .sidebar label {
