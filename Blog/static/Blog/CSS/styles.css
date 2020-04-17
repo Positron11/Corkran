@@ -377,6 +377,7 @@ svg.tea #steamR {
 	color: #333;
 	font-weight: 700;
 	grid-area: banner;
+	text-shadow: 3px 3px 0 #ccc;
 }
 
 .navbar .links-container .link {
