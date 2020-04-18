@@ -73,7 +73,7 @@ label {
 	outline: none;
 	font-size: 0.7em;
 	border-radius: 1em;
-	border: #dedede solid 1px;
+	border: #eaeaea solid 1px;
 	font-family: 'Montserrat Alternates', sans-serif;
 }
 
@@ -83,6 +83,10 @@ textarea {
 	resize: vertical;
 	line-height: 1.7em;
 	box-sizing: border-box;
+}
+
+fieldset {
+	margin: 0px;
 }
 
 .button {
@@ -107,7 +111,7 @@ textarea {
 
 .button[disabled], .button.disabled {
 	color: #999 !important;
-	border-color: #dedede !important;
+	border-color: #eaeaea !important;
 	background: white !important;
 	pointer-events: none;
 	cursor: default;
@@ -179,7 +183,7 @@ input[type="file"] {
 	text-align: center;
 	margin-bottom: 1em;
 	padding-bottom: 1em;
-	border-bottom: 1px solid #dedede;
+	border-bottom: 1px solid #eaeaea;
 }
 
 .heading {
@@ -226,7 +230,7 @@ input[type="file"] {
 /* CARDS */
 
 .card {
-	border: #dedede solid 1px;
+	border: #eaeaea solid 1px;
 	border-radius: 0.5em;
 	padding: 4em;
 }
@@ -365,7 +369,7 @@ svg.tea #steamR {
 	z-index: 3;
 	position: sticky;
 	background: white;
-	border-bottom: 1px solid #dedede;
+	border-bottom: 1px solid #eaeaea;
 }
 
 .navbar .links-container {
