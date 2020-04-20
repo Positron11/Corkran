@@ -185,12 +185,21 @@ $(function() {
 		label.children("span").text(fileName);
 	});
 
-	// Disable thumbnail upload button if remove thumbnail checked
+	// store original attribution value
+	var value = $("#id_attribution").prop("value");
+	
+	// Disable thumbnail upload button and attribution if remove thumbnail checked
 	$('#thumbnail-clear_id').click(function() {
 		if ($(this).prop("checked") === true) {
-			$("#thumbnail_button").addClass("disabled");
+			$("#thumbnail_button, #id_attribution").addClass("disabled");
+			$("#id_attribution")
+			.prop("placeholder", "No image, no attribution...")
+			.prop("value", "");
 		} else {
-			$("#thumbnail_button").removeClass("disabled");
+			$("#thumbnail_button, #id_attribution").removeClass("disabled");
+			$("#id_attribution")
+			.prop("placeholder", "Attribution or caption...")
+			.prop("value", value);
 		}
 	});
 });

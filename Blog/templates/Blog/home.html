@@ -11,6 +11,13 @@
 	</a>
 </div>
 
+{% if latest_article.attribution or not latest_article.thumbnail %}
+<!-- Feature image attribution -->
+<div class="attribution">
+	<span>{% if latest_article.thumbnail %}{{ latest_article.attribution|urlizetrunc:30 }}{% else %}Photo by Nahil Naseer on Unsplash{% endif %}</span>
+</div>
+{% endif %}
+
 {% endblock %}
 
 {% block no-articles-card %}

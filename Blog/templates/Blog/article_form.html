@@ -40,14 +40,18 @@
 			<input type="checkbox" name="thumbnail-clear" id="thumbnail-clear_id" style="display: inline-block;">
 			<label for="thumbnail-clear_id">Remove</label>
 		</div>
-		
 		{% endif %}
+
 		<!-- Upload thumbnail -->
 		<label id="id_thumbnail_label">Upload thumbnail (<span>no file selected</span>):</label>
 		<div>
 			<label id="thumbnail_button" for="id_thumbnail" class="button">Upload</label>
 			<input type="file" name="thumbnail" accept="image/*" id="id_thumbnail">
 		</div>
+
+		<!-- Attribution -->
+		<label>Image attribution (ex: Photo by "Artist Name"):</label> 
+		<input type="text" name="attribution" maxlength="100" id="id_attribution" placeholder="Attribution or caption..." value="{{ form.instance.attribution }}">
 
 		<!-- Submit button -->
 		<div class="submit-btn-container">

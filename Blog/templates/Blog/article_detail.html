@@ -5,11 +5,20 @@
 
 {% block title %}"{{ article.title }}"{% endblock %}
 
-<!-- Feature image -->
 {% block feature %}
+
+<!-- Feature image -->
 <div class="feature unselectable" style="background-image: url('{% if article.thumbnail %} {{ article.thumbnail.url }} {% else %} /media/defaults/feature.jpg {% endif %}');">
 	<div class="overlay" data-vertical-truncator="3">{{ article.title|truncatechars:40 }}</div>
 </div>
+
+{% if article.attribution or not article.thumbnail %}
+<!-- Feature image attribution -->
+<div class="attribution">
+	<span>{% if article.thumbnail %}{{ article.attribution|urlizetrunc:30 }}{% else %}Photo by Nahil Naseer on Unsplash{% endif %}</span>
+</div>
+{% endif %}
+
 {% endblock %}
 
 {% block content %}

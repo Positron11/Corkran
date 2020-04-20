@@ -109,7 +109,7 @@ fieldset {
 	border-color: #f32929;
 }
 
-.button[disabled], .button.disabled {
+.button[disabled], .button.disabled, input.disabled {
 	color: #999 !important;
 	border-color: #eaeaea !important;
 	background: white !important;
@@ -446,6 +446,16 @@ svg.tea #steamR {
 	text-overflow: ellipsis;
 	font-family: 'Montserrat Alternates', sans-serif;
 	transition: 0.5s ease;
+}
+
+.attribution {
+	text-align: center;
+}
+
+.attribution span {
+	font-size: 0.6em;
+	color: #999;
+	font-family: 'Montserrat Alternates', sans-serif;
 }
 
 
@@ -786,6 +796,9 @@ a.tag {
 	.feature .overlay:hover {
 		color: white;
 		background: transparent;
+	}
+	.attribution {
+		margin-top: -1em;
 	}
 	.button:hover {
 		color: #00a32c;

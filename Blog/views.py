@@ -191,7 +191,7 @@ def detail(request, pk, slug):
 # create article
 class CreateArticle(LoginRequiredMixin, CreateView):
 	model = Article
-	fields = ["thumbnail", "title", "content", "tags"]
+	fields = ["thumbnail", "title", "content", "tags", "attribution"]
 
 	# all tags as context
 	def get_context_data(self, **kwargs):          
@@ -209,7 +209,7 @@ class CreateArticle(LoginRequiredMixin, CreateView):
 # edit article
 class EditArticle(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = Article
-	fields = ["thumbnail", "title", "content", "tags"]
+	fields = ["thumbnail", "title", "content", "tags", "attribution"]
 	template_name_suffix = "_form"
 
 	# all tags as context
