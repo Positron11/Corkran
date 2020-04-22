@@ -31,7 +31,22 @@
 <div class="article article-preview card">
 	{% if article.thumbnail %}
 	<!-- Thumbnail -->
-	<div class="article-thumbnail" style="background-image: url('{{ article.thumbnail.url }}');"></div>
+	<div class="article-thumbnail">
+		<!-- Main image -->
+		<div 
+			data-href="https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}" 
+			data-srcset="
+				https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-1100 3000w, 
+				https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-880 1500w,
+				https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-500 1000w,
+				https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-300 600w"   
+			data-sizes="100vw"
+			class="progressive replace">
+
+			<!-- Blurred loader image -->
+			<img src="https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-300" class="preview" alt="Article Thumbnail">
+		</div>
+	</div>
 	{% endif %}
 
 	<!-- Header -->
