@@ -414,17 +414,11 @@ svg.tea #steamR {
 .feature {
 	width: 100%;
 	height: 19em;
-	display: flex;
-	overflow: hidden;
 	position: relative;
-	align-items: center;
 	border-radius: 0.5em;
-	justify-content: center;
 }
 
-.feature img, .feature .progressive {
-	min-width: 100%;
-	min-height: 19em;
+.feature img {
 	border-radius: 0.5em;
 }
 
@@ -457,12 +451,9 @@ svg.tea #steamR {
 }
 
 .attribution {
-	text-align: center;
-}
-
-.attribution span {
-	font-size: 0.6em;
 	color: #999;
+	font-size: 0.6em;
+	text-align: center;
 	font-family: 'Montserrat Alternates', sans-serif;
 }
 
@@ -602,19 +593,12 @@ svg.tea #steamR {
 /* ARTICLE THUMBNAILS */
 
 .article-thumbnail {
-	width: 100%;
 	height: 15em;
 	margin-bottom: 2em;
 	border-radius: 0.5em;
-	overflow: hidden;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 }
 
-.article-thumbnail img, .article-thumbnail .progressive {
-	min-width: 100%;
-	min-height: 15em;
+.article-thumbnail img {
 	border-radius: 0.5em;
 }
 
@@ -903,17 +887,11 @@ a.tag {
 	.feature {
 		height: 15em;
 	}
-	.feature img, .feature .progressive {
-		min-height: 15em;
-	}
 	.feature .overlay {
 		font-size: 2em;
 	}
 	.article-thumbnail {
 		height: 8em;
-	}
-	.article-thumbnail img, .article-thumbnail div {
-		min-height: 8em;
 	}
 }
 
@@ -929,9 +907,6 @@ a.tag {
 	}
 	.feature {
 		height: 10em;
-	}
-	.feature img, .feature .progressive {
-		min-height: 10em;
 	}
 	.heading {
 		font-size: 2em;

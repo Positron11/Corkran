@@ -6,46 +6,40 @@
 {% block title %}"{{ article.title }}"{% endblock %}
 
 {% block feature %}
-
 <!-- Feature image -->
-<div class="feature unselectable">
-	<!-- Main image container -->
-	<div 
-		{% if article.thumbnail %}	
-		data-href="https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}" 
-		data-srcset="
-			https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-1800 3000w, 
-			https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-1400 1500w,
-			https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-850 1000w,
-			https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-600 600w"   
-		{% else %}
-		data-href="https://ik.imagekit.io/f92sz8hl8b/media/defaults/feature.jpg" 
-		data-srcset="
-			https://ik.imagekit.io/f92sz8hl8b/media/defaults/feature.jpg?tr=w-1800 3000w, 
-			https://ik.imagekit.io/f92sz8hl8b/media/defaults/feature.jpg?tr=w-1400 1500w,
-			https://ik.imagekit.io/f92sz8hl8b/media/defaults/feature.jpg?tr=w-850 1000w,
-			https://ik.imagekit.io/f92sz8hl8b/media/defaults/feature.jpg?tr=w-600 600w"   
-		{% endif %}
-		data-sizes="100vw"
-		class="progressive replace">
+<div 
+	{% if article.thumbnail %}	
+	data-href="https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}" 
+	data-srcset="
+		https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-1800 3000w, 
+		https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-1400 1500w,
+		https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-850 1000w,
+		https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-600 600w"   
+	{% else %}
+	data-href="https://ik.imagekit.io/f92sz8hl8b/media/defaults/feature.jpg" 
+	data-srcset="
+		https://ik.imagekit.io/f92sz8hl8b/media/defaults/feature.jpg?tr=w-1800 3000w, 
+		https://ik.imagekit.io/f92sz8hl8b/media/defaults/feature.jpg?tr=w-1400 1500w,
+		https://ik.imagekit.io/f92sz8hl8b/media/defaults/feature.jpg?tr=w-850 1000w,
+		https://ik.imagekit.io/f92sz8hl8b/media/defaults/feature.jpg?tr=w-600 600w"   
+	{% endif %}
+	data-sizes="100vw"
+	class="progressive replace feature unselectable">
 
-		<!-- Blurred loader image -->
-		{% if article.thumbnail %}	
-		<img src="https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-300" class="preview" alt="Article Thumbnail">
-		{% else %}
-		<img src="https://ik.imagekit.io/f92sz8hl8b/media/defaults/feature.jpg?tr=w-300" class="preview" alt="Article Thumbnail">
-		{% endif %}
-	</div>
+	<!-- Blurred loader image -->
+	{% if article.thumbnail %}	
+	<img src="https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-300" class="preview" alt="Article Thumbnail">
+	{% else %}
+	<img src="https://ik.imagekit.io/f92sz8hl8b/media/defaults/feature.jpg?tr=w-300" class="preview" alt="Article Thumbnail">
+	{% endif %}
 	
 	<!-- Overlay -->
 	<div class="overlay" data-vertical-truncator="3">{{ article.title }}</div>
 </div>
-
+	
 {% if article.attribution or not article.thumbnail %}
 <!-- Feature image attribution -->
-<div class="attribution">
-	<span>{% if article.thumbnail %}{{ article.attribution|urlizetrunc:30 }}{% else %}Photo by Nahil Naseer on Unsplash{% endif %}</span>
-</div>
+<div class="attribution">{% if article.thumbnail %}{{ article.attribution|urlizetrunc:30 }}{% else %}Photo by Nahil Naseer on Unsplash{% endif %}</div>
 {% endif %}
 
 {% endblock %}
