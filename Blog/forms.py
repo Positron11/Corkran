@@ -1,4 +1,4 @@
-from .models import Comment
+from .models import Article, Comment
 from django import forms
 
 
@@ -8,3 +8,11 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ["content"]
+
+
+# feature article
+class FeatureArticleForm(forms.ModelForm):
+
+    class Meta:
+        model = Article
+        fields = ["featured"]

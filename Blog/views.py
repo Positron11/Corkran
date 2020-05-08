@@ -3,11 +3,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Article, Announcement, Comment
 from next_prev import next_in_order, prev_in_order
+from .forms import CommentForm, FeatureArticleForm
 from django.views.generic.list import ListView
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 from django.contrib import messages
-from .forms import CommentForm
 from string import capwords
 
 
@@ -64,7 +64,7 @@ class Home(ArticleListView):
 	# latest article as context
 	def get_context_data(self, **kwargs):          
 		context = super().get_context_data(**kwargs)                    
-		context["latest_article"] = Article.objects.order_by('-date').first()
+		context["featured_article"] = Article.objects.filter(featured=True).first()
 		return context
 
 
@@ -118,7 +118,8 @@ class Announcements(ListView):
 # article detail
 def detail(request, pk, slug):
 	article = get_object_or_404(Article, pk=pk)
-	form = CommentForm()
+	feature_form = FeatureArticleForm()
+	comment_form = CommentForm()
 
 	# all articles queryset
 	articles = Article.objects.order_by('-date')
@@ -137,53 +138,68 @@ def detail(request, pk, slug):
 
 
 	# current, next, and previous article, and comment form
-	context = {"article": article, "next_article": next_article, "previous_article": previous_article, "form": form}
+	context = {"article": article, "next_article": next_article, "previous_article": previous_article, "comment_form": comment_form, "feature_form": feature_form}
 
 	if request.method == 'POST':
-		# if editing comment, set instance to specific comment
-		if "edit" in request.POST:
-			comment = Comment.objects.get(id=request.POST.get('id'))
-			form = CommentForm(request.POST, instance=comment)
-		else:
-			form = CommentForm(request.POST)
-
-		# if the submitted form is valid
-		if form.is_valid():
-			# set comment author to currently logged in user
-			form.instance.author = request.user
-
-			# set comment article to current article on page
-			form.instance.article = article
-
-			# try to get parent id
-			try:
-				parent_id = int(request.POST.get('parent_id'))
-			except:
-				parent_id = None
-
-			# if got parent id and parent exists, set parent
-			if parent_id:
-				parent = Comment.objects.get(id=parent_id)
-				if parent:
-					form.instance.parent = parent
-
-			# save form
-			form.save()
-
-			# display success message
+		# if submitting a comment
+		if any(x in request.POST for x in ["comment", "reply", "edit"]):
+			# if editing comment, set instance to specific comment
 			if "edit" in request.POST:
-				messages.success(request, "Comment successfully edited.")
+				comment = Comment.objects.get(id=request.POST.get('id'))
+				comment_form = CommentForm(request.POST, instance=comment)
 			else:
-				messages.success(request, "Comment successfully posted.")
+				comment_form = CommentForm(request.POST)
 
-			# redirect to current page and scroll to previous position
-			return redirect(article.get_absolute_url() + "#" + request.POST.get('scroll_pos'))
-		else:
-			# display error message
-			if "edit" in request.POST:
-				messages.error(request, "Error editing comment.")
+			# if the submitted form is valid
+			if comment_form.is_valid():
+				# set comment author to currently logged in user
+				comment_form.instance.author = request.user
+
+				# set comment article to current article on page
+				comment_form.instance.article = article
+
+				# try to get parent id
+				try:
+					parent_id = int(request.POST.get('parent_id'))
+				except:
+					parent_id = None
+
+				# if got parent id and parent exists, set parent
+				if parent_id:
+					parent = Comment.objects.get(id=parent_id)
+					if parent:
+						comment_form.instance.parent = parent
+
+				# save form
+				comment_form.save()
+
+				# display success message
+				if "edit" in request.POST:
+					messages.success(request, "Comment successfully edited.")
+				else:
+					messages.success(request, "Comment successfully posted.")
+
+				# redirect to current page and scroll to previous position
+				return redirect(article.get_absolute_url())
 			else:
-				messages.error(request, "Error posting comment.")
+				# display error message
+				if "edit" in request.POST:
+					messages.error(request, "Error editing comment.")
+				else:
+					messages.error(request, "Error posting comment.")
+		# if (un)featuring article
+		elif "feature" in request.POST:
+			feature_form = FeatureArticleForm(request.POST, instance=article)
+
+			if feature_form.is_valid():
+				# unfeature all other articles
+				Article.objects.update(featured=False)
+				feature_form.save()
+				if article.featured:
+					messages.success(request, f'"{article.title}" featured.')
+				else:
+					messages.success(request, f'"{article.title}" unfeatured.')
+				return redirect('home')
 
 	return render(request, "Blog/article_detail.html", context)
 

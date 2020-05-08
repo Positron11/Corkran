@@ -18,6 +18,7 @@ class Article(models.Model):
 	content = models.TextField()
 	slug = models.SlugField()
 	tags = TaggableManager()
+	featured = models.BooleanField(default=False)
 
 	# show self as title when queried
 	def __str__(self):
