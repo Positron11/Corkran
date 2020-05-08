@@ -3,6 +3,7 @@
 {% block title %}Home{% endblock %}
 
 {% block feature %}
+{% if featured_article %}
 
 <!-- Feature image -->
 <div 
@@ -42,6 +43,7 @@
 <div class="attribution">{% if featured_article.thumbnail %}{{ featured_article.attribution|urlizetrunc:30 }}{% else %}Photo by Nahil Naseer on Unsplash{% endif %}</div>
 {% endif %}
 
+{% endif %}
 {% endblock %}
 
 {% block no-articles-card %}
