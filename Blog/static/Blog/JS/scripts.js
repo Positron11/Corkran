@@ -202,6 +202,11 @@ $(function() {
 			.prop("value", value);
 		}
 	});
+
+	// Prevent page reload on image search
+	$("#unsplash_search_form").submit(function(e) {
+		e.preventDefault();
+	});
 });
 
 
