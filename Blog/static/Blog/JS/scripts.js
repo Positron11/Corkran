@@ -203,9 +203,18 @@ $(function() {
 		}
 	});
 
-	// Prevent page reload on image search
+	// Unsplash image search
 	$("#unsplash_search_form").submit(function(e) {
+		// prevent reload on image search
 		e.preventDefault();
+		// get query and encode
+		var query = encodeURIComponent(document.getElementById("unsplash_search").value);
+		// search if query or go to unsplash home page
+		if (query) {
+			window.open("https://unsplash.com/s/photos/" + String(query), '_blank');
+		} else {
+			window.open("https://unsplash.com/", '_blank');
+		}
 	});
 });
 
@@ -336,13 +345,4 @@ function toggleCommentEditor(editor, button) {
 
 	// resize editor textarea to fit comment
 	autosize.update($("textarea"));
-}
-
-function searchUnsplash() {
-	var query = document.getElementById("unsplash_search").value;
-	if (query) {
-		window.open("https://unsplash.com/s/photos/" + String(query), '_blank');
-	} else {
-		window.open("https://unsplash.com/", '_blank');
-	}
 }
