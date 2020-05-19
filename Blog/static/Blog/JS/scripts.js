@@ -332,3 +332,12 @@ function toggleCommentEditor(editor, button) {
 	// resize editor textarea to fit comment
 	autosize.update($("textarea"));
 }
+
+function searchUnsplash() {
+	var query = document.getElementById("unsplash_search").value;
+	if (query) {
+		window.open("https://unsplash.com/s/photos/" + String(query), '_blank');
+	} else {
+		window.open("https://unsplash.com/", '_blank');
+	}
+}
