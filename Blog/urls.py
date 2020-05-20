@@ -19,6 +19,6 @@ urlpatterns = [
     path('comments/<int:pk>/delete/', views.DeleteComment.as_view(), name='delete-comment'),
     
     # sorted article views
-	path('articles/user/<str:author>/', views.AuthorSortedArticles.as_view(), name='author-sorted-articles'),
-    path('articles/tag/<str:tag>/', views.TagSortedArticles.as_view(), name='tag-sorted-articles'),
+	path('users/<str:author>/', views.AuthorSortedArticles.as_view(), name='author-sorted-articles'),
+    path('tags/<str:tag>/', views.TagSortedArticles.as_view(), name='tag-sorted-articles'),
 ]
