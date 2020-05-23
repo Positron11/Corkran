@@ -23,8 +23,9 @@ class ArticleListView(ListView):
 
 		# if anything actually searched for, not just empty
 		if "search" in self.request.GET and search_query:
-			# searched
+			# searched boolean and search query
 			self.extra_context["searched"] = True
+			self.extra_context["query"] = search_query
 
 			# convert search query to lowercase
 			search_query = search_query.lower()
@@ -78,6 +79,9 @@ class AuthorSortedArticles(ArticleListView):
 		# get page's author
 		author = get_object_or_404(User, username=self.kwargs.get("author"))
 
+		# add article count to context
+		self.extra_context["article_count"] = Article.objects.filter(author=author).count()
+
 		# add author to context
 		self.extra_context["author"] = author
 
@@ -93,6 +97,9 @@ class TagSortedArticles(ArticleListView):
 
 		# get page's tag
 		tag = self.kwargs.get("tag")
+
+		# add article count to context
+		self.extra_context["article_count"] = Article.objects.filter(tags__name__in=[tag]).count()
 
 		# check if tag exists
 		tag_check = get_list_or_404(Article, tags__name__in=[tag])

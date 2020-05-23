@@ -9,7 +9,7 @@
 	<!-- Header -->
 	<div class="header">
 		<div class="heading">Posts by {{ author }}.</div>
-		<div class="subheading">{{ author }} has {{ page_obj.paginator.count }} post(s), as of yet.</div>
+		<div class="subheading">{{ author }} has {{ article_count }} post{% if article_count != 1 %}s{% endif %}, as of yet.</div>
 	</div>
 
 	<!-- author bio -->

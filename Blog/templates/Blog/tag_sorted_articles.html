@@ -9,7 +9,7 @@
 	<!-- Header -->
 	<div class="header">
 		<div class="heading"><i class="fas fa-tags"></i> "{{ tag }}"</div>
-		<div class="subheading">{{ page_obj.paginator.count }} article(s) are tagged with "{{ tag }}".</div>
+		<div class="subheading">{{ article_count }} article{% if article_count != 1 %}s are{% else %} is{% endif %} tagged with "{{ tag }}".</div>
 	</div>
 
 	<!-- Content -->

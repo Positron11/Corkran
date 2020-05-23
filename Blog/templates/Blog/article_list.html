@@ -12,7 +12,7 @@
 <!-- Search bar -->
 <form>
 	<div class="search-bar">
-		<input class="search-box" type="text" name="search" placeholder="Search...">
+		<input class="search-box" type="text" name="search" placeholder="Search..." value="{{ query }}"">
 		<button class="search-button button" type="submit"><i class="fas fa-search"></i></button>
 	</div>
 </form>
@@ -21,7 +21,7 @@
 {% if searched and articles %}
 <!-- Search results counter -->
 <div class="closer-below search-info">
-	Result(s) {{ page_obj.start_index }} to {{ page_obj.end_index }} of {{ page_obj.paginator.count }}
+	Result{% if page_obj.paginator.count != 1 %}s{% endif %} {{ page_obj.start_index }} to {{ page_obj.end_index }} of {{ page_obj.paginator.count }}
 </div>
 {% endif %}
 
