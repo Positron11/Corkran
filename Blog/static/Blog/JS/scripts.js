@@ -56,6 +56,7 @@ $(function() {
 	resizeSidebar();
 	vertically_truncate();
 	calculateProgressBar();
+	fadeTruncateArticles();
 
 	// Initialize autosize
 	autosize($('textarea'));
@@ -90,6 +91,7 @@ $(function() {
 	// On resize...
 	$(window).on("resize", function() {
 		resizeSidebar();
+		fadeTruncateArticles();
 	});
 
 
@@ -351,4 +353,14 @@ function toggleCommentEditor(editor, button) {
 
 	// resize editor textarea to fit comment
 	autosize.update($("textarea"));
+}
+
+// FADE TRUNATE ARTICLES
+function fadeTruncateArticles() {
+	$(".article-preview").each(function() {
+		// If text overflows and is not already truncated
+		if (this.offsetHeight < this.scrollHeight && !$(this).find(".fade").length) {
+			$(this).append("<div class='fade'></div>");
+		}
+	});
 }
