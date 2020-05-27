@@ -187,25 +187,30 @@ def detail(request, pk, slug):
 					messages.success(request, "Comment successfully posted.")
 
 				# redirect to current page and scroll to previous position
-				return redirect(article.get_absolute_url())
+				return redirect(article.get_absolute_url() + f"#{request.POST.get('scroll_pos')}")
 			else:
 				# display error message
 				if "edit" in request.POST:
 					messages.error(request, "Error editing comment.")
 				else:
 					messages.error(request, "Error posting comment.")
+					
 		# if (un)featuring article
 		elif "feature" in request.POST:
 			feature_form = FeatureArticleForm(request.POST, instance=article)
 
+			# redundant, really - no way to have invalid form
 			if feature_form.is_valid():
 				# unfeature all other articles
 				Article.objects.update(featured=False)
 				feature_form.save()
+
+				# success message
 				if article.featured:
 					messages.success(request, f'"{article.title}" featured.')
 				else:
 					messages.success(request, f'"{article.title}" unfeatured.')
+
 				return redirect('home')
 
 	return render(request, "Blog/article_detail.html", context)
