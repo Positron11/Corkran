@@ -283,7 +283,7 @@ fieldset.card.compact {
 
  /* PAGE LOADING OVERLAY */
 
-.loading-overlay {
+#loading-overlay {
 	top: 0;
 	left: 0;
 	right: 0;
@@ -355,7 +355,7 @@ svg.tea #steamR {
 
 /* MAIN CONTAINER CONTAINING NAVBAR, PAGE ETC. */
 
-.main {
+#main {
 	margin: auto;
 	max-width: 1800px;
 	padding: 0 4em 2em 4em;
@@ -883,7 +883,7 @@ a.tag {
 		right: 0.3em;
 		bottom: 0.3em;
 	}
-	.main {
+	#main {
 		padding: 0 1em 3em 1em;
 	}
 	.feature {

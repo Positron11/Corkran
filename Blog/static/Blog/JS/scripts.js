@@ -1,10 +1,10 @@
 // Make the main page invisible before it is done loading
-$(".main").css("opacity", "0");
+document.getElementById('main').style.opacity = "0";
 
 
 // Show overlay if page takes more than 5 milliseconds to load
 var showTimeout = setTimeout(function() {
-	$(".loading-overlay").css("opacity", "1");
+	document.getElementById('loading-overlay').style.opacity = "1";
 }, 5);
 
 
@@ -14,16 +14,16 @@ jQuery(window).on("load", function() {
 
 
 	// hide the overlay
-	$(".loading-overlay").css("opacity", "0");
+	document.getElementById('loading-overlay').style.opacity = "0";
 
 
 	// show the main page
-	$(".main").css("opacity", "1");
+	document.getElementById('main').style.opacity = "1";
 
 
 	// remove the overlay after it's done hiding
 	setTimeout(function() {
-		$(".loading-overlay").remove();
+		$("#loading-overlay").remove();
 	}, 500);
 
 
