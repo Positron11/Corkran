@@ -175,6 +175,12 @@ input[type="file"] {
 	display: none;
 }
 
+.form-freetext {
+	font-family: 'Montserrat Alternates', sans-serif;
+	font-size: 0.7em;
+	color: #999;
+}
+
 
 /* HEADER & HEADER ELEMENTS */
 

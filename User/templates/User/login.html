@@ -14,6 +14,7 @@
 		<div class="submit-btn-container">
 			<button class="button" type="submit">Log In</button>
 		</div>
+		<div class="form-freetext">Forgot your password? <a href="{% url 'password-reset' %}">Ask for a new one</a>.</div>
 	</form>
 </Fieldset>
 
@@ -21,7 +22,6 @@
 <div class="special compact card">
 	<div class="text">
 		Don't already have an account? <a href="{% url 'registration' %}">Register</a>.<br>
-		Forgot your password? <a href="{% url 'password-reset' %}">Ask for a new one</a>.
 	</div>
 </div>
 
