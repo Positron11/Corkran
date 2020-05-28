@@ -400,6 +400,7 @@ svg.tea #steamR {
 }
 
 .navbar .links-container .menu-btn {
+	color: #333;
 	grid-area: menu;
 	font-size: 1.5em;
 	justify-self: end;
