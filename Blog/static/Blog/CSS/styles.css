@@ -396,7 +396,7 @@ svg.tea #steamR {
 	color: #333;
 	font-weight: 700;
 	grid-area: banner;
-	text-shadow: 3px 3px 0 #ccc;
+	text-shadow: 3px 3px 1px #ccc;
 }
 
 .navbar .links-container .link {
@@ -505,7 +505,7 @@ svg.tea #steamR {
 
 .sidebar .header .heading {
 	margin-top: 0;
-	text-shadow: 3px 3px 0 #ccc;
+	text-shadow: 3px 3px 1px #ccc;
 }
 
 .sidebar label {
