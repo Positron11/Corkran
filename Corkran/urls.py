@@ -17,10 +17,11 @@ from django.contrib import admin
 from django.conf import settings
 from django.urls import include, path
 from django.conf.urls.static import static
+from Corkran.settings import ADMIN_URL
 import os
 
 urlpatterns = [
     path('', include('Blog.urls')),
     path('', include('User.urls')),
-    path(f'{os.getenv("ADMIN_URL")}/', admin.site.urls),
+    path(f'{ADMIN_URL}/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

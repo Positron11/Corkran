@@ -131,6 +131,9 @@ MEDIA_URL = '/media/'
 LOGIN_URL = "login"
 LOGIN_REDIRECT_URL = "home"
 
+# Admin url
+ADMIN_URL = os.getenv('SECRET_KEY')
+
 # Taggit app settings
 TAGGIT_CASE_INSENSITIVE = True
 
