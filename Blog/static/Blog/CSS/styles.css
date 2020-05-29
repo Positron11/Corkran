@@ -214,6 +214,7 @@ input[type="file"] {
 .list-box {
 	display: flex;
 	flex-flow: row wrap;
+	margin: 0 -0.5em -0.5em 0;
 }
 
 .list-box>* {
@@ -771,12 +772,6 @@ a.tag {
 
 #suggested_tags {
 	display: none;
-	margin-top: 1em;
-}
-
-#suggested_tags label {
-	display: block;
-	margin-bottom: 0.5em;
 }
 
 

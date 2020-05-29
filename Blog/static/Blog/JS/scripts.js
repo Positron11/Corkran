@@ -104,76 +104,13 @@ $(function() {
 	});
 
 
-	// Show tag suggestions
-	$("#id_tags").on('input', function() {
-		// replace all other separators with spaces
-		$("#id_tags").val($("#id_tags").val().replace(/[\s,]+/g, " "));
-
-		// split sentence by possible delimiters
-		var words = $("#id_tags").val().toLowerCase().split(/[\s,]+/);
-
-		// get last word
-		var word = words.pop();
-
-		// if not empty and currently typing a word, get suggestions
-		if (word) {
-			// show main block
-			$("#suggested_tags").show();
-
-			// show matching tags
-			$("#suggested_tags .list-box .tag").each(function() {
-				// get tag text as lowercase
-				var text = $(this).text().toLowerCase();
-
-				// if tag matches input and tag doesn't already exist
-				if (text.includes(word) && $.inArray(text, words) < 0) {
-					// show tag in suggestions
-					$(this).show();
-				} else {
-					// remove tag from suggestions
-					$(this).hide();
-				}
-			});
-		} else {
-			// hide entire block
-			$("#suggested_tags").hide();
-		}
-
-		// if no suggestions, hide entire block
-		if (!$("#suggested_tags .list-box .tag:visible").length) {
-			$("#suggested_tags").hide();
-		}
+	// replace all other separators with spaces
+	$("#suggested_tags").on('input', function() {
+		$(".suggestions-input").val($(".suggestions-input").val().replace(/[\s,]+/g, " "));
 	});
 
-	// Put clicked tag in textbox
-	$("#suggested_tags .list-box .tag").on("click", function() {
-		// get all words in input
-		var words = $("#id_tags").val().split(/[\s,]+/);
-
-		// remove unfinished tag from words list
-		words.pop();
-
-		// add tag to end of words list
-		words.push($(this).text());
-
-		// replace input box value with current tags 
-		$("#id_tags").val(words.join(" ") + " ");
-
-		// focus and move to end of input
-		$("#id_tags").each(function() {
-			$(this).focus();
-			if (this.setSelectionRange) {
-				var len = $(this).val().length * 2;
-				this.setSelectionRange(len, len);
-			} else {
-				$(this).val($(this).val());
-			}
-		});
-
-		// Hide suggestions
-		$("#suggested_tags").hide();
-	});
-
+	// New suggestion engine for tags
+	suggestionsEngine($("#id_tags"), $("#suggested_tags"), $("#suggested_tags .tag"));
 
 	// Show uploaded file in file input label
 	$('input[type="file"]').change(function(e) {
@@ -356,9 +293,82 @@ function fadeTruncateArticles() {
 
 // FLOAT MESSAGE BASED ON SCROLL POSITION
 function floatMessage() {
-	if ($(".alert").offset().top - (window.pageYOffset + $(".navbar").outerHeight()) <= 10) {
-		$(".alert").addClass("floating");
-	} else {
-		$(".alert").removeClass("floating");
+	if ($(".alert").length) {
+		if (($(".alert").offset().top - (window.pageYOffset + $(".navbar").outerHeight())) <= 10) {
+			$(".alert").addClass("floating");
+		} else {
+			$(".alert").removeClass("floating");
+		}
 	}
+}
+
+// SUGGESTION ENGINE
+function suggestionsEngine(input, container, suggestion) {
+	// Show tag suggestions
+	input.on('input', function() {
+
+		// split sentence by possible delimiters
+		var words = input.val().toLowerCase().split(/[\s,]+/);
+
+		// get last word
+		var word = words.pop();
+
+		// if not empty and currently typing a word, get suggestions
+		if (word) {
+			// show main block
+			container.show();
+
+			// show matching tags
+			suggestion.each(function() {
+				// get tag text as lowercase
+				var text = $(this).text().toLowerCase();
+
+				// if tag matches input and tag doesn't already exist
+				if (text.includes(word) && $.inArray(text, words) < 0) {
+					// show tag in suggestions
+					$(this).show();
+				} else {
+					// remove tag from suggestions
+					$(this).hide();
+				}
+			});
+		} else {
+			// hide entire block
+			container.hide();
+		}
+
+		// if no suggestions, hide entire block
+		if (!suggestion.is(":visible")) {
+			container.hide();
+		}
+	});
+
+	// Put clicked tag in textbox
+	suggestion.on("click", function() {
+		// get all words in input
+		var words = input.val().split(/[\s,]+/);
+
+		// remove unfinished tag from words list
+		words.pop();
+
+		// add tag to end of words list
+		words.push($(this).text());
+
+		// replace input box value with current tags 
+		input.val(words.join(" ") + " ");
+
+		// focus and move to end of input
+		input.each(function() {
+			$(this).focus();
+			if (this.setSelectionRange) {
+				var len = $(this).val().length * 2;
+				this.setSelectionRange(len, len);
+			} else {
+				$(this).val($(this).val());
+			}
+		});
+
+		// Hide suggestions
+		container.hide();
+	});
 }
