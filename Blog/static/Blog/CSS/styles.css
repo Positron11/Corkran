@@ -118,11 +118,6 @@ fieldset {
 	cursor: default;
 }
 
-.submit-btn-container {
-	margin-top: 1em;
-	text-align: right;
-}
-
 input[type="checkbox"] {
 	opacity: 0;
 }
@@ -231,6 +226,19 @@ input[type="file"] {
 
 .vertically-space-items>*:not(:last-child).closer-below {
 	margin-bottom: 1em;
+}
+
+.input-bar {
+	display: flex;
+}
+
+.input-bar .input-box {
+	flex-grow: 1;
+	margin-right: 1.5em;
+}
+
+.right-align-container {
+	text-align: right;
 }
 
 
@@ -551,15 +559,6 @@ svg.tea #steamR {
 
 
 /* SEARCH */
-
-.search-bar {
-	display: flex;
-}
-
-.search-bar .search-box {
-	flex-grow: 1;
-	margin-right: 1.5em;
-}
 
 .search-info {
 	color: #888;

@@ -11,7 +11,7 @@
 	<!-- Form -->
 	<form class="vertically-space-items" method="post">{% csrf_token %}
 		{{ form.as_table }}
-		<div class="submit-btn-container">
+		<div class="right-align-container">
 			<button class="button" type="submit">Log In</button>
 		</div>
 		<div class="form-freetext">Forgot your password? <a href="{% url 'password-reset' %}">Ask for a new one</a>.</div>
