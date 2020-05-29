@@ -129,6 +129,20 @@ fieldset {
 	cursor: default;
 }
 
+.submit-btn-container {
+	margin-top: 1em;
+	text-align: right;
+}
+
+.input-bar {
+	display: flex;
+}
+
+.input-bar .input-box {
+	flex-grow: 1;
+	margin-right: 1.5em;
+}
+
 input[type="checkbox"] {
 	opacity: 0;
 }

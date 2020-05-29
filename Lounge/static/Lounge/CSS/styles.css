@@ -1,0 +1,62 @@
+/* MESSAGES */
+
+#chatbox {
+	min-height: 10em;
+}
+
+.message-container {
+	margin-bottom: 0.7em;
+}
+
+.message-container .message {
+	color: #333;
+	font-size: 0.9em;
+	padding: 0.5em 1em;
+	text-align: justify;
+	display: inline-block;
+}
+
+.message-container.left {
+	text-align: left;
+}
+
+.message-container.left .message {
+	background-color: #eee;
+	border-radius: 1em 1em 1em 0em;
+}
+
+.message-container.right{ 
+	text-align: right;
+}
+
+.message-container.right .message {
+	background-color: #ccf9d8;
+	border-radius: 1em 1em 0em 1em;
+}
+
+.message-sender {
+	color: #999;
+	font-size: 0.6em;
+	margin-top: 0.2em;
+	font-family: 'Montserrat Alternates', sans-serif;
+}
+
+
+/* MESSAGE BAR */
+
+
+#message-bar-container {
+	bottom: 0.5em;
+	position: sticky;
+}
+
+#chat-message-bar {
+	margin: auto;
+	border-radius: 0.7em;
+	background-color: white;
+	transition: 0.3s ease;
+}
+
+#chat-message-input {
+	box-shadow: none !important;
+}

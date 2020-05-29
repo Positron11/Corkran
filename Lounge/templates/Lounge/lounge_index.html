@@ -1,0 +1,23 @@
+{% extends 'Blog/base.html' %}
+
+{% load static %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+
+<fieldset class="card">
+	<legend class="heading">Select Lounge</legend>
+	<form onsubmit="findLounge(event)">
+		<label>Lounge name:</label>
+		<input id="room-name-input" type="text">
+		
+		<div class="submit-btn-container">
+			<button class="button" type="submit">Find Lounge</button>
+		</div>
+	</form>
+</fieldset>
+
+{% endblock %}
+
+{% block scripts %}<script src="{% static 'Lounge/JS/scripts.js' %}"></script>{% endblock %}

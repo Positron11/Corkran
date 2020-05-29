@@ -12,8 +12,9 @@
 	<meta name="description" content="The open blog.">
 	<meta name="author" content="Aarush Kumbhakern">
 	<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Montserrat+Alternates:wght@400;500;600&display=swap" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="{% static 'Blog/CSS/styles.css' %}">
+	<link rel="stylesheet" href="{% static 'Blog/CSS/styles.css' %}">
 	<link rel="stylesheet" href="{% static 'Blog/CSS/lazy.css' %}">
+	{% block stylesheets %}{% endblock %}
 </head>
 
 <body>
@@ -44,8 +45,8 @@
 			<div class="links-container">
 				<!-- General links -->
 				<a href="{% url 'home' %}" class="unformatted banner">*Co.</a>
-				<a href="{% url 'home' %}" class="unformatted link">Home</a>
 				<a href="{% url 'about' %}" class="unformatted link">About</a>
+				<a href="{% url 'lounges' %}" class="unformatted link">Lounges</a>
 
 				<!-- Registration and authentication -->
 				{% if user.is_authenticated %}
@@ -119,6 +120,7 @@
 	<script src="{% static 'Blog/JS/lazy.js' %}"></script>
 	<!-- Font Awesome -->
 	<script src="https://kit.fontawesome.com/9923a3ef21.js" crossorigin="anonymous"></script>
+	{% block scripts %}{% endblock %}
 </body>
 
 </html>

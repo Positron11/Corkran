@@ -94,7 +94,7 @@ $(function() {
 
 
 	// Prevent empty textarea
-	$("textarea").each(function() {
+	$("textarea, .prevent-empty").each(function() {
 		$(this).on("keydown", function(e) {
 			var c = $(this).val().length;
 

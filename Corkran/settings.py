@@ -39,11 +39,16 @@ INSTALLED_APPS = [
 	'django.contrib.sessions',
 	'django.contrib.messages',
 	'django.contrib.staticfiles',
+	'Lounge.apps.LoungeConfig',
 	'Blog.apps.BlogConfig',
 	'User.apps.UserConfig',
 	'django_unused_media',
 	'django_cleanup',
+<<<<<<< HEAD
 	'django_cron',
+=======
+	'channels',
+>>>>>>> 18f0e71... REBASE LOUNGE ON MASTER
 	'taggit',
 	'mptt',
 ]
@@ -150,6 +155,17 @@ DEFAULT_FROM_EMAIL = 'The Corkran Blog <noreply@corkran.com>'
 CRON_CLASSES = [
     "Blog.cron.NewCommentsEmailNotification",
 ]
+
+# Channels
+ASGI_APPLICATION = 'Corkran.routing.application'
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
 
 # Import local settings
 try:
