@@ -28,24 +28,11 @@ jQuery(window).on("load", function() {
 
 
 	// fade out and remove alert
-	if ($(".alert").length) {
-		// Fade
-		$(".alert").css("opacity", "0");
-
-		// When fade transition over
-		$(".alert").on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function() {
-			// Shrink vertically
-			$(this).css("transition", "0.3s ease-out");
-			$(this).css("height", "0px");
-			$(this).css("margin", "0px");
-			$(this).css("padding", "0px");
-
-			// When shrink transition over, remove
-			$(".alert").on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function() {
-				$(this).remove();
-			});
-		});
-	}
+	setTimeout(function() {
+		if ($(".alert").length) {
+			$(".alert").fadeOut("slow");
+		}
+	}, 10000);
 });
 
 
@@ -53,6 +40,7 @@ jQuery(window).on("load", function() {
 $(function() {
 	
 	// Initialize page
+	floatMessage();
 	resizeSidebar();
 	vertically_truncate();
 	calculateProgressBar();
@@ -85,6 +73,7 @@ $(function() {
 
 	// On scroll...
 	$(window).on("scroll", function() {
+		floatMessage();
 		calculateProgressBar();
 	});
 
@@ -363,4 +352,13 @@ function fadeTruncateArticles() {
 			$(this).append("<div class='fade'></div>");
 		}
 	});
+}
+
+// FLOAT MESSAGE BASED ON SCROLL POSITION
+function floatMessage() {
+	if ($(".alert").offset().top - (window.pageYOffset + $(".navbar").outerHeight()) <= 10) {
+		$(".alert").addClass("floating");
+	} else {
+		$(".alert").removeClass("floating");
+	}
 }

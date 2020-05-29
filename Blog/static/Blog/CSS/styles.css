@@ -537,14 +537,16 @@ svg.tea #steamR {
 /* ALERTS */
 
 .alert {
-	opacity: 1;
+	z-index: 3;
+	margin: auto;
+	position: sticky;
 	font-size: 0.7em;
 	font-weight: 600;
 	padding: 0.8em 1em;
 	text-align: center;
 	border-radius: 1em;
 	font-family: 'Montserrat Alternates', sans-serif;
-	transition: 5s ease-in;
+	transition: 0.5s ease;
 }
 
 .alert.success {
@@ -555,6 +557,11 @@ svg.tea #steamR {
 .alert.error {
 	color: #f32929;
 	background: rgb(242, 38, 38, 0.2);
+}
+
+.alert.floating {
+	background: white;
+	box-shadow: 0 0 3px 3px rgb(0,0,0,0.1);
 }
 
 
@@ -750,7 +757,7 @@ a.tag {
 	font-size: 1.6em;
 	text-align: center;
 	border-radius: 50%;
-	background: rgb(4, 222, 63, 0.3);
+	background: rgb(4, 222, 63, 0.27);
 	transition: 0.3s ease;
 }
 
@@ -808,6 +815,10 @@ a.tag {
 	.attribution {
 		margin-top: -1em;
 	}
+	.alert {
+		top: 9em;
+		width: 95%;
+	}
 	.button:hover {
 		color: #00a32c;
 		border-color: transparent;
@@ -820,12 +831,12 @@ a.tag {
 		border: #333 solid 2px !important;
 	}
 	.floating-btn:hover {
-		text-shadow: 3px 3px 3px rgb(0, 0, 0, 0.3);
-		box-shadow: 0 0 5px 3px rgb(0, 0, 0, 0.2);
+		text-shadow: 3px 3px 3px rgb(0, 0, 0, 0.2);
+		box-shadow: 0 0 3px 3px rgb(0, 0, 0, 0.1);
 	}
 	.floating-btn:active {
-		text-shadow: 0 0 0 rgb(0, 0, 0, 0.3);
-		box-shadow: 0 0 0 0 rgb(0, 0, 0, 0.2);
+		text-shadow: 0 0 0 rgb(0, 0, 0, 0.2);
+		box-shadow: 0 0 0 0 rgb(0, 0, 0, 0.11);
 	}
 	.article.preview .fade {
 		bottom: 4em;
@@ -866,6 +877,10 @@ a.tag {
 	}
 	.feature:after {
 		background: rgb(0, 0, 0, 0.3);
+	}
+	.alert {
+		top: 6.5em;
+		width: 90%;
 	}
 }
 
