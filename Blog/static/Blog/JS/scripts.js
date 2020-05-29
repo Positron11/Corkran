@@ -30,7 +30,9 @@ jQuery(window).on("load", function() {
 	// fade out and remove alert
 	setTimeout(function() {
 		if ($(".alert").length) {
-			$(".alert").fadeOut("slow");
+			$(".alert").fadeOut( "slow", function() {
+				$(this).remove();
+			});
 		}
 	}, 10000);
 });
