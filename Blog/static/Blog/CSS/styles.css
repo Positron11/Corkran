@@ -853,7 +853,7 @@ a.tag {
 	.navbar .links-container .link {
 		display: none;
 		grid-column: 1 / span 2;
-		margin: 1em 0 0.5em 0.5em;
+		margin: 1em 0 0.5em 2em;
 	}
 	.navbar .links-container .banner {
 		justify-self: start;
@@ -917,9 +917,6 @@ a.tag {
 /* MOBILES */
 
 @media only screen and (max-width: 600px) {
-	body {
-		font-size: 18px;
-	}
 	.navbar .links-container .link {
 		font-size: 0.75em;
 	}
@@ -931,6 +928,9 @@ a.tag {
 	}
 	fieldset .heading {
 		font-size: 1.8em;
+	}
+	.input-bar .input-box {
+		margin-right: 1em;
 	}
 	.article-preview {
 		max-height: 40em;
