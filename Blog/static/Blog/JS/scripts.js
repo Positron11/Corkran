@@ -59,6 +59,13 @@ $(function() {
 		$(".navbar").toggleClass("mobile-show");
 	});
 
+	// Hide mobile navbar links if clicked outside navbar
+	$(document).on('click', 'body', function(e) {
+		if((!e.target.id == "navbar" || !$(e.target).closest('#navbar').length) && $(".navbar").hasClass("mobile-show")) {
+			$(".navbar").removeClass("mobile-show");
+		}  
+	});
+
 
 	// Toggle comment reply box
 	$(document).on('click', '.toggle-btn.reply', function(e) {
