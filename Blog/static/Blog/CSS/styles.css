@@ -9,6 +9,10 @@ body {
 	transition: 0.3s ease;
 }
 
+input, textarea, button, select, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
 
 /* LINKS */
 
