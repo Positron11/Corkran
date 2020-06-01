@@ -1,0 +1,8 @@
+{% autoescape off %}
+Greetings, {{ recipient }}. Residents of Corkran have replied to your comment(s):
+{% for comment, replies in data.items %}
+On {{ comment.article.title }}, {% if comment.parent %}you replied to "{{ comment.parent.content|truncatechars:50 }}" with:{% else %}you commented:{% endif %} "{{ comment.content|truncatechars:50 }}"{% for reply in replies %}
+	> {{ reply.author }} replied to you with: "{{ reply.content|truncatechars:80 }}"{% endfor %}
+{% endfor %}
+-From Corkran
+{% endautoescape %}

@@ -1,6 +1,8 @@
+{% autoescape off %}
 Greetings, {{ recipient }}. You have recieved new comments in the following article(s):
-{% for article, comments in articles.items %}
+{% for article, comments in data.items %}
 {{ article.title }} {% for comment in comments %}
 	> {% if comment.parent %}{{ comment.author.username }} replied to "{{ comment.parent.content|truncatechars:50 }}" with:{% else %}{{ comment.author.username }} commented:{% endif %} "{{ comment.content|truncatechars:80 }}"{% endfor %}
 {% endfor %}
 -From Corkran
+{% endautoescape %}

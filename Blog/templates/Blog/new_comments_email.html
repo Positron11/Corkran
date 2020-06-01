@@ -7,7 +7,7 @@
 	<h2>Greetings, {{ recipient }}. You have recieved new comments in the following article(s):</h2>
 
 	<!-- Go through articles -->
-	{% for article, comments in articles.items %}
+	{% for article, comments in data.items %}
 
 	<!-- Article name, with link to article -->
 	<a href="{{ protocol }}://{{ domain }}{% url 'article-detail' article.id article.title %}">{{ article.title }}</a>
