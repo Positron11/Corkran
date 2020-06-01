@@ -137,8 +137,12 @@
 </fieldset>
 
 
+<!-- Comments box offset anchor -->
+<div class="anchor" id="comments"></div>
+
 <!-- Comments container -->
-<fieldset class="comments card" id="comments">
+<fieldset class="comments card">
+
 	<!-- HEADING -->
 	<legend class="heading">Comments ({{article.comment_set.count}})</legend>
 
@@ -147,8 +151,10 @@
 	<ul>
 		{% recursetree article.comment_set.all %}
 		<li>
-			<!-- Comment -->
+			<!-- Comment offset anchor -->
 			<div class="anchor" id="{{ node.id }}"></div>
+
+			<!-- Comment -->
 			<div class="comment">
 				<!-- Author and date -->
 				<div class="info-container">
@@ -223,9 +229,9 @@
 	{% if user.is_authenticated %}
 	<!-- New comment -->
 	<div class="new-comment-form">
-		<form method="post">{% csrf_token %}
+		<form method="post" class="vertically-space-items">{% csrf_token %}
 			<!-- Textarea -->
-			<textarea name="content" rows="4" required autocomplete="off" placeholder="New comment..."></textarea>
+			<textarea name="content" rows="4" required autocomplete="off" placeholder="New comment..." class="closer-below"></textarea>
 
 			<!-- Scroll position -->
 			<input type="hidden" name="scroll_pos" value="comments">
@@ -239,6 +245,11 @@
 	{% endif %}
 </fieldset>
 
+{% if not user.is_authenticated %}
+<div class="special compact card">
+	<span class="text">Join the conversation - <a href="{% url 'login' %}?next={{ article.get_absolute_url }}#comments">Login</a> to comment.</span>
+</div>
+{% endif %}
 
 <!-- Scroll to top button -->
 <div class="clickable floating-btn scroll-top-btn" onclick="scrollToTop()" title="Back to Top">
