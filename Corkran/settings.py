@@ -41,10 +41,11 @@ INSTALLED_APPS = [
 	'django.contrib.staticfiles',
 	'Blog.apps.BlogConfig',
 	'User.apps.UserConfig',
-	'taggit',
-	'mptt',
 	'django_unused_media',
 	'django_cleanup',
+	'django_cron',
+	'taggit',
+	'mptt',
 ]
 
 MIDDLEWARE = [
@@ -144,6 +145,11 @@ EMAIL_HOST_USER = 'apikey'
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = 'The Corkran Blog <noreply@corkran.com>'
+
+# Cronjobs
+CRON_CLASSES = [
+    "Blog.cron.NewCommentsEmailNotification",
+]
 
 # Import local settings
 try:

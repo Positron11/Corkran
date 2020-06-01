@@ -1,0 +1,42 @@
+{% autoescape off %}
+
+<!doctype html>
+<html lang="en">
+
+<body>
+	<h2>Greetings, {{ recipient }}. You have recieved new comments in the following article(s):</h2>
+
+	<!-- Go through articles -->
+	{% for article, comments in articles.items %}
+
+	<!-- Article name, with link to article -->
+	<a href="{{ protocol }}://{{ domain }}{% url 'article-detail' article.id article.title %}">{{ article.title }}</a>
+	
+	<!-- List of comments -->
+	<ul>
+		{% for comment in comments %}
+		<li>
+			<!-- If comment is a reply... -->
+			{% if comment.parent %}
+			{{ comment.author.username }} replied to <em>"{{ comment.parent.content|escape|truncatechars:50 }}"</em> with:
+			<!-- Otherwise... -->
+			{% else %}
+			{{ comment.author.username }} commented:
+			{% endif %}
+
+			<!-- Main comment's content -->
+			<em>"{{ comment.content|escape|truncatechars:80 }}"</em>
+
+			<!-- Link to comment, with anchor -->
+			<a href="{{ protocol }}://{{ domain }}{% url 'article-detail' article.id article.title %}#{{ comment.id }}">(view)</a>
+		</li>
+		{% endfor %}
+	</ul>
+	{% endfor %}
+
+	<h4>-From Corkran</h4>
+</body>
+
+</html>
+
+{% endautoescape %}
