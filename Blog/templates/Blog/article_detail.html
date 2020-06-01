@@ -148,7 +148,8 @@
 		{% recursetree article.comment_set.all %}
 		<li>
 			<!-- Comment -->
-			<div class="comment" id="{{ node.id }}">
+			<div class="anchor" id="{{ node.id }}"></div>
+			<div class="comment">
 				<!-- Author and date -->
 				<div class="info-container">
 					<a href="{% url 'author-sorted-articles' node.author %}"

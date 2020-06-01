@@ -31,6 +31,13 @@ a.unformatted {
 }
 
 
+/* OFFSET ANCHOR */
+
+.anchor{
+	visibility: hidden;
+}
+
+
 /* PARAGRAPHS & TEXT */
 
 p, .text {
@@ -785,6 +792,9 @@ a.tag {
 /* LARGE SCREENS ONLY */
 
 @media only screen and (min-width: 1201px) {
+	.anchor {
+		transform: translateY(-7em);
+	}
 	.navbar .links-container a:not(.banner):hover {
 		color: #999;
 	}
@@ -852,6 +862,9 @@ a.tag {
 /* LANDSCAPE TABLETS */
 
 @media only screen and (max-width: 1200px) {
+	.anchor {
+		transform: translateY(-6em);
+	}
 	.navbar .links-container {
 		padding: 0.5em 0;
 		place-items: center start;
