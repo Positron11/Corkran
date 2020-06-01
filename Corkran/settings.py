@@ -138,14 +138,6 @@ ADMIN_URL = os.getenv('SECRET_KEY')
 # Taggit app settings
 TAGGIT_CASE_INSENSITIVE = True
 
-# Email settings
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'apikey'
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-DEFAULT_FROM_EMAIL = 'The Corkran Blog <noreply@corkran.com>'
-
 # Cronjobs
 CRON_CLASSES = [
     "Blog.cron.NewCommentsEmailNotification",
