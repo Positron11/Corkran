@@ -114,8 +114,8 @@ $(function() {
 
 
 	// replace all other separators with spaces
-	$("#suggested_tags").on('input', function() {
-		$(".suggestions-input").val($(".suggestions-input").val().replace(/[\s,]+/g, " "));
+	$("#id_tags").on('input', function() {
+		$("#id_tags").val($("#id_tags").val().replace(/[\s,]+/g, " "));
 	});
 
 	// New suggestion engine for tags
