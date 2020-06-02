@@ -813,7 +813,7 @@ a.tag {
 		background: rgb(0, 0, 0, 0.1);
 	}
 	.feature:hover:after {
-		background: rgb(0, 0, 0, 0.3);
+		background: rgb(0, 0, 0, 0.2);
 	}
 	.feature .overlay {
 		left: 5%;
@@ -895,7 +895,7 @@ a.tag {
 		transform: translate(-50%, -50%);
 	}
 	.feature:after {
-		background: rgb(0, 0, 0, 0.3);
+		background: rgb(0, 0, 0, 0.2);
 	}
 	.alert {
 		top: 6.5em;
