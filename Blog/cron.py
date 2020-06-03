@@ -8,7 +8,7 @@ from Blog.models import Comment
 
 class NewCommentsEmailNotification(CronJobBase):
 	# run daily
-	schedule = Schedule(run_at_times=['24:00'])
+	schedule = Schedule(run_at_times=['23:00'])
 	code = 'Corkran.new_comments_email_notification'
 
 
