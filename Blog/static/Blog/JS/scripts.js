@@ -112,14 +112,22 @@ $(function() {
 		autosize.update($("textarea"));
 	});
 
+	
+		// New suggestion engine for tags
+		suggestionsEngine($("#id_tags"), $("#suggested_tags"), $("#suggested_tags .tag"));
 
 	// replace all other separators with spaces
 	$("#id_tags").on('input', function() {
-		$("#id_tags").val($("#id_tags").val().replace(/[\s,]+/g, " "));
-	});
+		// get keypress code
+		$("#id_tags").on('keydown', function() {
+			tags_input_keypress = event.which || event.keyCode || event.charCode;
+		});
 
-	// New suggestion engine for tags
-	suggestionsEngine($("#id_tags"), $("#suggested_tags"), $("#suggested_tags .tag"));
+		// if keypress is not backspace or delete
+		if( tags_input_keypress != 8 && tags_input_keypress != 46 ) {
+			$("#id_tags").val($("#id_tags").val().replace(/[\s,]+/g, ", "));
+		}
+	});
 
 	// Show uploaded file in file input label
 	$('input[type="file"]').change(function(e) {
@@ -364,7 +372,7 @@ function suggestionsEngine(input, container, suggestion) {
 		words.push($(this).text());
 
 		// replace input box value with current tags 
-		input.val(words.join(" ") + " ");
+		input.val(words.join(", ") + " ");
 
 		// focus and move to end of input
 		input.each(function() {
