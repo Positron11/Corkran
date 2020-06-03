@@ -34,6 +34,7 @@
 {% endif %}
 {% endblock %}
 
+
 {% block content %}
 
 {% if user == article.author %}
@@ -45,31 +46,36 @@
 {% endif %}
 
 
-<!-- Media buttons -->
-<div class="media-btn-container closer-below">
-	<!-- Twitter -->
-	<a href='https://twitter.com/share?url={{request.build_absolute_uri}}&text="{{article.title}}" by {{article.author}}'
-		target="_blank" class="unformatted share-btn twitter">
-		<div class="button">
-			<i class="fab fa-twitter"></i>
-		</div>
-	</a>
+<div class="dual-option-container closer-below">
+	<!-- Media buttons -->
+	<div class="media-btn-container">
+		<!-- Twitter -->
+		<a href='https://twitter.com/share?url={{request.build_absolute_uri}}&text="{{article.title}}" by {{article.author}}'
+			target="_blank" class="unformatted share-btn twitter">
+			<div class="button">
+				<i class="fab fa-twitter"></i>
+			</div>
+		</a>
 
-	<!-- Facebook -->
-	<a href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}" target="_blank"
-		class="unformatted share-btn facebook">
-		<div class="button">
-			<i class="fab fa-facebook-f"></i>
-		</div>
-	</a>
+		<!-- Facebook -->
+		<a href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}" target="_blank"
+			class="unformatted share-btn facebook">
+			<div class="button">
+				<i class="fab fa-facebook-f"></i>
+			</div>
+		</a>
 
-	<!-- Email -->
-	<a href="mailto:?subject={{article.title}}&body={{article.title}} - From the Corkran blog. ({{request.build_absolute_uri}})"
-		target="_blank" class="unformatted share-btn email">
-		<div class="button">
-			<i class="fas fa-envelope"></i>
-		</div>
-	</a>
+		<!-- Email -->
+		<a href="mailto:?subject={{article.title}}&body={{article.title}} - From the Corkran blog. ({{request.build_absolute_uri}})"
+			target="_blank" class="unformatted share-btn email">
+			<div class="button">
+				<i class="fas fa-envelope"></i>
+			</div>
+		</a>
+	</div>
+
+	<!-- Go to comments -->
+	<a href="#comments" class="button" title="Comments"><i class="fas fa-comments"></i></a>
 </div>
 
 
@@ -85,21 +91,6 @@
 		<i class="fas fa-arrow-circle-right"></i>&nbsp;&nbsp;<bdi>{{ next_article.title }}</bdi>
 	</a>
 </div>
-
-{% if request.user.is_superuser %} 
-<!-- Feature article -->
-<div class="closer-below">
-	<form method="post">{% csrf_token %}
-		{% if not article.featured %}
-		<input type="checkbox" name="featured" id="id_featured" checked>
-		<button class="button" type="submit" name="feature">Feature This Article</button>
-		{% else %}
-		<input type="checkbox" name="featured" id="id_featured">
-		<button class="button danger" type="submit" name="feature">Unfeature This Article</button>
-		{% endif %}
-	</form>
-</div>
-{% endif %}
 
 
 <!-- Article -->
@@ -123,6 +114,22 @@
 </div>
 
 
+{% if request.user.is_superuser %} 
+<!-- Feature article -->
+<div class="right-align-container closer-below">
+	<form method="post">{% csrf_token %}
+		{% if not article.featured %}
+		<input type="checkbox" name="featured" id="id_featured" checked>
+		<button class="button" type="submit" name="feature">Feature This Article</button>
+		{% else %}
+		<input type="checkbox" name="featured" id="id_featured">
+		<button class="button danger" type="submit" name="feature">Unfeature This Article</button>
+		{% endif %}
+	</form>
+</div>
+{% endif %}
+
+
 <!-- Tags box container -->
 <fieldset class="compact card">
 	<!-- Heading -->
@@ -138,7 +145,7 @@
 
 
 <!-- Comments box offset anchor -->
-<div class="anchor" id="comments"></div>
+<div class="offset anchor" id="comments"></div>
 
 <!-- Comments container -->
 <fieldset class="comments card">
@@ -152,7 +159,7 @@
 		{% recursetree article.comment_set.all %}
 		<li>
 			<!-- Comment offset anchor -->
-			<div class="anchor" id="{{ node.id }}"></div>
+			<div class="offset anchor" id="{{ node.id }}"></div>
 
 			<!-- Comment -->
 			<div class="comment">
@@ -252,7 +259,7 @@
 {% endif %}
 
 <!-- Scroll to top button -->
-<div class="clickable floating-btn scroll-top-btn" onclick="scrollToTop()" title="Back to Top">
+<div class="clickable floating-btn scroll-top-btn" onclick="window.scrollTo(0,0);" title="Back to Top">
 	<i class="fas fa-angle-double-up"></i>
 </div>
 

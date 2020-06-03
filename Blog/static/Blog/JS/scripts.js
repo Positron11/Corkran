@@ -213,16 +213,6 @@ function scrollTopButton(state) {
 }
 
 
-// SCROLL TO TOP
-function scrollToTop() {
-	const c = document.documentElement.scrollTop || document.body.scrollTop;
-	if (c > 0) {
-		window.requestAnimationFrame(scrollToTop);
-		window.scrollTo(0, c - c / 8);
-	}
-}
-
-
 // TRUNCATE ANNOUNCEMENT IN SIDEBAR
 function resizeSidebar() {
 	// approximate fixed value for distance from top of sidebar to bottom of page

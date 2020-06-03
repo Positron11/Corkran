@@ -5,6 +5,7 @@ body {
 	padding: 0;
 	font-size: 20px;
 	background: white;
+	scroll-behavior: smooth;
 	font-family: 'Cormorant Garamond', serif;
 	transition: 0.3s ease;
 }
@@ -593,7 +594,7 @@ svg.tea #steamR {
 
 .media-btn-container .button {
 	width: 1em;
-	margin-right: 1em;
+	margin-right: 0.7em;
 	text-align: center;
 }
 
@@ -792,7 +793,7 @@ a.tag {
 /* LARGE SCREENS ONLY */
 
 @media only screen and (min-width: 1201px) {
-	.anchor {
+	.anchor.offset {
 		transform: translateY(-7em);
 	}
 	.navbar .links-container a:not(.banner):hover {
@@ -862,7 +863,7 @@ a.tag {
 /* LANDSCAPE TABLETS */
 
 @media only screen and (max-width: 1200px) {
-	.anchor {
+	.anchor.offset {
 		transform: translateY(-6em);
 	}
 	.navbar .links-container {
