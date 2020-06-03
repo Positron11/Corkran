@@ -133,7 +133,7 @@ LOGIN_URL = "login"
 LOGIN_REDIRECT_URL = "home"
 
 # Admin url
-ADMIN_URL = os.getenv('SECRET_KEY')
+ADMIN_URL = os.getenv('ADMIN_URL')
 
 # Taggit app settings
 TAGGIT_CASE_INSENSITIVE = True
