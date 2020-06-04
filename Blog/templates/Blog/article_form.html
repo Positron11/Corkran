@@ -8,18 +8,31 @@
 <fieldset class="card">
 	<!-- Heading -->
 	<legend class="heading">Editor</legend>
-
+	
 	<!-- Form -->
 	<form class="vertically-space-items" id="article_form" method="post" autocomplete="off" enctype="multipart/form-data">{% csrf_token %}
+		<!-- Form navigation -->
+		<label>Go to:</label>
+		<div class="list-box">
+			<a href="#title" class="small button">Title</a>
+			<a href="#content" class="small button">Content</a>
+			<a href="#tags" class="small button">Tags</a>
+			<a href="#image" class="small button">Image</a>
+			<a href="#unsplash" class="small button">Unsplash Search</a>
+		</div>
+
 		<!-- Title -->
+		<div class="offset anchor" id="title"></div>
 		<label>{{ form.title.label }}:</label>
 		{{ form.title }}
 
 		<!-- Content -->
+		<div class="offset anchor" id="content"></div>
 		<label>{{ form.content.label }}:</label>
 		{{ form.content }}
 
 		<!-- Tags -->
+		<div class="offset anchor" id="tags"></div>
 		<label>Tags separated by commas:</label>
 		{{ form.tags }}
 
@@ -35,6 +48,7 @@
 			</div>
 		</div>
 
+		<div class="offset anchor" id="image"></div>
 		{% if form.instance.thumbnail %}
 		<!-- Remove thumbnail -->
 		<label>Remove thumbnail:</label>
@@ -63,6 +77,7 @@
 </fieldset>
 
 <!-- Integrated image search -->
+<div class="offset anchor" id="unsplash"></div>
 <fieldset class="card">
 	<legend class="heading">Image Search</legend>
 	<form id="unsplash_search_form" action="" autocomplete="off">
@@ -73,5 +88,10 @@
 		</div>
 	</form>
 </fieldset>
+
+<!-- Scroll to top button -->
+<a href="#top" class="floating-btn scroll-top-btn" title="Back to Top">
+	<i class="fas fa-angle-double-up"></i>
+</a>
 
 {% endblock %}

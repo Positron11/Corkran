@@ -178,7 +178,7 @@
 						<input type="hidden" name="scroll_pos" value="{{ node.id }}">
 
 						<!-- Submit button -->
-						<button class="small button" type="submit" name="edit">Edit</button>
+						<button class="minimal button" type="submit" name="edit">Edit</button>
 					</form>
 				</div>
 
@@ -186,14 +186,14 @@
 				<!-- Comment buttons -->
 				<div class="comment-btn-container">
 					<!-- Reply -->
-					<div class="small button reply toggle-btn">Reply</div>
+					<div class="minimal button reply toggle-btn">Reply</div>
 					{% if user == article.author or user == node.author %}
 					{% if user == node.author %}
 					<!-- Edit -->
-					<div class="small button edit toggle-btn">Edit</div>
+					<div class="minimal button edit toggle-btn">Edit</div>
 					{% endif %}
 					<!-- Delete -->
-					<a href="{% url 'delete-comment' node.id %}" class="small danger button">Delete</a>
+					<a href="{% url 'delete-comment' node.id %}" class="minimal danger button">Delete</a>
 					{% endif %}
 				</div>
 				{% endif %}
@@ -209,7 +209,7 @@
 						<input type="hidden" name="scroll_pos" value="{{ node.id }}">
 
 						<!-- Submit button -->
-						<button class="small button" type="submit" name="reply">Post</button>
+						<button class="minimal button" type="submit" name="reply">Post</button>
 					</form>
 				</div>
 			</div>

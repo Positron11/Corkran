@@ -113,6 +113,11 @@ fieldset {
 }
 
 .button.small {
+	font-size: 0.65em;
+	padding: 0.8em;
+}
+
+.button.minimal {
 	border: none;
 	font-size: 0.6em;
 	padding: 0.2em 0.5em;
