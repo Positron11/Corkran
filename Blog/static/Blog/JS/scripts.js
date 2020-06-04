@@ -59,7 +59,7 @@ $(function () {
 		e.preventDefault();
 		$('html, body').stop().animate({
 			scrollTop: $($(this).attr('href')).offset().top
-		}, 300, 'swing');
+		}, 500, 'swing');
 	});
 
 
@@ -113,16 +113,21 @@ $(function () {
 
 	// Prevent empty textarea
 	$("textarea").each(function () {
-		$(this).on("keydown", function (e) {
-			var c = $(this).val().length;
-
-			// prevent directly typing leading spaces or newlines
-			if (c === 0)
-				return (e.which !== "13" && e.which !== 32);
-
-			// disable submit button if empty
-			$(this).parent().find("button").prop("disabled", ($.trim($(this).val()) === ""));
-		});
+		$(this)
+			// prevent leading newlines or spaces
+			.on("keydown", function (e) {
+				// get pressed key
+				var c = $(this).val().length;
+				// prevent directly typing leading spaces or newlines if textbox empty
+				if (c === 0) {
+					return (e.which !== "13" && e.which !== 32);
+				}
+			})
+			// prevent empty textarea from middle
+			.on("input", function () {
+				// disable submit button if empty
+				$(this).parent().find("button").prop("disabled", ($.trim($(this).val()) === ""));
+			});
 	});
 
 	// Automatically resize textarea
