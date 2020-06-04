@@ -51,26 +51,20 @@
 	<div class="media-btn-container">
 		<!-- Twitter -->
 		<a href='https://twitter.com/share?url={{request.build_absolute_uri}}&text="{{article.title}}" by {{article.author}}'
-			target="_blank" class="unformatted share-btn twitter">
-			<div class="button">
+			target="_blank" class="unformatted share-btn twitter button">
 				<i class="fab fa-twitter"></i>
-			</div>
 		</a>
 
 		<!-- Facebook -->
 		<a href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}" target="_blank"
-			class="unformatted share-btn facebook">
-			<div class="button">
+			class="unformatted share-btn facebook button">
 				<i class="fab fa-facebook-f"></i>
-			</div>
 		</a>
 
 		<!-- Email -->
 		<a href="mailto:?subject={{article.title}}&body={{article.title}} - From the Corkran blog. ({{request.build_absolute_uri}})"
-			target="_blank" class="unformatted share-btn email">
-			<div class="button">
+			target="_blank" class="unformatted share-btn email button">
 				<i class="fas fa-envelope"></i>
-			</div>
 		</a>
 	</div>
 

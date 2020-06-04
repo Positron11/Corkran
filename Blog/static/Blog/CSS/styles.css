@@ -496,7 +496,7 @@ svg.tea #steamR {
 
 /* CONTENT */
 
-.page .content {
+.page .page-content {
 	order: 1;
 	flex: 3 1 0;
 	min-width: 0;
@@ -757,8 +757,8 @@ a.tag {
 	font-family: 'Montserrat Alternates', sans-serif;
 }
 
-.paginator * {
-	margin: 0 0.5em;
+.paginator a {
+	padding: 0 0.5em;
 }
 
 .paginator .current {
@@ -873,7 +873,7 @@ a.tag {
 	.article.preview .fade {
 		bottom: 4em;
 	}
-	.page .content {
+	.page .page-content {
 		margin-right: 2em;
 	}
 }
@@ -882,14 +882,29 @@ a.tag {
 /* LANDSCAPE TABLETS */
 
 @media only screen and (max-width: 1200px) {
+	.feature .overlay:active {
+		color: white;
+		background: transparent;
+	}
+	.button:active {
+		color: #00a32c;
+		border-color: transparent;
+		background: rgb(4, 222, 63, 0.2);
+	}
+	.button.danger:active {
+		background: rgb(242, 38, 38, 0.2);
+	}
 	.anchor.offset {
-		transform: translateY(-6em);
+		transform: translateY(-5em);
 	}
 	.alert.floating .close {
 		opacity: 1;
 		display: block;
 		color: #f32929;
 		pointer-events: all;
+	}
+	.navbar .links-container a:not(.banner):active {
+		color: #999;
 	}
 	.navbar .links-container {
 		padding: 0.5em 0;
@@ -925,7 +940,7 @@ a.tag {
 	}
 	.alert {
 		top: 6.5em;
-		width: 85%;
+		width: 90%;
 	}
 }
 

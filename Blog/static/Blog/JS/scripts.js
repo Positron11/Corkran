@@ -30,13 +30,9 @@ $(window).on("load", function () {
 	}, 500);
 
 	// fade out and remove alert after 10 seconds
-	setTimeout(function () {
-		if ($(".alert").length) {
-			$(".alert").fadeOut("slow", function () {
-				$(this).remove();
-			});
-		}
-	}, 10000);
+	$(".alert").each(function () {
+		autoRemoveAlert(this);
+	});
 });
 
 
@@ -65,7 +61,7 @@ $(function () {
 
 	// Close alert on clicking close button
 	$(document).on('click', '.alert.floating .close', function (e) {
-		$(".alert").hide("fast", function () {
+		$(this).parent(".alert").hide("fast", function () {
 			$(this).remove();
 		});
 	});
@@ -393,4 +389,16 @@ function suggestionsEngine(input, container, suggestion) {
 		// Hide suggestions
 		container.hide();
 	});
+}
+
+
+// FADE OUT AND REMOVE ALERT AFTER 10 SECONDS
+function autoRemoveAlert(page_alert) {
+	setTimeout(function () {
+		// fade out alert
+		$(page_alert).fadeOut("slow", function () {
+			// remove alert from DOM after fading out
+			$(this).remove();
+		});
+	}, 10000);
 }
