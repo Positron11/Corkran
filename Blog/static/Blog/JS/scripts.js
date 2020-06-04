@@ -53,6 +53,14 @@ $(function() {
 	autosize.update($("textarea"));
 
 
+	// Close alert on clicking close button
+	$(document).on('click', '.alert.floating .close', function(e) {
+		$(".alert").hide( "fast", function() {
+			$(this).remove();
+		});
+	});
+
+
 	// Toggle mobile navbar links
 	$(document).on('click', '.menu-btn', function(e) {
 		e.preventDefault();

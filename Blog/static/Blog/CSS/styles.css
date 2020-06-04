@@ -558,12 +558,14 @@ svg.tea #steamR {
 .alert {
 	z-index: 3;
 	margin: auto;
+	display: flex;
 	position: sticky;
 	font-size: 0.7em;
 	font-weight: 600;
-	padding: 0.8em 1em;
+	padding: 0.5em 1em;
 	text-align: center;
 	border-radius: 1em;
+	align-items: center;
 	font-family: 'Montserrat Alternates', sans-serif;
 	transition: 0.3s ease-out;
 }
@@ -576,6 +578,20 @@ svg.tea #steamR {
 .alert.error {
 	color: #f32929;
 	background: rgb(242, 38, 38, 0.2);
+}
+
+.alert .message{
+	flex-grow: 1;
+	overflow: hidden;
+	margin: 0 0.2em 0 1.7em;
+	text-overflow: ellipsis;
+}
+
+.alert .close {
+	opacity: 0;
+	padding: 0.5em;
+	pointer-events: none;
+	transition: 0.3s ease;
 }
 
 .alert.floating {
@@ -799,6 +815,14 @@ a.tag {
 	.anchor.offset {
 		transform: translateY(-7em);
 	}
+	.alert.floating:hover > .close {
+		opacity: 1;
+		display: block;
+		pointer-events: all;
+	}
+	.alert.floating .close:hover {
+		color: #f32929;
+	}
 	.navbar .links-container a:not(.banner):hover {
 		color: #999;
 	}
@@ -869,6 +893,12 @@ a.tag {
 	.anchor.offset {
 		transform: translateY(-6em);
 	}
+	.alert.floating .close {
+		opacity: 1;
+		display: block;
+		color: #f32929;
+		pointer-events: all;
+	}
 	.navbar .links-container {
 		padding: 0.5em 0;
 		place-items: center start;
@@ -903,7 +933,7 @@ a.tag {
 	}
 	.alert {
 		top: 6.5em;
-		width: 90%;
+		width: 85%;
 	}
 }
 
