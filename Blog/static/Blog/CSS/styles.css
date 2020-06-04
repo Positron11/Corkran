@@ -1,9 +1,4 @@
 /* GLOBAL */
-
-html {
-	scroll-behavior: smooth;
-}
-
 body {
 	margin: 0;
 	padding: 0;
@@ -320,7 +315,7 @@ fieldset.card.compact {
 	bottom: 0;
 	z-index: 4;
 	opacity: 0;
-	display: flex;
+	display: none;
 	position: fixed;
 	background: white;
 	align-items: center;
@@ -786,8 +781,6 @@ a.tag {
 	right: 0.7em;
 	bottom: 0.5em;
 	position: fixed;
-	color: #00a32c;
-	font-weight: 700;
 	line-height: 2em;
 	font-size: 1.6em;
 	text-align: center;
@@ -796,9 +789,8 @@ a.tag {
 	transition: 0.3s ease;
 }
 
-.floating-btn .scroll-top-btn {
-	opacity: 0;
-	transform: scale(0);
+.floating-btn i {
+	color: #00a32c;
 }
 
 

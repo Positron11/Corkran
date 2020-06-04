@@ -118,10 +118,8 @@
 
 {% if user.is_authenticated %}
 <!-- New article button -->
-<a href="{% url 'create-article' %}" title="New Article" class="unformatted">
-	<div class="clickable floating-btn">
-		<i class="fas fa-pen-nib"></i>
-	</div>
+<a href="{% url 'create-article' %}" class="floating-btn" title="New Article">
+	<i class="fas fa-pen-nib"></i>
 </a>
 {% endif %}
 

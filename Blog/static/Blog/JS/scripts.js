@@ -1,36 +1,38 @@
+// Get loading overlay and main container elements
+var main_container = document.getElementById('main')
+var loading_overlay = document.getElementById('loading-overlay')
+
+
 // Make the main page invisible before it is done loading
-document.getElementById('main').style.opacity = "0";
+main_container.style.opacity = "0";
 
 
 // Show overlay if page takes more than 5 milliseconds to load
-var showTimeout = setTimeout(function() {
-	document.getElementById('loading-overlay').style.opacity = "1";
+var showTimeout = setTimeout(function () {
+	loading_overlay.style.display = "flex";
+	loading_overlay.style.opacity = "1";
 }, 5);
 
 
 // Hide overlay when page finished loading
-jQuery(window).on("load", function() {
+$(window).on("load", function () {
 	clearTimeout(showTimeout);
 
-
 	// hide the overlay
-	document.getElementById('loading-overlay').style.opacity = "0";
-
+	loading_overlay.style.opacity = "0";
 
 	// show the main page
-	document.getElementById('main').style.opacity = "1";
-
+	main_container.style.opacity = "1";
 
 	// remove the overlay after it's done hiding
-	setTimeout(function() {
-		$("#loading-overlay").remove();
+	setTimeout(function () {
+		loading_overlay.remove();
 	}, 500);
 
-
-	// fade out and remove alert
-	setTimeout(function() {
+	// fade out and remove alert after 10 seconds
+	setTimeout(function () {
 		if ($(".alert").length) {
-			$(".alert").fadeOut( "slow", function() {
+			$(".alert").fadeOut("slow", function () {
 				$(this).remove();
 			});
 		}
@@ -39,8 +41,7 @@ jQuery(window).on("load", function() {
 
 
 // Main
-$(function() {
-	
+$(function () {
 	// Initialize page
 	floatMessage();
 	resizeSidebar();
@@ -53,57 +54,66 @@ $(function() {
 	autosize.update($("textarea"));
 
 
+	// Smooth scrolling
+	$(document).on('click', 'a[href^="#"]', function (e) {
+		e.preventDefault();
+		$('html, body').stop().animate({
+			scrollTop: $($(this).attr('href')).offset().top
+		}, 300, 'swing');
+	});
+
+
 	// Close alert on clicking close button
-	$(document).on('click', '.alert.floating .close', function(e) {
-		$(".alert").hide( "fast", function() {
+	$(document).on('click', '.alert.floating .close', function (e) {
+		$(".alert").hide("fast", function () {
 			$(this).remove();
 		});
 	});
 
 
 	// Toggle mobile navbar links
-	$(document).on('click', '.menu-btn', function(e) {
+	$(document).on('click', '.menu-btn', function (e) {
 		e.preventDefault();
 		$(".navbar").toggleClass("mobile-show");
 	});
 
 	// Hide mobile navbar links if clicked outside navbar
-	$(document).on('click', 'body', function(e) {
-		if((!e.target.id == "navbar" || !$(e.target).closest('#navbar').length) && $(".navbar").hasClass("mobile-show")) {
+	$(document).on('click', 'body', function (e) {
+		if ((!e.target.id == "navbar" || !$(e.target).closest('#navbar').length) && $(".navbar").hasClass("mobile-show")) {
 			$(".navbar").removeClass("mobile-show");
-		}  
+		}
 	});
 
 
 	// Toggle comment reply box
-	$(document).on('click', '.toggle-btn.reply', function(e) {
+	$(document).on('click', '.toggle-btn.reply', function (e) {
 		e.preventDefault();
 		toggleCommentEditor("reply", $(this));
 	});
 
 	// Toggle comment edit box
-	$(document).on('click', '.toggle-btn.edit', function(e) {
+	$(document).on('click', '.toggle-btn.edit', function (e) {
 		e.preventDefault();
 		toggleCommentEditor("edit", $(this));
 	});
 
 
 	// On scroll...
-	$(window).on("scroll", function() {
+	$(window).on("scroll", function () {
 		floatMessage();
 		calculateProgressBar();
 	});
 
 	// On resize...
-	$(window).on("resize", function() {
+	$(window).on("resize", function () {
 		resizeSidebar();
 		fadeTruncateArticles();
 	});
 
 
 	// Prevent empty textarea
-	$("textarea").each(function() {
-		$(this).on("keydown", function(e) {
+	$("textarea").each(function () {
+		$(this).on("keydown", function (e) {
 			var c = $(this).val().length;
 
 			// prevent directly typing leading spaces or newlines
@@ -116,29 +126,29 @@ $(function() {
 	});
 
 	// Automatically resize textarea
-	$("textarea").on('input', function() {
+	$("textarea").on('input', function () {
 		autosize.update($("textarea"));
 	});
 
-	
-		// New suggestion engine for tags
-		suggestionsEngine($("#id_tags"), $("#suggested_tags"), $("#suggested_tags .tag"));
+
+	// New suggestion engine for tags
+	suggestionsEngine($("#id_tags"), $("#suggested_tags"), $("#suggested_tags .tag"));
 
 	// replace all other separators with spaces
-	$("#id_tags").on('input', function() {
+	$("#id_tags").on('input', function () {
 		// get keypress code
-		$("#id_tags").on('keydown', function() {
+		$("#id_tags").on('keydown', function () {
 			tags_input_keypress = event.which || event.keyCode || event.charCode;
 		});
 
 		// if keypress is not backspace or delete
-		if( tags_input_keypress != 8 && tags_input_keypress != 46 ) {
+		if (tags_input_keypress != 8 && tags_input_keypress != 46) {
 			$("#id_tags").val($("#id_tags").val().replace(/[\s,]+/g, ", "));
 		}
 	});
 
 	// Show uploaded file in file input label
-	$('input[type="file"]').change(function(e) {
+	$('input[type="file"]').change(function (e) {
 		var fileName = e.target.files[0].name;
 		var label = $("label[id='" + $(this).attr('id') + "_label']");
 		label.children("span").text(fileName);
@@ -146,24 +156,24 @@ $(function() {
 
 	// store original attribution value
 	var value = $("#id_attribution").prop("value");
-	
+
 	// Disable thumbnail upload button and attribution if remove thumbnail checked
-	$('#thumbnail-clear_id').click(function() {
+	$('#thumbnail-clear_id').click(function () {
 		if ($(this).prop("checked") === true) {
 			$("#thumbnail_button, #id_attribution").addClass("disabled");
 			$("#id_attribution")
-			.prop("placeholder", "No image, no attribution...")
-			.prop("value", "");
+				.prop("placeholder", "No image, no attribution...")
+				.prop("value", "");
 		} else {
 			$("#thumbnail_button, #id_attribution").removeClass("disabled");
 			$("#id_attribution")
-			.prop("placeholder", "Attribution or caption...")
-			.prop("value", value);
+				.prop("placeholder", "Attribution or caption...")
+				.prop("value", value);
 		}
 	});
 
 	// Unsplash image search
-	$("#unsplash_search_form").submit(function(e) {
+	$("#unsplash_search_form").submit(function (e) {
 		// prevent reload on image search
 		e.preventDefault();
 		// get query and encode
@@ -200,24 +210,15 @@ function calculateProgressBar() {
 		$(".progress-bar").css("width", completed + "%");
 
 		// show scroll to top button if started reading article
-		if (completed <= 1) {
-			scrollTopButton("hide");
-		} else {
-			scrollTopButton("show");
-		}
+		scrollTopButton(completed <= 1 ? "hide" : "show");
 	}
 }
 
 
 // SHOW OR HIDE SCROLL TOP BUTTON
 function scrollTopButton(state) {
-	if (state == "show") {
-		$(".scroll-top-btn").css("opacity", "1");
-		$(".scroll-top-btn").css("transform", "scale(1)");
-	} else {
-		$(".scroll-top-btn").css("opacity", "0");
-		$(".scroll-top-btn").css("transform", "scale(0)");
-	}
+	$(".scroll-top-btn").css("opacity", state == "show" ? 1 : 0);
+	$(".scroll-top-btn").css("transform", state == "show" ? 1 : 0);
 }
 
 
@@ -234,7 +235,8 @@ function resizeSidebar() {
 // TOGGLE COMMENT EDITORS
 function toggleCommentEditor(editor, button) {
 	var type, text, other, other_text;
-	
+
+	// set values
 	if (editor == "reply") {
 		type = ".reply";
 		text = "Reply";
@@ -298,7 +300,7 @@ function toggleCommentEditor(editor, button) {
 
 // FADE TRUNATE ARTICLES
 function fadeTruncateArticles() {
-	$(".article-preview").each(function() {
+	$(".article-preview").each(function () {
 		// If text overflows and is not already truncated
 		if (this.offsetHeight < this.scrollHeight && !$(this).find(".fade").length) {
 			$(this).append("<div class='fade'></div>");
@@ -320,7 +322,7 @@ function floatMessage() {
 // SUGGESTION ENGINE
 function suggestionsEngine(input, container, suggestion) {
 	// Show tag suggestions
-	input.on('input', function() {
+	input.on('input', function () {
 
 		// split sentence by possible delimiters
 		var words = input.val().toLowerCase().split(/[\s,]+/);
@@ -334,7 +336,7 @@ function suggestionsEngine(input, container, suggestion) {
 			container.show();
 
 			// show matching tags
-			suggestion.each(function() {
+			suggestion.each(function () {
 				// get tag text as lowercase
 				var text = $(this).text().toLowerCase();
 
@@ -359,7 +361,7 @@ function suggestionsEngine(input, container, suggestion) {
 	});
 
 	// Put clicked tag in textbox
-	suggestion.on("click", function() {
+	suggestion.on("click", function () {
 		// get all words in input
 		var words = input.val().split(/[\s,]+/);
 
@@ -373,7 +375,7 @@ function suggestionsEngine(input, container, suggestion) {
 		input.val(words.join(", ") + " ");
 
 		// focus and move to end of input
-		input.each(function() {
+		input.each(function () {
 			$(this).focus();
 			if (this.setSelectionRange) {
 				var len = $(this).val().length * 2;
