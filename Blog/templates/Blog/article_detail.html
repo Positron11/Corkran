@@ -104,7 +104,7 @@
 	</div>
 	
 	<!-- Content -->
-	<div class="content">{{ article.content|urlizetrunc:40|linebreaks }}</div>
+	<div class="content">{{ article.content|linebreaks|urlizetrunc:40 }}</div>
 </div>
 
 
@@ -165,7 +165,7 @@
 				</div>
 
 				<!-- Content -->
-				<div class="content">{{ node.content|urlizetrunc:30 }}</div>
+				<div class="content preserve-linebreaks">{{ node.content|urlizetrunc:30 }}</div>
 
 				<!-- Edit comment -->
 				<div class="edit editor">

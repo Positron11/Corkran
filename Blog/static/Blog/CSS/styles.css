@@ -44,6 +44,9 @@ p, .text {
 	text-align: justify;
 }
 
+.preserve-linebreaks {
+	white-space: pre-line;
+}
 
 /* FORMS & FORM ELEMENTS */
 
@@ -721,6 +724,10 @@ a.tag {
 	font-family: 'Montserrat Alternates', sans-serif;
 	font-size: 0.65em;
 	color: #999;
+}
+
+.comments .comment .content {
+	line-height: 1.5em;
 }
 
 .comments .comment .comment-btn-container .button {
