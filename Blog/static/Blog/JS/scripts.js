@@ -234,7 +234,7 @@ function calculateProgressBar() {
 // SHOW OR HIDE SCROLL TOP BUTTON
 function scrollTopButton(state) {
 	$(".scroll-top-btn").css("opacity", state == "show" ? 1 : 0);
-	$(".scroll-top-btn").css("transform", state == "show" ? 1 : 0);
+	$(".scroll-top-btn").css("pointer-events", state == "show" ? "all" : "none");
 }
 
 
