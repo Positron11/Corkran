@@ -936,7 +936,7 @@ a.tag {
 /* LANDSCAPE TABLETS */
 
 @media only screen and (max-width: 1200px) {
-	.feature .overlay:active {
+	.feature:active > .overlay {
 		color: white;
 		background: transparent;
 	}
