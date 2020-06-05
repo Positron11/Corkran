@@ -132,6 +132,18 @@ $(function () {
 	});
 
 
+	// BLUR SIDES OF NOWRAP LISTBOXES
+	$('.list-box.nowrap').each(function() {
+		// initialize blur
+		blurListBox(this);
+
+		// calculate blur on scroll
+		$(this).scroll(function() {
+			blurListBox(this);
+		});
+	});
+
+
 	// New suggestion engine for tags
 	suggestionsEngine($("#id_tags"), $("#suggested_tags"), $("#suggested_tags .tag"));
 
@@ -402,3 +414,27 @@ function autoRemoveAlert(page_alert) {
 		});
 	}, 10000);
 }
+
+
+// BLUR RIGHT AND LEFT SIDES OF NOWRAP LISTBOX
+function blurListBox(listbox) {
+	// handle left blur
+	if (listbox.scrollLeft > 0) {
+		$(listbox).addClass("blur-left");
+	} else {
+		$(listbox).removeClass("blur-left");
+	};
+
+	// get total width of children in listbox
+	var content_width = 0;
+	$(listbox).find("> *").each(function() {
+		content_width += ($(this).outerWidth() + 5);
+	});
+
+	// handle right blur
+	if (content_width - listbox.scrollLeft > $(listbox).width()) {
+		$(listbox).addClass("blur-right");
+	} else {
+		$(listbox).removeClass("blur-right");
+	};
+} 
