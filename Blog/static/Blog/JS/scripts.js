@@ -104,6 +104,9 @@ $(function () {
 	$(window).on("resize", function () {
 		resizeSidebar();
 		fadeTruncateArticles();
+		$('.list-box.nowrap').each(function() {
+			blurListBox(this);
+		});
 	});
 
 
