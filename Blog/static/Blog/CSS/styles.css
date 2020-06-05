@@ -958,7 +958,7 @@ a.tag {
 		color: #f32929;
 		pointer-events: all;
 	}
-	.navbar .links-container a:not(.banner):active {
+	.navbar .links-container a:not(.banner):not(.menu-btn):active {
 		color: #999;
 	}
 	.navbar .links-container {
