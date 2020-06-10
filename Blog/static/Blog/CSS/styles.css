@@ -116,6 +116,10 @@ fieldset {
 	text-decoration: none;
 }
 
+.button * {
+	color: #333;
+}
+
 .button.small {
 	font-size: 0.65em;
 	padding: 0.8em;
