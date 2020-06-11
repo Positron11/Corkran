@@ -474,11 +474,11 @@ svg.tea #steamR {
 
 .navbar .links-container .menu-btn {
 	color: #333;
+	padding: 0.5em;
 	line-height: 0;
 	grid-area: menu;
 	font-size: 1.3em;
 	justify-self: end;
-	margin-right: 0.5em;
 	text-shadow: 2px 2px 1px #ccc;
 	-webkit-tap-highlight-color: transparent;
 	transition: 0.3s ease;
