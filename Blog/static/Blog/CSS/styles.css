@@ -14,6 +14,7 @@ body {
 a {
 	outline: none;
 	color: #729fcf;
+	word-break: break-all;
 }
 
 a:visited {
@@ -219,6 +220,7 @@ input[type="file"] {
 	font-size: 3.3em;
 	font-weight: 500;
 	margin: 0.1em 0;
+	font-variant: small-caps;
 }
 
 .subheading {
@@ -459,6 +461,7 @@ svg.tea #steamR {
 	color: #333;
 	font-weight: 500;
 	grid-area: banner;
+	font-variant: small-caps;
 	text-shadow: 3px 3px 1px #ccc;
 }
 
@@ -1056,7 +1059,7 @@ a.tag {
 		font-size: 2.2em;
 	}
 	fieldset .heading {
-		font-size: 1.8em;
+		font-size: 1.9em;
 	}
 	.input-bar .input-box {
 		margin-right: 1em;
