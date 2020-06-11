@@ -39,10 +39,9 @@ $(window).on("load", function () {
 // Main
 $(function () {
 	// Initialize page
+	styleNavbar();
 	floatMessage();
 	resizeSidebar();
-	vertically_truncate();
-	calculateProgressBar();
 	fadeTruncateArticles();
 
 	// Initialize autosize
@@ -96,8 +95,8 @@ $(function () {
 
 	// On scroll...
 	$(window).on("scroll", function () {
+		styleNavbar();
 		floatMessage();
-		calculateProgressBar();
 	});
 
 	// On resize...
@@ -202,6 +201,13 @@ $(function () {
 		}
 	});
 });
+
+
+// STYLE NAVBAR
+function styleNavbar() {
+	calculateProgressBar();
+	$(".navbar").css("box-shadow", window.pageYOffset > 0 ? "0 5px 3px -3px rgba(0,0,0,0.1)" : "none");
+}
 
 
 // CALCULATE PROGRESS BAR

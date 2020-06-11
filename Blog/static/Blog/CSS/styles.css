@@ -259,6 +259,7 @@ input[type="file"] {
 	content: "";
 	height: 2em;
 	position: sticky;
+	pointer-events: none;
 	transition: 0.1s ease-out;
 }
 
@@ -449,6 +450,7 @@ svg.tea #steamR {
 	position: sticky;
 	background: white;
 	border-bottom: 1px solid #eaeaea;
+	transition: 0.3s ease-out;
 }
 
 .navbar .links-container {
