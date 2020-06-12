@@ -224,6 +224,7 @@ input[type="file"] {
 
 .subheading {
 	font-family: 'Montserrat Alternates', sans-serif;
+	line-height: 1.7em;
 	letter-spacing: 0.05em;
 	font-size: 0.8em;
 	color: #999;
