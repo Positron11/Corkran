@@ -44,6 +44,9 @@ $(function () {
 	resizeSidebar();
 	fadeTruncateArticles();
 
+	// Initialize vertical truncator plugin
+	vertically_truncate();
+
 	// Initialize autosize
 	autosize($('textarea'));
 	autosize.update($("textarea"));
