@@ -1043,7 +1043,7 @@ a.tag {
 		font-size: 2em;
 	}
 	.article-thumbnail {
-		height: 8em;
+		height: 12em;
 	}
 }
 
@@ -1071,5 +1071,8 @@ a.tag {
 	}
 	.article-preview .fade {
 		height: 11em;
+	}
+	.article-thumbnail {
+		height: 8em;
 	}
 }
