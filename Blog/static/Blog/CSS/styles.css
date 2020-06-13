@@ -741,6 +741,7 @@ svg.tea #steamR {
 	height: 100%;
 	position: fixed;
 	overflow-y: auto;
+	text-align: center;
 	pointer-events: none;
 	background-color: white;
 	transition: 0.3s ease-out;
@@ -762,6 +763,10 @@ svg.tea #steamR {
 .zen-mode.visible {
 	opacity: 1;
 	pointer-events: all;
+}
+
+.zen-mode .button { 
+	margin-top: 2em;
 }
 
 

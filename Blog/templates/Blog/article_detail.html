@@ -120,13 +120,24 @@
 
 <!-- Zen mode article -->
 <div class="zen-mode">
+	<!-- Close button -->
 	<i class="far fa-times-circle clickable close-btn" onclick="toggleZenMode();"></i>
+	
+	<!-- Article -->
 	<div class="content">
+		<!-- Header -->
 		<div class="header">
 			<div class="heading">{{ article.title }}</div>
 			<div class="subheading">By {{ article.author.username }}</div>
 		</div>
+
+		<!-- Article content -->
 		{{ article.content|linebreaks|urlizetrunc:40 }}
+
+		<!-- Go to comments button -->
+		<a href="#comments" class="button" onclick="toggleZenMode();">
+			Comments&nbsp;&nbsp;<i class="fas fa-angle-double-down"></i>
+		</a>
 	</div>
 </div>
 
