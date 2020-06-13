@@ -68,8 +68,18 @@
 		</a>
 	</div>
 
-	<!-- Go to comments -->
-	<a href="#comments" class="small button" title="Comments"><i class="fas fa-comments"></i></a>
+	<!-- Article controls -->
+	<div class="list-box generous-spacing nowrap">
+		<!-- Zen mode -->
+		<div class="small button" onclick="toggleZenMode();">
+			<i class="fas fa-coffee"></i>
+		</div>
+
+		<!-- Go to comments -->
+		<a href="#comments" class="small button" title="Comments">
+			<i class="fas fa-comments"></i>
+		</a>
+	</div>
 </div>
 
 
@@ -105,6 +115,19 @@
 	
 	<!-- Content -->
 	<div class="content">{{ article.content|linebreaks|urlizetrunc:40 }}</div>
+</div>
+
+
+<!-- Zen mode article -->
+<div class="zen-mode">
+	<i class="far fa-times-circle clickable close-btn" onclick="toggleZenMode();"></i>
+	<div class="content">
+		<div class="header">
+			<div class="heading">{{ article.title }}</div>
+			<div class="subheading">By {{ article.author.username }}</div>
+		</div>
+		{{ article.content|linebreaks|urlizetrunc:40 }}
+	</div>
 </div>
 
 

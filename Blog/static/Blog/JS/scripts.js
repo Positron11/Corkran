@@ -1,6 +1,6 @@
 // Get loading overlay and main container elements
-var main_container = document.getElementById('main')
-var loading_overlay = document.getElementById('loading-overlay')
+var main_container = document.getElementById('main');
+var loading_overlay = document.getElementById('loading-overlay');
 
 
 // Make the main page invisible before it is done loading
@@ -106,7 +106,7 @@ $(function () {
 	$(window).on("resize", function () {
 		resizeSidebar();
 		fadeTruncateArticles();
-		$('.list-box.nowrap').each(function() {
+		$('.list-box.nowrap').each(function () {
 			blurListBox(this);
 		});
 	});
@@ -138,12 +138,12 @@ $(function () {
 
 
 	// BLUR SIDES OF NOWRAP LISTBOXES
-	$('.list-box.nowrap').each(function() {
+	$('.list-box.nowrap').each(function () {
 		// initialize blur
 		blurListBox(this);
 
 		// calculate blur on scroll
-		$(this).scroll(function() {
+		$(this).scroll(function () {
 			blurListBox(this);
 		});
 	});
@@ -439,7 +439,7 @@ function blurListBox(listbox) {
 
 	// get total width of children in listbox
 	var content_width = 0;
-	$(listbox).find("> *").each(function() {
+	$(listbox).find("> *").each(function () {
 		content_width += ($(this).outerWidth() + 5);
 	});
 
@@ -449,4 +449,53 @@ function blurListBox(listbox) {
 	} else {
 		$(listbox).removeClass("blur-right");
 	};
-} 
+}
+
+
+// TOGGLE ARTICLE ZEN MODE VIEW
+function toggleZenMode() {
+	if (!$(".zen-mode").hasClass("visible")) {
+		// remove body scrollbar and compensate width with padding to avoid jerk
+		$("body")
+			.css("overflow", "hidden")
+			.css("padding-right", getScrollbarWidth() + "px");
+		
+		// make zen mode overlay visible
+		$(".zen-mode").addClass("visible");
+	} else {
+		// remove zen mode overlay
+		$(".zen-mode").removeClass("visible");
+
+		// wait for overlay to go, then add body scrollbar
+		$(".zen-mode").on("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend", function() {
+			if (!$(".zen-mode").hasClass("visible")) {
+				$("body")
+					.css("overflow", "auto")
+					.css("padding-right", "0px");
+			}
+		});
+	}
+}
+
+
+// GET SCROLLBAR WIDTH
+function getScrollbarWidth() {
+	// Creating invisible container
+	const outer = document.createElement('div');
+	outer.style.visibility = 'hidden';
+	outer.style.overflow = 'scroll'; // forcing scrollbar to appear
+	outer.style.msOverflowStyle = 'scrollbar'; // needed for WinJS apps
+	document.body.appendChild(outer);
+
+	// Creating inner element and placing it in the container
+	const inner = document.createElement('div');
+	outer.appendChild(inner);
+
+	// Calculating difference between container's full width and the child width
+	const scrollbarWidth = (outer.offsetWidth - inner.offsetWidth);
+
+	// Removing temporary elements from the DOM
+	outer.parentNode.removeChild(outer);
+
+	return scrollbarWidth;
+}
