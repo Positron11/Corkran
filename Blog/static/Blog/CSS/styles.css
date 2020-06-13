@@ -748,7 +748,8 @@ svg.tea #steamR {
 }
 
 .zen-mode .content {
-	max-width: 50%;
+	width: 50%;
+	max-width: 900px;
 	margin: 4em auto;
 	transition: 0.3s ease;
 }
@@ -1099,7 +1100,7 @@ a.tag {
 		height: 12em;
 	}
 	.zen-mode .content {
-		max-width: 70%;
+		width: 70%;
 	}
 }
 
