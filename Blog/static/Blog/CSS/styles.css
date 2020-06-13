@@ -246,7 +246,22 @@ input[type="file"] {
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: row;
+}
+
+.list-box.compact-spacing {
 	margin: 0 -0.5em -0.5em 0;
+}
+
+.list-box.compact-spacing>* {
+	margin: 0 0.5em 0.5em 0;
+}
+
+.list-box.generous-spacing {
+	margin: 0 -1em -1em 0;
+}
+
+.list-box.generous-spacing>* {
+	margin: 0 1em 1em 0;
 }
 
 .list-box.nowrap {
@@ -283,10 +298,6 @@ input[type="file"] {
 
 .list-box.nowrap.blur-left::before, .list-box.nowrap.blur-right::after {
 	opacity: 1;
-}
-
-.list-box>* {
-	margin: 0 0.5em 0.5em 0;
 }
 
 .vertically-space-items>*:not(:last-child) {
@@ -668,8 +679,6 @@ svg.tea #steamR {
 
 .media-btn-container .button {
 	width: 1em;
-	margin-right: 0.7em;
-	text-align: center;
 }
 
 

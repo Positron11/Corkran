@@ -48,7 +48,7 @@
 
 <div class="dual-option-container closer-below">
 	<!-- Media buttons -->
-	<div class="media-btn-container">
+	<div class="media-btn-container list-box generous-spacing nowrap">
 		<!-- Twitter -->
 		<a href='https://twitter.com/share?url={{request.build_absolute_uri}}&text="{{article.title}}" by {{article.author}}'
 			target="_blank" class="unformatted share-btn twitter button">
@@ -130,7 +130,7 @@
 	<legend class="heading">Tags</legend>
 
 	<!-- Tags box -->
-	<div class="list-box">
+	<div class="list-box compact-spacing">
 		{% for tag in article.tags.all %}
 		<a href="{% url 'tag-sorted-articles' tag %}" class="unselectable clickable tag">{{ tag }}</a>
 		{% endfor %}

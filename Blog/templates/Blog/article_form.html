@@ -13,7 +13,7 @@
 	<form class="vertically-space-items" id="article_form" method="post" autocomplete="off" enctype="multipart/form-data">{% csrf_token %}
 		<!-- Form navigation -->
 		<label>Go to:</label>
-		<div class="nowrap list-box">
+		<div class="nowrap list-box compact-spacing">
 			<a href="#title" class="small button">Title</a>
 			<a href="#content" class="small button">Content</a>
 			<a href="#tags" class="small button">Tags</a>
@@ -40,7 +40,7 @@
 		<div id="suggested_tags">
 			<label style="display: block; margin-bottom: 0.5em;">Similar popular tags:</label>
 			<div class="card compact">
-				<div class="list-box">
+				<div class="list-box compact-spacing">
 					{% for tag in tags %}
 					<div class="clickable tag">{{ tag }}</div>
 					{% endfor %}
