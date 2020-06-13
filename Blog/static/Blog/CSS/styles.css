@@ -653,11 +653,11 @@ svg.tea #steamR {
 	text-overflow: ellipsis;
 }
 
-.alert .close {
+.alert .close-btn{
 	opacity: 0;
 	padding: 0.5em;
 	pointer-events: none;
-	transition: 0.3s ease;
+	transition: 0.2s ease;
 }
 
 .alert.floating {
@@ -881,12 +881,12 @@ a.tag {
 	.anchor.offset {
 		transform: translateY(-7em);
 	}
-	.alert.floating:hover > .close {
+	.alert.floating:hover > .close-btn{
 		opacity: 1;
 		display: block;
 		pointer-events: all;
 	}
-	.alert.floating .close:hover {
+	.alert.floating .close-btn:hover {
 		color: #f32929;
 	}
 	.navbar .links-container a:not(.banner):hover {
@@ -973,7 +973,7 @@ a.tag {
 	.anchor.offset {
 		transform: translateY(-5em);
 	}
-	.alert.floating .close {
+	.alert.floating .close-btn{
 		opacity: 1;
 		display: block;
 		color: #f32929;
