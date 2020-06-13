@@ -249,19 +249,19 @@ input[type="file"] {
 }
 
 .list-box.compact-spacing {
-	margin: 0 -0.5em -0.5em 0;
+	margin: 0 -0.7rem -0.7rem 0;
 }
 
 .list-box.compact-spacing>* {
-	margin: 0 0.5em 0.5em 0;
+	margin: 0 0.7rem 0.7rem 0;
 }
 
 .list-box.generous-spacing {
-	margin: 0 -1em -1em 0;
+	margin: 0 -1rem -1rem 0;
 }
 
 .list-box.generous-spacing>* {
-	margin: 0 1em 1em 0;
+	margin: 0 1rem 1rem 0;
 }
 
 .list-box.nowrap {
