@@ -62,7 +62,7 @@ $(function () {
 
 
 	// Close alert on clicking close button
-	$(document).on('click', '.alert.floating .close', function (e) {
+	$(document).on('click', '.alert.floating .close-btn', function (e) {
 		$(this).parent(".alert").hide("fast", function () {
 			$(this).remove();
 		});
