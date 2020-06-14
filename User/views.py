@@ -10,7 +10,9 @@ from django.urls import reverse_lazy
 from django.dispatch import receiver
 from django.shortcuts import render
 from django.contrib import messages
-
+from Blog.models import Article
+from taggit.models import Tag
+from django.db.models import Count
 
 # registration page
 def register(request):
@@ -33,6 +35,8 @@ def profile(request):
 	user_form = UserUpdateForm(instance=request.user)
 	profile_form = ProfileUpdateForm(instance=request.user.profile)
 	password_form = PasswordForm(request.user)
+	articles = Article.objects.filter(author=request.user)
+	tags = Tag.objects.filter(article__in=[article.id for article in articles]).annotate(c=Count('id')).order_by('-c')
 
 	if request.method == 'POST':
 		# if password change request
@@ -74,7 +78,7 @@ def profile(request):
 		return redirect('profile')
 
 	# profile update, user details update, and password update form
-	context = {"user_form": user_form, "profile_form": profile_form, "password_form": password_form}
+	context = {"user_form": user_form, "profile_form": profile_form, "password_form": password_form, "articles": articles, "tags":tags}
 
 	return render(request, 'User/user_profile.html', context)
 

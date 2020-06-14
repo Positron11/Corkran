@@ -37,6 +37,46 @@
 </fieldset>
 
 
+<!-- Articles by user -->
+<fieldset class="card">
+	<!-- Heading -->
+	<legend class="heading">Articles</legend>
+
+	<div class="vertically-space-items">
+		<!-- Subheading -->
+		<div class="subheading closer-below">Your articles on Corkran.</div>
+
+		<!-- Articles list -->
+		<div class="list-box generous-spacing">
+			{% for article in articles %}
+			<a class="unformatted single-line-text minimal card" href="{{ article.get_absolute_url }}">
+				<span class="montserrat">"{{ article.title }}"</span>
+			</a>
+			{% endfor %}
+		</div>
+	</div>
+</fieldset>
+
+
+<!-- Tags -->
+<fieldset class="card">
+	<!-- Heading -->
+	<legend class="heading">Tags</legend>
+	
+	<div class="vertically-space-items">
+		<!-- Subheading -->
+		<div class="subheading closer-below">All the tags you have on your articles.</div>
+
+		<!-- Tags list -->
+		<div class="list-box compact-spacing">
+			{% for tag in tags %}
+			<a class="single-line-text tag" href="{% url 'tag-sorted-articles' tag %}">{{ tag }}</a>
+			{% endfor %}
+		</div>
+	</div>
+</fieldset>
+
+
 <!-- Change password container -->
 <fieldset class="card">
 	<!-- Heading -->
@@ -56,7 +96,9 @@
 
 <!-- Account deletion container -->
 <fieldset class="card">
+	<!-- Heading -->
 	<legend class="heading">Danger!</legend>
+
 	<a href="{% url 'delete-user' user.id %}" class="danger button">Delete Account</a>
 </fieldset>
 
