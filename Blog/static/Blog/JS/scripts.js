@@ -42,6 +42,7 @@ $(function () {
 	styleNavbar();
 	floatMessage();
 	resizeSidebar();
+	scrollTopButton();
 	fadeTruncateArticles();
 
 	// Initialize vertical truncator plugin
@@ -100,6 +101,7 @@ $(function () {
 	$(window).on("scroll", function () {
 		styleNavbar();
 		floatMessage();
+		scrollTopButton();
 	});
 
 	// On resize...
@@ -233,15 +235,26 @@ function calculateProgressBar() {
 
 		// update progress bar width
 		$(".progress-bar").css("width", completed + "%");
-
-		// show scroll to top button if started reading article
-		scrollTopButton(completed <= 1 ? "hide" : "show");
 	}
 }
 
 
 // SHOW OR HIDE SCROLL TOP BUTTON
-function scrollTopButton(state) {
+function scrollTopButton() {
+	var state;
+
+	// if on article detail page and started reading article...
+	if ($(".main-article").length && parseFloat($(".progress-bar").css("width")) >= 1) {
+		state = "show";
+	// otherwise if not on detail page and at least scrolled down a bit...
+	} else if (!$(".main-article").length && window.pageYOffset >= 100) {
+		state = "show";
+	// otherwise just hide
+ 	} else {
+		state = "hide";
+	}
+
+	// edit button css based on state
 	$(".scroll-top-btn").css("opacity", state == "show" ? 1 : 0);
 	$(".scroll-top-btn").css("pointer-events", state == "show" ? "all" : "none");
 }
