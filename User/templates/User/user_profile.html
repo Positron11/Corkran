@@ -17,6 +17,21 @@
 </div>
 
 
+<!-- Navigation dock -->
+<div class="minimal card">
+	<div class="nowrap list-box center-align compact-spacing">
+		<a href="#profile" class="small button">Edit your profile</a>
+		<a href="#articles" class="small button">Your articles</a>
+		<a href="#tags" class="small button">Your articles' tags</a>
+		<a href="#password" class="small button">Change your password</a>
+		<a href="#delete" class="small danger button">Delete account</a>
+	</div>
+</div>
+
+
+<!-- Offset anchor -->
+<div id="profile" class="offset anchor"></div>
+
 <!-- Profile update container -->
 <fieldset class="card">
 	<!-- Heading -->
@@ -36,6 +51,9 @@
 	</form>
 </fieldset>
 
+
+<!-- Offset anchor -->
+<div id="articles" class="offset anchor"></div>
 
 <!-- Articles by user -->
 <fieldset class="card">
@@ -58,6 +76,9 @@
 </fieldset>
 
 
+<!-- Offset anchor -->
+<div id="tags" class="offset anchor"></div>
+
 <!-- Tags -->
 <fieldset class="card">
 	<!-- Heading -->
@@ -77,6 +98,9 @@
 </fieldset>
 
 
+<!-- Offset anchor -->
+<div id="password" class="offset anchor"></div>
+
 <!-- Change password container -->
 <fieldset class="card">
 	<!-- Heading -->
@@ -94,6 +118,9 @@
 </fieldset>
 
 
+<!-- Offset anchor -->
+<div id="delete" class="offset anchor"></div>
+
 <!-- Account deletion container -->
 <fieldset class="card">
 	<!-- Heading -->
@@ -101,5 +128,11 @@
 
 	<a href="{% url 'delete-user' user.id %}" class="danger button">Delete Account</a>
 </fieldset>
+
+
+<!-- Scroll to top button -->
+<a href="#top" class="floating-btn scroll-top-btn" title="Back to Top">
+	<i class="fas fa-angle-double-up"></i>
+</a>
 
 {% endblock %}

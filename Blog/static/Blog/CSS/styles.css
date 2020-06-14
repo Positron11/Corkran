@@ -253,6 +253,14 @@ input[type="file"] {
 	flex-direction: row;
 }
 
+.list-box.center-align>*:last-child {
+	margin-right: auto;
+}
+
+.list-box.center-align>*:first-child, .list-box.right-align>*:first-child {
+	margin-left: auto;
+}
+
 .list-box.compact-spacing {
 	margin: 0 -0.7rem -0.7rem 0;
 }
