@@ -53,7 +53,7 @@
 
 				<!-- Registration and authentication -->
 				{% if user.is_authenticated %}
-				<a href="{% url 'profile' %}" class="unformatted link" title="{{ user.username }}'s profile">Profile</a>
+				<a href="{% url 'profile' %}" class="unformatted link profile-btn" title="{{ user.username }}'s profile" data-username="{{ user.username }}">Profile</a>
 				<a href="{% url 'logout' %}?next={{request.path}}" class="unformatted link" title="Log out">Logout</a>
 				{% else %}
 				<a href="{% url 'registration' %}" class="unformatted link" title="Register">Register</a>
