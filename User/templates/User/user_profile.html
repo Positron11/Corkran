@@ -12,8 +12,18 @@
 		<div class="subheading">That's your identity here on Corkran.</div>
 	</div>
 
-	<!-- Content -->
-	<div class="text">Manage and view your personal details here.</div>
+	<!-- Bio -->
+	<div class="text">
+		{% if user.profile.bio %}
+		<i class="fas fa-quote-left"></i>
+		{{ user.profile.bio|urlizetrunc:40 }}&nbsp;
+		<i class="fas fa-quote-right"></i>
+		{% else %}
+		You don't have a bio, yet. Consider writing one, for the sake of context. 
+		Or, if you're strongly of the opinion that your writing speaks for itself, 
+		you might as well leave it blank. Just write your bio.
+		{% endif %}
+	</div>
 </div>
 
 
