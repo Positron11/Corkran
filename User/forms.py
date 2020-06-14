@@ -55,3 +55,4 @@ class PasswordForm(PasswordChangeForm):
 		for fieldname in self.fields:
 			self.fields[fieldname].help_text = None
 			self.fields[fieldname].widget.attrs.pop("autofocus", None)
+			self.fields[fieldname].widget.attrs["autocomplete"] = "new-password"
