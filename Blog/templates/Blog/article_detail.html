@@ -166,7 +166,9 @@
 	<!-- Tags box -->
 	<div class="list-box compact-spacing">
 		{% for tag in article.tags.all %}
-		<a href="{% url 'tag-sorted-articles' tag %}" class="unselectable clickable tag">{{ tag }}</a>
+		<a href="{% url 'tag-sorted-articles' tag %}" class="unselectable clickable single-line-text tag">
+			{{ tag }}
+		</a>
 		{% endfor %}
 	</div>
 </fieldset>

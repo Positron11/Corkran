@@ -45,6 +45,13 @@ p, .text {
 	white-space: pre-line;
 }
 
+.single-line-text {
+	max-width: 100%;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
 .montserrat {
 	font-family: 'Montserrat Alternates', sans-serif;
 	font-size: 0.7em;
