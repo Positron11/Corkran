@@ -45,6 +45,15 @@ p, .text {
 	white-space: pre-line;
 }
 
+.montserrat {
+	font-family: 'Montserrat Alternates', sans-serif;
+	font-size: 0.7em;
+}
+
+.grey {
+	color: #999;
+}
+
 /* FORMS & FORM ELEMENTS */
 
 form>* {
@@ -192,12 +201,6 @@ input[type="checkbox"]:checked+label:after {
 
 input[type="file"] {
 	display: none;
-}
-
-.form-freetext {
-	font-family: 'Montserrat Alternates', sans-serif;
-	font-size: 0.7em;
-	color: #999;
 }
 
 
