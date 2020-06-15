@@ -15,8 +15,14 @@ class ArticleListView(ListView):
 	paginate_by = 5
 	context_object_name = "articles"
 
+	def get_base_queryset(self):
+		return Article.objects.all() 
+
 	def get_queryset(self):
 		self.extra_context = dict()
+
+		# get base queryset
+		base_queryset = self.get_base_queryset()
 
 		# try to get search query
 		search_query = self.request.GET.get("search")
@@ -40,13 +46,13 @@ class ArticleListView(ListView):
 				authors = authors | User.objects.filter(username__icontains=word)
 
 				# construct queryset of articles with matching titles
-				title_sorted = title_sorted | Article.objects.filter(title__icontains=word)
+				title_sorted = title_sorted | base_queryset.filter(title__icontains=word)
 
 			# construct queryset of articles of matching authors
-			author_sorted = Article.objects.filter(author__in=authors)
+			author_sorted = base_queryset.filter(author__in=authors)
 
 			# construct queryset of articles with matching tags
-			tag_sorted = Article.objects.filter(tags__name__in=search_query.split())
+			tag_sorted = base_queryset.filter(tags__name__in=search_query.split())
 
 			# return combined querysets
 			return (tag_sorted | title_sorted | author_sorted).distinct().order_by('-date')
@@ -55,14 +61,14 @@ class ArticleListView(ListView):
 			self.extra_context["searched"] = False
 
 			# return all articles
-			return Article.objects.all().order_by('-date')
+			return base_queryset.order_by('-date')
 
 
 # main page
 class Home(ArticleListView):
 	template_name = "Blog/home.html"
 
-	# latest article as context
+	# featured article as context
 	def get_context_data(self, **kwargs):          
 		context = super().get_context_data(**kwargs)                    
 		context["featured_article"] = Article.objects.filter(featured=True).first()
@@ -73,41 +79,53 @@ class Home(ArticleListView):
 class AuthorSortedArticles(ArticleListView):
 	template_name = "Blog/author_sorted_articles.html"
 
-	def get_queryset(self):
-		queryset = super().get_queryset()
+	def get_base_queryset(self):
+		# get page's author
+		author = get_object_or_404(User, username=self.kwargs.get("author"))
+
+		# return queryset of all articles by author
+		return Article.objects.filter(author=author)
+
+	# author and article count as context
+	def get_context_data(self, **kwargs):          
+		context = super().get_context_data(**kwargs)   
 
 		# get page's author
 		author = get_object_or_404(User, username=self.kwargs.get("author"))
 
-		# add article count to context
-		self.extra_context["article_count"] = Article.objects.filter(author=author).count()
+		# add context
+		context["author"] = author
+		context["article_count"] = Article.objects.filter(author=author).count()
 
-		# add author to context
-		self.extra_context["author"] = author
-
-		return queryset.filter(author=author)
+		return context
 
 
 # sort articles by tag
 class TagSortedArticles(ArticleListView):
 	template_name = "Blog/tag_sorted_articles.html"
 
-	def get_queryset(self):
-		queryset = super().get_queryset()
+	def get_base_queryset(self):
+		# get page's tag
+		tag = self.kwargs.get("tag")
+
+		# return queryset of all articles with tag
+		return Article.objects.filter(tags__name__in=[tag])
+
+	# tag and article count as context
+	def get_context_data(self, **kwargs):          
+		context = super().get_context_data(**kwargs)   
 
 		# get page's tag
 		tag = self.kwargs.get("tag")
 
-		# add article count to context
-		self.extra_context["article_count"] = Article.objects.filter(tags__name__in=[tag]).count()
-
 		# check if tag exists
 		tag_check = get_list_or_404(Article, tags__name__in=[tag])
 
-		# add tag to context
-		self.extra_context["tag"] = tag
+		# add context
+		context["tag"] = tag
+		context["article_count"] = Article.objects.filter(tags__name__in=[tag]).count()
 
-		return queryset.filter(tags__name__in=[tag])
+		return context
 
 
 # about page
