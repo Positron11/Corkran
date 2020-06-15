@@ -46,6 +46,7 @@
 {% endif %}
 
 
+<!-- Article controls -->
 <div class="article-controls generous-spacing nowrap list-box split-items closer-below">
 	<!-- Twitter -->
 	<a href='https://twitter.com/share?url={{request.build_absolute_uri}}&text="{{article.title}}" by {{article.author}}'
@@ -69,11 +70,24 @@
 	<div class="small button split-item" onclick="toggleZenMode();">
 		<i class="fas fa-coffee"></i>
 	</div>
-
+	
 	<!-- Go to comments -->
 	<a href="#comments" class="small button" title="Comments">
 		<i class="fas fa-comments"></i>
 	</a>
+
+	{% if user.is_authenticated and user != article.author %}
+	<!-- Add or remove article from user library -->
+	<form method="post">{% csrf_token %}
+		<button class="small button" type="submit" name="library" title="{% if article_in_library %}Remove article from library{% else %}Add article to library{% endif %}">
+			{% if article_in_library %}
+			<i class="fas fa-bookmark"></i>
+			{% else %}
+			<i class="far fa-bookmark"></i>
+			{% endif %}
+		</button>
+	</form>
+	{% endif %}
 </div>
 
 

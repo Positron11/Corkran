@@ -542,6 +542,10 @@ svg.tea #steamR {
 	text-overflow: ellipsis;
 }
 
+.navbar .links-container #library_btn::after {
+	content: ""attr(data-articles)"";
+}
+
 .navbar .links-container #profile_btn::after {
 	content: ""attr(data-username)"";
 }

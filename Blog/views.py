@@ -75,6 +75,23 @@ class Home(ArticleListView):
 		return context
 
 
+# user library
+class Library(LoginRequiredMixin, ArticleListView):
+	template_name = "Blog/library.html"
+
+	def get_base_queryset(self):
+		return Article.objects.filter(id__in=self.request.user.profile.library.all())
+
+	# article count as context
+	def get_context_data(self, **kwargs):          
+		context = super().get_context_data(**kwargs)   
+
+		# add context
+		context["article_count"] = Article.objects.filter(id__in=self.request.user.profile.library.all()).count()
+
+		return context
+
+
 # sort articles by author
 class AuthorSortedArticles(ArticleListView):
 	template_name = "Blog/author_sorted_articles.html"
@@ -161,9 +178,21 @@ def detail(request, pk, slug):
 	else:
 		previous_article = articles.last()
 
+	# check if article is in user's library
+	try:
+		article_in_library = request.user.profile.library.filter(id=article.id).exists()
+	except:
+		article_in_library = False
 
 	# current, next, and previous article, and comment form
-	context = {"article": article, "next_article": next_article, "previous_article": previous_article, "comment_form": comment_form, "feature_form": feature_form}
+	context = {
+		"article": article, 
+		"next_article": next_article, 
+		"previous_article": previous_article, 
+		"comment_form": comment_form, 
+		"feature_form": feature_form,
+		"article_in_library": article_in_library
+	}
 
 	if request.method == 'POST':
 		# if submitting a comment
@@ -231,6 +260,16 @@ def detail(request, pk, slug):
 					messages.success(request, f'"{article.title}" unfeatured.')
 
 				return redirect('home')
+		
+		# if adding or removing article from personal library
+		elif "library" in request.POST:
+			if article.libraries.filter(id=request.user.profile.id).exists():
+				request.user.profile.library.remove(article)
+				messages.success(request, f'"{article.title}" removed from library.')
+			else:
+				request.user.profile.library.add(article)
+				messages.success(request, f'"{article.title}" saved to library.')
+			return redirect(article.get_absolute_url())
 
 	return render(request, "Blog/article_detail.html", context)
 

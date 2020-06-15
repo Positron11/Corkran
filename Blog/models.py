@@ -2,6 +2,7 @@ from string import capwords
 from django.db import models
 from datetime import datetime
 from django.urls import reverse
+from User.models import Profile
 from django.utils.text import slugify
 from django.contrib.auth.models import User
 from taggit.managers import TaggableManager
@@ -13,6 +14,7 @@ class Article(models.Model):
 	thumbnail = models.ImageField(upload_to="thumbnails", blank=True)
 	attribution = models.CharField(max_length=100, blank=True)
 	date = models.DateTimeField(default=datetime.now, blank=True)
+	libraries = models.ManyToManyField(Profile, related_name="library", blank=True)
 	author = models.ForeignKey(User, on_delete=models.CASCADE)
 	title = models.CharField(max_length=50)
 	content = models.TextField()

@@ -48,8 +48,12 @@
 			<div class="links-container">
 				<!-- General links -->
 				<a href="{% url 'home' %}" class="unformatted" id="banner" title="Corkran">*Co.</a>
-				<a href="{% url 'home' %}" class="unformatted link" title="Home">Home</a>
 				<a href="{% url 'about' %}" class="unformatted link" title="About Corkran">About</a>
+				{% if user.is_authenticated %}
+				<a href="{% url 'library' %}" class="unformatted link info-btn" id="library_btn" data-articles="{{ user.profile.library.count }} articles" title="Library">Library</a>
+				{% else %}
+				<a href="{% url 'home' %}" class="unformatted link" title="Home">Home</a>
+				{% endif %}
 
 				<!-- Registration and authentication -->
 				{% if user.is_authenticated %}

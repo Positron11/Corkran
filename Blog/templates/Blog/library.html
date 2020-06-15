@@ -1,0 +1,56 @@
+{% extends 'Blog/article_list.html' %}
+
+{% block title %}Posts tagged with {{ tag }}.{% endblock %}
+
+{% block search-dialogue %} your library {{ tag }}{% endblock %}
+
+{% block header-card %}
+
+<!-- Header card -->
+<div class="special card">
+	<!-- Header -->
+	<div class="header">
+		<div class="heading">Your Library.</div>
+		<div class="subheading">You have {{ article_count }} article{% if article_count != 1 %}s{% endif %} in your library.</div>
+	</div>
+
+	<!-- Content -->
+	<div class="text">Here be a collection of all the works you deemed worthy of a place in these sacred halls. Choose wisely.</div>
+</div>
+
+{% endblock %}
+
+{% block no-articles-card %}
+
+<!-- No articles -->
+<div class="special card">
+	<!-- Header -->
+	<div class="header">
+		<div class="heading">It's quite empty here.</div>
+		<div class="subheading">It's been said that an empty library is the devil's... library.</div>
+	</div>
+
+	<!-- Content -->
+	<div class="text">Prove your non-demonaic origin by going <a href="{% url 'home' %}">home</a>, and finding something you like. They can't all be that bad, what?</div>
+</div>
+
+{% endblock %}
+
+{% block empty-search-card %}
+
+<!-- Empty search -->
+
+<div class="special card">
+	<!-- Header -->
+	<div class="header">
+		<div class="heading">No Articles Found.</div>
+		<div class="subheading">It's unlikely to be our fault.</div>
+	</div>
+
+	<!-- Content -->
+	<div class="text">
+		Consider reconsidering your search query. Queries resembling "k3e#$%jbjvd" are not likely to take you very far. Perhaps what you seek, lives not in your library. Try going <a href="{% url 'home' %}">home</a> and searching all articles. 
+	</div>
+</div>
+
+{% endblock %}

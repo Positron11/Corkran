@@ -7,6 +7,9 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('announcements/', views.Announcements.as_view(), name='announcements'),
 
+    # user library
+    path('library/', views.Library.as_view(), name='library'),
+
     # article management views
     path('articles/new/', views.CreateArticle.as_view(), name='create-article'),
     path('articles/<int:pk>/edit/', views.EditArticle.as_view(), name='edit-article'),
