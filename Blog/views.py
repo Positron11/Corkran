@@ -203,15 +203,16 @@ def detail(request, pk, slug):
 					messages.success(request, "Comment successfully edited.")
 				else:
 					messages.success(request, "Comment successfully posted.")
-
-				# redirect to current page and scroll to previous position
-				return redirect(article.get_absolute_url() + f"#{request.POST.get('scroll_pos')}")
+					
 			else:
 				# display error message
 				if "edit" in request.POST:
 					messages.error(request, "Error editing comment.")
 				else:
 					messages.error(request, "Error posting comment.")
+
+			# redirect to current page and scroll to previous position
+			return redirect(article.get_absolute_url() + f"#{request.POST.get('scroll_pos')}")
 					
 		# if (un)featuring article
 		elif "feature" in request.POST:
