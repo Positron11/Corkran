@@ -12,7 +12,7 @@
 <!-- Search bar -->
 <form>
 	<div class="input-bar">
-		<input class="input-box" type="text" name="search" placeholder="Search..." value="{{ query }}"">
+		<input class="input-box" type="text" name="search" placeholder="Search{% block search-dialogue %}{% endblock %}..." value="{{ query }}"">
 		<button class="button" type="submit"><i class="fas fa-search"></i></button>
 	</div>
 </form>
