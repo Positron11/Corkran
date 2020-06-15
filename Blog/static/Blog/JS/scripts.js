@@ -71,7 +71,7 @@ $(function () {
 
 
 	// Toggle mobile navbar links
-	$(document).on('click', '.menu-btn', function (e) {
+	$(document).on('click', '#nav_menu_btn', function (e) {
 		e.preventDefault();
 		$(".navbar").toggleClass("mobile-show");
 	});

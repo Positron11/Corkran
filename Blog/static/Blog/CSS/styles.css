@@ -511,7 +511,7 @@ svg.tea #steamR {
 	transition: 0.2s ease;
 }
 
-.navbar .links-container .banner {
+.navbar .links-container #banner {
 	color: #333;
 	font-weight: 500;
 	grid-area: banner;
@@ -527,11 +527,11 @@ svg.tea #steamR {
 	transition: 0.3s ease;
 }
 
-.navbar .links-container .link.profile-btn {
+.navbar .links-container .link.info-btn {
 	position: relative;
 }
 
-.navbar .links-container .link.profile-btn::after {
+.navbar .links-container .link.info-btn::after {
 	color: #999;
 	bottom: -1.5em;
 	max-width: 15em;
@@ -540,10 +540,13 @@ svg.tea #steamR {
 	position: absolute;
 	white-space: nowrap;
 	text-overflow: ellipsis;
+}
+
+.navbar .links-container #profile_btn::after {
 	content: ""attr(data-username)"";
 }
 
-.navbar .links-container .menu-btn {
+.navbar .links-container #nav_menu_btn {
 	color: #333;
 	padding: 0.5em;
 	line-height: 0;
@@ -984,7 +987,7 @@ a.tag {
 	.alert.floating .close-btn:hover {
 		color: #f32929;
 	}
-	.navbar .links-container a:not(.banner):hover {
+	.navbar .links-container a:not(#banner):hover {
 		color: #999;
 	}
 	.navbar .links-container {
@@ -992,14 +995,14 @@ a.tag {
 		place-items: center;
 		grid-template: "link1 link2 banner link3 link4" / auto auto auto auto auto;
 	}
-	.navbar .links-container .link.profile-btn::after {
+	.navbar .links-container .info-btn::after {
 		left: 50%;
 		transform: translate(-50%);
 	}
-	.navbar .links-container .menu-btn, .navbar .links-container .announcements-btn {
+	.navbar .links-container #nav_menu_btn, .navbar .links-container #announcements_btn {
 		display: none;
 	}
-	.navbar .links-container .banner {
+	.navbar .links-container #banner {
 		font-size: 3em;
 	}
 	.feature:after {
@@ -1081,7 +1084,7 @@ a.tag {
 		color: #f32929;
 		pointer-events: all;
 	}
-	.navbar .links-container a:not(.banner):not(.menu-btn):active {
+	.navbar .links-container a:not(#banner):not(#nav_menu_btn):active {
 		color: #999;
 	}
 	.navbar .links-container {
@@ -1094,20 +1097,20 @@ a.tag {
 		grid-column: 1 / span 2;
 		margin: 1em 0 0.5em 2em;
 	}
-	.navbar .links-container .link.profile-btn {
+	.navbar .links-container .info-btn {
 		margin-bottom: 1.3em;
 	}
-	.navbar .links-container .link.profile-btn::after {
+	.navbar .links-container .info-btn::after {
 		left: 0%;
 	}
-	.navbar .links-container .banner {
+	.navbar .links-container #banner {
 		justify-self: start;
 		font-size: 2.5em;
 	}
-	.navbar .links-container .menu-btn, .navbar.mobile-show .links-container .link {
+	.navbar .links-container #nav_menu_btn, .navbar.mobile-show .links-container .link {
 		display: block;
 	}
-	.navbar.mobile-show .menu-btn {
+	.navbar.mobile-show #nav_menu_btn {
 		transform: rotate(-90deg);
 		text-shadow: 0px 0px 0px #ccc;
 	}
