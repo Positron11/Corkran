@@ -46,40 +46,34 @@
 {% endif %}
 
 
-<div class="dual-option-container closer-below">
-	<!-- Media buttons -->
-	<div class="media-btn-container list-box generous-spacing nowrap">
-		<!-- Twitter -->
-		<a href='https://twitter.com/share?url={{request.build_absolute_uri}}&text="{{article.title}}" by {{article.author}}'
-			target="_blank" class="share-btn twitter small button" title="Share on Twitter">
-				<i class="fab fa-twitter"></i>
-		</a>
+<div class="article-controls generous-spacing nowrap list-box split-items closer-below">
+	<!-- Twitter -->
+	<a href='https://twitter.com/share?url={{request.build_absolute_uri}}&text="{{article.title}}" by {{article.author}}'
+		target="_blank" class="share-btn twitter small button" title="Share on Twitter">
+			<i class="fab fa-twitter"></i>
+	</a>
 
-		<!-- Facebook -->
-		<a href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}" target="_blank"
-			class="share-btn facebook small button" title="Share on Facebook">
-				<i class="fab fa-facebook-f"></i>
-		</a>
+	<!-- Facebook -->
+	<a href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}" target="_blank"
+		class="share-btn facebook small button" title="Share on Facebook">
+			<i class="fab fa-facebook-f"></i>
+	</a>
 
-		<!-- Email -->
-		<a href="mailto:?subject={{article.title}}&body={{article.title}} - From the Corkran blog. ({{request.build_absolute_uri}})"
-			target="_blank" class="share-btn email small button" title="Share by email">
-				<i class="fas fa-envelope"></i>
-		</a>
+	<!-- Email -->
+	<a href="mailto:?subject={{article.title}}&body={{article.title}} - From the Corkran blog. ({{request.build_absolute_uri}})"
+		target="_blank" class="share-btn email small button" title="Share by email">
+			<i class="fas fa-envelope"></i>
+	</a>
+
+	<!-- Zen mode -->
+	<div class="small button split-item" onclick="toggleZenMode();">
+		<i class="fas fa-coffee"></i>
 	</div>
 
-	<!-- Article controls -->
-	<div class="list-box generous-spacing nowrap">
-		<!-- Zen mode -->
-		<div class="small button" onclick="toggleZenMode();">
-			<i class="fas fa-coffee"></i>
-		</div>
-
-		<!-- Go to comments -->
-		<a href="#comments" class="small button" title="Comments">
-			<i class="fas fa-comments"></i>
-		</a>
-	</div>
+	<!-- Go to comments -->
+	<a href="#comments" class="small button" title="Comments">
+		<i class="fas fa-comments"></i>
+	</a>
 </div>
 
 

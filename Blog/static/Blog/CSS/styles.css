@@ -94,6 +94,10 @@ label {
 	font-family: 'Montserrat Alternates', sans-serif;
 }
 
+button {
+	box-sizing: content-box;
+}
+
 .button, input, textarea {
 	padding: 1em;
 	color: #333;
@@ -311,6 +315,10 @@ input[type="file"] {
 
 .list-box.nowrap.blur-left::before, .list-box.nowrap.blur-right::after {
 	opacity: 1;
+}
+
+.list-box.split-items .split-item {
+	margin-left: auto;
 }
 
 .vertically-space-items>*:not(:last-child) {
@@ -710,7 +718,7 @@ svg.tea #steamR {
 
 /* SOCIAL MEDIA SHARE BUTTONS */
 
-.media-btn-container .button {
+.article-controls .button {
 	width: 1.2em;
 }
 
