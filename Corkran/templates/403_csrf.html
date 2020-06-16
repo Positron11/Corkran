@@ -8,12 +8,16 @@
 <div class="special card">
 	<div class="header">
 		<div class="heading">Permission Denied.</div>
-		<div class="subheading">We don't think you should be here.</div>
+		<div class="subheading">We don't think you should be here. (CSRF)</div>
 	</div>
 
 	<!-- CONTENT -->
 	<div class="text">
-		Consider going <a href="{% url 'home' %}">home</a>, or if you think we're wrong, check your authentication details, clear your cookies, and if none of that works, send us an email. 
+		You're not the user you might think you are. If you have multiple accounts, 
+		you probably signed into another account from another browser tab. Or you 
+		just logged out of this one. Either way, just refresh the page, and if that 
+		doesn't work, go <a href="{% url 'home' %}">home</a>, and come here again. 
+		For those who understand, CSRF verification has failed.
 	</div>
 </div>
 
