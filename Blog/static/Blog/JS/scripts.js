@@ -453,11 +453,11 @@ function blurListBox(listbox) {
 	// get total width of children in listbox
 	var content_width = 0;
 	$(listbox).find("> *").each(function () {
-		content_width += ($(this).outerWidth() + 5);
+		content_width += ($(this).outerWidth(true));
 	});
 
 	// handle right blur
-	if (content_width - listbox.scrollLeft > $(listbox).width()) {
+	if ((content_width - 5) - listbox.scrollLeft > $(listbox).width()) {
 		$(listbox).addClass("blur-right");
 	} else {
 		$(listbox).removeClass("blur-right");

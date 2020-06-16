@@ -255,6 +255,7 @@ input[type="file"] {
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: row;
+	align-items: flex-end;
 }
 
 .list-box.center-align>*:last-child {
@@ -300,10 +301,11 @@ input[type="file"] {
 
 .list-box.nowrap::before, .list-box.nowrap::after {
 	top: 0;
+	z-index: 1;
 	opacity: 0;
 	content: "";
-	height: 2em;
 	position: sticky;
+	align-self: stretch;
 	pointer-events: none;
 	transition: 0.1s ease-out;
 }
