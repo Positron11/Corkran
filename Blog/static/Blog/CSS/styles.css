@@ -90,7 +90,7 @@ form ul.errorlist li {
 label {
 	color: #333;
 	font-size: 0.7em;
-	font-weight: 700;
+	font-weight: 600;
 	font-family: 'Montserrat Alternates', sans-serif;
 }
 
@@ -232,6 +232,7 @@ input[type="file"] {
 	font-weight: 500;
 	margin: 0.1em 0;
 	font-variant: small-caps;
+	text-transform: capitalize;
 }
 
 .subheading {
