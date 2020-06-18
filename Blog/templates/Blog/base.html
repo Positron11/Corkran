@@ -6,15 +6,22 @@
 <html lang="en">
 
 <head>
+	<!-- Title -->
 	<title>Corkran - {% block title %}{% endblock %}</title>
+	<!-- Meta -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="The open blog.">
 	<meta name="author" content="Aarush Kumbhakern">
+	<!-- Favicon -->
 	<link rel="shortcut icon" type="image/png" href="{% static 'Blog/Favicon/favicon.png' %}">
+	<!-- Webfonts -->
 	<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Montserrat+Alternates:wght@400;500;600&display=swap" rel="stylesheet">
+	<!-- CSS styling -->
 	<link rel="stylesheet" type="text/css" href="{% static 'Blog/CSS/styles.css' %}">
 	<link rel="stylesheet" href="{% static 'Blog/CSS/lazy.css' %}">
+	<!-- Fontawesome -->
+	<link rel="stylesheet" href="{% static 'Blog/Fontawesome/CSS/all.min.css' %}">
 </head>
 
 <body>
@@ -134,8 +141,6 @@
 	<script src="{% static 'Blog/JS/scripts.js' %}"></script>
 	<!--Lazy loading script-->
 	<script src="{% static 'Blog/JS/lazy.js' %}"></script>
-	<!-- Font Awesome -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
 </body>
 
 </html>
