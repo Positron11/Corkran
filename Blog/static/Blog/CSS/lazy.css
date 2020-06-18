@@ -1,1 +1,32 @@
-.progressive{position:relative;display:block;overflow:hidden;outline:none}.progressive img{display:block;top:50%;left:50%;min-width:100%;min-height:100%;border:0;position:absolute;transform:translate(-50%, -50%);}.progressive img.preview{filter:blur(2vw);transform: translate(-50%, -50%) scale(1.05)}.progressive img.reveal{will-change:transform,opacity;animation:progressiveReveal 1s ease-out}@keyframes progressiveReveal{0%{transform:translate(-50%, -50%) scale(1.05);opacity:0}to{transform:translate(-50%, -50%) scale(1);opacity:1}}
+.progressive {
+	outline: none;
+	display: block;
+	overflow: hidden;
+	position: relative;
+}
+
+.progressive img {
+	top: 50%;
+	left: 50%;
+	display: block;
+	border: 0 none;
+	min-width: 100%;
+	min-height: 100%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+}
+
+.progressive img.preview {
+	width: 100%;
+	filter: blur(2vw);
+	transform: translate(-50%, -50%) scale(1.03);
+}
+
+.progressive img.reveal {
+	animation: progressiveReveal 1s cubic-bezier(.38,.1,.13,.67);
+}
+
+@keyframes progressiveReveal {
+	0% { transform: translate(-50%, -50%) scale(1.03); opacity: 0; }
+	100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
