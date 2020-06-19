@@ -1,8 +1,8 @@
-from string import capwords
 from django.db import models
 from datetime import datetime
 from django.urls import reverse
 from User.models import Profile
+from titlecase import titlecase
 from django.utils.text import slugify
 from django.contrib.auth.models import User
 from taggit.managers import TaggableManager
@@ -29,7 +29,7 @@ class Article(models.Model):
 	# when saving article
 	def save(self): 
 		# capitalize title 
-		self.title = capwords(self.title)
+		self.title = titlecase(self.title)
 		# create slug
 		self.slug = slugify(self.title)
 		# save 
