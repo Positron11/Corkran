@@ -232,7 +232,6 @@ input[type="file"] {
 	font-weight: 500;
 	margin: 0.1em 0;
 	font-variant: small-caps;
-	text-transform: capitalize;
 }
 
 .subheading {
