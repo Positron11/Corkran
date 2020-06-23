@@ -15,7 +15,7 @@ a {
 	color: #729fcf;
 }
 
-a:visited {
+a:visited:not(.button) {
 	color: inherit;
 }
 
