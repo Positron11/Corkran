@@ -844,11 +844,11 @@ svg.tea #steamR {
 /* TAGS */
 
 .tag {
-	color: #00a32c;
 	position: relative;
 	padding: 0.3em 0.6em;
 	border-radius: 0.5em;
 	text-decoration: none;
+	color: #00a32c !important;
 	background: rgb(4, 222, 63, 0.2);
 	font-family: 'Cormorant Garamond', serif;
 }
