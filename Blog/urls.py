@@ -5,6 +5,8 @@ urlpatterns = [
     # basic views
     path('', views.Home.as_view(), name='home'),
     path('about/', views.about, name='about'),
+    path('privacy/', views.privacy, name='privacy'),
+    path('disclaimer/', views.disclaimer, name='disclaimer'),
     path('announcements/', views.Announcements.as_view(), name='announcements'),
 
     # user library

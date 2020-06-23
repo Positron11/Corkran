@@ -150,6 +150,16 @@ def about(request):
 	return render(request, "Blog/about.html")
 
 
+# privacy policies
+def privacy(request):
+	return render(request, "Blog/privacy_policy.html")
+
+
+# disclaimer
+def disclaimer(request):
+	return render(request, "Blog/disclaimer.html")
+
+
 # announcements page
 class Announcements(ListView):
 	model = Announcement

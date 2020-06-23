@@ -61,6 +61,12 @@ p, .text, ul {
 	color: #999;
 }
 
+.section-heading {
+	color: #333;
+	font-size: 1.5em;
+	font-family: 'Montserrat Alternates', sans-serif;
+}
+
 /* FORMS & FORM ELEMENTS */
 
 form>* {
