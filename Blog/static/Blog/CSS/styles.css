@@ -987,6 +987,9 @@ a.tag {
 	.anchor.offset {
 		transform: translateY(-7em);
 	}
+	.anchor.offset.offset-alert {
+		transform: translateY(-9.5em);
+	}
 	.alert.floating:hover > .close-btn{
 		opacity: 1;
 		display: block;
@@ -1085,6 +1088,9 @@ a.tag {
 	}
 	.anchor.offset {
 		transform: translateY(-5em);
+	}
+	.anchor.offset.offset-alert {
+		transform: translateY(-7.5em);
 	}
 	.alert.floating .close-btn{
 		opacity: 1;
