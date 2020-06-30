@@ -1051,13 +1051,11 @@ a.tag {
 		border: #333 solid 2px !important;
 	}
 	.floating-btn:hover {
-		text-shadow: 3px 3px 3px rgb(0, 0, 0, 0.2);
-		box-shadow: 0 0 3px 3px rgb(0, 0, 0, 0.1);
+		transform: scale(1.1);
 	}
 	.floating-btn:active {
 		transition: 0.1s ease-out;
-		text-shadow: 0 0 0 rgb(0, 0, 0, 0.2);
-		box-shadow: 0 0 0 0 rgb(0, 0, 0, 0.1);
+		transform: scale(0.8);
 	}
 	.article.preview .fade {
 		bottom: 4em;
