@@ -52,6 +52,9 @@ $(function () {
 	autosize($('textarea'));
 	autosize.update($("textarea"));
 
+	// initialize are-you-sure form close manager plugin
+	$('form').areYouSure();
+
 
 	// Smooth scrolling
 	$(document).on('click', 'a[href^="#"]', function (e) {
