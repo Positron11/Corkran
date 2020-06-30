@@ -250,8 +250,8 @@ def detail(request, pk, slug):
 				else:
 					messages.error(request, "Error posting comment.")
 
-			# redirect to current page and scroll to previous position
-			return redirect(article.get_absolute_url() + f"#{request.POST.get('scroll_pos')}")
+			# redirect to current page and scroll to posted comment
+			return redirect(article.get_absolute_url() + f"#{comment_form.instance.id}")
 					
 		# if (un)featuring article
 		elif "feature" in request.POST:

@@ -217,9 +217,8 @@
 						<!-- Textarea -->
 						<textarea name="content" rows="2" required>{{ node.content }}</textarea>
 
-						<!-- Scroll position and parent id -->
+						<!-- Parent id -->
 						<input type="hidden" name="id" value="{{ node.id }}">
-						<input type="hidden" name="scroll_pos" value="{{ node.id }}">
 
 						<!-- Submit button -->
 						<button class="minimal button" type="submit" name="edit">Edit</button>
@@ -248,9 +247,8 @@
 						<!-- Textarea -->
 						<textarea name="content" rows="2" placeholder='Reply to: "{{ node.content|truncatechars:25 }}"' required></textarea>
 
-						<!-- Scroll position and parent id -->
+						<!-- Parent id -->
 						<input type="hidden" name="parent_id" value="{{ node.id }}">
-						<input type="hidden" name="scroll_pos" value="{{ node.id }}">
 
 						<!-- Submit button -->
 						<button class="minimal button" type="submit" name="reply">Post</button>
@@ -277,9 +275,6 @@
 		<form method="post" class="vertically-space-items">{% csrf_token %}
 			<!-- Textarea -->
 			<textarea name="content" rows="4" required autocomplete="off" placeholder="New comment..." class="closer-below"></textarea>
-
-			<!-- Scroll position -->
-			<input type="hidden" name="scroll_pos" value="comments">
 
 			<!-- Submit button -->
 			<div class="right-align-container">
