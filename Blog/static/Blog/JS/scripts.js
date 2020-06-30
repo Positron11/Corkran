@@ -53,7 +53,7 @@ $(function () {
 	autosize.update($("textarea"));
 
 	// initialize are-you-sure form close manager plugin
-	$('form').areYouSure();
+	$('form.confirm-leave').areYouSure();
 
 
 	// Smooth scrolling

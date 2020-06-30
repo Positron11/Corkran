@@ -47,7 +47,7 @@
 	<!-- Heading -->
 	<legend class="heading">Profile</legend>
 
-	<form class="vertically-space-items" method="post" enctype="multipart/form-data">{% csrf_token %}
+	<form class="vertically-space-items confirm-leave" method="post" enctype="multipart/form-data">{% csrf_token %}
 		<!-- User info update form -->
 		{{ user_form.as_table }}
 
