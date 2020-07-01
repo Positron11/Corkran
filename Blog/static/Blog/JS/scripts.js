@@ -65,6 +65,11 @@ $(function () {
 	});
 
 
+	// Disable alert-offset class if no alert
+	if (!$(".alert").length) {
+		$(".offset-alert").removeClass("offset-alert");
+	}
+
 	// Close alert on clicking close button
 	$(document).on('click', '.alert.floating .close-btn', function (e) {
 		$(this).parent(".alert").hide("fast", function () {
