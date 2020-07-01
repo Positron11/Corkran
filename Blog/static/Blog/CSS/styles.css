@@ -968,7 +968,7 @@ a.tag {
 	font-size: 1.6em;
 	text-align: center;
 	border-radius: 50%;
-	background: rgb(4, 222, 63, 0.27);
+	background: rgba(100, 255, 142, 0.5);
 	-webkit-tap-highlight-color: transparent;
 	transition: 0.3s ease;
 }
