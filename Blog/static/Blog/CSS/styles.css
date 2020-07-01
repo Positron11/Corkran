@@ -57,6 +57,10 @@ p, .text {
 	font-size: 0.7em;
 }
 
+.bold {
+	font-weight: 500;
+}
+
 .grey {
 	color: #999;
 }
