@@ -23,5 +23,6 @@ import os
 urlpatterns = [
     path('', include('Blog.urls')),
     path('', include('User.urls')),
+    path('', include('Mailbox.urls')),
     path(f'{ADMIN_URL}/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

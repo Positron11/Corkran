@@ -57,6 +57,10 @@ p, .text {
 	font-size: 0.7em;
 }
 
+p.montserrat, .text.montserrat {
+	line-height: 2em;
+}
+
 .bold {
 	font-weight: 500;
 }
@@ -628,7 +632,21 @@ svg.tea #steamR {
 	content: ""attr(data-articles)"";
 }
 
-.navbar .links-container #profile_btn::after {
+#mailbox_btn {
+	position: relative;
+}
+
+.navbar .links-container #mailbox_btn.unread::before {
+	top: -0.5em;
+	content: "•";
+	right: -0.7em;
+	color: #f32929;
+	font-weight: 900;
+	position: absolute;
+	font-family: "Font Awesome 5 Free";
+}
+
+.navbar .links-container #account_btn::after {
 	content: ""attr(data-username)"";
 }
 
@@ -1006,6 +1024,50 @@ a.tag {
 }
 
 
+/* MAIL */
+
+.mail {
+	position: relative;
+}
+
+.mail.unread::after {
+	top: 0.3em;
+	content: "•";
+	right: 0.5em;
+	color: #f32929;
+	font-weight: 900;
+	font-size: 1.3em;
+	position: absolute;
+	font-family: "Font Awesome 5 Free";
+}
+
+.mail-header {
+	margin-bottom: 0.4em;
+	padding-bottom: 0.6em;
+	border-bottom: 1px solid #eaeaea;
+}
+
+.mail-heading {
+	font-size: 1.4em;
+}
+
+#mail_filter {
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+#mail_filter_checkbox_container {
+	margin-right: 0.5em;
+}
+
+#clear_mail_filters {
+	flex-grow: 0;
+	flex-shrink: 0;
+}
+
 /* PAGINATOR */
 
 .paginator {
@@ -1197,18 +1259,21 @@ a.tag {
 	.navbar .links-container a:not(#banner):not(#nav_menu_btn):active {
 		color: #999;
 	}
+	#library_btn {
+		grid-area: link2;
+	}	
 	.navbar .links-container {
 		padding: 0.5em 0;
 		place-items: center start;
 		grid-template: "banner menu" "link1 link1" "link2 link2" "link3 link3" "link4 link4" / auto;
 	}
-	.navbar .links-container .link {
+	.navbar .links-container > .link, .navbar .links-container #account_dropdown {
 		display: none;
 		grid-column: 1 / span 2;
-		margin: 1em 0 0.5em 2em;
+		margin: 1rem 0 0.5rem 2rem;
 	}
-	.navbar .links-container .info-btn {
-		margin-bottom: 1.3em;
+	.navbar .links-container > .link.info-btn, .navbar .links-container #account_dropdown {
+		margin-bottom: 1.5rem;
 	}
 	.navbar .links-container .info-btn::after {
 		left: 0%;
@@ -1217,7 +1282,7 @@ a.tag {
 		justify-self: start;
 		font-size: 2.5em;
 	}
-	.navbar .links-container #nav_menu_btn, .navbar.mobile-show .links-container .link {
+	.navbar.mobile-show #nav_menu_btn, .navbar.mobile-show .links-container .link, .navbar.mobile-show #account_dropdown {
 		display: block;
 	}
 	.navbar.mobile-show #nav_menu_btn {

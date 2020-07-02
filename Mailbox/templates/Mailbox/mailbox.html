@@ -1,0 +1,109 @@
+{% extends 'Blog/base.html' %}
+
+{% block title %}Mailbox{% endblock %}
+
+{% block content %}
+
+<!-- Header card -->
+<div class="special card">
+	<div class="header">
+		<div class="heading">The Mailbox</div>
+		<div class="subheading">Your own mailbox, here on 420 Corkran St.</div>
+	</div>
+	<div class="text">
+		The mailman travels at about the speed of your internet, so don't worry about delivery time. 
+		And remember to keep it clean; there's only so much it can fit. 
+	</div>
+</div>
+
+
+{% if mailbox.count %}
+<!-- Offset anchor -->
+<div class="offset anchor" id="mail_filter_anchor"></div>
+
+<!-- Filter dock -->
+<div class="minimal card" id="mail_filter">
+	<div class="nowrap list-box generous-spacing" id="mail_filter_checkbox_container">
+		<!-- Filter new replies -->
+		<div>
+			<input type="checkbox" id="new_reply" autocomplete="off">
+			<label for="new_reply" class="single-line-text">New Replies</label>
+		</div>
+
+		<!-- Filter new comments -->
+		<div>
+			<input type="checkbox" id="new_comment" autocomplete="off">
+			<label for="new_comment"class="single-line-text">New Comments</label>
+		</div>
+	</div>
+
+	<!-- Clear filters -->
+	<div class="minimal danger button split-item" id="clear_mail_filters">Clear Filters</div>
+</div>
+{% endif %}
+
+
+<!-- Mailbox -->
+<div id="mailbox" class="vertically-space-items">
+	{% for mail in mailbox %}
+	<div class="compact card mail {{ mail.mail_type }} {% if mail in unread %}unread{% endif %}">
+		<!-- Heading and date -->
+		<div class="mail-header">
+			<span class="mail-heading">{{ mail.heading }}</span>
+			<span class="mail-date montserrat grey split-item"> ~ {{ mail.date|date:"F jS, Y, g:i a" }}</span>
+		</div>
+
+		<!-- Body -->
+		<div class="mail-content text montserrat grey">
+			<!-- New comment on article mail -->
+			{% if mail.mail_type == "new_comment_mail" %}
+			<a href="{% url 'author-sorted-articles' mail.comment.author %}">{{ mail.comment.author }}</a> commented
+			<span class="bold">"<a href="{{ mail.article.get_absolute_url }}#{{ mail.comment.id }}" title="View comment">{{ mail.comment.content|truncatechars:100 }}</a>"</span>
+			on <a href="{{ mail.article.get_absolute_url }}" title="Go to article">{{ mail.article.title }}</a>
+
+			<!-- New reply mail -->
+			{% elif mail.mail_type == "new_reply_mail" %}
+			<a href="{% url 'author-sorted-articles' mail.comment.author %}">{{ mail.comment.author }}</a> replied to	
+			<span class="bold">"{{ mail.comment.parent.content|truncatechars:100 }}"</span> with
+			<span class="bold">"<a href="{{ mail.article.get_absolute_url }}#{{ mail.comment.id }}" title="View reply">{{ mail.comment.content|truncatechars:100 }}</a></span>
+			on <a href="{{ mail.article.get_absolute_url }}" title="Go to article">{{ mail.article.title }}</a>
+			{% endif %}
+		</div>
+
+		<br>
+
+		<!-- Delete button -->
+		<div class="right-align-container">
+			<form method="POST" action="{% url 'delete-mail' mail.id %}">{% csrf_token %}
+				<input type="submit" class="minimal danger button" value="Discard">
+			</form>
+		</div>
+	</div>		
+	{% empty %}
+	<!-- No messages card -->
+	<div class=" card">
+		<div class="header">
+			<div class="heading">No Mail.</div>
+			<div class="subheading">It's damp, dark, and a little rusty. Might rain today.</div>
+		</div>
+		<div class="text">
+			It would seem that you have an empty mailbox. Perhaps you've discarded all your mail, or maybe there's
+			just nothing happening. Might as well wait for a while.
+		</div>
+	</div>
+	{% endfor %}
+
+
+	<!-- No messages in selected filter(s) card -->
+	<div class="special card" style="display: none;" id="empty_filtered_mail">
+		<div class="header">
+			<div class="heading">No Mail.</div>
+			<div class="subheading">Your filter yields no results.</div>
+		</div>
+		<div class="text">
+			Nothing here matches any of the filters you've enabled. Clear your filters to view all mail.
+		</div>
+	</div>
+</div>
+
+{% endblock %}

@@ -12,3 +12,4 @@ six==1.14.0
 sqlparse==0.3.1
 django-cron==0.5.1
 titlecase==1.1.1
+django-model-utils==4.0.0

@@ -228,6 +228,42 @@ $(function () {
 			window.open("https://unsplash.com/", '_blank');
 		}
 	});
+
+
+	// Mail filter
+	if ($(".mail").length) {
+		$(document).on('click', '#mail_filter > *', function () {
+			// clear filters 
+			$('#clear_mail_filters').click(function () {
+				$("#mail_filter input").prop("checked", false);
+			});
+
+			// sort if any filters applied
+			if($("#mail_filter input").is(':checked')) {
+				// hide all mail
+				$(".mail").hide();
+
+				// show all relevant mail
+				$(":checkbox:checked").each(function () {
+					$(".mail." + $(this).attr("id") + "_mail").show();
+				});
+
+			// otherwise show all mail
+			} else {
+				$(".mail").show();
+			}
+
+			// if no mail visible show empty filter card
+			if (!$(".mail").is(":visible")) {
+				$("#empty_filtered_mail").show();
+			} else {
+				$("#empty_filtered_mail").hide();
+			}
+
+			// keep mail filter bar at top
+			$('html, body').scrollTop($("#mail_filter_anchor").offset().top);
+		});
+	}
 });
 
 

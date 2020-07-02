@@ -39,6 +39,7 @@ INSTALLED_APPS = [
 	'django.contrib.sessions',
 	'django.contrib.messages',
 	'django.contrib.staticfiles',
+	'Mailbox.apps.MailboxConfig',
 	'Blog.apps.BlogConfig',
 	'User.apps.UserConfig',
 	'django_unused_media',
