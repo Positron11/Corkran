@@ -412,6 +412,30 @@ input[type="file"] {
 	text-align: right;
 }
 
+.separator-bars {
+	text-align: center;
+}
+
+.separator-bars > * {
+	display: block;
+	position: relative;
+}
+
+.separator-bars > *:not(:last-child) {
+	margin-bottom: 2em;
+}
+
+.separator-bars > *:not(:last-child)::after {
+	left: 50%;
+	width: 2em;
+	height: 1px;
+	content: "";
+	bottom: -1em;
+	position: absolute;
+	background-color: #ddd;
+	transform: translateX(-50%);
+}
+
 
 /* CARDS */
 
