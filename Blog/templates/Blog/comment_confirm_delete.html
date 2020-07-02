@@ -15,7 +15,7 @@
 	<form method="post">{% csrf_token %}
 		<div class="dual-option-container">
 			<button class="danger button" type="submit">Delete</button>
-			<a href="{% url 'article-detail' object.article.id object.article.slug %}" class="button">Cancel</a>
+			<a href="{% url 'article-detail' object.article.id object.article.slug %}#{{ object.id }}" class="button">Cancel</a>
 		</div>
 	</form>
 </div>
