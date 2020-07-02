@@ -1008,7 +1008,7 @@ a.tag {
 	.navbar .links-container {
 		padding: 1em 1em;
 		place-items: center;
-		grid-template: "link1 link2 banner link3 link4" / auto auto auto auto auto;
+		grid-template: "link1 link2 banner link3 link4" / 1fr 1fr 1fr 1fr 1fr;
 	}
 	.navbar .links-container .info-btn::after {
 		left: 50%;
