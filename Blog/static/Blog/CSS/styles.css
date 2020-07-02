@@ -339,6 +339,7 @@ input[type="file"] {
 	max-width: 100%;
 	padding: 0.3em 0;
 	flex-wrap: nowrap;
+	align-items: center;
 	position: relative;
 }
 
