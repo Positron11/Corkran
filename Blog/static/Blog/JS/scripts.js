@@ -92,6 +92,20 @@ $(function () {
 	});
 
 
+	// toggle dropdown
+	$(document).on('click', '.dropdown-label', function (e) {
+		e.preventDefault();
+		$(this).parent(".dropdown").toggleClass("dropped");
+	});
+
+	// Hide mobile dropdowns if clicked outside dropdown
+	$(document).on('click', 'body', function (e) {
+		if (!$(e.target).closest('.dropdown').length && $(".dropdown").hasClass("dropped")) {
+			$(".dropdown").removeClass("dropped");
+		}
+	});
+
+
 	// Toggle comment reply box
 	$(document).on('click', '.toggle-btn.reply', function (e) {
 		e.preventDefault();
