@@ -36,6 +36,12 @@ $(window).on("load", function () {
 });
 
 
+// Disable alert-offset class if no alert
+if (!$(".alert").length && $(".offset-alert").length) {
+	$(".anchor").removeClass("offset-alert");
+}
+
+
 // Main
 $(function () {
 	// Initialize page
@@ -64,11 +70,6 @@ $(function () {
 		}, 1000, 'easeOutQuint');
 	});
 
-
-	// Disable alert-offset class if no alert
-	if (!$(".alert").length) {
-		$(".offset-alert").removeClass("offset-alert");
-	}
 
 	// Close alert on clicking close button
 	$(document).on('click', '.alert.floating .close-btn', function (e) {
