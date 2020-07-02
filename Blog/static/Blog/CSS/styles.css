@@ -317,14 +317,6 @@ input[type="file"] {
 	align-items: flex-end;
 }
 
-.list-box.center-align>*:last-child {
-	margin-right: auto;
-}
-
-.list-box.center-align>*:first-child, .list-box.right-align>*:first-child {
-	margin-left: auto;
-}
-
 .list-box.compact-spacing {
 	margin: 0 -0.7rem -0.7rem 0;
 }
@@ -356,6 +348,14 @@ input[type="file"] {
 
 .list-box.nowrap>*:last-child {
 	margin-right: 0;
+}
+
+.list-box.nowrap.center-align>*:last-child {
+	margin-right: auto;
+}
+
+.list-box.nowrap.center-align>*:first-child, .list-box.right-align>*:first-child {
+	margin-left: auto;
 }
 
 .list-box.nowrap::before, .list-box.nowrap::after {
