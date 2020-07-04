@@ -76,7 +76,7 @@
 			<!-- New article mail -->
 			{% elif mail|to_class_name == "new_article_mail" %}
 			<a href="{% url 'author-sorted-articles' mail.article.author %}">{{ mail.article.author }}</a> wrote 
-			<span class="bold">"<a href="{{ mail.article.get_absolute_url }}" title="View reply">{{ mail.article.title }}</a>"</span>.
+			<span class="bold">"<a href="{{ mail.article.get_absolute_url }}" title="Go to article">{{ mail.article.title }}</a>"</span>.
 			A short preview: "{{ mail.article.content|truncatewords:50}}"
 			{% endif %}
 		</div>
