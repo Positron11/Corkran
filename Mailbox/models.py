@@ -10,8 +10,9 @@ from polymorphic.models import PolymorphicModel
 
 # base mail model
 class Mail(PolymorphicModel):
-	recipient = models.ForeignKey(User, on_delete=models.CASCADE)
+	recipient = models.ForeignKey(User, related_name="mail", on_delete=models.CASCADE)
 	date = models.DateTimeField(default=datetime.now, blank=True)
+	email_reminder = models.BooleanField(default=False)
 	heading = models.CharField(max_length=100)
 	read = models.BooleanField(default=False)
 

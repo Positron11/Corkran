@@ -1,0 +1,134 @@
+{% autoescape off %}
+
+{% load corkran_tags %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+	<style>
+		#main {
+			margin: auto;
+			font-size: 16px;
+			padding: 4em 2em;
+			max-width: 700px;
+			background: white;
+		}
+		.text {
+			line-height: 1.7em;
+			overflow-x: hidden;
+			text-align: justify;
+			text-overflow: ellipsis;
+		}
+		.grey {
+			color: #999;
+		}
+		.card {
+			padding: 2em;
+			border-radius: 0.5em;
+			border: #eaeaea solid 1px;
+		}
+		.header {
+			max-width: 100%;
+			overflow-x: auto;
+			text-align: center;
+			margin-bottom: 1em;
+			padding-bottom: 1em;
+			border-bottom: 1px solid #eaeaea;
+		}
+		.heading {
+			color: #333;
+			font-size: 3em;
+			font-weight: 500;
+			font-variant: small-caps;
+		}
+		.subheading {
+			line-height: 1.7em;
+			letter-spacing: 0.05em;
+		}
+		.mail-header {
+			margin-bottom: 0.5em;
+			padding-bottom: 0.5em;
+			border-bottom: 1px solid #eaeaea;
+		}
+		.mail-heading {
+			font-size: 1.4em;
+		}
+		.center-align {
+			text-align: center;
+		}
+		@media only screen and (max-width: 600px) {
+			.card {
+				padding: 1.5em;
+			}
+			.heading {
+				font-size: 9vw;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div id="main">
+		<div class="center-align grey">~ Corkran ~</div>
+
+		<br>
+
+		<div class="card">
+			<div class="header">
+				<div class="heading">Greetings, {{ recipient }}.</div>
+				<div class="subheading grey">Your own mailbox, here on 420 Corkran St.</div>
+			</div>
+			<div class="text">
+				You didn't appear to be at home, but the neighbors said we were likely to find you here.
+			</div>
+		</div>
+
+		<br><br>
+
+		<div class="card">
+			{% for mail in mailbox %}
+			<div class="card">
+				<div class="mail-header">
+					<span class="mail-heading">{{ mail.heading }}</span>
+					<span class="grey"> ~ {{ mail.date|date:"F jS, Y, g:i a" }}</span>
+				</div>
+
+				<div class="text grey">
+					{% if mail|to_class_name == "new_comment_mail" %}
+					{% if mail.comment.parent %}
+					<a href="{{ protocol }}://{{ domain }}{% url 'author-sorted-articles' mail.comment.author %}">{{ mail.comment.author }}</a> replied to	
+					"{{ mail.comment.parent.content|truncatechars:100 }}" with
+					<a href="{{ protocol }}://{{ domain }}{{ mail.article.get_absolute_url }}#{{ mail.comment.id }}" title="View reply">"{{ mail.comment.content|truncatechars:100 }}"</a>
+					on <a href="{{ protocol }}://{{ domain }}{{ mail.article.get_absolute_url }}" title="Go to article">{{ mail.article.title }}</a>
+					{% else %}
+	
+					<a href="{{ protocol }}://{{ domain }}{% url 'author-sorted-articles' mail.comment.author %}">{{ mail.comment.author }}</a> commented
+					<a href="{{ protocol }}://{{ domain }}{{ mail.article.get_absolute_url }}#{{ mail.comment.id }}" title="View comment">"{{ mail.comment.content|truncatechars:100 }}"</a>
+					on <a href="{{ protocol }}://{{ domain }}{{ mail.article.get_absolute_url }}" title="Go to article">{{ mail.article.title }}</a>
+					{% endif %}
+
+					{% elif mail|to_class_name == "new_article_mail" %}
+					<a href="{{ protocol }}://{{ domain }}{% url 'author-sorted-articles' mail.article.author %}">{{ mail.article.author }}</a> wrote 
+					<a href="{{ protocol }}://{{ domain }}{{ mail.article.get_absolute_url }}" title="Go to article">{{ mail.article.title }}</a>.
+					A short preview: "{{ mail.article.content|truncatewords:50}}"
+					{% endif %}
+				</div>
+			</div>		
+			<br>
+			{% endfor %}
+		</div>
+
+		<br><br>
+
+		<div class="center-align grey">
+			Don't want to be disturbed? <a href="{{ protocol }}://{{ domain }}">Unsubscribe</a>.
+			<br><br>
+			~ Corkran ~ 
+		</div>
+	</div>	
+</body>
+
+</html>
+
+{% endautoescape %}

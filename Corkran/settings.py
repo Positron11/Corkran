@@ -142,7 +142,7 @@ TAGGIT_CASE_INSENSITIVE = True
 
 # Cronjobs
 CRON_CLASSES = [
-    "Blog.cron.NewCommentsEmailNotification",
+    "Mailbox.cron.UnreadMailEmail",
 ]
 
 # Import local settings
