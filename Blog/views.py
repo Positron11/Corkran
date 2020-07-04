@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 from django.contrib import messages
 from string import capwords
+import random
 
 
 class ArticleListView(ListView):
@@ -188,20 +189,30 @@ def detail(request, pk, slug):
 	else:
 		previous_article = articles.last()
 
+	# get random article url
+	random_article_url = random.choice(Article.objects.all()).get_absolute_url()
+
 	# check if article is in user's library
 	try:
 		article_in_library = request.user.profile.library.filter(id=article.id).exists()
 	except:
 		article_in_library = False
 
-	# current, next, and previous article, and comment form
+	# check if subscribed to author
+	try:
+		subscribed = request.user.profile.subscribed.filter(id=article.author.id).exists()
+	except:
+		subscribed = False
+
 	context = {
 		"article": article, 
 		"next_article": next_article, 
 		"previous_article": previous_article, 
 		"comment_form": comment_form, 
 		"feature_form": feature_form,
-		"article_in_library": article_in_library
+		"subscribed": subscribed,
+		"article_in_library": article_in_library,
+		"random_article_url": random_article_url
 	}
 
 	if request.method == 'POST':
@@ -270,10 +281,20 @@ def detail(request, pk, slug):
 					messages.success(request, f'"{article.title}" unfeatured.')
 
 				return redirect('home')
+
+		# if subscribing or unsubscribing from author
+		elif "subscribe" in request.POST:
+			if subscribed:
+				request.user.profile.subscribed.remove(article.author)
+				messages.success(request, f"Unsubscribed from {article.author.username}. You won't recieve any more mail about {article.author.username}.")
+			else:
+				request.user.profile.subscribed.add(article.author)
+				messages.success(request, f"Subscribed to {article.author.username}. We'll mail you when {article.author.username} writes an article.")
+			return redirect(article.get_absolute_url())
 		
 		# if adding or removing article from personal library
 		elif "library" in request.POST:
-			if article.libraries.filter(id=request.user.profile.id).exists():
+			if article_in_library:
 				request.user.profile.library.remove(article)
 				messages.success(request, f'"{article.title}" removed from library.')
 			else:
@@ -338,9 +359,14 @@ class DeleteArticle(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 class DeleteComment(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	model = Comment
 	
-	# return to article page and scroll to comments on delete
+	# return to article page and scroll to comments or parent on delete
 	def get_success_url(self):
-		return self.get_object().article.get_absolute_url() + "#comments"
+		try:
+			anchor = self.get_object().parent.id
+		except:
+			anchor = "comments"
+
+		return self.get_object().article.get_absolute_url() + "#" + str(anchor)
 
 	# check if currently logged in user is author
 	def test_func(self):

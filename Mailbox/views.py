@@ -12,7 +12,7 @@ class Mailbox(LoginRequiredMixin, ListView):
 
 	def get_queryset(self):
 		# get queryset
-		queryset = Mail.objects.filter(recipient=self.request.user).order_by("-date").select_subclasses()
+		queryset = Mail.objects.filter(recipient=self.request.user)
 
 		# pass unread messages to context before marking as read
 		self.extra_context = dict()

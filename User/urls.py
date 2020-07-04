@@ -4,8 +4,9 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-	# user registration
+	# user account and profile
 	path('profile/', views.profile, name='profile'),
+	path('account-settings/', views.account_settings, name='settings'),
 
 	# authentication views
 	path('register/', views.register, name='registration'),

@@ -13,7 +13,7 @@
 	<form class="vertically-space-items confirm-leave" id="article_form" method="post" autocomplete="off" enctype="multipart/form-data">{% csrf_token %}
 		<!-- Form navigation -->
 		<label>Go to:</label>
-		<div class="nowrap list-box compact-spacing">
+		<div class="nowrap list-box blur-overflow compact-spacing">
 			<a href="#title" class="small button">Title</a>
 			<a href="#content" class="small button">Content</a>
 			<a href="#tags" class="small button">Tags</a>
@@ -37,7 +37,7 @@
 		{{ form.tags }}
 
 		<!-- Tag suggestion box -->
-		<div id="suggested_tags">
+		<div id="suggested_tags" style="display: none;">
 			<label style="display: block; margin-bottom: 0.5em;">Similar popular tags:</label>
 			<div class="card compact">
 				<div class="list-box compact-spacing">
@@ -70,7 +70,7 @@
 		<input type="text" name="attribution" maxlength="100" id="id_attribution" placeholder="Attribution or caption..." value="{{ form.instance.attribution }}">
 
 		<!-- Submit button -->
-		<div class="right-align-container">
+		<div class="right-align-text">
 			<button class="button" type="submit">Post</button>
 		</div>
 	</form>
@@ -91,7 +91,7 @@
 
 <!-- Scroll to top button -->
 <a href="#top" class="floating-btn scroll-top-btn" title="Back to Top">
-	<i class="fas fa-angle-double-up"></i>
+	<i class="fas fa-chevron-up"></i>
 </a>
 
 {% endblock %}

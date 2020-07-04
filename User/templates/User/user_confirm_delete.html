@@ -17,9 +17,9 @@
 
 	<!-- Confirm or cancel -->
 	<form method="post">{% csrf_token %}
-		<div class="dual-option-container">
+		<div class="nowrap list-box split-items compact-spacing">
 			<button class="danger button" type="submit">Delete</button>
-			<a href="{% url 'profile' %}" class="button">Cancel</a>
+			<a href="{% url 'settings' %}" class="button split-item">Cancel</a>
 		</div>
 	</form>
 </div>

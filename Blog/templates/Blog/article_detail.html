@@ -1,7 +1,6 @@
 {% extends 'Blog/base.html' %}
 
 {% load mptt_tags %}
-{% load corkran_tags %}
 
 {% block title %}"{{ article.title }}"{% endblock %}
 
@@ -39,46 +38,66 @@
 
 {% if user == article.author %}
 <!-- Article edit buttons -->
-<div class="dual-option-container closer-below">
-	<a href="{% url 'edit-article' article.id %}" class="button">Edit</a>
-	<a href="{% url 'delete-article' article.id %}" class="danger button">Delete</a>
+<div class="nowrap list-box split-items compact-spacing closer-below">
+	<a href="{% url 'edit-article' article.id %}" class="button small"><i class="fas fa-edit"></i> Edit</a>
+	<a href="{% url 'delete-article' article.id %}" class="small danger button split-item">Delete <i class="fas fa-trash-alt"></i></a>
 </div>
 {% endif %}
 
 
 <!-- Article controls -->
-<div class="article-controls generous-spacing nowrap list-box split-items closer-below">
-	<!-- Twitter -->
-	<a href='https://twitter.com/share?url={{request.build_absolute_uri}}&text="{{article.title}}" by {{article.author}}'
-		target="_blank" class="share-btn twitter small button" title="Share on Twitter">
-			<i class="fab fa-twitter"></i>
-	</a>
+<div class="normal-spacing nowrap list-box split-items closer-below" id="article_controls">
 
-	<!-- Facebook -->
-	<a href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}" target="_blank"
-		class="share-btn facebook small button" title="Share on Facebook">
-			<i class="fab fa-facebook-f"></i>
-	</a>
+	<!-- Social media share buttons -->
+	<div class="compact dropdown dropdown-left">
+		<!-- Dropdown button -->
+		<div class="small button dropdown-label">
+			<i class="fas fa-share-alt"></i>
+		</div>
 
-	<!-- Email -->
-	<a href="mailto:?subject={{article.title}}&body={{article.title}} - From the Corkran blog. ({{request.build_absolute_uri}})"
-		target="_blank" class="share-btn email small button" title="Share by email">
-			<i class="fas fa-envelope"></i>
-	</a>
-
-	<!-- Zen mode -->
-	<div class="small button split-item" onclick="toggleZenMode();">
-		<i class="fas fa-coffee"></i>
+		<!-- Dropdown -->
+		<div class="dropdown-content">
+			<div class="nowrap list-box compact-spacing">
+				<!-- Twitter -->
+				<a href='https://twitter.com/share?url={{request.build_absolute_uri}}&text="{{article.title}}" by {{article.author}}'
+					target="_blank" class="share-btn twitter small button" title="Share on Twitter">
+					<i class="fab fa-twitter"></i>
+				</a>
+				
+				<!-- Facebook -->
+				<a href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}" target="_blank"
+					class="share-btn facebook small button" title="Share on Facebook">
+					<i class="fab fa-facebook-f"></i>
+				</a>
+				
+				<!-- Email -->
+				<a href="mailto:?subject={{article.title}}&body={{article.title}} - From the Corkran blog. ({{request.build_absolute_uri}})"
+					target="_blank" class="share-btn email small button" title="Share by email">
+					<i class="fas fa-envelope"></i>
+				</a>
+			</div>
+		</div>
 	</div>
-	
-	<!-- Go to comments -->
-	<a href="#comments" class="small button" title="Comments">
-		<i class="fas fa-comments"></i>
+
+	<!-- Random article -->
+	<a href="{{ random_article_url }}" class="small button" title="Random article">
+		<i class="fas fa-random"></i>
 	</a>
 
 	{% if user.is_authenticated and user != article.author %}
-	<!-- Add or remove article from user library -->
+	<!-- Subscribe or unsubscribe to author -->
 	<form method="post">{% csrf_token %}
+		<button class="small button" type="submit" name="subscribe" title="{% if subscribed %}Unsubscribe from author{% else %}Subscribe to author{% endif %}">
+			{% if subscribed %}
+			<i class="fas fa-bell"></i>
+			{% else %}
+			<i class="far fa-bell"></i>
+			{% endif %}
+		</button>
+	</form>
+
+	<!-- Add or remove article from user library -->
+	<form method="post" class="split-item">{% csrf_token %}
 		<button class="small button" type="submit" name="library" title="{% if article_in_library %}Remove article from library{% else %}Add article to library{% endif %}">
 			{% if article_in_library %}
 			<i class="fas fa-bookmark"></i>
@@ -88,18 +107,28 @@
 		</button>
 	</form>
 	{% endif %}
+
+	<!-- Zen mode -->
+	<div class="small button {% if not user.is_authenticated or user == article.author %}split-item{% endif %}" onclick="toggleZenMode();">
+		<i class="fas fa-coffee"></i>
+	</div>
+	
+	<!-- Go to comments -->
+	<a href="#comments" class="small button" title="Comments">
+		<i class="fas fa-comments"></i>
+	</a>
 </div>
 
 
 <!-- Post navigation -->
-<div class="article-navigation-btn-container closer-below">
+<div class="list-box nowrap split-items normal-spacing closer-below">
 	<!-- Previous post -->
-	<a href="{{ previous_article.get_absolute_url }}" class="button prev-post" title="Newer">
+	<a href="{{ previous_article.get_absolute_url }}" class="button single-line-text" title="Newer">
 		<i class="fas fa-arrow-circle-left"></i>&nbsp;&nbsp;{{ previous_article.title }}
 	</a>
 	
 	<!-- Next post -->
-	<a href="{{ next_article.get_absolute_url }}" class="button next-post" title="Older">
+	<a href="{{ next_article.get_absolute_url }}" class="button split-item single-line-text" id="next_post" title="Older">
 		<i class="fas fa-arrow-circle-right"></i>&nbsp;&nbsp;<bdi>{{ next_article.title }}</bdi>
 	</a>
 </div>
@@ -133,26 +162,30 @@
 	
 	<!-- Article -->
 	<div class="content">
-		<!-- Header -->
-		<div class="header">
-			<div class="heading">{{ article.title }}</div>
-			<div class="subheading">By {{ article.author.username }}</div>
+		<div class="vertically-space-items">
+			<div>
+				<!-- Header -->
+				<div class="header">
+					<div class="heading">{{ article.title }}</div>
+					<div class="subheading">By {{ article.author.username }}</div>
+				</div>
+
+				<!-- Article content -->
+				{{ article.content|linebreaks|urlizetrunc:40 }}
+			</div>
+
+			<!-- Go to comments button -->
+			<a href="#comments" class="button" onclick="toggleZenMode();">
+				Comments&nbsp;&nbsp;<i class="fas fa-comments"></i>
+			</a>
 		</div>
-
-		<!-- Article content -->
-		{{ article.content|linebreaks|urlizetrunc:40 }}
-
-		<!-- Go to comments button -->
-		<a href="#comments" class="button" onclick="toggleZenMode();">
-			Comments&nbsp;&nbsp;<i class="fas fa-angle-double-down"></i>
-		</a>
 	</div>
 </div>
 
 
 {% if request.user.is_superuser %} 
 <!-- Feature article -->
-<div class="right-align-container closer-below">
+<div class="right-align-text closer-below">
 	<form method="post">{% csrf_token %}
 		{% if not article.featured %}
 		<input type="checkbox" name="featured" id="id_featured" checked>
@@ -188,7 +221,7 @@
 <!-- Comments container -->
 <fieldset class="comments card">
 
-	<!-- HEADING -->
+	<!-- Heading -->
 	<legend class="heading">Comments ({{article.comment_set.count}})</legend>
 
 	{% if article.comment_set.count > 0 %}
@@ -197,19 +230,18 @@
 		{% recursetree article.comment_set.all %}
 		<li>
 			<!-- Comment offset anchor -->
-			<div class="offset anchor offset-alert" id="{{ node.id }}"></div>
+			<div class="offset anchor" id="{{ node.id }}"></div>
 
 			<!-- Comment -->
 			<div class="comment">
 				<!-- Author and date -->
 				<div class="info-container">
-					<a href="{% url 'author-sorted-articles' node.author %}"
-						title="Articles by {{ article.author.username }}">{{ node.author }}</a>
-					<span class="date">- {{ node.date }}</span>
+					<a href="{% url 'author-sorted-articles' node.author %}" title="Articles by {{ article.author.username }}">{{ node.author }}</a>
+					<span class="montserrat text grey"> ~ {{ node.date }}</span>
 				</div>
 
 				<!-- Content -->
-				<div class="content preserve-linebreaks">{{ node.content|urlizetrunc:30 }}</div>
+				<div class="content text preserve-linebreaks">{{ node.content|urlizetrunc:30 }}</div>
 
 				<!-- Edit comment -->
 				<div class="edit editor">
@@ -221,7 +253,9 @@
 						<input type="hidden" name="id" value="{{ node.id }}">
 
 						<!-- Submit button -->
-						<button class="minimal button" type="submit" name="edit">Edit</button>
+						<div class="right-align-text">
+							<button class="minimal button" type="submit" name="edit">Edit</button>
+						</div>
 					</form>
 				</div>
 
@@ -251,7 +285,9 @@
 						<input type="hidden" name="parent_id" value="{{ node.id }}">
 
 						<!-- Submit button -->
-						<button class="minimal button" type="submit" name="reply">Post</button>
+						<div class="right-align-text">
+							<button class="minimal button" type="submit" name="reply">Post</button>
+						</div>
 					</form>
 				</div>
 			</div>
@@ -271,13 +307,13 @@
 
 	{% if user.is_authenticated %}
 	<!-- New comment -->
-	<div class="new-comment-form">
+	<div id="new_comment_form">
 		<form method="post" class="vertically-space-items">{% csrf_token %}
 			<!-- Textarea -->
 			<textarea name="content" rows="4" required autocomplete="off" placeholder="New comment..." class="closer-below"></textarea>
 
 			<!-- Submit button -->
-			<div class="right-align-container">
+			<div class="right-align-text">
 				<button class="button" type="submit" name="comment">Comment</button>
 			</div>
 		</form>
@@ -293,7 +329,7 @@
 
 <!-- Scroll to top button -->
 <a href="#top" class="floating-btn scroll-top-btn" title="Back to Top">
-	<i class="fas fa-angle-double-up"></i>
+	<i class="fas fa-chevron-up"></i>
 </a>
 
 {% endblock %}

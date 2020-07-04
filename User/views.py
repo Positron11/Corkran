@@ -10,9 +10,10 @@ from django.urls import reverse_lazy
 from django.dispatch import receiver
 from django.shortcuts import render
 from django.contrib import messages
+from django.db.models import Count
 from Blog.models import Article
 from taggit.models import Tag
-from django.db.models import Count
+import random
 
 # registration page
 def register(request):
@@ -29,14 +30,12 @@ def register(request):
 	return render(request, 'User/user_registration.html', {"form": form})
 
 
-# profile page
+# account_settings page
 @login_required
-def profile(request):
+def account_settings(request):
+	password_form = PasswordForm(request.user)
 	user_form = UserUpdateForm(instance=request.user)
 	profile_form = ProfileUpdateForm(instance=request.user.profile)
-	password_form = PasswordForm(request.user)
-	articles = Article.objects.filter(author=request.user)
-	tags = Tag.objects.filter(article__in=[article.id for article in articles]).annotate(c=Count('id')).order_by('-c')
 
 	if request.method == 'POST':
 		# if password change request
@@ -75,10 +74,31 @@ def profile(request):
 				messages.error(request, "Error updating profile.")
 
 		# redirect to profile
-		return redirect('profile')
+		return redirect('settings')
 
-	# profile update, user details update, and password update form
-	context = {"user_form": user_form, "profile_form": profile_form, "password_form": password_form, "articles": articles, "tags":tags}
+	context = {
+		"user_form": user_form, 
+		"profile_form": profile_form, 
+		"password_form": password_form, 
+	}
+
+	return render(request, 'User/account_settings.html', context)
+
+
+# profile page
+@login_required
+def profile(request):
+	articles = Article.objects.filter(author=request.user)
+	random_user = random.choice(User.objects.all().exclude(id=request.user.id))
+	subscribed_authors = [user for user in request.user.profile.subscribed.all()]
+	tags = Tag.objects.filter(article__in=[article.id for article in articles]).annotate(c=Count('id')).order_by('-c')
+
+	context = {
+		"tags":tags,
+		"articles": articles, 
+		"random_user": random_user,
+		"subscribed_authors": subscribed_authors
+	}
 
 	return render(request, 'User/user_profile.html', context)
 

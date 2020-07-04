@@ -11,16 +11,16 @@
 	<!-- Form -->
 	<form class="vertically-space-items" method="post">{% csrf_token %}
 		{{ form.as_table }}
-		<div class="right-align-container">
+		<div class="right-align-text">
 			<button class="button" type="submit">Log In</button>
 		</div>
-		<div class="montserrat grey">Forgot your password? <a href="{% url 'password-reset' %}">Ask for a new one</a>.</div>
+		<div class="montserrat grey text">Forgot your password? <a href="{% url 'password-reset' %}">Ask for a new one</a>.</div>
 	</form>
 </Fieldset>
 
 <!-- Portal card -->
-<div class="special compact card">
-	<div class="text">
+<div class="special word-card card" >
+	<div class="montserrat text">
 		Don't already have an account? <a href="{% url 'registration' %}">Register</a>.<br>
 	</div>
 </div>

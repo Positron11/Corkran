@@ -1,0 +1,93 @@
+{% extends 'Blog/base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+
+<!-- Header card -->
+<div class="special card">
+	<!-- Header -->
+	<div class="header">
+		<div class="heading">Account Settings.</div>
+		<div class="subheading">
+			Manage and modify your details on Corkran.
+		</div>
+	</div>
+
+	<!-- Bio -->
+	<div class="text">
+		Edit the personal details on your profile, i.e. name, email, and bio, and change your 
+		authentication credentials. That last one just means change your password.
+	</div>
+</div>
+
+
+<!-- Navigation dock -->
+<div class="nowrap list-box blur-overflow center-align normal-spacing">
+	<a href="#profile" class="small button">Edit your profile</a>
+	<a href="#password" class="small button">Change your password</a>
+	<a href="#delete" class="small danger button">Delete your account</a>
+</div>
+
+
+<!-- Offset anchor -->
+<div id="profile" class="offset anchor"></div>
+
+<!-- Profile update container -->
+<fieldset class="card">
+	<!-- Heading -->
+	<legend class="heading">Profile</legend>
+
+	<form class="vertically-space-items confirm-leave" method="post" enctype="multipart/form-data">{% csrf_token %}
+		<!-- User info update form -->
+		{{ user_form.as_table }}
+
+		<!-- Profile update form -->
+		{{ profile_form.as_table }}
+
+		<!-- Submit button -->
+		<div class="right-align-container">
+			<button class="button" type="submit">Update</button>
+		</div>
+	</form>
+</fieldset>
+
+
+<!-- Offset anchor -->
+<div id="password" class="offset anchor"></div>
+
+<!-- Change password container -->
+<fieldset class="card">
+	<!-- Heading -->
+	<legend class="heading">Password</legend>
+
+	<form class="vertically-space-items" method="post">{% csrf_token %}
+		<!-- Password form -->
+		{{ password_form.as_table }}
+
+		<!-- Submit button -->
+		<div class="right-align-container">
+			<button class="button" type="submit" name="change_password">Update Password</button>
+		</div>
+	</form>
+</fieldset>
+
+
+<!-- Offset anchor -->
+<div id="delete" class="offset anchor"></div>
+
+<!-- Account deletion container -->
+<fieldset class="card">
+	<!-- Heading -->
+	<legend class="heading">Danger!</legend>
+
+	<a href="{% url 'delete-user' user.id %}" class="danger button">Delete Account</a>
+</fieldset>
+
+
+<!-- Scroll to top button -->
+<a href="#top" class="floating-btn scroll-top-btn" title="Back to Top">
+	<i class="fas fa-chevron-up"></i>
+</a>
+
+{% endblock %}

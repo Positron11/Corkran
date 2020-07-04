@@ -28,38 +28,11 @@
 
 
 <!-- Navigation dock -->
-<div class="minimal card">
-	<div class="nowrap list-box center-align compact-spacing">
-		<a href="#profile" class="small button">Edit your profile</a>
-		<a href="#articles" class="small button">Your articles</a>
-		<a href="#tags" class="small button">Your articles' tags</a>
-		<a href="#password" class="small button">Change your password</a>
-		<a href="#delete" class="small danger button">Delete account</a>
-	</div>
+<div class="nowrap list-box blur-overflow center-align normal-spacing">
+	<a href="#articles" class="small button">Articles you've written</a>
+	<a href="#tags" class="small button">Tags you've used</a>
+	<a href="#subscriptions" class="small button">Authors you're subscribed to</a>
 </div>
-
-
-<!-- Offset anchor -->
-<div id="profile" class="offset anchor"></div>
-
-<!-- Profile update container -->
-<fieldset class="card">
-	<!-- Heading -->
-	<legend class="heading">Profile</legend>
-
-	<form class="vertically-space-items confirm-leave" method="post" enctype="multipart/form-data">{% csrf_token %}
-		<!-- User info update form -->
-		{{ user_form.as_table }}
-
-		<!-- Profile update form -->
-		{{ profile_form.as_table }}
-
-		<!-- Submit button -->
-		<div class="right-align-container">
-			<button class="button" type="submit">Update</button>
-		</div>
-	</form>
-</fieldset>
 
 
 <!-- Offset anchor -->
@@ -75,11 +48,15 @@
 		<div class="subheading closer-below">Your articles on Corkran.</div>
 
 		<!-- Articles list -->
-		<div class="list-box generous-spacing">
+		<div class="list-box normal-spacing">
 			{% for article in articles %}
-			<a class="unformatted single-line-text minimal card" href="{{ article.get_absolute_url }}">
-				<span class="montserrat">"{{ article.title }}"</span>
+			<a class="unformatted single-line-text word-card card" href="{{ article.get_absolute_url }}">
+				<span class="montserrat text">"{{ article.title }}"</span>
 			</a>
+			{% empty %}
+			<div class="special minimal card">
+				<span>You haven't written any articles yet. Consider <a href="{% url 'create-article' %}">writing one now</a>.</span>
+			</div>
 			{% endfor %}
 		</div>
 	</div>
@@ -102,6 +79,10 @@
 		<div class="list-box compact-spacing">
 			{% for tag in tags %}
 			<a class="single-line-text tag" href="{% url 'tag-sorted-articles' tag %}">{{ tag }}</a>
+			{% empty %}
+			<div class="special minimal card">
+				<span>You haven't written any articles yet. Consider <a href="{% url 'create-article' %}">writing one now</a>.</span>
+			</div>
 			{% endfor %}
 		</div>
 	</div>
@@ -109,40 +90,35 @@
 
 
 <!-- Offset anchor -->
-<div id="password" class="offset anchor"></div>
+<div id="subscriptions" class="offset anchor"></div>
 
-<!-- Change password container -->
+<!-- Subscriptions -->
 <fieldset class="card">
 	<!-- Heading -->
-	<legend class="heading">Password</legend>
+	<legend class="heading">Subscriptions</legend>
+	
+	<div class="vertically-space-items">
+		<!-- Subheading -->
+		<div class="subheading closer-below">Authors you have subscribed to.</div>
 
-	<form class="vertically-space-items" method="post">{% csrf_token %}
-		<!-- Password form -->
-		{{ password_form.as_table }}
-
-		<!-- Submit button -->
-		<div class="right-align-container">
-			<button class="button" type="submit" name="change_password">Update Password</button>
+		<!-- Tags list -->
+		<div class="list-box compact-spacing">
+			{% for author in subscribed_authors %}
+			<a class="unformatted single-line-text card word-card" href="{% url 'author-sorted-articles' author %}">
+				<span class="montserrat text">{{ author.username }}</span>
+			</a>
+			{% empty %}
+			<div class="special minimal card">
+				<span>You haven't subscribed to any authors yet. <a href="{% url 'author-sorted-articles' random_user %}">Find an author you like</a>.</span>
+			</div>
+			{% endfor %}
 		</div>
-	</form>
+	</div>
 </fieldset>
-
-
-<!-- Offset anchor -->
-<div id="delete" class="offset anchor"></div>
-
-<!-- Account deletion container -->
-<fieldset class="card">
-	<!-- Heading -->
-	<legend class="heading">Danger!</legend>
-
-	<a href="{% url 'delete-user' user.id %}" class="danger button">Delete Account</a>
-</fieldset>
-
 
 <!-- Scroll to top button -->
 <a href="#top" class="floating-btn scroll-top-btn" title="Back to Top">
-	<i class="fas fa-angle-double-up"></i>
+	<i class="fas fa-chevron-up"></i>
 </a>
 
 {% endblock %}

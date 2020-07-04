@@ -1,14 +1,20 @@
 from Blog.models import Article, Announcement
 from Mailbox.models import Mail
 from django import template
+import re
 
 
 register = template.Library()
 
 
+@register.filter
+def to_class_name(value):
+    return "_".join(re.findall('[A-Z][^A-Z]*', value.__class__.__name__)).lower()
+
+
 @register.simple_tag
 def mailbox_status(user):
-	return "read" if all([mail.read for mail in Mail.objects.filter(recipient=user).select_subclasses()]) else "unread"
+	return "read" if all([mail.read for mail in Mail.objects.filter(recipient=user)]) else "unread"
 
 
 @register.simple_tag

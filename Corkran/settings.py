@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 	'django_unused_media',
 	'django_cleanup',
 	'django_cron',
+	'polymorphic',
 	'taggit',
 	'mptt',
 ]

@@ -6,6 +6,7 @@
 
 {% block content %}
 
+<!-- Header special card -->
 {% block header-card %}{% endblock %}
 
 
@@ -20,7 +21,7 @@
 
 {% if searched and articles %}
 <!-- Search results counter -->
-<div class="closer-below search-info">
+<div class="closer-below right-align-text grey">
 	Result{% if page_obj.paginator.count != 1 %}s{% endif %} {{ page_obj.start_index }} to {{ page_obj.end_index }} of {{ page_obj.paginator.count }}
 </div>
 {% endif %}
@@ -80,13 +81,17 @@
 	</a>
 </div>
 {% empty %}
+
 {% if searched %}
 <!-- Empty search -->
 {% block empty-search-card %}{% endblock %}
+
 {% else %}
+
 <!-- No articles and not a search -->
 {% block no-articles-card %}{% endblock %}
 {% endif %}
+
 {% endfor %}
 
 
@@ -102,7 +107,9 @@
 	{% if page == page_obj.number %}
 	<!-- Current page -->
 	<i class="current fas fa-map-marker-alt" title="Page {{ page_obj.number }}"></i>
+
 	{% else %}
+	
 	<!-- Page link -->
 	<a href="?{% param_replace page=page %}" title="Page {{ page }}" class="unformatted">{{ page }}</a>
 	{% endif %}
@@ -119,7 +126,7 @@
 {% if user.is_authenticated %}
 <!-- New article button -->
 <a href="{% url 'create-article' %}" class="floating-btn" title="New Article">
-	<i class="fas fa-pen-nib"></i>
+	<i class="fas fa-feather-alt"></i>
 </a>
 {% endif %}
 

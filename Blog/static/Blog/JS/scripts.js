@@ -14,6 +14,12 @@ var showTimeout = setTimeout(function () {
 }, 5);
 
 
+// Add alert-offset class if alert
+if ($(".alert").length && $(".anchor").length) {
+	$(".anchor").addClass("offset-alert");
+}
+
+
 // Hide overlay when page finished loading
 $(window).on("load", function () {
 	clearTimeout(showTimeout);
@@ -30,16 +36,18 @@ $(window).on("load", function () {
 	}, 500);
 
 	// fade out and remove alert after 10 seconds
-	$(".alert").each(function () {
-		autoRemoveAlert(this);
-	});
+	setTimeout(function () {
+		// fade out alert
+		$(".alert").fadeOut("slow", function () {
+			// remove alert from DOM after fading out
+			$(this).remove();
+			// disable alert-offset class
+			if ($(".anchor").length) {
+				$(".anchor").removeClass("offset-alert");
+			}
+		});
+	}, 10000);
 });
-
-
-// Disable alert-offset class if no alert
-if (!$(".alert").length && $(".offset-alert").length) {
-	$(".anchor").removeClass("offset-alert");
-}
 
 
 // Main
@@ -71,11 +79,22 @@ $(function () {
 	});
 
 
-	// Close alert on clicking close button
-	$(document).on('click', '.alert.floating .close-btn', function (e) {
-		$(this).parent(".alert").hide("fast", function () {
-			$(this).remove();
-		});
+	// When clicking alert...
+	$(document).on('click', '.alert', function (e) {
+		// close alert on clicking close button
+		if ($(e.target).hasClass("close-btn")) {
+			$(this).hide("fast", function () {
+				// remove from DOM
+				$(this).remove();
+				// disable alert-offset class
+				if ($(".anchor").length) {
+					$(".anchor").removeClass("offset-alert");
+				}
+			});
+		// expand or contract message
+		} else {
+			$(this).find(".message").toggleClass("single-line-text");
+		}
 	});
 
 
@@ -131,7 +150,7 @@ $(function () {
 	$(window).on("resize", function () {
 		resizeSidebar();
 		fadeTruncateArticles();
-		$('.list-box.nowrap').each(function () {
+		$('.list-box.nowrap.blur-overflow').each(function () {
 			blurListBox(this);
 		});
 	});
@@ -163,7 +182,7 @@ $(function () {
 
 
 	// BLUR SIDES OF NOWRAP LISTBOXES
-	$('.list-box.nowrap').each(function () {
+	$('.list-box.nowrap.blur-overflow').each(function () {
 		// initialize blur
 		blurListBox(this);
 
@@ -395,6 +414,7 @@ function toggleCommentEditor(editor, button) {
 	autosize.update($("textarea"));
 }
 
+
 // FADE TRUNATE ARTICLES
 function fadeTruncateArticles() {
 	$(".article-preview").each(function () {
@@ -404,6 +424,7 @@ function fadeTruncateArticles() {
 		}
 	});
 }
+
 
 // FLOAT MESSAGE BASED ON SCROLL POSITION
 function floatMessage() {
@@ -415,6 +436,7 @@ function floatMessage() {
 		}
 	}
 }
+
 
 // SUGGESTION ENGINE
 function suggestionsEngine(input, container, suggestion) {
@@ -488,18 +510,6 @@ function suggestionsEngine(input, container, suggestion) {
 }
 
 
-// FADE OUT AND REMOVE ALERT AFTER 10 SECONDS
-function autoRemoveAlert(page_alert) {
-	setTimeout(function () {
-		// fade out alert
-		$(page_alert).fadeOut("slow", function () {
-			// remove alert from DOM after fading out
-			$(this).remove();
-		});
-	}, 10000);
-}
-
-
 // BLUR RIGHT AND LEFT SIDES OF NOWRAP LISTBOX
 function blurListBox(listbox) {
 	// handle left blur
@@ -510,10 +520,7 @@ function blurListBox(listbox) {
 	};
 
 	// get total width of children in listbox
-	var content_width = 0;
-	$(listbox).find("> *").each(function () {
-		content_width += ($(this).outerWidth(true));
-	});
+	var content_width = listbox.scrollWidth;
 
 	// handle right blur
 	if ((content_width - 5) - listbox.scrollLeft > $(listbox).width()) {
