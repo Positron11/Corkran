@@ -171,7 +171,7 @@ class Announcements(ListView):
 # article detail
 def detail(request, pk, slug):
 	article = get_object_or_404(Article, pk=pk)
-	feature_form = FeatureArticleForm()
+	feature_form = FeatureArticleForm(instance=article)
 	comment_form = CommentForm()
 
 	# all articles queryset
@@ -204,17 +204,6 @@ def detail(request, pk, slug):
 	except:
 		subscribed = False
 
-	context = {
-		"article": article, 
-		"next_article": next_article, 
-		"previous_article": previous_article, 
-		"comment_form": comment_form, 
-		"feature_form": feature_form,
-		"subscribed": subscribed,
-		"article_in_library": article_in_library,
-		"random_article_url": random_article_url
-	}
-
 	if request.method == 'POST':
 		# if submitting a comment
 		if any(x in request.POST for x in ["comment", "reply", "edit"]):
@@ -225,7 +214,6 @@ def detail(request, pk, slug):
 			else:
 				comment_form = CommentForm(request.POST)
 
-			# if the submitted form is valid
 			if comment_form.is_valid():
 				# set comment author to currently logged in user
 				comment_form.instance.author = request.user
@@ -268,19 +256,15 @@ def detail(request, pk, slug):
 		elif "feature" in request.POST:
 			feature_form = FeatureArticleForm(request.POST, instance=article)
 
-			# redundant, really - no way to have invalid form
 			if feature_form.is_valid():
 				# unfeature all other articles
 				Article.objects.update(featured=False)
+
 				feature_form.save()
 
 				# success message
-				if article.featured:
-					messages.success(request, f'"{article.title}" featured.')
-				else:
-					messages.success(request, f'"{article.title}" unfeatured.')
-
-				return redirect('home')
+				featured_state = "featured" if article.featured else "unfeatured"
+				messages.success(request, f'"{article.title}" {featured_state}.')
 
 		# if subscribing or unsubscribing from author
 		elif "subscribe" in request.POST:
@@ -290,7 +274,6 @@ def detail(request, pk, slug):
 			else:
 				request.user.profile.subscribed.add(article.author)
 				messages.success(request, f"Subscribed to {article.author.username}. We'll mail you when {article.author.username} writes an article.")
-			return redirect(article.get_absolute_url())
 		
 		# if adding or removing article from personal library
 		elif "library" in request.POST:
@@ -300,7 +283,19 @@ def detail(request, pk, slug):
 			else:
 				request.user.profile.library.add(article)
 				messages.success(request, f'"{article.title}" saved to library.')
-			return redirect(article.get_absolute_url())
+			
+		return redirect(article.get_absolute_url())
+
+	context = {
+		"article": article, 
+		"next_article": next_article, 
+		"previous_article": previous_article, 
+		"comment_form": comment_form, 
+		"feature_form": feature_form,
+		"subscribed": subscribed,
+		"article_in_library": article_in_library,
+		"random_article_url": random_article_url
+	}
 
 	return render(request, "Blog/article_detail.html", context)
 

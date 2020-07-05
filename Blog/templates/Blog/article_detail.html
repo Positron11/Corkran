@@ -45,6 +45,20 @@
 {% endif %}
 
 
+{% if request.user.is_superuser %} 
+<!-- Feature article -->
+<div class="closer-below word-card card">
+	<form method="post">{% csrf_token %}
+		<div>
+			{{ feature_form.featured }}
+			<label for="id_featured">Feature</label>
+			<input type="hidden" name="feature">
+		</div>
+	</form>
+</div>
+{% endif %}
+
+
 <!-- Article controls -->
 <div class="normal-spacing nowrap list-box split-items closer-below" id="article_controls">
 
@@ -181,22 +195,6 @@
 		</div>
 	</div>
 </div>
-
-
-{% if request.user.is_superuser %} 
-<!-- Feature article -->
-<div class="right-align-text closer-below">
-	<form method="post">{% csrf_token %}
-		{% if not article.featured %}
-		<input type="checkbox" name="featured" id="id_featured" checked>
-		<button class="button" type="submit" name="feature">Feature This Article</button>
-		{% else %}
-		<input type="checkbox" name="featured" id="id_featured">
-		<button class="button danger" type="submit" name="feature">Unfeature This Article</button>
-		{% endif %}
-	</form>
-</div>
-{% endif %}
 
 
 <!-- Tags box container -->
