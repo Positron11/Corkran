@@ -1070,10 +1070,10 @@ svg.tea #steamR {
 
 @media only screen and (min-width: 1201px) {
 	.anchor{
-		transform: translateY(-8rem);
+		transform: translateY(-8.5rem);
 	}
 	.anchor.offset-alert {
-		transform: translateY(-11rem);
+		transform: translateY(-11.5rem);
 	}
 	input[type="checkbox"]+label:hover:before {
 		border-color: #333;
