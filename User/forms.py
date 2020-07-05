@@ -46,6 +46,19 @@ class ProfileUpdateForm(forms.ModelForm):
 		fields = ["bio"]
 
 
+# profile update form
+class ToggleEmailNotificationForm(forms.ModelForm):
+
+	class Meta:
+		model = Profile
+		fields = ["email_notifications"]
+
+	# submit form on change 
+	def __init__(self, *args, **kwargs):
+		super().__init__(*args, **kwargs)
+		self.fields["email_notifications"].widget.attrs["onChange"] = "this.form.submit()"
+
+
 # password update form
 class PasswordForm(PasswordChangeForm):
 

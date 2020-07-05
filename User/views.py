@@ -1,4 +1,4 @@
-from .forms import UserRegistrationForm, UserUpdateForm, ProfileUpdateForm, PasswordForm
+from .forms import UserRegistrationForm, UserUpdateForm, ProfileUpdateForm, PasswordForm, ToggleEmailNotificationForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.signals import user_logged_out, user_logged_in
 from django.contrib.auth.decorators import login_required
@@ -36,9 +36,10 @@ def account_settings(request):
 	password_form = PasswordForm(request.user)
 	user_form = UserUpdateForm(instance=request.user)
 	profile_form = ProfileUpdateForm(instance=request.user.profile)
+	email_form = ToggleEmailNotificationForm(instance=request.user.profile)
 
 	if request.method == 'POST':
-		# if password change request
+		# if changing password
 		if 'change_password' in request.POST:
 			password_form = PasswordForm(request.user, request.POST)
 
@@ -58,7 +59,9 @@ def account_settings(request):
 
 				# error message
 				messages.error(request, f"{message}")
-		else:
+
+		# if updating profile
+		elif 'update_profile' in request.POST:
 			user_form = UserUpdateForm(request.POST, instance=request.user)
 			profile_form = ProfileUpdateForm(request.POST, instance=request.user.profile)
 
@@ -73,11 +76,26 @@ def account_settings(request):
 				# error message
 				messages.error(request, "Error updating profile.")
 
+		# if updating email preferences
+		elif "update_email_notifications" in request.POST:
+			email_form = ToggleEmailNotificationForm(request.POST, instance=request.user.profile)
+
+			if email_form.is_valid():
+				email_form.save()
+
+				# success message
+				email_notifications_state = "on" if request.user.profile.email_notifications else "off"
+				messages.success(request, f"Email notifications turned {email_notifications_state}.")
+
+			# redirect to settings page with email form in view
+			return redirect(reverse_lazy('settings') + '#email')
+
 		# redirect to profile
 		return redirect('settings')
 
 	context = {
 		"user_form": user_form, 
+		"email_form": email_form,
 		"profile_form": profile_form, 
 		"password_form": password_form, 
 	}

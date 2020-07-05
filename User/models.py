@@ -9,6 +9,7 @@ class Profile(models.Model):
 	bio = models.TextField(max_length=500, default="")
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	subscribed = models.ManyToManyField(User, related_name="subscribed", blank=True, symmetrical=False)
+	email_notifications = models.BooleanField(default=True)
 
 	# show self as owner's username
 	def __str__(self):

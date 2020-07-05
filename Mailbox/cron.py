@@ -17,7 +17,7 @@ class UnreadMailEmail(CronJobBase):
 		all_mail = Mail.objects.all()
 
 		# get all users with unread mail
-		recipients = [user for user in users if not all([mail.read or mail.email_reminder for mail in user.mail.all()])]
+		recipients = [user for user in users if not all([mail.read or mail.email_reminder for mail in user.mail.all()]) and user.profile.email_notifications]
 
 		for recipient in recipients:
 			recipient_unread_mail = all_mail.filter(recipient=recipient, read=False, email_reminder=False)

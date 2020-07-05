@@ -24,9 +24,10 @@
 
 <!-- Navigation dock -->
 <div class="nowrap list-box blur-overflow center-align normal-spacing">
-	<a href="#profile" class="small button">Edit your profile</a>
-	<a href="#password" class="small button">Change your password</a>
-	<a href="#delete" class="small danger button">Delete your account</a>
+	<a href="#profile" class="small button">Edit profile</a>
+	<a href="#email" class="small button">Email settings</a>
+	<a href="#password" class="small button">Change password</a>
+	<a href="#delete" class="small danger button">Delete account</a>
 </div>
 
 
@@ -46,8 +47,27 @@
 		{{ profile_form.as_table }}
 
 		<!-- Submit button -->
-		<div class="right-align-text">
-			<button class="button" type="submit">Update</button>
+		<div class="right-align-container">
+			<button class="button" type="submit" name="update_profile">Update</button>
+		</div>
+	</form>
+</fieldset>
+
+
+<!-- Offset anchor -->
+<div id="email" class="anchor"></div>
+
+<!-- Change password container -->
+<fieldset class="card">
+	<!-- Heading -->
+	<legend class="heading">Email Settings</legend>
+
+	<!-- Password form -->
+	<form method="post">{% csrf_token %}
+		<div>
+			{{ email_form.email_notifications }}
+			<label for="id_email_notifications">Email notifications</label>
+			<input type="hidden" name="update_email_notifications">
 		</div>
 	</form>
 </fieldset>
