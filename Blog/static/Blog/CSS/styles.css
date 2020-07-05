@@ -34,6 +34,7 @@ a.unformatted {
 
 .anchor{
 	visibility: hidden;
+	margin: 0 !important;
 }
 
 
@@ -1068,10 +1069,10 @@ svg.tea #steamR {
 /* LARGE SCREENS ONLY */
 
 @media only screen and (min-width: 1201px) {
-	.anchor.offset {
+	.anchor{
 		transform: translateY(-8rem);
 	}
-	.anchor.offset.offset-alert {
+	.anchor.offset-alert {
 		transform: translateY(-11rem);
 	}
 	input[type="checkbox"]+label:hover:before {
@@ -1161,10 +1162,10 @@ svg.tea #steamR {
 /* LANDSCAPE TABLETS AND BELOW */
 
 @media only screen and (max-width: 1200px) {
-	.anchor.offset {
+	.anchor{
 		transform: translateY(-6rem);
 	}
-	.anchor.offset.offset-alert {
+	.anchor.offset-alert {
 		transform: translateY(-9rem);
 	}
 	.button:active {

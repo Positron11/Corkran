@@ -215,8 +215,8 @@
 </fieldset>
 
 
-<!-- Comments box offset anchor -->
-<div class="offset anchor" id="comments"></div>
+<!-- Comments box anchor -->
+<div class="anchor" id="comments"></div>
 
 <!-- Comments container -->
 <fieldset class="comments card">
@@ -229,8 +229,8 @@
 	<ul>
 		{% recursetree article.comment_set.all %}
 		<li>
-			<!-- Comment offset anchor -->
-			<div class="offset anchor" id="{{ node.id }}"></div>
+			<!-- Comment anchor -->
+			<div class="anchor" id="{{ node.id }}"></div>
 
 			<!-- Comment -->
 			<div class="comment">
