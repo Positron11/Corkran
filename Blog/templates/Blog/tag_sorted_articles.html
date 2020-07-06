@@ -7,15 +7,9 @@
 {% block header-card %}
 
 <!-- Header card -->
-<div class="special card">
-	<!-- Header -->
-	<div class="header">
-		<div class="heading">~{{ tag }}~</div>
-		<div class="subheading">{{ article_count }} article{% if article_count != 1 %}s are{% else %} is{% endif %} tagged with "{{ tag }}".</div>
-	</div>
-
-	<!-- Content -->
-	<div class="text">One can only leave it to the judgement of the authors, and hope that the same tag means nearly the same thing, to each of them.</div>
+<div class="special minimal card center-align-text">
+	<div class="heading">~{{ tag }}~</div>
+	<span class="montserrat text">{{ article_count }} article{% if article_count != 1 %}s are{% else %} is{% endif %} tagged with "{{ tag }}".</span>
 </div>
 
 {% endblock %}
@@ -23,18 +17,9 @@
 {% block empty-search-card %}
 
 <!-- Empty search -->
-
-<div class="special card">
-	<!-- Header -->
-	<div class="header">
-		<div class="heading">No Articles Found.</div>
-		<div class="subheading">It's unlikely to be our fault.</div>
-	</div>
-
-	<!-- Content -->
-	<div class="text">
-		Consider reconsidering your search query. Queries resembling "k3e#$%jbjvd" are not likely to take you very far.
-	</div>
+<div class="special compact card center-align-text">
+	<div class="heading">No Articles Found.</div>
+	<span class="montserrat text">Consider reconsidering your search query. Queries resembling "k3e#$%jbjvd" are not likely to take you very far.</span>
 </div>
 
 {% endblock %}

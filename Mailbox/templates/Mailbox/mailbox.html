@@ -7,15 +7,9 @@
 {% block content %}
 
 <!-- Header card -->
-<div class="special card">
-	<div class="header">
-		<div class="heading">The Mailbox</div>
-		<div class="subheading">Your own mailbox, here on 420 Corkran St.</div>
-	</div>
-	<div class="text">
-		The mailman travels at about the speed of your internet, so don't worry about delivery time. 
-		And remember to keep it clean; there's only so much it can fit. 
-	</div>
+<div class="special minimal card center-align-text">
+	<div class="heading">The Mailbox</div>
+	<span class="montserrat text">You have {% if unread > 0 %}{{ unread }}{% else %}no{% endif %} unread mail.</span>
 </div>
 
 
@@ -92,7 +86,7 @@
 	</div>		
 	{% empty %}
 	<!-- No messages card -->
-	<div class=" card">
+	<div class="special card">
 		<div class="header">
 			<div class="heading">No Mail.</div>
 			<div class="subheading">It's damp, dark, and a little rusty. Might rain today.</div>
@@ -106,14 +100,9 @@
 
 
 	<!-- No messages in selected filter(s) card -->
-	<div class="special card" style="display: none;" id="empty_filtered_mail">
-		<div class="header">
-			<div class="heading">No Match.</div>
-			<div class="subheading">Absolutely nothing, we assure you.</div>
-		</div>
-		<div class="text">
-			Nothing here matches any of the filters you've enabled. Clear your filters to view all mail.
-		</div>
+	<div class="special compact card center-align-text" style="display: none;" id="empty_filtered_mail">
+		<div class="heading">No Matches.</div>
+		<span class="montserrat text">None of your mail matches any of the filters you've enabled. Clear your filters to view all mail.</span>
 	</div>
 </div>
 

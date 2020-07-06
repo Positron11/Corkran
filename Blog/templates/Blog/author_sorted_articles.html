@@ -10,16 +10,14 @@
 <div class="special card">
 	<!-- Header -->
 	<div class="header">
-		<div class="heading">{{ author }}'s articles.</div>
-		<div class="subheading">{{ author }} has {{ article_count }} article{% if article_count != 1 %}s{% endif %}, as of yet.</div>
+		<div class="heading">{{ author }}</div>
+		<div class="subheading">... has written {{ article_count }} article{% if article_count != 1 %}s{% endif %}, as of yet.</div>
 	</div>
 
 	<!-- author bio -->
 	<div class="text">
 		{% if author.profile.bio %}
-		<i class="fas fa-quote-left"></i>
-		{{ author.profile.bio|urlizetrunc:40 }}&nbsp;
-		<i class="fas fa-quote-right"></i>
+		"{{ author.profile.bio|urlizetrunc:40 }}"
 		{% else %}
 		They seem to prefer the shadows. Or maybe they're just too lazy to fill in their bio.
 		{% endif %}
@@ -39,7 +37,7 @@
 	</div>
 
 	<!-- Content -->
-	<div class="text">Consider going <a href="{% url 'home' %}">home</a>, to find some writers that do indeed write.</div>
+	<div class="text">Consider going <a href="{% url 'home' %}">home</a>, to find some writers that do indeed write, or if you're feeling especially motivated, <a href="{% url 'create-article' %}">write one yourself</a>.</div>
 </div>
 
 {% endblock %}
@@ -47,18 +45,9 @@
 {% block empty-search-card %}
 
 <!-- Empty search -->
-<div class="special card">
-	<!-- Header -->
-	<div class="header">
-		<div class="heading">No Articles Found.</div>
-		<div class="subheading">It's unlikely to be our fault.</div>
-	</div>
-
-	<!-- Content -->
-	<div class="text">
-		Consider reconsidering your search query. Queries resembling "k3e#$%jbjvd" are not likely to take you very far. 
-		Or perhaps it is simply that the author has not what you seek.
-	</div>
+<div class="special compact card center-align-text">
+	<div class="heading">No Articles Found.</div>
+	<span class="montserrat text">Consider reconsidering your search query. Queries resembling "k3e#$%jbjvd" are not likely to take you very far. Or perhaps it is simply that the author has not what you seek.</span>
 </div>
 
 {% endblock %}

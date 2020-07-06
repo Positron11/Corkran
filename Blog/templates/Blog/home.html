@@ -53,11 +53,11 @@
 	<!-- Header -->
 	<div class="header">
 		<div class="heading">No articles here, yet.</div>
-		<div class="subheading">It would seem you'll have to wait a bit.</div>
+		<div class="subheading">It would seem you'll have to wait a short while. Or a long while, we can't be sure.</div>
 	</div>
 
 	<!-- Content -->
-	<div class="text">Consider heading over to the about page, or writing the first article yourself?</div>
+	<div class="text">Consider heading over to the <a href="{% url 'about' %}">about</a> page, or <a href="{% url 'create-article' %}">writing the first article yourself</a>.</div>
 </div>
 
 {% endblock %}
@@ -65,17 +65,9 @@
 {% block empty-search-card %}
 
 <!-- Empty search -->
-<div class="special card">
-	<!-- Header -->
-	<div class="header">
-		<div class="heading">No Articles Found.</div>
-		<div class="subheading">It's unlikely to be our fault.</div>
-	</div>
-
-	<!-- Content -->
-	<div class="text">
-		Consider reconsidering your search query. Queries resembling "k3e#$%jbjvd" are not likely to take you very far.
-	</div>
+<div class="special compact card center-align-text">
+	<div class="heading">No Articles Found.</div>
+	<span class="montserrat text">Consider reconsidering your search query. Queries resembling "k3e#$%jbjvd" are not likely to take you very far.</span>
 </div>
 
 {% endblock %}
