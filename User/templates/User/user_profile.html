@@ -6,8 +6,8 @@
 
 <!-- Header card -->
 <div class="special compact card center-align-text">
-	<div class="heading">{{ user }}</div>
-	<span class="montserrat text">
+	<div class="heading single-line-text">{{ user }}</div>
+	<div class="montserrat text" style="display: inline-block;">
 		{% if user.profile.bio %}
 		"{{ user.profile.bio|urlizetrunc:40 }}"
 		{% else %}
@@ -15,7 +15,7 @@
 		Or, if you're strongly of the opinion that your writing speaks for itself, 
 		you might as well leave it blank. Just write your bio.
 		{% endif %}
-	</span>
+	</div>
 </div>
 
 
