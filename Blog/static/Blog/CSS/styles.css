@@ -165,6 +165,8 @@ p.montserrat, .text.montserrat {
 	overflow: auto;
 	max-width: 100%;
 	position: relative;
+	padding-bottom: 0.7rem;
+	margin-bottom: -0.7rem;
 }
 
 .list-box.nowrap.blur-overflow::before, .list-box.nowrap.blur-overflow::after {
