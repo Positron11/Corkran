@@ -100,7 +100,7 @@
 <div class="paginator">
 	<!-- First page -->
 	<a href="?{% param_replace page=1 %}" title="First Page" class="unformatted">
-		<i class="fas fa-arrow-circle-left"></i>
+		<i class="fas fa-chevron-left"></i>
 	</a>
 
 	{% for page in page_obj.paginator.page_range|cut_page_range:page_obj.number %}
@@ -117,7 +117,7 @@
 
 	<!-- Last Page -->
 	<a href="?{% param_replace page=page_obj.paginator.num_pages %}" title="Last Page" class="unformatted">
-		<i class="fas fa-arrow-circle-right"></i>
+		<i class="fas fa-chevron-right"></i>
 	</a>
 </div>
 {% endif %}
