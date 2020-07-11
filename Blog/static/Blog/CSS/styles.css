@@ -987,12 +987,13 @@ svg.tea #steamR {
 /* MAIL */
 
 .mail {
+	padding: 2.5em;
 	position: relative;
 }
 
 .mail-header {
-	margin-bottom: 0.5em;
-	padding-bottom: 0.5em;
+	margin-bottom: 1em;
+	padding-bottom: 1em;
 	border-bottom: 1px solid #eaeaea;
 }
 

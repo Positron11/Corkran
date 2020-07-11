@@ -49,7 +49,7 @@
 <!-- Mailbox -->
 <div id="mailbox" class="vertically-space-items responsive">
 	{% for mail in mailbox %}
-	<div class="compact card mail {{ mail|to_class_name }} {% if mail in unread %}unread{% endif %}">
+	<div class="card mail {{ mail|to_class_name }} {% if mail in unread %}unread{% endif %}">
 		<!-- Heading and date -->
 		<div class="mail-header">
 			<span class="mail-heading">{{ mail.heading }}</span>
@@ -104,13 +104,6 @@
 		</div>
 	</div>
 	{% endfor %}
-
-
-	<!-- No messages in selected filter(s) card -->
-	<div class="special compact card center-align-text" style="display: none;" id="empty_filtered_mail">
-		<div class="heading">No Matches.</div>
-		<span class="montserrat text">None of your mail matches any of the filters you've enabled. Clear your filters to view all mail.</span>
-	</div>
 </div>
 
 {% endblock %}
