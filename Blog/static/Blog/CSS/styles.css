@@ -1029,12 +1029,14 @@ svg.tea #steamR {
 
 .paginator {
 	color: #333;
+	font-size: 0.9em;
 	text-align: center;
 	font-family: 'Montserrat Alternates', sans-serif;
 }
 
 .paginator a {
 	padding: 0 0.5em;
+	transition: 0.2s ease;
 }
 
 .paginator .current {
@@ -1151,6 +1153,9 @@ svg.tea #steamR {
 	.comments>ul:hover {
 		border-left: none;
 	}
+	.paginator a:hover {
+		color: #999;
+	}
 	.floating-btn:hover {
 		transform: scale(1.1);
 	}
@@ -1249,6 +1254,9 @@ svg.tea #steamR {
 	.zen-mode .close-btn:active {
 		color: #f32929;
 	}
+	.paginator a:active {
+		color: #999;
+	}
 	.floating-btn:active {
 		transform: scale(0.7);
 		transition: 0.1s ease-out;
@@ -1323,8 +1331,5 @@ svg.tea #steamR {
 	.zen-mode .close-btn{
 		top: 1.5em;
 		right: 1em;
-	}
-	.paginator {
-		font-size: 0.9em;
 	}
 }
