@@ -9,7 +9,7 @@
 <!-- Header card -->
 <div class="special minimal card center-align-text">
 	<div class="heading">The Mailbox</div>
-	<span class="montserrat text">You have {% if unread > 0 %}{{ unread }}{% else %}no{% endif %} unread mail.</span>
+	<span class="montserrat text">You have {% if unread|length > 0 %}{{ unread|length }}{% else %}no{% endif %} unread mail.</span>
 </div>
 
 
