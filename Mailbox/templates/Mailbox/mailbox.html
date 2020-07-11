@@ -40,7 +40,7 @@
 
 
 <!-- Mailbox -->
-<div id="mailbox" class="vertically-space-items">
+<div id="mailbox" class="vertically-space-items responsive">
 	{% for mail in mailbox %}
 	<div class="compact card mail {{ mail|to_class_name }} {% if mail in unread %}unread{% endif %}">
 		<!-- Heading and date -->
