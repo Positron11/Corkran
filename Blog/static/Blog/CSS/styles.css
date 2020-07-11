@@ -58,17 +58,17 @@ p, .text {
 	text-overflow: ellipsis;
 }
 
-p.montserrat, .text.montserrat {
-	line-height: 2em;
-	font-size: 0.7em;
-}
-
 .montserrat {
+	font-size: 0.7em;
 	font-family: 'Montserrat Alternates', sans-serif;
 }
 
 .montserrat.small {
 	font-size: 0.6em;
+}
+
+p.montserrat, .text.montserrat {
+	line-height: 2em;
 }
 
 .section-heading {
