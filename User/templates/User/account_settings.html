@@ -95,10 +95,12 @@
 	<a href="{% url 'delete-user' user.id %}" class="danger button">Delete Account</a>
 </fieldset>
 
+{% endblock %}
 
+
+{% block floating-button %}
 <!-- Scroll to top button -->
 <a href="#top" class="floating-btn scroll-top-btn" title="Back to Top">
 	<i class="fas fa-chevron-up"></i>
 </a>
-
 {% endblock %}
