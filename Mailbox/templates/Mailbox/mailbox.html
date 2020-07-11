@@ -39,6 +39,13 @@
 {% endif %}
 
 
+<!-- No messages in selected filter(s) card -->
+<div class="special compact card center-align-text" style="display: none;" id="empty_filtered_mail">
+	<div class="heading">No Matches.</div>
+	<span class="montserrat text">None of your mail matches any of the filters you've enabled. Clear your filters to view all mail.</span>
+</div>
+
+
 <!-- Mailbox -->
 <div id="mailbox" class="vertically-space-items responsive">
 	{% for mail in mailbox %}
