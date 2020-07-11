@@ -161,6 +161,11 @@ def disclaimer(request):
 	return render(request, "Blog/disclaimer.html")
 
 
+# terms and conditions
+def terms_conditions(request):
+	return render(request, "Blog/terms_and_conditions.html")
+
+
 # announcements page
 class Announcements(ListView):
 	model = Announcement

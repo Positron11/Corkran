@@ -7,6 +7,7 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('privacy/', views.privacy, name='privacy'),
     path('disclaimer/', views.disclaimer, name='disclaimer'),
+    path('terms-and-conditions/', views.terms_conditions, name='terms-and-conditions'),
     path('announcements/', views.Announcements.as_view(), name='announcements'),
 
     # user library
