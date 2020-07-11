@@ -143,6 +143,30 @@
 				{% block content %}{% endblock %}
 			</div>
 		</div>
+
+
+		<!-- Footer -->
+		<div class="footer vertically-space-items">
+			<!-- Statement -->
+			<div class="small grey montserrat text center-align-text closer-below">
+				Copyright ©  {% now "Y" %} Corkran Inc. All rights reserved. Registration on or use of this site 
+				constitutes acceptance of our <a href="{% url 'privacy' %}">privacy policy</a> and
+				<a href="{% url 'terms-and-conditions' %}">terms and conditions</a>.
+			</div>
+
+			<!-- Links -->
+			<div class="small grey montserrat text center-align-text closer-below">
+				<a href="{% url 'about' %}">About</a> | 
+				<a href="{% url 'privacy' %}">Privacy Policy</a> | 
+				<a href="{% url 'disclaimer' %}">Content Disclaimer</a> | 
+				<a href="{% url 'terms-and-conditions' %}">terms and conditions</a>
+			</div>
+
+			<!-- Link to home -->
+			<div class="text center-align-text">
+				~ *<a href="{% url 'home' %}">Co.</a> ~
+			</div>
+		</div>
 	</div>
 
 

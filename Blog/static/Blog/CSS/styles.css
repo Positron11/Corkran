@@ -58,13 +58,17 @@ p, .text {
 	text-overflow: ellipsis;
 }
 
+p.montserrat, .text.montserrat {
+	line-height: 2em;
+	font-size: 0.7em;
+}
+
 .montserrat {
 	font-family: 'Montserrat Alternates', sans-serif;
 }
 
-p.montserrat, .text.montserrat {
-	line-height: 2em;
-	font-size: 0.7em;
+.montserrat.small {
+	font-size: 0.6em;
 }
 
 .section-heading {
@@ -1067,6 +1071,15 @@ svg.tea #steamR {
 	background: rgb(4, 222, 63, 0.3);
 	-webkit-tap-highlight-color: transparent;
 	transition: 0.3s ease;
+}
+
+
+/* FOOTER */
+
+.footer {
+	margin-top: 3em;
+	padding: 2em 4vw;
+	border-top: 1px solid #eaeaea;
 }
 
 
