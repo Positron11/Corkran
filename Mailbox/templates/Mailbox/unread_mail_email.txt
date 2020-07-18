@@ -1,7 +1,7 @@
 {% autoescape off %}{% load corkran_tags %}Greetings, {{ recipient }}.
 You didn't appear to be at home, but the neighbors said we were likely to find you here.
 {% for mail in mailbox %}
-{{ mail.heading }} ~ {{ mail.date|date:"F jS, Y, g:i a" }}{% if mail|to_class_name == "new_comment_mail" %}{% if mail.comment.parent %}
+{{ mail.heading }} ~ {{ mail.date|date:"F jS, Y | g:i a e" }}{% if mail|to_class_name == "new_comment_mail" %}{% if mail.comment.parent %}
 {{ mail.comment.author }} replied to "{{ mail.comment.parent.content|truncatechars:100 }}" with "{{ mail.comment.content|truncatechars:100 }}" on {{ mail.article.title }}{% else %}
 {{ mail.comment.author }} commented "{{ mail.comment.content|truncatechars:100 }}" on {{ mail.article.title }}{% endif %}{% elif mail|to_class_name == "new_article_mail" %}
 {{ mail.article.author }} wrote "{{ mail.article.title }}". A short preview: "{{ mail.article.content|truncatewords:50}}"{% endif %}

@@ -156,7 +156,7 @@
 		<div class="heading">{{ article.title }}</div>
 		<!-- Date and author -->
 		<span class="subheading">
-			{{ article.date|date:"F jS, Y, g:i a e" }} - By
+			{{ article.date|date:"F jS, Y | g:i a e" }} | By
 			<a href="{% url 'author-sorted-articles' article.author %}"
 				title="Articles by {{ article.author.username }}">
 				{{ article.author.username }}
@@ -235,7 +235,7 @@
 				<!-- Author and date -->
 				<div class="info-container">
 					<a href="{% url 'author-sorted-articles' node.author %}" title="Articles by {{ article.author.username }}">{{ node.author }}</a>
-					<span class="montserrat text grey"> ~ {{ node.date }}</span>
+					<span class="montserrat text grey"> ~ {{ node.date|date:"F jS, Y | g:i a e" }}</span>
 				</div>
 
 				<!-- Content -->
