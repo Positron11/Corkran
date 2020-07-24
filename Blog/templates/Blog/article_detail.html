@@ -320,8 +320,10 @@
 </fieldset>
 
 {% if not user.is_authenticated %}
-<div class="special compact card">
-	<span class="text">Join the conversation - <a href="{% url 'login' %}?next={{ article.get_absolute_url }}#comments">Login</a> to comment.</span>
+<div class="special word-card card" >
+	<div class="montserrat text">
+		Join the conversation - <a href="{% url 'login' %}?next={{ article.get_absolute_url }}#comments">Login</a> to comment.
+	</div>
 </div>
 {% endif %}
 
