@@ -72,7 +72,7 @@
 	<!-- Content container -->
 	<a class="unformatted" href="{% url 'article-detail' article.id article.title %}" title='Read "{{ article.title }}"'>
 		<!-- Content -->
-		<div class="clickable">{{ article.content|urlizetrunc:30|linebreaks|truncatechars:1000 }}</div>
+		<div class="clickable">{{ article.content|urlizetrunc:30|truncatechars:1000|linebreaks }}</div>
 
 		{% if article.content|length > 1000 %}
 		<!-- Fade truncate -->
