@@ -5,9 +5,12 @@
 {% block content %}
 
 <!-- Header card -->
-<div class="special compact card center-align-text">
-	<div class="heading single-line-text">{{ user }}</div>
-	<div class="montserrat text" style="display: inline-block;">
+<div class="special card">
+	<div class="header">
+		<div class="heading single-line-text">{{ user }}</div>
+	</div>
+	
+	<div class="text">
 		{% if user.profile.bio %}
 		"{{ user.profile.bio|urlizetrunc:40 }}"
 		{% else %}

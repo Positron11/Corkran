@@ -6,14 +6,22 @@
 
 {% block content %}
 
+{% if mailbox.count %}
+
 <!-- Header card -->
-<div class="special minimal card center-align-text">
-	<div class="heading">The Mailbox</div>
-	<span class="montserrat text">You have {% if unread|length > 0 %}{{ unread|length }}{% else %}no{% endif %} unread mail.</span>
+<div class="special card">
+	<div class="header">
+		<div class="heading">The Mailbox</div>
+	</div>
+	
+	<div class="text">
+		You have {% if unread|length > 0 %}{{ unread|length }}{% else %}no{% endif %} 
+		unread mail, and {{ mailbox.count }} in the mailbox. You won't be reminded about 
+		the same unread mail again, so get it over with, perhaps.
+	</div>
 </div>
 
 
-{% if mailbox.count %}
 <!-- Offset anchor -->
 <div class="anchor" id="mail_filter_anchor"></div>
 
@@ -34,7 +42,7 @@
 	</div>
 
 	<!-- Clear filters -->
-	<div class="minimal danger button split-item" id="clear_mail_filters">Clear Filters</div>
+	<div class="minimal button split-item" id="clear_mail_filters">Clear Filters</div>
 </div>
 {% endif %}
 

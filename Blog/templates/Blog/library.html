@@ -7,9 +7,16 @@
 {% block header-card %}
 
 <!-- Header card -->
-<div class="special minimal card center-align-text">
-	<div class="heading">The Library</div>
-	<span class="montserrat text">You have {% if article_count > 0 %}{{ article_count }}{% else %}no{% endif %} article{% if article_count != 1 %}s{% endif %} in your library.</span>
+<div class="special card">
+	<div class="header">
+		<div class="heading">The Library</div>
+	</div>
+
+	<div class="text">
+		You have {% if article_count > 0 %}{{ article_count }}{% else %}no{% endif %}
+		article{% if article_count != 1 %}s{% endif %} in your library. You have articles 
+		by {{ authors }} ~ {{ latest_five }}...
+	</div>
 </div>
 
 {% endblock %}
@@ -25,7 +32,10 @@
 	</div>
 
 	<!-- Content -->
-	<div class="text">Prove your non-demonaic origin by going <a href="{% url 'home' %}">home</a>, and finding something you like. They can't all be that bad, what?</div>
+	<div class="text">
+		Prove your non-demonaic origin by going <a href="{% url 'home' %}">home</a>, 
+		and finding something you like. They can't all be that bad, what?
+	</div>
 </div>
 
 {% endblock %}
@@ -33,9 +43,16 @@
 {% block empty-search-card %}
 
 <!-- Empty search -->
-<div class="special compact card center-align-text">
-	<div class="heading">No Articles Found.</div>
-	<span class="montserrat text">Consider reconsidering your search query. Queries resembling "k3e#$%jbjvd" are not likely to take you very far. Perhaps what you seek, lives not in your library. Try going <a href="{% url 'home' %}">home</a> and searching all articles. </span>
+<div class="special card">
+	<div class="header">
+		<div class="heading">No Articles Found.</div>
+	</div>
+	
+	<div class="text">
+		Consider reconsidering your search query. Queries resembling "k3e#$%jbjvd" are not likely to take 
+		you very far. Or perhaps you simply haven't got what you want in your library. Try going <a
+		href="{% url 'home' %}">home</a> and searching all articles.
+	</div>
 </div>
 
 {% endblock %}

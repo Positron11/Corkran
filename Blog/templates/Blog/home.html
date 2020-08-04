@@ -57,7 +57,10 @@
 	</div>
 
 	<!-- Content -->
-	<div class="text">Consider heading over to the <a href="{% url 'about' %}">about</a> page, or <a href="{% url 'create-article' %}">writing the first article yourself</a>.</div>
+	<div class="text">
+		Consider heading over to the <a href="{% url 'about' %}">about</a> page, or 
+		<a href="{% url 'create-article' %}">writing the first article yourself</a>.
+	</div>
 </div>
 
 {% endblock %}
@@ -65,9 +68,15 @@
 {% block empty-search-card %}
 
 <!-- Empty search -->
-<div class="special compact card center-align-text">
-	<div class="heading">No Articles Found.</div>
-	<span class="montserrat text">Consider reconsidering your search query. Queries resembling "k3e#$%jbjvd" are not likely to take you very far.</span>
+<div class="special card">
+	<div class="header">
+		<div class="heading">No Articles Found.</div>
+	</div>
+	
+	<div class="text">
+		Consider reconsidering your search query. Queries resembling "k3e#$%jbjvd" are not likely to take 
+		you very far.
+	</div>
 </div>
 
 {% endblock %}

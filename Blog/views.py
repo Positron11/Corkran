@@ -87,8 +87,21 @@ class Library(LoginRequiredMixin, ArticleListView):
 	def get_context_data(self, **kwargs):          
 		context = super().get_context_data(**kwargs)   
 
+		# get base queryset
+		queryset = self.get_base_queryset()
+
+		# get authors in library
+		authors = list(set([article.author.username for article in queryset]))
+		authors_string = ", ".join(list(authors[:5])[:-1])
+
+		# variable suffix
+		if len(authors) > 1:
+			authors_string += f", {authors[-1]}, and others" if len(authors) > 5 else f", and {authors[-1]}"
+
 		# add context
+		context["authors"] = authors_string
 		context["article_count"] = Article.objects.filter(id__in=self.request.user.profile.library.all()).count()
+		context["latest_five"] = ", ".join([article.title for article in sorted(queryset, key=lambda x: random.random())][:5])
 
 		return context
 
@@ -139,9 +152,26 @@ class TagSortedArticles(ArticleListView):
 		# check if tag exists
 		tag_check = get_list_or_404(Article, tags__name__in=[tag])
 
+		# get queryset
+		queryset = Article.objects.filter(tags__name__in=[tag])
+		
+		# get authors who have used this tag
+		authors = list(set([article.author.username for article in Article.objects.filter(tags__name__in=[tag])]))
+		authors_string = ", ".join(list(authors[:5])[:-1])
+
+		# variable suffix
+		if len(authors) > 1:
+			authors_string += f", {authors[-1]}, and others" if len(authors) > 5 else f", and {authors[-1]}"
+
+		# shuffle queryset
+		random.shuffle(list(queryset))
+
 		# add context
 		context["tag"] = tag
-		context["article_count"] = Article.objects.filter(tags__name__in=[tag]).count()
+		context["authors"] = authors_string
+		context["author_count"] = len(authors)
+		context["article_count"] = queryset.count()
+		context["latest_five"] = ", ".join([article.title for article in sorted(queryset, key=lambda x: random.random())][:5])
 
 		return context
 

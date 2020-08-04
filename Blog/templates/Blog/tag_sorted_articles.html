@@ -7,9 +7,16 @@
 {% block header-card %}
 
 <!-- Header card -->
-<div class="special minimal card center-align-text">
-	<div class="heading">~{{ tag }}~</div>
-	<span class="montserrat text">{{ article_count }} article{% if article_count != 1 %}s are{% else %} is{% endif %} tagged with "{{ tag }}".</span>
+<div class="special card">
+	<div class="header">
+		<div class="heading">"{{ tag }}" Articles</div>
+	</div>
+
+	<div class="text">
+		{{ article_count }} article{% if article_count != 1 %}s are{% else %} is{% endif %} tagged with 
+		"{{ tag }}". {{ authors }} ha{% if author_count > 1 %}ve{% else %}s{% endif %} written articles
+		with this tag ~ {{ latest_five }}...
+	</div>
 </div>
 
 {% endblock %}
@@ -17,9 +24,15 @@
 {% block empty-search-card %}
 
 <!-- Empty search -->
-<div class="special compact card center-align-text">
-	<div class="heading">No Articles Found.</div>
-	<span class="montserrat text">Consider reconsidering your search query. Queries resembling "k3e#$%jbjvd" are not likely to take you very far.</span>
+<div class="special card">
+	<div class="header">
+		<div class="heading">No Articles Found.</div>
+	</div>
+	
+	<div class="text">
+		Consider reconsidering your search query. Queries resembling "k3e#$%jbjvd" are not likely to take 
+		you very far.
+	</div>
 </div>
 
 {% endblock %}
