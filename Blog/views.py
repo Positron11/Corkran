@@ -92,7 +92,7 @@ class Library(LoginRequiredMixin, ArticleListView):
 
 		# get authors in library
 		authors = list(set([article.author.username for article in queryset]))
-		authors_string = ", ".join(list(authors[:5])[:-1])
+		authors_string = ", ".join(list(authors[:5])[:-1] if len(authors) > 1 else authors)
 
 		# variable suffix
 		if len(authors) > 1:
@@ -157,9 +157,9 @@ class TagSortedArticles(ArticleListView):
 		
 		# get authors who have used this tag
 		authors = list(set([article.author.username for article in Article.objects.filter(tags__name__in=[tag])]))
-		authors_string = ", ".join(list(authors[:5])[:-1])
+		authors_string = ", ".join(list(authors[:5])[:-1] if len(authors) > 1 else authors)
 
-		# variable suffix
+		# variable string
 		if len(authors) > 1:
 			authors_string += f", {authors[-1]}, and others" if len(authors) > 5 else f", and {authors[-1]}"
 
