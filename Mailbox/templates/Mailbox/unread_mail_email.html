@@ -106,6 +106,10 @@
 				<a href="{{ protocol }}://{{ domain }}{% url 'author-sorted-articles' mail.article.author %}">{{ mail.article.author }}</a> wrote 
 				<a href="{{ protocol }}://{{ domain }}{{ mail.article.get_absolute_url }}" title="Go to article">"{{ mail.article.title }}"</a>.
 				A short preview: "{{ mail.article.content|truncatewords:50}}"
+
+				{% elif mail|to_class_name == "new_announcement_mail" %}
+				A new <a href="{{ protocol }}://{{ domain }}{% url 'announcements' %}">announcement</a> has been made on Corkran. 
+				A short preview: "{{ mail.announcement.content|truncatewords:50}}"
 				{% endif %}
 			</div>
 		</div><br>

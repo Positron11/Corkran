@@ -2,10 +2,10 @@ from django.db import models
 from datetime import datetime
 from django.contrib import messages
 from django.dispatch import receiver
-from Blog.models import Comment, Article
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from polymorphic.models import PolymorphicModel
+from Blog.models import Comment, Article, Announcement
 
 
 # base mail model
@@ -27,6 +27,11 @@ class Mail(PolymorphicModel):
 
 
 # new article mail
+class NewAnnouncementMail(Mail):
+	announcement = models.ForeignKey(Announcement, on_delete=models.CASCADE)
+
+
+# new article mail
 class NewArticleMail(Mail):
 	article = models.ForeignKey(Article, on_delete=models.CASCADE)
 
@@ -35,6 +40,17 @@ class NewArticleMail(Mail):
 class NewCommentMail(Mail):
 	article = models.ForeignKey(Article, on_delete=models.CASCADE)
 	comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
+
+
+# announcement creation receiver
+@receiver(post_save, sender=Announcement)
+def new_anouncement_notification(sender, instance, created, **kwargs):
+	# if new announcement
+	if created:
+		# send message to all users
+		for user in User.objects.all():
+				message_to_all = NewAnnouncementMail(recipient=user, heading=f"New Announcement.", announcement=instance)
+				message_to_all.save()
 
 
 # article creation receiver
