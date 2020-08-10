@@ -1372,6 +1372,9 @@ svg.tea #steamR {
 	fieldset.card {
 		padding: 1em 1.5em 1.5em 1.5em;
 	}
+	fieldset.card.compact {
+		padding: 0.7em 1em 1em 1em;
+	}
 	#main {
 		padding: 0 1em 3em 1em;
 	}
