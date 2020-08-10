@@ -166,6 +166,17 @@
 	
 	<!-- Content -->
 	<div class="content">{{ article.content|urlizetrunc:40|linebreaks }}</div>
+
+	<!-- Tags box -->
+	<div id="article_tags">
+		<div class="list-box compact-spacing">
+			{% for tag in article.tags.all %}
+			<a href="{% url 'tag-sorted-articles' tag %}" class="unselectable clickable single-line-text tag">
+				{{ tag }}
+			</a>
+			{% endfor %}
+		</div>
+	</div>
 </div>
 
 
@@ -197,17 +208,29 @@
 </div>
 
 
-<!-- Tags box container -->
+<!-- Article suggestions -->
 <fieldset class="compact card">
 	<!-- Heading -->
-	<legend class="heading">Tags</legend>
+	<legend class="heading">Likewise</legend>
 
-	<!-- Tags box -->
-	<div class="list-box compact-spacing">
-		{% for tag in article.tags.all %}
-		<a href="{% url 'tag-sorted-articles' tag %}" class="unselectable clickable single-line-text tag">
-			{{ tag }}
-		</a>
+	<!-- Articles list -->
+	<div id="similar_articles">
+		{% for article in similar_articles %}
+		<div class="article-suggestion">
+			<!-- Article thumbnail -->
+			<div 
+				data-href="https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-400" 
+				class="progressive replace article-suggestion-thumbnail">
+				
+				<!-- Blurred loader image -->	
+				<img src="https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-300" class="preview" alt="Article Thumbnail">
+			</div>
+
+			<!-- Title overlay -->
+			<a href="{{ article.get_absolute_url }}">
+				<div class="overlay" data-vertical-truncator="4">{{ article.title }}</div>
+			</a>
+		</div>
 		{% endfor %}
 	</div>
 </fieldset>

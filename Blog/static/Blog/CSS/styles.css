@@ -925,7 +925,13 @@ svg.tea #steamR {
 }
 
 
-/* TAGS AND ASSORTED TEXT WIDGETS */
+/* TAGS */
+
+#article_tags {
+	margin-top: 2em;
+	padding-top: 1em;
+	border-top: 1px solid #eaeaea;
+}
 
 .tag {
 	position: relative;
@@ -945,6 +951,47 @@ svg.tea #steamR {
 	border-radius: 50%;
 	position: absolute;
 	background: white;
+}
+
+
+/* ARTICLE SUGGESTIONS */
+
+#similar_articles {
+	display: flex;
+	flex-wrap: wrap;
+	overflow: hidden;
+	border-radius: 0.5em;
+	border: 1px solid #eaeaea;
+}
+
+#similar_articles .article-suggestion {
+	flex-grow: 1;
+	min-width: 10em;
+	position: relative;
+}
+
+#similar_articles .article-suggestion .article-suggestion-thumbnail {
+	width: 100%;
+	height: 8em;
+	filter: brightness(80%);
+	transition: 0.3s ease;
+}
+
+#similar_articles .article-suggestion .overlay {
+	left: 0.5em;
+	bottom: 0.5em;
+	color: black;
+	padding: 0.3em;
+	max-width: 80%;
+	max-height: 80%;
+	overflow: hidden;
+	position: absolute;
+	background: white;
+	border-radius: 0.3em;
+	mix-blend-mode: screen;
+	text-overflow: ellipsis;
+	font-family: 'Montserrat Alternates', sans-serif;
+	transition: 0.3s ease;
 }
 
 
@@ -1168,6 +1215,13 @@ svg.tea #steamR {
 	.zen-mode .close-btn:hover {
 		color: #f32929;
 	}
+	#similar_articles .article-suggestion:hover>.article-suggestion-thumbnail {
+		filter: brightness(50%);
+	}
+	#similar_articles .article-suggestion .overlay:hover {
+		color: white;
+		background: transparent;
+	}
 	.comments ul:hover {
 		border-left: 2px solid #ddd;
 	}
@@ -1275,6 +1329,13 @@ svg.tea #steamR {
 	.zen-mode .close-btn:active {
 		color: #f32929;
 	}
+	#similar_articles .article-suggestion:active>a .overlay {
+		color: white;
+		background: transparent;
+	}
+	#similar_articles .article-suggestion:active>.article-suggestion-thumbnail {
+		filter: brightness(50%);
+	}
 	.paginator a:active {
 		color: #999;
 	}
@@ -1352,5 +1413,11 @@ svg.tea #steamR {
 	.zen-mode .close-btn{
 		top: 1.5em;
 		right: 1em;
+	}
+	#similar_articles .article-suggestion {
+		font-size: 0.75em;
+	}
+	#similar_articles .article-suggestion .overlay {
+		font-size: 1.2em;
 	}
 }

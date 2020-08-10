@@ -323,13 +323,14 @@ def detail(request, pk, slug):
 
 	context = {
 		"article": article, 
+		"subscribed": subscribed,
 		"next_article": next_article, 
 		"previous_article": previous_article, 
-		"comment_form": comment_form, 
-		"feature_form": feature_form,
-		"subscribed": subscribed,
 		"article_in_library": article_in_library,
-		"random_article_url": random_article_url
+		"random_article_url": random_article_url,
+		"similar_articles": article.tags.similar_objects()[:5],
+		"comment_form": comment_form, 
+		"feature_form": feature_form
 	}
 
 	return render(request, "Blog/article_detail.html", context)
