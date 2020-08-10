@@ -973,13 +973,23 @@ svg.tea #steamR {
 #similar_articles .article-suggestion .article-suggestion-thumbnail {
 	width: 100%;
 	height: 8em;
-	filter: brightness(80%);
+	position: relative;
+}
+
+#similar_articles .article-suggestion .article-suggestion-thumbnail::after {
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	content: "";
+	position: absolute;
+	background: rgba(0,0,0,0.2);
 	transition: 0.3s ease;
 }
 
 #similar_articles .article-suggestion .overlay {
+	top: 50%;
 	left: 0.5em;
-	bottom: 0.5em;
 	color: black;
 	padding: 0.3em;
 	max-width: 80%;
@@ -990,6 +1000,7 @@ svg.tea #steamR {
 	border-radius: 0.3em;
 	mix-blend-mode: screen;
 	text-overflow: ellipsis;
+	transform: translateY(-50%);
 	font-family: 'Montserrat Alternates', sans-serif;
 	transition: 0.3s ease;
 }
@@ -1215,12 +1226,12 @@ svg.tea #steamR {
 	.zen-mode .close-btn:hover {
 		color: #f32929;
 	}
-	#similar_articles .article-suggestion:hover>.article-suggestion-thumbnail {
-		filter: brightness(50%);
-	}
 	#similar_articles .article-suggestion .overlay:hover {
 		color: white;
 		background: transparent;
+	}
+	#similar_articles .article-suggestion:hover>.article-suggestion-thumbnail::after {
+		background: rgba(0,0,0,0.5);
 	}
 	.comments ul:hover {
 		border-left: 2px solid #ddd;
@@ -1333,8 +1344,8 @@ svg.tea #steamR {
 		color: white;
 		background: transparent;
 	}
-	#similar_articles .article-suggestion:active>.article-suggestion-thumbnail {
-		filter: brightness(50%);
+	#similar_articles .article-suggestion:active>.article-suggestion-thumbnail::after {
+		background: rgba(0,0,0,0.5);
 	}
 	.paginator a:active {
 		color: #999;
@@ -1415,6 +1426,7 @@ svg.tea #steamR {
 		right: 1em;
 	}
 	#similar_articles .article-suggestion {
+		min-width: 8em;
 		font-size: 0.75em;
 	}
 	#similar_articles .article-suggestion .overlay {
