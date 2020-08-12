@@ -231,6 +231,13 @@
 				<div class="overlay" data-vertical-truncator="4">{{ article.title }}</div>
 			</a>
 		</div>
+		{% empty %}
+		<!-- No similarly tagged articles -->
+		<div class="word-card card special">
+			<span class="montserrat">
+				A unique article. Niche? Peerless? All we know is, nothing is tagged similarly to it.
+			</span>
+		</div>
 		{% endfor %}
 	</div>
 </fieldset>
@@ -323,7 +330,11 @@
 	</ul>
 	{% else %}
 	<!-- No comments message -->
-	<div class="subheading">No comments, yet.</div>
+	<div class="word-card card special">
+		<span class="montserrat">
+			No comments. Maybe it's new. Or confusing.
+		</span>
+	</div>
 	{% endif %}
 
 	{% if user.is_authenticated %}

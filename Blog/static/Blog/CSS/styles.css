@@ -961,7 +961,6 @@ svg.tea #steamR {
 	flex-wrap: wrap;
 	overflow: hidden;
 	border-radius: 0.5em;
-	border: 1px solid #eaeaea;
 }
 
 #similar_articles .article-suggestion {
