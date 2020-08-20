@@ -273,7 +273,7 @@
 
 				<!-- Edit comment -->
 				<div class="edit editor">
-					<form method="post" autocomplete="off">{% csrf_token %}
+					<form class="confirm-leave" method="post" autocomplete="off">{% csrf_token %}
 						<!-- Textarea -->
 						<textarea name="content" rows="2" required>{{ node.content }}</textarea>
 
@@ -305,7 +305,7 @@
 
 				<!-- Reply to comment -->
 				<div class="reply editor">
-					<form method="post" autocomplete="off">{% csrf_token %}
+					<form class="confirm-leave" method="post" autocomplete="off">{% csrf_token %}
 						<!-- Textarea -->
 						<textarea name="content" rows="2" placeholder='Reply to: "{{ node.content|truncatechars:25 }}"' required></textarea>
 
@@ -340,7 +340,7 @@
 	{% if user.is_authenticated %}
 	<!-- New comment -->
 	<div id="new_comment_form">
-		<form method="post" class="vertically-space-items">{% csrf_token %}
+		<form method="post" class="vertically-space-items confirm-leave">{% csrf_token %}
 			<!-- Textarea -->
 			<textarea name="content" rows="4" required autocomplete="off" placeholder="New comment..." class="closer-below"></textarea>
 
