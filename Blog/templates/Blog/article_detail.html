@@ -123,7 +123,7 @@
 	{% endif %}
 
 	<!-- Zen mode -->
-	<div class="small button {% if not user.is_authenticated or user == article.author %}split-item{% endif %}" onclick="toggleZenMode();">
+	<div class="small button {% if not user.is_authenticated or user == article.author %}split-item{% endif %}" onclick="toggleZenMode();" title="Zen mode">
 		<i class="fas fa-coffee"></i>
 	</div>
 	
