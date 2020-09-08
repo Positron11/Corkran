@@ -208,39 +208,33 @@
 </div>
 
 
-<!-- Article suggestions -->
-<fieldset class="compact card">
-	<!-- Heading -->
-	<legend class="heading">Likewise</legend>
-
-	<!-- Articles list -->
-	<div id="similar_articles" class="unselectable">
-		{% for article in similar_articles %}
-		<div class="article-suggestion">
-			<!-- Article thumbnail -->
-			<div 
-				data-href="https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-1060" 
-				class="progressive replace article-suggestion-thumbnail">
-				
-				<!-- Blurred loader image -->	
-				<img src="https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-300" class="preview" alt="Article Thumbnail">
-			</div>
-
-			<!-- Title overlay -->
-			<a href="{{ article.get_absolute_url }}">
-				<div class="overlay" data-vertical-truncator="4">{{ article.title }}</div>
-			</a>
+<!-- Article suggestions list -->
+<div id="similar_articles" class="unselectable">
+	{% for article in similar_articles %}
+	<div class="article-suggestion">
+		<!-- Article thumbnail -->
+		<div 
+			data-href="https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-1060" 
+			class="progressive replace article-suggestion-thumbnail">
+			
+			<!-- Blurred loader image -->	
+			<img src="https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-300" class="preview" alt="Article Thumbnail">
 		</div>
-		{% empty %}
-		<!-- No similarly tagged articles -->
-		<div class="word-card card special">
-			<span class="montserrat">
-				A unique article. Niche? Peerless? All we know is, nothing is tagged similarly to it.
-			</span>
-		</div>
-		{% endfor %}
+
+		<!-- Title overlay -->
+		<a href="{{ article.get_absolute_url }}">
+			<div class="overlay" data-vertical-truncator="4">{{ article.title }}</div>
+		</a>
 	</div>
-</fieldset>
+	{% empty %}
+	<!-- No similarly tagged articles -->
+	<div class="word-card card special">
+		<span class="montserrat">
+			A unique article. Niche? Peerless? All we know is, nothing is tagged similarly to it.
+		</span>
+	</div>
+	{% endfor %}
+</div>
 
 
 <!-- Comments box anchor -->
