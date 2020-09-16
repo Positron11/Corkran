@@ -1007,43 +1007,43 @@ svg.tea #steamR {
 
 /* COMMENTS */
 
-.comments {
+#comments_container {
 	font-size: 0.9em;
 }
 
-.comments ul {
+#comments_container ul {
 	list-style-type: none;
 	border-left: 2px solid #eee;
 	transition: 0.3s ease;
 }
 
-.comments>ul {
+#comments_container>ul {
 	padding: 0;
 	border-left: none;
 }
 
-.comments ul li {
+#comments_container ul li {
 	margin: 1em 0;
 }
 
-.comments .comment .comment-btn-container .button {
+#comments_container .comment .comment-btn-container .button {
 	margin-right: 0.5em;
 }
 
-.comments .comment .editor {
+#comments_container .comment .editor {
 	display: none;
 	margin-top: 0.5em;
 }
 
-.comments .comment .editor textarea {
+#comments_container .comment .editor textarea {
 	margin-bottom: 0.5em;
 }
 
-.comments .comment .editor.edit {
+#comments_container .comment .editor.edit {
 	margin-bottom: -1.3em;
 }
 
-.comments #new_comment_form {
+#comments_container #new_comment_form {
 	margin-top: 3em;
 }
 
@@ -1232,10 +1232,10 @@ svg.tea #steamR {
 	#similar_articles .article-suggestion:hover>.article-suggestion-thumbnail::after {
 		background: rgba(0,0,0,0.5);
 	}
-	.comments ul:hover {
+	#comments_container ul:hover {
 		border-left: 2px solid #ddd;
 	}
-	.comments>ul:hover {
+	#comments_container>ul:hover {
 		border-left: none;
 	}
 	.paginator a:hover {
