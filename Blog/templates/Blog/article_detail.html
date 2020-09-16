@@ -251,6 +251,21 @@
 
 <!-- Comments container -->
 <fieldset class="card" id="comments_container">
+	<!-- New comment -->
+	{% if user.is_authenticated %}
+	<div id="new_comment_form">
+
+		<form method="post" class="vertically-space-items confirm-leave">{% csrf_token %}
+			<!-- Textarea -->
+			<textarea name="content" rows="4" required autocomplete="off" placeholder="New comment..." class="closer-below"></textarea>
+
+			<!-- Submit button -->
+			<div class="right-align-text">
+				<button class="button" type="submit" name="comment">Comment</button>
+			</div>
+		</form>
+	</div>
+	{% endif %}
 
 	<!-- Heading -->
 	<legend class="heading">Comments</legend>
@@ -337,21 +352,6 @@
 		<span class="montserrat">
 			No comments. Maybe it's new. Or confusing.
 		</span>
-	</div>
-	{% endif %}
-
-	{% if user.is_authenticated %}
-	<!-- New comment -->
-	<div id="new_comment_form">
-		<form method="post" class="vertically-space-items confirm-leave">{% csrf_token %}
-			<!-- Textarea -->
-			<textarea name="content" rows="4" required autocomplete="off" placeholder="New comment..." class="closer-below"></textarea>
-
-			<!-- Submit button -->
-			<div class="right-align-text">
-				<button class="button" type="submit" name="comment">Comment</button>
-			</div>
-		</form>
 	</div>
 	{% endif %}
 </fieldset>

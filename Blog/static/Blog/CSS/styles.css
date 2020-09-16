@@ -1044,7 +1044,9 @@ svg.tea #steamR {
 }
 
 #comments_container #new_comment_form {
-	margin-top: 3em;
+	padding-bottom: 1em;
+	border-bottom: 1px solid #eaeaea;
+	margin-bottom: 1em;
 }
 
 
