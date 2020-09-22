@@ -282,7 +282,7 @@
 			<div class="comment">
 				<!-- Author and date -->
 				<div class="info-container">
-					<a href="{% url 'author-sorted-articles' node.author %}" title="Articles by {{ article.author.username }}">{{ node.author }}</a>
+					<a href="{% url 'author-sorted-articles' node.author %}" title="Articles by {{ node.author }}">{{ node.author }}</a>
 					<span class="montserrat text grey"> ~ {{ node.date|date:"F jS, Y | g:i a e" }}</span>
 				</div>
 
