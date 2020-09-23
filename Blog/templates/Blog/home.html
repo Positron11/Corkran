@@ -23,7 +23,7 @@
 		https://ik.imagekit.io/f92sz8hl8b/media/defaults/feature.jpg?tr=w-600 600w"   
 	{% endif %}
 	data-sizes="100vw"
-	class="progressive replace feature unselectable">
+	class="progressive replace feature unselectable darken-overlay">
 
 	<!-- Blurred loader image -->
 	{% if featured_article.thumbnail %}	
@@ -34,7 +34,7 @@
 
 	<!-- Overlay -->
 	<a href="{{ featured_article.get_absolute_url }}" class="unformatted">
-		<div class="overlay" data-vertical-truncator="3">{{ featured_article.title }}</div>
+		<div class="cutout-overlay" data-vertical-truncator="3">{{ featured_article.title }}</div>
 	</a>
 </div>
 
