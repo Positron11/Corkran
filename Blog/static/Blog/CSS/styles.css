@@ -527,10 +527,8 @@ input[type="file"] {
 
 .subheading {
 	color: #999;
-	font-size: 0.8em;
 	line-height: 1.7em;
 	letter-spacing: 0.05em;
-	font-family: 'Montserrat Alternates', sans-serif;
 }
 
 
@@ -704,9 +702,8 @@ svg.tea #steamR {
 
 .navbar .links-container .link {
 	color: #333;
-	font-size: 0.7em;
+	font-size: 0.85em;
 	letter-spacing: 0.2em;
-	font-family: 'Montserrat Alternates', sans-serif;
 	transition: 0.3s ease;
 }
 
@@ -719,7 +716,7 @@ svg.tea #steamR {
 	bottom: -1.5em;
 	max-width: 15em;
 	overflow: hidden;
-	font-size: 0.7em;
+	font-size: 0.8em;
 	position: absolute;
 	white-space: nowrap;
 	text-overflow: ellipsis;
@@ -1384,9 +1381,6 @@ svg.tea #steamR {
 	}
 	fieldset .heading {
 		font-size: 2em;
-	}
-	.navbar .links-container .link {
-		font-size: 0.75em;
 	}
 	.feature {
 		height: 11em;
