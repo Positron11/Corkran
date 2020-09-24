@@ -291,7 +291,7 @@ form ul {
 
 form ul.errorlist {
 	color: #f32929;
-	font-weight: 600;
+	font-weight: 500;
 	line-height: 2em;
 	padding: 1em 2em;
 	font-size: 0.65em;
@@ -304,7 +304,7 @@ form ul.errorlist {
 label {
 	color: #333;
 	font-size: 0.7em;
-	font-weight: 600;
+	font-weight: 500;
 	font-family: 'Montserrat Alternates', sans-serif;
 }
 
@@ -347,7 +347,7 @@ fieldset {
 
 .button {
 	cursor: pointer;
-	font-weight: 600;
+	font-weight: 500;
 	text-align: center;
 	background: white;
 	white-space: nowrap;
@@ -820,7 +820,7 @@ svg.tea #steamR {
 	padding: 0.5em;
 	position: sticky;
 	font-size: 0.7em;
-	font-weight: 600;
+	font-weight: 500;
 	text-align: center;
 	border-radius: 1em;
 	box-sizing: border-box;
