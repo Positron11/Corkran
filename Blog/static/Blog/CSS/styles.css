@@ -224,7 +224,7 @@ p.montserrat, .text.montserrat {
 	display: flex;
 }
 
-.input-bar .input-box {
+.input-bar input {
 	flex-grow: 1;
 	margin-right: 1.5em;
 }
@@ -1373,7 +1373,7 @@ svg.tea #steamR {
 /* MOBILES */
 
 @media only screen and (max-width: 600px) {
-	.input-bar .input-box {
+	.input-bar input {
 		margin-right: 1em;
 	}
 	.heading {
