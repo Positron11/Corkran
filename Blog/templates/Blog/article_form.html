@@ -40,14 +40,14 @@
 
 		<!-- Tag suggestion box -->
 		<div id="suggested_tags" style="display: none;">
-			<label style="display: block; margin-bottom: 0.5em;">Similar popular tags:</label>
-			<div class="card compact">
+			<fieldset class="card compact">
+				<legend class="montserrat grey">Suggested Tags</legend>
 				<div class="list-box compact-spacing">
 					{% for tag in tags %}
 					<div class="clickable tag">{{ tag }}</div>
 					{% endfor %}
 				</div>
-			</div>
+			</fieldset>
 		</div>
 
 		<div class="anchor" id="image"></div>
