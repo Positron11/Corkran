@@ -126,6 +126,34 @@ $(function () {
 	});
 
 
+	// Search suggestions
+	$(document).on('input', '#article_search_input', function (e) {
+		if ($(this).val().length > 0) {
+			$("#search_suggestions").addClass("visible");
+			
+			if ($(".search-suggestion-group").is(":visible")) {
+				$("#no_suggestions").hide();
+			} else {
+				$("#no_suggestions").show();
+			}
+		} else {
+			$("#search_suggestions").removeClass("visible");
+		}
+	});
+
+	// Hide suggestion box if clicked outside or on suggestion
+	$(document).on('click', 'body', function (e) {
+		if ((!$(e.target).closest('#search_suggestions').length && $("#search_suggestions").hasClass("visible")) || $(e.target).closest('.search-suggestion').length) {
+			$("#search_suggestions").removeClass("visible");
+		} 
+	});
+
+	// New suggestion engine for each category
+	$("#search_suggestions .search-suggestion-group").each(function (e) {
+		suggestionsEngine($("#article_search_input"), $(this), $(this).find(" .search-suggestion"));
+	});
+
+
 	// Toggle comment reply box
 	$(document).on('click', '.toggle-btn.reply', function (e) {
 		e.preventDefault();

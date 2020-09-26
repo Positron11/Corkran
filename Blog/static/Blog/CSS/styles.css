@@ -859,6 +859,65 @@ svg.tea #steamR {
 }
 
 
+/* SEARCH */
+
+#article_search_container {
+	position: relative;
+}
+
+#search_suggestions {
+	top: 3.5em;
+	z-index: 1;
+	opacity: 0;
+	left: 0.45em;
+	right: 0.45em;
+	color: #333;
+	font-size: 0.9em;
+	position: absolute;
+	border-radius: 0.7em;
+	background-color: white;
+	border: 1px solid #eaeaea;
+	padding: 1.5em 1.5em 1em 1.5em;
+	box-shadow: 0 0 6px 3px rgba(0,0,0,0.1);
+	transition: 0.2s ease-out;
+}
+
+#search_suggestions.visible {
+	opacity: 1;
+}
+
+#search_suggestions .search-suggestion-group {
+	display: none;
+	padding: 1em 0.5em;
+	position: relative;
+	margin-bottom: 0.5em;
+	border-top: 1px solid #eaeaea;
+}
+
+#search_suggestions .search-suggestion-group .list-box {
+	overflow: auto;
+	max-height: 5em;
+}
+
+#search_suggestions .search-suggestion-group::after {
+	top: 0;
+	right: 0;
+	color: #999;
+	font-size: 0.7em;
+	position: absolute;
+	padding-left: 0.5em;
+	background-color: white;
+	transform: translateY(-60%);
+	content: ""attr(data-group-name)"";
+	font-family: 'Montserrat Alternates', sans-serif;
+}
+
+#no_suggestions {
+	display: none;
+	margin-bottom: 0.5em;
+}
+
+
 /* ARTICLE CONTROLS AND NAVIGATION */
 
 #article_controls .button {

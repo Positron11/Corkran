@@ -8,6 +8,11 @@ register = template.Library()
 
 
 @register.filter
+def get_item(dictionary, key):
+    return dictionary.get(key)
+	
+
+@register.filter
 def to_class_name(value):
     return "_".join(re.findall('[A-Z][^A-Z]*', value.__class__.__name__)).lower()
 

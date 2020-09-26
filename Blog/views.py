@@ -64,6 +64,36 @@ class ArticleListView(ListView):
 			# return all articles
 			return base_queryset.order_by('-date')
 
+	def get_context_data(self, **kwargs):          
+		context = super().get_context_data(**kwargs) 
+
+		# get queryset
+		queryset = self.get_queryset()
+
+		# get tags in queryset
+		matching_tags = [tag for article in queryset for tag in article.tags.all()]
+
+		# popular tag suggestions
+		tag_search_suggestions = [[tag.name, reverse_lazy("tag-sorted-articles", args=[tag.name])] for tag in Article.tags.most_common()[:100] if tag in matching_tags]
+
+		# author suggestions
+		author_search_suggestions = [[author.username, reverse_lazy("author-sorted-articles", args=[author.username])] for author in User.objects.all()]
+		
+		# article suggestions
+		article_search_suggestions = [[article.title, article.get_absolute_url()] for article in queryset]
+
+		# compile dictionary of suggestions
+		search_suggestions = {
+			"tags": tag_search_suggestions,
+			"authors": author_search_suggestions,
+			"articles": article_search_suggestions
+		}
+
+		# add context
+		context["search_suggestions"] = search_suggestions
+
+		return context
+		
 
 # main page
 class Home(ArticleListView):

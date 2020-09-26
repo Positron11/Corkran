@@ -10,11 +10,30 @@
 {% block header-card %}{% endblock %}
 
 
-<!-- Search bar -->
-<form>
-	<div class="input-bar">
-		<input type="text" name="search" placeholder="Search{% block search-dialogue %}{% endblock %}..." value="{{ query }}">
-		<button class="button" type="submit"><i class="fas fa-search"></i></button>
+<!-- Article search -->
+<form autocomplete="off">
+	<div id="article_search_container">
+		<!-- Search bar -->
+		<div class="input-bar">
+			<input id="article_search_input" type="text" name="search" placeholder="Search{% block search-dialogue %}{% endblock %}..." value="{{ query }}" auto>
+			<button class="button" type="submit"><i class="fas fa-search"></i></button>
+		</div>
+
+		<!-- Search suggestions -->
+		<div id="search_suggestions">
+			{% for category in search_suggestions %}
+			<div id="suggestion_{{ category }}" class="search-suggestion-group" data-group-name="Search {{ category|title }}">
+				<div class="list-box compact-spacing">
+					{% for value in search_suggestions|get_item:category %}
+					<a href="{{ value.1 }}" class="unselectable clickable single-line-text unformatted card word-card search-suggestion"><span class="montserrat">{{ value.0 }}</span></a>
+					{% endfor %}
+				</div>
+			</div>
+			{% endfor %}
+			
+			<!-- No suggestions message -->
+			<div id="no_suggestions" class="grey">No suggestions found.</div>
+		</div>
 	</div>
 </form>
 
