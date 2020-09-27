@@ -150,7 +150,7 @@ $(function () {
 
 	// New suggestion engine for each category
 	$("#search_suggestions .search-suggestion-group").each(function (e) {
-		suggestionsEngine($("#article_search_input"), $(this), $(this).find(" .search-suggestion"));
+		suggestionsEngine($("#article_search_input"), $(this), $(this).find(" .search-suggestion"), "full");
 	});
 
 
@@ -235,6 +235,35 @@ $(function () {
 		if (tags_input_keypress != 8 && tags_input_keypress != 46) {
 			$("#id_tags").val($("#id_tags").val().replace(/[\s,]+/g, ", "));
 		}
+	});
+
+	// Put clicked tag in textbox
+	$("#suggested_tags .tag").on("click", function () {
+		// get all words in input
+		var words = $("#id_tags").val().split(/[\s,]+/);
+
+		// remove unfinished tag from words list
+		words.pop();
+
+		// add tag to end of words list
+		words.push($(this).text());
+
+		// replace input box value with current tags 
+		$("#id_tags").val(words.join(", ") + " ");
+
+		// focus and move to end of input
+		$("#id_tags").each(function () {
+			$(this).focus();
+			if (this.setSelectionRange) {
+				var len = $(this).val().length * 2;
+				this.setSelectionRange(len, len);
+			} else {
+				$(this).val($(this).val());
+			}
+		});
+
+		// Hide suggestions
+		$("#suggested_tags").hide();
 	});
 
 	// Show uploaded file in file input label
@@ -467,32 +496,42 @@ function floatMessage() {
 
 
 // SUGGESTION ENGINE
-function suggestionsEngine(input, container, suggestion) {
+function suggestionsEngine(input, container, suggestion, mode) {
 	// Show tag suggestions
 	input.on('input', function () {
+		// raw input
+		var raw_input = input.val().toLowerCase().trim();
 
-		// split sentence by possible delimiters
-		var words = input.val().toLowerCase().split(/[\s,]+/);
+		// split raw input by possible delimiters
+		var words = raw_input.split(/[\s,]+/);
 
 		// get last word
-		var word = words.pop();
+		var word = words[words.length - 1];
 
+		// check if input, or typing word
+		var search_signal = mode == "full" ? raw_input : word;
+		
 		// if not empty and currently typing a word, get suggestions
-		if (word) {
+		if (search_signal) {
 			// show main block
 			container.show();
 
-			// show matching tags
+			// show matching suggestions
 			suggestion.each(function () {
-				// get tag text as lowercase
+				// get suggestion text as lowercase
 				var text = $(this).text().toLowerCase();
 
-				// if tag matches input and tag doesn't already exist
-				if (text.includes(word) && $.inArray(text, words) < 0) {
-					// show tag in suggestions
+				// Check mode
+				var forward_search_segment = mode == "full" ? containsAny(text, words) : text.includes(word);
+				var backward_search_segment = mode == "full" ? raw_input.includes(text) : word.includes(text);
+				var preserve_options = mode == "full" ? true : $.inArray(text, words) < 0;
+
+				// if suggestion matches input
+				if ((forward_search_segment || backward_search_segment) && preserve_options) {
+					// show suggestion
 					$(this).show();
 				} else {
-					// remove tag from suggestions
+					// hide suggestion
 					$(this).hide();
 				}
 			});
@@ -506,35 +545,17 @@ function suggestionsEngine(input, container, suggestion) {
 			container.hide();
 		}
 	});
+}
 
-	// Put clicked tag in textbox
-	suggestion.on("click", function () {
-		// get all words in input
-		var words = input.val().split(/[\s,]+/);
 
-		// remove unfinished tag from words list
-		words.pop();
-
-		// add tag to end of words list
-		words.push($(this).text());
-
-		// replace input box value with current tags 
-		input.val(words.join(", ") + " ");
-
-		// focus and move to end of input
-		input.each(function () {
-			$(this).focus();
-			if (this.setSelectionRange) {
-				var len = $(this).val().length * 2;
-				this.setSelectionRange(len, len);
-			} else {
-				$(this).val($(this).val());
-			}
-		});
-
-		// Hide suggestions
-		container.hide();
-	});
+// CHECK IF STRING CONTAINS TEXT FROM ARRAY
+function containsAny(text, array) {
+	for (substring in array) {
+		if (text.includes(array[substring])) {
+			return true;
+		}
+	}
+	return false;
 }
 
 
