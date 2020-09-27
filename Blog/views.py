@@ -67,8 +67,9 @@ class ArticleListView(ListView):
 	def get_context_data(self, **kwargs):          
 		context = super().get_context_data(**kwargs) 
 
-		# get queryset
-		queryset = self.get_queryset()
+		# get queryset and make sure not empty
+		queryset = self.get_queryset() 
+		queryset = queryset if len(queryset) else Article.objects.all()
 
 		# get tags in queryset
 		matching_tags = [tag for article in queryset for tag in article.tags.all()]
