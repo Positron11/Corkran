@@ -10,12 +10,15 @@
 {% block header-card %}{% endblock %}
 
 
+<!-- Search bar anchor -->
+<div class="anchor" id="search_bar"></div>
+
 <!-- Article search -->
 <form autocomplete="off">
 	<div id="article_search_container">
 		<!-- Search bar -->
 		<div class="input-bar">
-			<input id="article_search_input" type="text" name="search" placeholder="Search{% block search-dialogue %}{% endblock %}..." value="{{ query }}" auto>
+			<input id="article_search_input" type="text" name="search" placeholder="Search{% block search-dialogue %}{% endblock %}..." value="{{ query }}" auto onfocus="smoothScrollTo('#search_bar')">
 			<button class="button" type="submit"><i class="fas fa-search"></i></button>
 		</div>
 

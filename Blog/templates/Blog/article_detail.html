@@ -2,7 +2,7 @@
 
 {% load mptt_tags %}
 
-{% block title %}"{{ article.title }}"{% endblock %}
+{% block title %}"{{ article.title }}" by {{ article.author.username }}{% endblock %}
 
 {% block feature %}
 {% if article.thumbnail %}	
