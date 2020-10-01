@@ -3,6 +3,7 @@
 {% load mptt_tags %}
 
 {% block title %}"{{ article.title }}" by {{ article.author.username }}{% endblock %}
+{% block description %}{{ article.content|truncatechars:300 }}{% endblock %}
 
 {% block feature %}
 {% if article.thumbnail %}	

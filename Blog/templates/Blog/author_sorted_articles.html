@@ -3,6 +3,7 @@
 {% block title %}{{ author }}'s Articles{% endblock %}
 
 {% block search-dialogue %} articles by {{ author }}{% endblock %}
+{% block description %}{{ author }} has written {{ article_count }} article{% if article_count != 1 %}s{% endif %}, as of yet.{% endblock %}
 
 {% block header-card %}
 
