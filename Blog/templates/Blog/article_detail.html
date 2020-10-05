@@ -5,6 +5,9 @@
 {% block title %}"{{ article.title }}" by {{ article.author.username }}{% endblock %}
 {% block description %}{{ article.content|truncatechars:300 }}{% endblock %}
 {% block author %}{{ article.author.username }}{% endblock %}
+{% block extra_meta_tags %}
+<meta name="keywords" content="{{ article.tags.all|join:','}}">
+{% endblock %}
 
 {% block feature %}
 {% if article.thumbnail %}	
