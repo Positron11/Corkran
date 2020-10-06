@@ -219,6 +219,12 @@
 	<div class="article-suggestion">
 		<!-- Article thumbnail -->
 		<div 
+			data-srcset="
+				https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-1140 3000w, 
+				https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-950 1500w,
+				https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-850 1000w,
+				https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-600 600w"   
+			data-sizes="100vw"
 			data-href="https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-1060" 
 			class="progressive replace article-suggestion-thumbnail darken-overlay">
 			
