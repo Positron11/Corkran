@@ -404,20 +404,21 @@ input[type="checkbox"]:not(:checked)+label:before, input[type="checkbox"]:checke
 	background: white;
 	border-radius: 0.5em;
 	transition: 0.2s ease;
-	border: #ddd solid 2px;
+	border: #333 solid 1px;
 	width: 1.25em;
 	height: 1.2em;
 }
 
 input[type="checkbox"]:not(:checked)+label:after, input[type="checkbox"]:checked+label:after {
-	top: 0;
-	left: 0.22em;
+	top: 0.4em;
+	left: 0.5em;
 	color: #333;
-	font-size: 1.3em;
+	font-size: 0.7em;
 	position: absolute;
 	transition: all 0.2s;
-	content: '\2713\0020';
-	font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', Arial;
+	content: '\f00c';
+	font-weight: 900;
+	font-family: 'Font Awesome 5 Free';
 }
 
 input[type="checkbox"]:not(:checked)+label:after {
@@ -1203,7 +1204,7 @@ svg.tea #steamR {
 		transform: translateY(-11.5rem);
 	}
 	input[type="checkbox"]+label:hover:before {
-		border-color: #333;
+		border-radius: 0.7em;
 	}
 	.button:hover {
 		color: #00a32c;
