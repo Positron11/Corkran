@@ -85,9 +85,9 @@ class ArticleListView(ListView):
 
 		# compile dictionary of suggestions
 		search_suggestions = {
+			"articles": article_search_suggestions,
 			"tags": tag_search_suggestions,
-			"authors": author_search_suggestions,
-			"articles": article_search_suggestions
+			"authors": author_search_suggestions
 		}
 
 		# add context
