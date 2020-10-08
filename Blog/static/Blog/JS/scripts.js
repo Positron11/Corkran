@@ -528,6 +528,10 @@ function suggestionsEngine(input, container, suggestion, mode) {
 
 				// if suggestion matches input
 				if ((forward_search_segment || backward_search_segment) && preserve_options) {
+					// prioritize results
+					if (mode == "full") {
+						$(this).css("order", $(suggestion).length - containsAny(text, words));
+					}
 					// show suggestion
 					$(this).show();
 				} else {
@@ -550,12 +554,13 @@ function suggestionsEngine(input, container, suggestion, mode) {
 
 // CHECK IF STRING CONTAINS TEXT FROM ARRAY
 function containsAny(text, array) {
+	var matches = 0;
 	for (substring in array) {
 		if (text.includes(array[substring])) {
-			return true;
+			matches++;
 		}
 	}
-	return false;
+	return matches;
 }
 
 
