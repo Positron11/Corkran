@@ -28,16 +28,16 @@
 <div 
 	data-href="https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}" 
 	data-srcset="
-		https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-1800 3000w, 
-		https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-1400 1500w,
-		https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-850 1000w,
-		https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-600 600w"   
+		https://ik.imagekit.io/f92sz8hl8b{{ article.thumbnail.url }}?tr=w-1641,h-547,fo-auto 3000w, 
+		https://ik.imagekit.io/f92sz8hl8b{{ article.thumbnail.url }}?tr=w-1341,h-447,fo-auto 1500w,
+		https://ik.imagekit.io/f92sz8hl8b{{ article.thumbnail.url }}?tr=w-840,h-280,fo-auto 1000w,
+		https://ik.imagekit.io/f92sz8hl8b{{ article.thumbnail.url }}?tr=w-561,h-187,fo-auto 600w"  
 	data-sizes="100vw"
-	class="progressive replace feature unselectable darken-overlay">
+	class="progressive replace feature image-container unselectable darken-overlay">
 
-	<!-- Blurred loader image -->	
-	<img src="https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-300" class="preview" alt="Article Thumbnail">
-	
+	<!-- Blurred loader image -->
+	<img src="https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-300,h-100,fo-auto" class="preview">
+
 	<!-- Overlay -->
 	<div class="cutout-overlay" data-vertical-truncator="3">{{ article.title }}</div>
 </div>

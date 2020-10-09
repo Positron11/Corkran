@@ -1,32 +1,13 @@
-.progressive {
-	outline: none;
-	display: block;
-	overflow: hidden;
-	position: relative;
-}
-
-.progressive img {
-	top: 50%;
-	left: 50%;
-	display: block;
-	border: 0 none;
-	min-width: 100%;
-	min-height: 100%;
-	position: absolute;
-	transform: translate(-50%, -50%);
-}
-
 .progressive img.preview {
-	width: 100%;
-	filter: blur(2vw);
-	transform: translate(-50%, -50%) scale(1.03);
+	filter: blur(0.5vw);
+	transform: scale(1.03);
 }
 
 .progressive img.reveal {
-	animation: progressiveReveal 1s cubic-bezier(.38,.1,.13,.67);
+	animation: progressiveReveal 0.5s cubic-bezier(.47,.03,.19,.99);
 }
 
 @keyframes progressiveReveal {
-	0% { transform: translate(-50%, -50%) scale(1.03); opacity: 0; }
-	100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+	0% { transform: scale(1.03); opacity: 0; }
+	100% { transform: scale(1); opacity: 1; }
 }
