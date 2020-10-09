@@ -39,7 +39,10 @@
 	<img src="https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-300,h-100,fo-auto" class="preview">
 
 	<!-- Overlay -->
-	<div class="cutout-overlay" data-vertical-truncator="3">{{ article.title }}</div>
+	<div class="cutout-overlay">
+		<div data-vertical-truncator="3">{{ article.title }}</div>
+		<div class="right-align-text feature-caption">By {{ article.author.username }}</div>
+	</div>
 </div>
 	
 {% if article.attribution %}

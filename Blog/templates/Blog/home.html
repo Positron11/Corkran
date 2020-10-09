@@ -22,7 +22,10 @@
 
 	<!-- Overlay -->
 	<a href="{{ featured_article.get_absolute_url }}" class="unformatted">
-		<div class="cutout-overlay" data-vertical-truncator="3">{{ featured_article.title }}</div>
+		<div class="cutout-overlay">
+			<div class="feature-caption">Featured Article:</div>
+			<div data-vertical-truncator="3">{{ featured_article.title }}</div>
+		</div>
 	</a>
 </div>
 
