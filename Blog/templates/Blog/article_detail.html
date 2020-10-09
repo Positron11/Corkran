@@ -43,12 +43,10 @@
 		<div data-vertical-truncator="3">{{ article.title }}</div>
 		<div class="right-align-text feature-caption">By {{ article.author.username }}</div>
 	</div>
+
+	<!-- Image attribution -->
+	<div class="caption-overlay">{{ article.attribution|urlizetrunc:20 }}</div>
 </div>
-	
-{% if article.attribution %}
-<!-- Feature image attribution -->
-<div class="attribution">{{ article.attribution|urlizetrunc:30 }}</div>
-{% endif %}
 
 {% endif %}
 {% endblock %}

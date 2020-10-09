@@ -27,12 +27,10 @@
 			<div data-vertical-truncator="3">{{ featured_article.title }}</div>
 		</div>
 	</a>
-</div>
 
-{% if featured_article.attribution or not featured_article.thumbnail %}
-<!-- Feature image attribution -->
-<div class="attribution">{% if featured_article.thumbnail %}{{ featured_article.attribution|urlizetrunc:30 }}{% else %}Photo by Nahil Naseer on Unsplash{% endif %}</div>
-{% endif %}
+	<!-- Image attribution -->
+	<div class="caption-overlay">{% if featured_article.thumbnail and featured_article.attribution %}{{ featured_article.attribution|urlizetrunc:20 }}{% elif not featured_article.thumbnail %}Photo by Nahil Naseer on Unsplash{% endif %}</div>
+</div>
 
 {% endif %}
 {% endblock %}

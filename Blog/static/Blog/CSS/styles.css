@@ -658,6 +658,26 @@ svg.tea #steamR {
 	transition: 0.5s ease;
 }
 
+/* Caption overlay */
+
+.caption-overlay {
+	right: 0;
+	bottom: 0;
+	z-index: 1;
+	color: white;
+	display: inline;
+	font-size: 0.5em;
+	position: absolute;
+	padding: 0.4em 0.7em;
+	border-radius: 0.5em 0 0 0;
+	background-color: rgba(0,0,0,0.3);
+	font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.caption-overlay * {
+	color: white;
+}
+
 
 /* MAIN CONTAINER CONTAINING NAVBAR, PAGE ETC. */
 
@@ -774,13 +794,6 @@ svg.tea #steamR {
 
 .feature .cutout-overlay .feature-caption {
 	font-size: 0.4em;
-}
-
-.attribution {
-	color: #999;
-	font-size: 0.6em;
-	text-align: center;
-	font-family: 'Montserrat Alternates', sans-serif;
 }
 
 
