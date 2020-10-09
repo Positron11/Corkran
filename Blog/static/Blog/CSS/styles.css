@@ -666,6 +666,7 @@ svg.tea #steamR {
 	max-width: 1800px;
 	box-sizing: border-box;
 	padding: 0 4em 2em 4em;
+	max-height: 10000000em;
 	transition: 0.3s ease;
 }
 
