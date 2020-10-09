@@ -8,22 +8,38 @@
 <head>
 	<!-- Title -->
 	<title>{% block title %}{% endblock %} ~ Corkran</title>
-	<!-- Meta -->
+
+	<!-- Primary meta -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="{% block description %}{% endblock %}">
-	<meta name="author" content="{% block author %}Aarush Kumbhakern{% endblock %}">
-	{% block extra_meta_tags %}{% endblock %}
+
+	<!-- Canonical URL -->
+	<link rel="canonical" href="{{ request.build_absolute_uri }}{% url 'home' %}">
+	
+	<!-- OG meta -->
+	<meta property="og:site_name" content="Corkran">
+	<meta property="og:url" content="{{ request.build_absolute_uri }}{{ object.get_absolute_url }}">
+
+	<!-- Twitter meta -->
+	<meta name="twitter:card" content="summary">
+
+	{% block meta_tags %}{% endblock %}
+
 	<!-- Favicon -->
 	<link rel="shortcut icon" type="image/png" href="{% static 'Blog/Favicon/favicon.png' %}">
+	
 	<!-- Webfonts -->
 	<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat+Alternates:wght@400;500;600&display=swap" rel="stylesheet">
+	
 	<!-- CSS styling -->
 	<link rel="stylesheet" type="text/css" href="{% static 'Blog/CSS/styles.css' %}">
 	<link rel="stylesheet" href="{% static 'Blog/CSS/lazy.css' %}">
+	
 	<!-- Fontawesome -->
 	<link rel="stylesheet" href="{% static 'Blog/Fontawesome/CSS/all.min.css' %}">
 </head>
+
 
 <body>
 	<!-- Top of page anchor -->

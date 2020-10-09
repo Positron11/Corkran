@@ -4,9 +4,21 @@
 
 {% block title %}"{{ article.title }}" by {{ article.author.username }}{% endblock %}
 {% block description %}{{ article.content|truncatechars:300 }}{% endblock %}
-{% block author %}{{ article.author.username }}{% endblock %}
-{% block extra_meta_tags %}
+
+{% block meta_tags %}
+<!-- Basic article meta tags -->
+<meta name="author" content="{{ article.author.username }}">
 <meta name="keywords" content="{{ article.tags.all|join:','}}">
+
+<!-- OG article meta tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{ article.title }}">
+<meta property="og:article:author" content="{{ article.author.username }}">
+<meta property="og:description" content="{{ article.content|truncatechars:300 }}">
+<meta property="og:image" content="https://ik.imagekit.io/f92sz8hl8b{% if article.thumbnail %}{{ article.thumbnail.url }}{% else %}/media/defaults/feature.jpg{% endif %}?tr=w-1200,h-600">
+
+<!-- Twitter article meta tags -->
+<meta name="twitter:card" content="summary_large_image">
 {% endblock %}
 
 {% block feature %}
