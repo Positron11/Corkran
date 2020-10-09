@@ -8,7 +8,7 @@
 
 <!-- Feature image -->
 <div 
-	data-href="https://ik.imagekit.io/f92sz8hl8b/{{ featured_article.thumbnail.url }}" 
+	data-href="https://ik.imagekit.io/f92sz8hl8b{% if featured_article.thumbnail %}{{ featured_article.thumbnail.url }}{% else %}/media/defaults/feature.jpg{% endif %}" 
 	data-srcset="
 		https://ik.imagekit.io/f92sz8hl8b{% if featured_article.thumbnail %}{{ featured_article.thumbnail.url }}{% else %}/media/defaults/feature.jpg{% endif %}?tr=w-1650,h-550,fo-auto 3000w, 
 		https://ik.imagekit.io/f92sz8hl8b{% if featured_article.thumbnail %}{{ featured_article.thumbnail.url }}{% else %}/media/defaults/feature.jpg{% endif %}?tr=w-1350,h-450,fo-auto 1500w,
