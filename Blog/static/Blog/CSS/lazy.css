@@ -1,5 +1,5 @@
 .progressive img.preview {
-	filter: blur(0.5vw);
+	filter: blur(1vw);
 	transform: scale(1.03);
 }
 
