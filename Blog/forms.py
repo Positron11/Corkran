@@ -1,5 +1,13 @@
-from .models import Article, Comment
+from .models import Article, Comment, Announcement
 from django import forms
+
+
+# new announcement
+class AnnouncementForm(forms.ModelForm):
+
+	class Meta:
+		model = Announcement
+		fields = ["content"]
 
 
 # comment creation

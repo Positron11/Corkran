@@ -5,7 +5,27 @@
 
 {% block content %}
 
+{% if request.user.is_superuser %}
+<!-- New announcement form -->
+<form method="post" class="vertically-space-items confirm-leave">{% csrf_token %}
+	<!-- Textarea -->
+	<textarea name="content" rows="5" required autocomplete="off" placeholder="New announcement..." class="closer-below"></textarea>
+
+	<!-- Submit button -->
+	<div class="right-align-text">
+		<button class="button" type="submit" name="create">Announce</button>
+	</div>
+</form>
+
+<!-- Horizontal line -->
+<div class="horizontal-divider"></div>
+{% endif %}
+
+
 {% for announcement in announcements %}
+
+<!-- Announcement anchor -->
+<div class="anchor" id="{{ announcement.id }}"></div>
 
 <!-- Announcement -->
 <div class="card">
@@ -17,6 +37,13 @@
 
 	<!-- Content -->
 	{{ announcement.content|urlizetrunc:40|linebreaks }}
+
+	{% if request.user.is_superuser %}
+	<!-- Delete button -->
+	<div class="right-align-text">
+		<a href="{% url 'delete-announcement' announcement.id %}" class="minimal danger button">Delete</a>
+	</div>
+	{% endif %}
 </div>
 
 {% empty %}

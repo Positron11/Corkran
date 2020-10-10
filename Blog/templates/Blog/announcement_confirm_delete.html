@@ -1,0 +1,24 @@
+{% extends 'Blog/base.html' %}
+
+{% block title %}Delete Announcement{% endblock %}
+
+{% block content %}
+
+<!-- Confirm delete -->
+<div class="card">
+	<!-- Header -->
+	<div class="header">
+		<div class="heading">Are you sure you want to delete this announcement?</div>
+		<div class="subheading">In case you've forgotten, it begins "{{ object.content|truncatechars:25 }}"</div>
+	</div>
+
+	<!-- Confirm or cancel -->
+	<form method="post">{% csrf_token %}
+		<div class="nowrap list-box split-items compact-spacing">
+			<button class="danger button" type="submit">Delete</button>
+			<a href="{% url 'announcements' %}#{{ object.id }}" class="button split-item">Cancel</a>
+		</div>
+	</form>
+</div>
+
+{% endblock %}

@@ -1,9 +1,9 @@
 from django.shortcuts import get_list_or_404, get_object_or_404, render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from .forms import CommentForm, FeatureArticleForm, AnnouncementForm
 from .models import Article, Announcement, Comment
 from next_prev import next_in_order, prev_in_order
-from .forms import CommentForm, FeatureArticleForm
 from django.views.generic.list import ListView
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
@@ -228,10 +228,43 @@ def terms_conditions(request):
 
 
 # announcements page
-class Announcements(ListView):
+def announcements(request):
+	# all announcements queryset
+	announcements = Announcement.objects.all().order_by("-date")
+	
+	announcement_form = AnnouncementForm()
+
+	if request.method == 'POST':
+		# if creating an announcement
+		if "create" in request.POST:
+			announcement_form = AnnouncementForm(request.POST)
+
+			# if announcement form is valid
+			if announcement_form.is_valid:
+				announcement_form.save()
+
+				# display success message
+				messages.success(request, "Announcement published.")
+			else:
+				# display error messsage
+				messages.error(request, "Error publishing announcement.")			
+
+	context = {
+		"announcements": announcements,
+		"announcement_form": announcement_form,
+	}
+
+	return render(request, "Blog/announcement_list.html", context)
+
+
+# delete announcement
+class DeleteAnnouncement(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	model = Announcement
-	ordering = ['-date']
-	context_object_name = "announcements"
+	success_url = reverse_lazy('announcements')
+
+	# check if currently logged in user is author
+	def test_func(self):
+		return self.request.user.is_superuser
 
 
 # article detail

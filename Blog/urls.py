@@ -8,7 +8,10 @@ urlpatterns = [
     path('privacy/', views.privacy, name='privacy'),
     path('disclaimer/', views.disclaimer, name='disclaimer'),
     path('terms-and-conditions/', views.terms_conditions, name='terms-and-conditions'),
-    path('announcements/', views.Announcements.as_view(), name='announcements'),
+    path('announcements/', views.announcements, name='announcements'),
+
+    # announcement deletion view
+    path('announcements/<int:pk>/delete/', views.DeleteAnnouncement.as_view(), name='delete-announcement'),
 
     # user library
     path('library/', views.Library.as_view(), name='library'),
