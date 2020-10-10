@@ -740,13 +740,23 @@ svg.tea #steamR {
 }
 
 .navbar .links-container #mailbox_btn.unread::before {
-	top: -0.5em;
-	content: "•";
-	right: -0.7em;
-	color: #f32929;
-	font-weight: 900;
+	right: 0;
+	top: -0.8em;
+	height: 1.45em;
+	min-width: 1.4em;
+	color: #00a32c;
+	font-weight: 600;
+	font-size: 0.65em;
+	line-height: 1.4em;
+	text-align: center;
 	position: absolute;
-	font-family: "Font Awesome 5 Free";
+	border-radius: 0.7em;
+	box-sizing: border-box;
+	padding: 0 0.2em 0 0.4em;
+	transform: translateX(100%);
+	content: ""attr(data-unread)"";
+	background-color:  rgb(4, 222, 63, 0.2);
+	font-family: 'Montserrat Alternates', sans-serif;
 }
 
 .navbar .links-container #nav_menu_btn {
@@ -781,14 +791,7 @@ svg.tea #steamR {
 	position: absolute;
 	white-space: nowrap;
 	text-overflow: ellipsis;
-}
-
-.navbar .links-container #library_btn::after {
-	content: ""attr(data-articles)"";
-}
-
-.navbar .links-container #account_btn::after {
-	content: ""attr(data-username)"";
+	content: ""attr(data-info)"";
 }
 
 .navbar .progress-bar-container .progress-bar {
@@ -1162,13 +1165,19 @@ svg.tea #steamR {
 }
 
 .mail.unread::after {
-	top: 0.3em;
-	content: "•";
+	top: 0.5em;
 	right: 0.5em;
-	color: #f32929;
+	width: 0.8em;
+	height: 0.8em;
+	content: "•";
+	color: #00a32c;
 	font-weight: 900;
-	font-size: 1.3em;
+	font-size: 1.2em;
+	line-height: 0.8em;
 	position: absolute;
+	text-align: center;
+	border-radius: 50%;
+	background-color: rgb(4, 222, 63, 0.2);
 	font-family: "Font Awesome 5 Free";
 }
 

@@ -73,7 +73,7 @@
 				<!-- General links -->
 				<a href="{% url 'home' %}" class="unformatted" id="banner" title="Corkran">*Co.</a>
 				{% if user.is_authenticated %}
-				<a href="{% url 'library' %}" class="unformatted link info-btn" id="library_btn" data-articles="{{ user.profile.library.count }} article{% if user.profile.library.count != 1 %}s{% endif %}" title="Library">Library</a>
+				<a href="{% url 'library' %}" class="unformatted link info-btn" id="library_btn" data-info="{{ user.profile.library.count }} article{% if user.profile.library.count != 1 %}s{% endif %}" title="Library">Library</a>
 				{% else %}
 				<a href="{% url 'home' %}" class="unformatted link" id="home_btn" title="Home">Home</a>
 				{% endif %}
@@ -81,12 +81,12 @@
 
 				{% if user.is_authenticated %}
 				<!-- Mailbox -->
-				<a href="{% url 'mailbox' %}" class="unformatted link {% mailbox_status user%}" id="mailbox_btn" title="Mailbox">Mailbox</a>
+				<a href="{% url 'mailbox' %}" class="unformatted link {% mailbox_status user %}" id="mailbox_btn" data-unread="{% unread_mail_count user %}" title="Mailbox">Mailbox</a>
 				
 				<!-- Profile and logout dropdown -->
 				<div class="dropdown dropdown-center" id="account_dropdown">
 					<!-- Dropdown button -->
-					<div class="clickable unformatted link info-btn dropdown-label" id="account_btn" data-username="{{ user.username }}">Account</div>
+					<div class="clickable unformatted link info-btn dropdown-label" id="account_btn" data-info="{{ user.username }}">Account</div>
 					
 					<!-- Dropdown -->
 					<div class="dropdown-content">

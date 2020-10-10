@@ -23,6 +23,11 @@ def mailbox_status(user):
 
 
 @register.simple_tag
+def unread_mail_count(user):
+	return len([mail for mail in Mail.objects.filter(recipient=user) if not mail.read])
+
+
+@register.simple_tag
 def latest_article_title():
 	if len(Article.objects.all()):
 		return Article.objects.order_by('-date').first().title
