@@ -15,6 +15,11 @@ body {
 
 /* BROWSER RESETS */
 
+:-moz-ui-invalid {
+	box-shadow:none;
+	border-color: #f32929;
+}
+
 .fx-relay-email-input-wrapper {
 	z-index: inherit !important;
 }
