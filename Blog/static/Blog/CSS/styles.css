@@ -13,6 +13,13 @@ body {
 }
 
 
+/* BROWSER RESETS */
+
+.fx-relay-email-input-wrapper {
+	z-index: inherit !important;
+}
+
+
 /* LINKS */
 
 a {
