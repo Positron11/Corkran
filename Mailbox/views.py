@@ -1,8 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import DeleteView
 from django.views.generic.list import ListView
-from django.urls import reverse_lazy
 from django.shortcuts import render
+from next_prev import next_in_order
+from django.urls import reverse
 from .models import Mail
 
 # mailbox
@@ -27,7 +28,10 @@ class Mailbox(LoginRequiredMixin, ListView):
 # delete mail
 class DeleteMail(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	model = Mail
-	success_url = reverse_lazy('mailbox')
+
+	def get_success_url(self):
+		mail = Mail.objects.filter(recipient=self.request.user).order_by('-date')
+		return reverse('mailbox') + f"#{next_in_order(self.get_object(), mail).id if len(mail) > 1 else ''}"
 
 	# check if currently logged in user is author
 	def test_func(self):

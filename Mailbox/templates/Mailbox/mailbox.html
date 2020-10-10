@@ -57,6 +57,10 @@
 <!-- Mailbox -->
 <div id="mailbox" class="vertically-space-items responsive">
 	{% for mail in mailbox %}
+
+	<!-- Mail anchor -->
+	<div class="anchor" id="{{ mail.id }}"></div>
+
 	<div class="card mail {{ mail|to_class_name }} {% if mail in unread %}unread{% endif %}">
 		<!-- Heading and date -->
 		<div class="mail-header">
