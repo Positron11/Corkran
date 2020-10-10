@@ -93,6 +93,14 @@ p.montserrat, .text.montserrat {
 	text-align: center;
 }
 
+/* GENERIC TEXT ELEMENTS */
+
+.horizontal-divider {
+	width: 100%;
+	margin: 1em 0;
+	border-top: 1px solid #eaeaea;
+}
+
 
 /* GENERIC PROPERTIES */
 
@@ -1121,12 +1129,6 @@ svg.tea #steamR {
 
 #comments_container .comment .editor.edit {
 	margin-bottom: -1.3em;
-}
-
-#comments_container #new_comment_form {
-	padding-bottom: 1em;
-	border-bottom: 1px solid #eaeaea;
-	margin-bottom: 1em;
 }
 
 
