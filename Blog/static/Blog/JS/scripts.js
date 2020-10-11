@@ -407,7 +407,7 @@ function scrollTopButton() {
 // TRUNCATE ANNOUNCEMENT IN SIDEBAR
 function resizeSidebar() {
 	// approximate fixed value for distance from top of sidebar to bottom of page
-	var height = window.innerHeight - 200;
+	var height = window.innerHeight - parseFloat($(".sidebar").css("top"));
 
 	// set sidebar height
 	$('.sidebar').css("height", height);
