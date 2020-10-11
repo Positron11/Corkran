@@ -717,9 +717,15 @@ svg.tea #steamR {
 	top: 0;
 	z-index: 5;
 	position: sticky;
+	box-shadow: none;
 	background: white;
 	border-bottom: 1px solid #eaeaea;
 	transition: 0.3s ease-out;
+}
+
+.navbar.floating {
+	border-bottom: 1px solid white;
+	box-shadow: 0 5px 3px -3px rgba(0,0,0,0.1);
 }
 
 .navbar .links-container {

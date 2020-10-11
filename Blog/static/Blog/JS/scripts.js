@@ -346,7 +346,11 @@ $(function () {
 // STYLE NAVBAR
 function styleNavbar() {
 	calculateProgressBar();
-	$(".navbar").css("box-shadow", window.pageYOffset > 0 ? "0 5px 3px -3px rgba(0,0,0,0.1)" : "none");
+	if (window.pageYOffset > 0) {
+		$(".navbar").addClass("floating");
+	} else {
+		$(".navbar").removeClass("floating");
+	}
 }
 
 
