@@ -495,7 +495,7 @@ function fadeTruncateArticles() {
 // FLOAT MESSAGE BASED ON SCROLL POSITION
 function floatMessage() {
 	if ($(".alert").length) {
-		if (($(".alert").offset().top - (window.pageYOffset + $(".navbar").outerHeight())) <= 10) {
+		if ($(".alert").offset().top == window.pageYOffset + parseFloat($(".alert").css("top"))) {
 			$(".alert").addClass("floating");
 		} else {
 			$(".alert").removeClass("floating");
