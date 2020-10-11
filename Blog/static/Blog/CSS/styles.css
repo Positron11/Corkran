@@ -796,10 +796,38 @@ svg.tea #steamR {
 
 .navbar .progress-bar-container .progress-bar {
 	width: 0%;
+	height: 2px;
 	max-width: 100%;
-	padding: 0.1em 0;
+	position: relative;
 	margin-bottom: -1px;
 	background: #ccf9d8;
+}
+
+.navbar .progress-bar-container .progress-bar::after {
+	right: 0;
+	opacity: 0;
+	top: -0.7em;
+	height: 1.45em;
+	min-width: 1.4em;
+	color: #00a32c;
+	font-weight: 600;
+	font-size: 0.5em;
+	line-height: 1.4em;
+	text-align: center;
+	position: absolute;
+	border-radius: 0.7em;
+	box-sizing: border-box;
+	background-color: #ccf9d8;
+	padding: 0.1em 0.4em 0.3em 0.5em;
+	content: ""attr(data-progress)"";
+	transform: translateX(40%) scale(0);
+	font-family: 'Montserrat Alternates', sans-serif;
+	transition: 0.3s ease;
+}
+
+.navbar .progress-bar-container .progress-bar.show-percentage::after {
+	opacity: 1;
+	transform: translateX(40%) scale(1);
 }
 
 

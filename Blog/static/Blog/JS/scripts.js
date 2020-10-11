@@ -368,8 +368,17 @@ function calculateProgressBar() {
 			completed = y_offset / height * 100;
 		}
 
-		// update progress bar width
-		$(".progress-bar").css("width", completed + "%");
+		// update progress bar width and data
+		$(".progress-bar")
+			.css("width", completed + "%")
+			.attr("data-progress", Math.max(0, Math.min(parseInt(completed), 100)) + "%");
+
+		// show progress percentage badge if reading
+		if (completed > 0 && completed < 100) {
+			$(".progress-bar").addClass("show-percentage");
+		} else {
+			$(".progress-bar").removeClass("show-percentage")
+		}
 	}
 }
 
