@@ -1445,7 +1445,7 @@ svg.tea #steamR {
 		display: block;
 	}
 	#navbar.mobile-show #nav_menu_btn {
-		transform: rotate(-90deg);
+		transform: rotate(-225deg);
 	}
 	.alert {
 		top: 6.5em;
