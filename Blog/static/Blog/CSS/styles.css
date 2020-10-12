@@ -1163,6 +1163,10 @@ svg.tea #steamR {
 	margin: 1em 0;
 }
 
+#comments_container .comment .comment-btn-container{
+	margin-left: -0.36em;
+}
+
 #comments_container .comment .comment-btn-container .button {
 	margin-right: 0.5em;
 }
