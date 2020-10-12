@@ -43,7 +43,7 @@
 
 {% if searched and articles %}
 <!-- Search results counter -->
-<div class="closer-below right-align-text grey">
+<div class="closer-below right-align-text small grey">
 	Result{% if page_obj.paginator.count != 1 %}s{% endif %} {{ page_obj.start_index }} to {{ page_obj.end_index }} of {{ page_obj.paginator.count }}
 </div>
 {% endif %}

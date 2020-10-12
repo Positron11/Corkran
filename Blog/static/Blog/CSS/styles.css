@@ -52,11 +52,28 @@ a.unformatted {
 
 /* PARAGRAPHS & TEXT */
 
+.montserrat {
+	font-size: 0.7em;
+	font-family: 'Montserrat Alternates', sans-serif;
+}
+
 p, .text {
 	line-height: 1.7em;
 	overflow-x: hidden;
 	text-align: justify;
 	text-overflow: ellipsis;
+}
+
+p.montserrat, .text.montserrat {
+	line-height: 2em;
+}
+
+.small {
+	font-size: 0.9em;
+}
+
+.montserrat.small {
+	font-size: 0.6em;
 }
 
 .preserve-linebreaks {
@@ -68,19 +85,6 @@ p, .text {
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
-}
-
-.montserrat {
-	font-size: 0.7em;
-	font-family: 'Montserrat Alternates', sans-serif;
-}
-
-.montserrat.small {
-	font-size: 0.6em;
-}
-
-p.montserrat, .text.montserrat {
-	line-height: 2em;
 }
 
 .section-heading {
