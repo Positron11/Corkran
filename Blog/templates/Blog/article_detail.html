@@ -182,11 +182,11 @@
 		</span>
 	</div>
 	
-	<!-- Content -->
-	<div class="content">{{ article.content|urlizetrunc:40|linebreaks }}</div>
-
-	<!-- Tags box -->
-	<div id="article_tags">
+	<div class="vertically-space-items">
+		<!-- Content -->
+		<div class="content">{{ article.content|urlizetrunc:40|linebreaks }}</div>
+		
+		<!-- Tags box -->
 		<div class="list-box compact-spacing">
 			{% for tag in article.tags.all %}
 			<a href="{% url 'tag-sorted-articles' tag %}" class="unselectable clickable single-line-text tag">

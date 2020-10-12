@@ -1089,13 +1089,8 @@ svg.tea #steamR {
 
 /* TAGS */
 
-#article_tags {
-	margin-top: 1.5em;
-	padding-top: 2em;
-	border-top: 1px solid #eaeaea;
-}
-
 .tag {
+	font-size: 0.85em;
 	position: relative;
 	padding: 0.3em 0.6em;
 	border-radius: 0.5em;
