@@ -743,7 +743,6 @@ svg.tea #steamR {
 	font-weight: 500;
 	grid-area: banner;
 	font-variant: small-caps;
-	text-shadow: 3px 3px 1px #ccc;
 }
 
 #nav_mailbox_btn {
@@ -777,7 +776,6 @@ svg.tea #steamR {
 	font-size: 1.3em;
 	justify-self: end;
 	grid-area: menu-btn;
-	text-shadow: 2px 2px 1px #ccc;
 	-webkit-tap-highlight-color: transparent;
 	transition: 0.3s ease;
 }
@@ -887,10 +885,6 @@ svg.tea #steamR {
 	position: sticky;
 	overflow: hidden;
 	align-self: flex-start;
-}
-
-#sidebar .header .heading {
-	text-shadow: 3px 3px 1px #ccc;
 }
 
 #sidebar .latest-post {
@@ -1452,7 +1446,6 @@ svg.tea #steamR {
 	}
 	#navbar.mobile-show #nav_menu_btn {
 		transform: rotate(-90deg);
-		text-shadow: 0px 0px 0px #ccc;
 	}
 	.alert {
 		top: 6.5em;
