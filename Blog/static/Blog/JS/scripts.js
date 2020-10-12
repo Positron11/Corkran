@@ -1,6 +1,6 @@
 // Get loading overlay and main container elements
 var main_container = document.getElementById('main');
-var loading_overlay = document.getElementById('loading-overlay');
+var loading_overlay = document.getElementById('loading_overlay');
 
 
 // Make the main page invisible before it is done loading
@@ -101,13 +101,13 @@ $(function () {
 	// Toggle mobile navbar links
 	$(document).on('click', '#nav_menu_btn', function (e) {
 		e.preventDefault();
-		$(".navbar").toggleClass("mobile-show");
+		$("#navbar").toggleClass("mobile-show");
 	});
 
 	// Hide mobile navbar links if clicked outside navbar
 	$(document).on('click', 'body', function (e) {
-		if ((!e.target.id == "navbar" || !$(e.target).closest('#navbar').length) && $(".navbar").hasClass("mobile-show")) {
-			$(".navbar").removeClass("mobile-show");
+		if ((!e.target.id == "navbar" || !$(e.target).closest('#navbar').length) && $("#navbar").hasClass("mobile-show")) {
+			$("#navbar").removeClass("mobile-show");
 		}
 	});
 
@@ -347,9 +347,9 @@ $(function () {
 function styleNavbar() {
 	calculateProgressBar();
 	if (window.pageYOffset > 0) {
-		$(".navbar").addClass("floating");
+		$("#navbar").addClass("floating");
 	} else {
-		$(".navbar").removeClass("floating");
+		$("#navbar").removeClass("floating");
 	}
 }
 
@@ -373,15 +373,15 @@ function calculateProgressBar() {
 		}
 
 		// update progress bar width and data
-		$(".progress-bar")
+		$("#reading_progress_bar")
 			.css("width", completed + "%")
 			.attr("data-progress", Math.max(0, Math.min(parseInt(completed), 100)) + "%");
 
 		// show progress percentage badge if reading
 		if (completed > 0 && completed < 100) {
-			$(".progress-bar").addClass("show-percentage");
+			$("#reading_progress_bar").addClass("show-percentage");
 		} else {
-			$(".progress-bar").removeClass("show-percentage")
+			$("#reading_progress_bar").removeClass("show-percentage")
 		}
 	}
 }
@@ -392,7 +392,7 @@ function scrollTopButton() {
 	var state;
 
 	// if on article detail page and started reading article...
-	if ($(".main-article").length && parseFloat($(".progress-bar").css("width")) >= 1) {
+	if ($(".main-article").length && parseFloat($("#reading_progress_bar").css("width")) >= 1) {
 		state = "show";
 	// otherwise if not on detail page and at least scrolled down a bit...
 	} else if (!$(".main-article").length && window.pageYOffset >= 100) {
@@ -411,10 +411,10 @@ function scrollTopButton() {
 // TRUNCATE ANNOUNCEMENT IN SIDEBAR
 function resizeSidebar() {
 	// approximate fixed value for distance from top of sidebar to bottom of page
-	var height = window.innerHeight - parseFloat($(".sidebar").css("top"));
+	var height = window.innerHeight - parseFloat($("#sidebar").css("top"));
 
 	// set sidebar height
-	$('.sidebar').css("height", height);
+	$('#sidebar').css("height", height);
 }
 
 
@@ -600,21 +600,21 @@ function blurListBox(listbox) {
 
 // TOGGLE ARTICLE ZEN MODE VIEW
 function toggleZenMode() {
-	if (!$(".zen-mode").hasClass("visible")) {
+	if (!$("#zen_mode").hasClass("visible")) {
 		// remove body scrollbar and compensate width with padding to avoid jerk
 		$("body")
 			.css("overflow", "hidden")
 			.css("padding-right", getScrollbarWidth() + "px");
 		
 		// make zen mode overlay visible
-		$(".zen-mode").addClass("visible");
+		$("#zen_mode").addClass("visible");
 	} else {
 		// remove zen mode overlay
-		$(".zen-mode").removeClass("visible");
+		$("#zen_mode").removeClass("visible");
 
 		// wait for overlay to go, then add body scrollbar
-		$(".zen-mode").on("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend", function() {
-			if (!$(".zen-mode").hasClass("visible")) {
+		$("#zen_mode").on("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend", function() {
+			if (!$("#zen_mode").hasClass("visible")) {
 				$("body")
 					.css("overflow", "auto")
 					.css("padding-right", "0px");

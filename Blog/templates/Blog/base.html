@@ -46,7 +46,7 @@
 	<div class="anchor" id="top"></div>
 
 	<!-- Loading overlay -->
-	<div id="loading-overlay">
+	<div id="loading_overlay">
 		<svg class="tea" width="37" height="48" viewbox="0 0 37 48" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path
 				d="M27.0819 17H3.02508C1.91076 17 1.01376 17.9059 1.0485 19.0197C1.15761 22.5177 1.49703 29.7374 2.5 34C4.07125 40.6778 7.18553 44.8868 8.44856 46.3845C8.79051 46.79 9.29799 47 9.82843 47H20.0218C20.639 47 21.2193 46.7159 21.5659 46.2052C22.6765 44.5687 25.2312 40.4282 27.5 34C28.9757 29.8188 29.084 22.4043 29.0441 18.9156C29.0319 17.8436 28.1539 17 27.0819 17Z"
@@ -68,10 +68,10 @@
 	<!-- Main container -->
 	<div id="main" class="vertically-space-items responsive">
 		<!-- Navbar -->
-		<div class="navbar unselectable" id="navbar">
-			<div class="links-container">
+		<div class="unselectable" id="navbar">
+			<div id="nav_links_container">
 				<!-- General links -->
-				<a href="{% url 'home' %}" class="unformatted" id="banner" title="Corkran">*Co.</a>
+				<a href="{% url 'home' %}" class="unformatted" id="nav_banner" title="Corkran">*Co.</a>
 				{% if user.is_authenticated %}
 				<a href="{% url 'library' %}" class="unformatted link info-btn" id="library_btn" data-info="{{ user.profile.library.count }} article{% if user.profile.library.count != 1 %}s{% endif %}" title="Library">Library</a>
 				{% else %}
@@ -81,7 +81,7 @@
 
 				{% if user.is_authenticated %}
 				<!-- Mailbox -->
-				<a href="{% url 'mailbox' %}" class="unformatted link {% mailbox_status user %}" id="mailbox_btn" data-unread="{% unread_mail_count user %}" title="Mailbox">Mailbox</a>
+				<a href="{% url 'mailbox' %}" class="unformatted link {% mailbox_status user %}" id="nav_mailbox_btn" data-unread="{% unread_mail_count user %}" title="Mailbox">Mailbox</a>
 				
 				<!-- Profile and logout dropdown -->
 				<div class="dropdown dropdown-center" id="account_dropdown">
@@ -105,15 +105,13 @@
 				{% endif %}
 
 				<!-- Mobile-only links -->
-				<a href="{% url 'announcements' %}" class="unformatted link" id="announcements_btn" title="Announcements">Announcements</a>
+				<a href="{% url 'announcements' %}" class="unformatted link" id="nav_announcements_btn" title="Announcements">Announcements</a>
 				<a href="" class="unformatted" id="nav_menu_btn"><i class="far fa-compass"></i></a>
 			</div>
 			
 
 			<!-- Progress bar -->
-			<div class="progress-bar-container">
-				<div class="progress-bar" data-progress="0%"></div>
-			</div>
+			<div id="reading_progress_bar" data-progress="0%"></div>
 		</div>
 
 
@@ -121,9 +119,9 @@
 
 
 		<!-- Main page -->
-		<div class="page">
+		<div id="page">
 			<!-- Sidebar -->
-			<div class="sidebar">
+			<div id="sidebar">
 				<!-- Header -->
 				<div class="header">
 					<div class="heading">*Savoir.</div>
@@ -147,7 +145,7 @@
 
 
 			<!-- Main content -->
-			<div class="page-content vertically-space-items responsive">
+			<div id="page_content" class="vertically-space-items responsive">
 				<!-- Messages -->
 				{% for message in messages %}
 				<div class="alert {{ message.tags }}">
@@ -163,7 +161,7 @@
 
 
 		<!-- Footer -->
-		<div class="footer vertically-space-items">
+		<div id="footer" class="vertically-space-items">
 			<!-- Statement -->
 			<div class="small grey montserrat text center-align-text closer-below">
 				Copyright ©  {% now "Y" %} Corkran Inc. All rights reserved. Registration on or use of this site 
