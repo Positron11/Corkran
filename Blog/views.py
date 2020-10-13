@@ -392,7 +392,7 @@ def detail(request, pk, slug):
 		"previous_article": previous_article, 
 		"article_in_library": article_in_library,
 		"random_article_url": random_article_url,
-		"similar_articles": article.tags.similar_objects()[:7],
+		"similar_articles": article.tags.similar_objects()[:8],
 		"comment_form": comment_form, 
 		"feature_form": feature_form
 	}
