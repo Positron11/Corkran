@@ -119,9 +119,12 @@ $(function () {
 	});
 
 	// Hide mobile dropdowns if clicked outside dropdown
-	$(document).on('click', 'body', function (e) {
-		if (!$(e.target).closest('.dropdown').length && $(".dropdown").hasClass("dropped")) {
-			$(".dropdown").removeClass("dropped");
+	$(document).on('mousedown', 'body', function (e) {
+		currently_dropped = $(".dropdown.dropped");
+		if ($(currently_dropped).length) {
+			if (!$(e.target).closest(currently_dropped).length) {
+				$(currently_dropped).removeClass("dropped");
+			}
 		}
 	});
 
