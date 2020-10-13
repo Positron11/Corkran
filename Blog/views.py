@@ -400,8 +400,8 @@ def detail(request, pk, slug):
 	return render(request, "Blog/article_detail.html", context)
 
 
-# create article
-class CreateArticle(LoginRequiredMixin, CreateView):
+# article form
+class ArticleFormView(LoginRequiredMixin):
 	model = Article
 	fields = ["thumbnail", "title", "content", "tags", "attribution"]
 
@@ -411,24 +411,19 @@ class CreateArticle(LoginRequiredMixin, CreateView):
 		context["tags"] = Article.tags.most_common()[:100]
 		return context
 
-	# set post author to currently logged in user
+
+# create article
+class CreateArticle(ArticleFormView, CreateView):
+
+	# set post author to currently logged in user and show success message
 	def form_valid(self, form):
 		form.instance.author = self.request.user
 		messages.success(self.request, f'"{capwords(form.instance.title)}" published.')
 		return super().form_valid(form)
 
-	
+ 
 # edit article
-class EditArticle(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
-	model = Article
-	fields = ["thumbnail", "title", "content", "tags", "attribution"]
-	template_name_suffix = "_form"
-
-	# all tags as context
-	def get_context_data(self, **kwargs):          
-		context = super().get_context_data(**kwargs)                     
-		context["tags"] = Article.tags.most_common()[:100]
-		return context
+class EditArticle(ArticleFormView, UserPassesTestMixin, UpdateView):
 
 	# show success message
 	def form_valid(self, form):
