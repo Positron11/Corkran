@@ -84,7 +84,7 @@
 				<a href="{% url 'mailbox' %}" class="unformatted link {% mailbox_status user %}" id="nav_mailbox_btn" data-unread="{% unread_mail_count user %}" title="Mailbox">Mailbox</a>
 				
 				<!-- Profile and logout dropdown -->
-				<div class="dropdown dropdown-center" id="account_dropdown">
+				<div class="dropdown" id="account_dropdown">
 					<!-- Dropdown button -->
 					<div class="clickable unformatted link info-btn dropdown-label" id="account_btn" data-info="{{ user.username }}">Account</div>
 					

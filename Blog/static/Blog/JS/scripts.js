@@ -128,6 +128,12 @@ $(function () {
 		}
 	});
 
+	// position dropdown
+	$(document).on('click mouseenter', '.dropdown-label', function (e) {
+		e.preventDefault();
+		positionDropdown(this);
+	});
+
 
 	// Search suggestions
 	$(document).on('input', '#article_search_input', function (e) {
@@ -181,6 +187,7 @@ $(function () {
 	$(window).on("resize", function () {
 		resizeSidebar();
 		fadeTruncateArticles();
+		positionDropdown($(".dropdown.dropped .dropdown-label")[0]);
 		$('.list-box.nowrap.blur-overflow').each(function () {
 			blurListBox(this);
 		});
@@ -647,4 +654,34 @@ function getScrollbarWidth() {
 	outer.parentNode.removeChild(outer);
 
 	return scrollbarWidth;
+}
+
+// POSITION DROPDOWN
+function positionDropdown(dropdown) { 
+	// get page padding
+	var main_container_padding = ($(main_container).innerWidth() - $(main_container).width()) / 2;
+		
+	// find dropdown
+	var dropdown_content = $(dropdown).next(".dropdown-content");
+
+	// get sizes
+	var label_width = $(dropdown).outerWidth()
+	var dropdown_width = dropdown_content.outerWidth();
+	
+	// calculate ideal offset
+	var center_offset = (label_width - dropdown_width) / 2;
+	
+	// calculate overflow compensation
+	var bounding_box = dropdown.getBoundingClientRect();
+	var left_overflow_compensation = calculateOverflowCompensation(bounding_box.left - (main_container_padding - center_offset));
+	var right_overflow_compensation = calculateOverflowCompensation((window.innerWidth - bounding_box.right) - (main_container_padding - center_offset));
+	
+	// apply x position
+	dropdown_content.css("transform", "translateX(" + (center_offset - left_overflow_compensation + right_overflow_compensation) +"px)");
+}
+
+// CALCULATE OVERFLOW COMPENSATION
+function calculateOverflowCompensation(overflow) {
+	var absolute_overflow = Math.min(0, overflow);
+	return absolute_overflow != 0 ? absolute_overflow - 5 : absolute_overflow;
 }

@@ -486,18 +486,17 @@ input[type="file"] {
 }
 
 .dropdown-content {
-	top: 110%;
+	top: 100%;
 	opacity: 0;
 	z-index: 3;
 	padding: 1em 2em;
 	position: absolute;
 	border-radius: 0.5em;
 	pointer-events: none;
-	top: calc(100% + 0.5rem);
+	top: calc(100% + 0rem);
 	background-color: white;
-	transform: translateY(-10%) scale(0.9);
 	box-shadow: 0 0 6px 3px rgb(0,0,0,0.1);
-	transition: 0.3s ease;
+	transition: opacity 0.3s ease, top 0.3s ease;
 }
 
 .dropdown-content::before {
@@ -512,19 +511,6 @@ input[type="file"] {
 
 .dropdown.compact .dropdown-content {
 	padding: 0.5em 0.8em;
-}
-
-.dropdown.dropdown-left .dropdown-content {
-	left: 0;
-}
-
-.dropdown.dropdown-right .dropdown-content {
-	right: 0;
-}
-
-.dropdown.dropdown-center .dropdown-content{
-	left: 50%;
-	transform: translate(-50%, -10%) scale(0.9);
 }
 
 
@@ -1301,14 +1287,10 @@ svg.tea #steamR {
 		background: rgb(242, 38, 38, 0.2);
 	}
 	.dropdown:hover>.dropdown-content {
+		top: 110%;
 		opacity: 1;
 		pointer-events: all;
-	}
-	.dropdown.dropdown-center:hover>.dropdown-content {
-		transform: translate(-50%, 0) scale(1);
-	}
-	.dropdown:not(.dropdown-center):hover>.dropdown-content {
-		transform: translateY(0) scale(1);
+		top: calc(100% + 0.5rem);
 	}
 	.darken-overlay:hover:after {
 		background: rgb(0, 0, 0, 0.5);
@@ -1395,14 +1377,10 @@ svg.tea #steamR {
 		background: rgb(242, 38, 38, 0.2);
 	}
 	.dropdown.dropped>.dropdown-content {
+		top: 110%;
 		opacity: 1;
 		pointer-events: all;
-	}
-	.dropdown.dropdown-center.dropped>.dropdown-content {
-		transform: translate(-50%, 0) scale(1);
-	}
-	.dropdown.dropped:not(.dropdown-center)>.dropdown-content {
-		transform: translateY(0) scale(1);
+		top: calc(100% + 0.5rem);
 	}
 	.darken-overlay:active:after {
 		background: rgb(0, 0, 0, 0.5);
