@@ -525,6 +525,10 @@ input[type="file"] {
 	margin-bottom: 2em;
 }
 
+.separator-bars.compact>*:not(:last-child) {
+	margin-bottom: 1em;
+}
+
 .separator-bars>*:not(:last-child)::after {
 	left: 50%;
 	width: 2em;
@@ -534,6 +538,10 @@ input[type="file"] {
 	position: absolute;
 	background-color: #ddd;
 	transform: translateX(-50%);
+}
+
+.separator-bars.compact>*:not(:last-child)::after {
+	bottom: -0.5em;
 }
 
 
