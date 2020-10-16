@@ -1,8 +1,8 @@
 from django.shortcuts import get_list_or_404, get_object_or_404, render, redirect
+from .forms import CommentForm, FeatureArticleForm, AnnouncementForm, ArticleForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .forms import CommentForm, FeatureArticleForm, AnnouncementForm
-from .models import Article, Announcement, Comment
+from .models import Article, Announcement, Comment, Category
 from next_prev import next_in_order, prev_in_order
 from django.views.generic.list import ListView
 from django.contrib.auth.models import User
@@ -303,6 +303,15 @@ def detail(request, pk, slug):
 	except:
 		subscribed = False
 
+	# get category group and all categories
+	if (article.categories.all()):
+		all_categories = article.categories.all()
+		parent_category = all_categories.first().parent
+		sub_categories = [category for category in article.categories.all()]
+		categories = {"parent": parent_category, "subcategories": sub_categories}
+	else:
+		categories = None
+
 	if request.method == 'POST':
 		# if submitting a comment
 		if any(x in request.POST for x in ["comment", "reply", "edit"]):
@@ -392,6 +401,7 @@ def detail(request, pk, slug):
 		"previous_article": previous_article, 
 		"article_in_library": article_in_library,
 		"random_article_url": random_article_url,
+		"categories": categories,
 		"similar_articles": article.tags.similar_objects()[:8],
 		"comment_form": comment_form, 
 		"feature_form": feature_form
@@ -403,13 +413,24 @@ def detail(request, pk, slug):
 # article form
 class ArticleFormView(LoginRequiredMixin):
 	model = Article
-	fields = ["thumbnail", "title", "content", "tags", "attribution"]
+	form_class = ArticleForm
 
-	# all tags as context
+	# all tags and categories as context
 	def get_context_data(self, **kwargs):          
-		context = super().get_context_data(**kwargs)                     
+		context = super().get_context_data(**kwargs)  
 		context["tags"] = Article.tags.most_common()[:100]
+		context["categories"] = {group: [category for category in Category.objects.filter(parent=group.id)] for group in Category.objects.filter(parent__isnull=True)}       
 		return context
+
+	# if form invalid
+	def form_invalid(self, form):
+		# get first field that has an error 
+		first = list(form.errors.as_data().keys())[0]
+		# get first error message string from field
+		message = "".join(form.errors.as_data()[first][0])
+		# display error message
+		messages.error(self.request, f"{message}")
+		return super().form_invalid(form)
 
 
 # create article

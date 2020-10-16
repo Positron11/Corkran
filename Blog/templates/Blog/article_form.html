@@ -1,5 +1,7 @@
 {% extends 'Blog/base.html' %}
 
+{% load corkran_tags %}
+
 {% block title %}Editor{% endblock %}
 {% block description %}Corkran article editor.{% endblock %}
 
@@ -17,7 +19,7 @@
 		<div>
 			<div class="nowrap list-box blur-overflow compact-spacing">
 				<a href="#content" class="small button">Article</a>
-				<a href="#tags" class="small button">Tags</a>
+				<a href="#categorization" class="small button">Categorization</a>
 				<a href="#image" class="small button">Image</a>
 				<a href="#unsplash" class="small button">Unsplash Search</a>
 			</div>
@@ -32,8 +34,34 @@
 		<label>{{ form.content.label }}:</label>
 		{{ form.content }}
 
+		<!-- Categories -->	
+		<div class="anchor" id="categorization"></div>
+		<label>{{ form.categories.label }}:</label>
+
+		<div>
+			<div class="list-box compact-spacing">
+				{% for group in categories %}
+				<div class="compact dropdown">
+					<!-- Dropdown button -->
+					<div class="solid minimal button dropdown-label category-group-label" id="{{ group.id }}_label">{{ group.name }}</div>
+					
+					<!-- Dropdown -->
+					<div class="dropdown-content" id="{{ group.id }}_content">
+						<div class="list-box compact-spacing category-container">
+							{% for category in categories|get_item:group %}
+							<div>
+								<input type="checkbox" name="categories" class="category-select" value="{{ category.id }}" id="id_categories_{{ category.id }}" {% if category in form.instance.categories.all %}checked{% endif %}>
+								<label for="id_categories_{{ category.id }}" class="single-line-text">{{ category.name }}</label>
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>	
+
 		<!-- Tags -->
-		<div class="anchor" id="tags"></div>
 		<label>Tags separated by commas:</label>
 		{{ form.tags }}
 

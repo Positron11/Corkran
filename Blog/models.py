@@ -9,12 +9,23 @@ from taggit.managers import TaggableManager
 from mptt.models import MPTTModel, TreeForeignKey
 
 
+# category model
+class Category(models.Model):
+	name = models.CharField(max_length=50, unique=True)
+	parent = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True)
+
+	# show self as category name when queried
+	def __str__(self):
+		return f"{self.name} ({self.parent.name})" if self.parent else self.name
+
+
 # article model
 class Article(models.Model):
 	thumbnail = models.ImageField(upload_to="thumbnails", blank=True)
 	attribution = models.CharField(max_length=100, blank=True)
 	date = models.DateTimeField(default=datetime.now, blank=True)
 	libraries = models.ManyToManyField(Profile, related_name="library", blank=True)
+	categories = models.ManyToManyField(Category, related_name="articles", blank=True)
 	author = models.ForeignKey(User, on_delete=models.CASCADE)
 	title = models.CharField(max_length=50)
 	content = models.TextField()

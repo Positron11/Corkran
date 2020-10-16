@@ -231,6 +231,14 @@ $(function () {
 	});
 
 
+	// Pre-select currently used category group
+	categorySelect($(".category-select:checked").first()[0]);
+
+	// Disable other categories when one selected
+	$(document).on('change', '.category-select', function (e) {
+		categorySelect(this);
+	});	
+
 	// New suggestion engine for tags
 	suggestionsEngine($("#id_tags"), $("#suggested_tags"), $("#suggested_tags .tag"));
 
@@ -655,6 +663,28 @@ function getScrollbarWidth() {
 
 	return scrollbarWidth;
 }
+
+
+// SELECT CATEGORY
+function categorySelect(category) {
+	// if any checkbox checked in changed checkbox's container
+	if ($(category).closest(".category-container").find(".category-select:checked").length) {
+		// highlight selected group's label
+		$(category).closest(".dropdown").find(".category-group-label").addClass("selected");
+		
+		// disable all other checkbox groups
+		$(".category-container").not($(category).closest(".category-container")).each(function (e) {
+			$(this).find(".category-select").attr("disabled", true);
+			$(this).attr("title", "Select categories from only a single group.");
+		});
+	} else {
+		// restore all to normal state
+		$(".category-container").attr("title", "");
+		$(".category-select").attr("disabled", false);
+		$(".category-group-label").removeClass("selected");
+	}
+}
+
 
 // POSITION DROPDOWN
 function positionDropdown(dropdown) { 
