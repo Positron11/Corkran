@@ -16,8 +16,7 @@
 		<label>Go to:</label>
 		<div>
 			<div class="nowrap list-box blur-overflow compact-spacing">
-				<a href="#title" class="small button">Title</a>
-				<a href="#content" class="small button">Content</a>
+				<a href="#content" class="small button">Article</a>
 				<a href="#tags" class="small button">Tags</a>
 				<a href="#image" class="small button">Image</a>
 				<a href="#unsplash" class="small button">Unsplash Search</a>
@@ -25,12 +24,11 @@
 		</div>
 
 		<!-- Title -->
-		<div class="anchor" id="title"></div>
+		<div class="anchor" id="content"></div>
 		<label>{{ form.title.label }}:</label>
 		{{ form.title }}
 
 		<!-- Content -->
-		<div class="anchor" id="content"></div>
 		<label>{{ form.content.label }}:</label>
 		{{ form.content }}
 
@@ -54,15 +52,14 @@
 		<div class="anchor" id="image"></div>
 		{% if form.instance.thumbnail %}
 		<!-- Remove thumbnail -->
-		<label>Remove thumbnail:</label>
 		<div>
 			<input type="checkbox" name="thumbnail-clear" id="thumbnail-clear_id" style="display: inline-block;">
-			<label for="thumbnail-clear_id">Remove</label>
+			<label for="thumbnail-clear_id">Remove thumbnail</label>
 		</div>
 		{% endif %}
 
 		<!-- Upload thumbnail -->
-		<label id="id_thumbnail_label">Upload thumbnail (<span>no file selected</span>):</label>
+		<label id="id_thumbnail_label">{% if article.thumbnail %}Change{% else %}Upload{% endif %} thumbnail (<span>no file selected</span>):</label>
 		<div>
 			<label id="thumbnail_button" for="id_thumbnail" class="small button"><i class="fas fa-upload"></i> Upload</label>
 			<input type="file" name="thumbnail" accept="image/*" id="id_thumbnail">
