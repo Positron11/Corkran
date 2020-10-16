@@ -116,7 +116,6 @@
 		<i class="fas fa-random"></i>
 	</a>
 
-	{% if user.is_authenticated and user != article.author %}
 	<!-- Subscribe or unsubscribe to author -->
 	<form method="post">{% csrf_token %}
 		<button class="small button" type="submit" name="subscribe" title="{% if subscribed %}Unsubscribe from author{% else %}Subscribe to author{% endif %}">
@@ -140,10 +139,9 @@
 			&nbsp;{{ article.libraries.all|length }}
 		</button>
 	</form>
-	{% endif %}
 
 	<!-- Zen mode -->
-	<div class="small button {% if not user.is_authenticated or user == article.author %}split-item{% endif %}" onclick="toggleZenMode();" title="Zen mode">
+	<div class="small button" onclick="toggleZenMode();" title="Zen mode">
 		<i class="fas fa-coffee"></i>
 	</div>
 	

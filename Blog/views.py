@@ -313,86 +313,97 @@ def detail(request, pk, slug):
 		categories = None
 
 	if request.method == 'POST':
-		# if submitting a comment
-		if any(x in request.POST for x in ["comment", "reply", "edit"]):
-			# if editing comment, set instance to specific comment
-			if "edit" in request.POST:
-				comment = Comment.objects.get(id=request.POST.get('id'))
-				comment_form = CommentForm(request.POST, instance=comment)
-			else:
-				comment_form = CommentForm(request.POST)
-
-			if comment_form.is_valid():
-				# set comment author to currently logged in user
-				comment_form.instance.author = request.user
-
-				# set comment article to current article on page
-				comment_form.instance.article = article
-
-				# try to get parent id
-				try:
-					parent_id = int(request.POST.get('parent_id'))
-				except:
-					parent_id = None
-
-				# if got parent id and parent exists, set parent
-				if parent_id:
-					parent = Comment.objects.get(id=parent_id)
-					if parent:
-						comment_form.instance.parent = parent
-
-				# save form
-				comment_form.save()
-
-				# display success message
+		if request.user.is_authenticated:
+			# if submitting a comment
+			if any(x in request.POST for x in ["comment", "reply", "edit"]):
+				# if editing comment, set instance to specific comment
 				if "edit" in request.POST:
-					messages.success(request, "Comment successfully edited.")
+					comment = Comment.objects.get(id=request.POST.get('id'))
+					comment_form = CommentForm(request.POST, instance=comment)
 				else:
-					messages.success(request, "Comment successfully posted.")
-					
-			else:
-				# display error message
-				if "edit" in request.POST:
-					messages.error(request, "Error editing comment.")
+					comment_form = CommentForm(request.POST)
+
+				if comment_form.is_valid():
+					# set comment author to currently logged in user
+					comment_form.instance.author = request.user
+
+					# set comment article to current article on page
+					comment_form.instance.article = article
+
+					# try to get parent id
+					try:
+						parent_id = int(request.POST.get('parent_id'))
+					except:
+						parent_id = None
+
+					# if got parent id and parent exists, set parent
+					if parent_id:
+						parent = Comment.objects.get(id=parent_id)
+						if parent:
+							comment_form.instance.parent = parent
+
+					# save form
+					comment_form.save()
+
+					# display success message
+					if "edit" in request.POST:
+						messages.success(request, "Comment successfully edited.")
+					else:
+						messages.success(request, "Comment successfully posted.")
+						
 				else:
-					messages.error(request, "Error posting comment.")
+					# display error message
+					if "edit" in request.POST:
+						messages.error(request, "Error editing comment.")
+					else:
+						messages.error(request, "Error posting comment.")
 
-			# redirect to current page and scroll to posted comment
-			return redirect(article.get_absolute_url() + f"#{comment_form.instance.id}")
-					
-		# if (un)featuring article
-		elif "feature" in request.POST:
-			feature_form = FeatureArticleForm(request.POST, instance=article)
+				# redirect to current page and scroll to posted comment
+				return redirect(article.get_absolute_url() + f"#{comment_form.instance.id}")
+						
+			# if (un)featuring article
+			elif "feature" in request.POST:
+				feature_form = FeatureArticleForm(request.POST, instance=article)
 
-			if feature_form.is_valid():
-				# unfeature all other articles
-				Article.objects.update(featured=False)
+				if feature_form.is_valid():
+					# unfeature all other articles
+					Article.objects.update(featured=False)
 
-				feature_form.save()
+					feature_form.save()
 
-				# success message
-				featured_state = "featured" if article.featured else "unfeatured"
-				messages.success(request, f'"{article.title}" {featured_state}.')
+					# success message
+					featured_state = "featured" if article.featured else "unfeatured"
+					messages.success(request, f'"{article.title}" {featured_state}.')
 
-		# if subscribing or unsubscribing from author
-		elif "subscribe" in request.POST:
-			if subscribed:
-				request.user.profile.subscribed.remove(article.author)
-				messages.success(request, f"Unsubscribed from {article.author.username}. You won't recieve any more mail about {article.author.username}.")
-			else:
-				request.user.profile.subscribed.add(article.author)
-				messages.success(request, f"Subscribed to {article.author.username}. We'll mail you when {article.author.username} writes an article.")
-		
-		# if adding or removing article from personal library
-		elif "library" in request.POST:
-			if article_in_library:
-				request.user.profile.library.remove(article)
-				messages.success(request, f'"{article.title}" removed from library.')
-			else:
-				request.user.profile.library.add(article)
-				messages.success(request, f'"{article.title}" saved to library.')
+			# if subscribing or unsubscribing from author
+			elif "subscribe" in request.POST:
+				if request.user != article.author:
+					if subscribed:
+						request.user.profile.subscribed.remove(article.author)
+						messages.success(request, f"Unsubscribed from {article.author.username}. You won't recieve any more mail about {article.author.username}.")
+					else:
+						request.user.profile.subscribed.add(article.author)
+						messages.success(request, f"Subscribed to {article.author.username}. We'll mail you when {article.author.username} writes an article.")
+				else:
+					messages.error(request, "Subscribing to ourselves, are we? We don't do that here.")
 			
-		return redirect(article.get_absolute_url())
+			# if adding or removing article from personal library
+			elif "library" in request.POST:
+				if request.user != article.author:
+					if article_in_library:
+						request.user.profile.library.remove(article)
+						messages.success(request, f'"{article.title}" removed from library.')
+					else:
+						request.user.profile.library.add(article)
+						messages.success(request, f'"{article.title}" saved to library.')
+				else:
+					messages.error(request, "Quite unnecessary, we assure you. Head over to your profile to see all your articles.")
+				
+			return redirect(article.get_absolute_url())
+
+		# if not logged in
+		else:
+			return redirect(f"{reverse_lazy('login')}?next={article.get_absolute_url()}")
 
 	context = {
 		"article": article, 
