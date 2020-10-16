@@ -1025,7 +1025,7 @@ svg.tea #steamR {
 /* ARTICLE CONTROLS AND NAVIGATION */
 
 #article_controls .button {
-	width: 1.2em;
+	min-width: 1.2em;
 }
 
 #next_post {

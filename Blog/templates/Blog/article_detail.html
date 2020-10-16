@@ -125,6 +125,7 @@
 			{% else %}
 			<i class="far fa-bell"></i>
 			{% endif %}
+			&nbsp;{{ article.author.subscribed.all|length }}
 		</button>
 	</form>
 
@@ -136,6 +137,7 @@
 			{% else %}
 			<i class="far fa-bookmark"></i>
 			{% endif %}
+			&nbsp;{{ article.libraries.all|length }}
 		</button>
 	</form>
 	{% endif %}
