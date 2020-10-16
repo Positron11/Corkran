@@ -42,7 +42,7 @@
 	</div>
 
 	<!-- Clear filters -->
-	<div class="minimal button split-item" id="clear_mail_filters">Clear Filters</div>
+	<div class="minimal button no-border split-item" id="clear_mail_filters">Clear Filters</div>
 </div>
 {% endif %}
 
@@ -104,7 +104,7 @@
 		<!-- Delete button -->
 		<div class="right-align-text">
 			<form method="POST" action="{% url 'delete-mail' mail.id %}">{% csrf_token %}
-				<input type="submit" class="minimal danger button" value="Discard">
+				<input type="submit" class="minimal no-border danger button" value="Discard">
 			</form>
 		</div>
 	</div>		

@@ -406,13 +406,16 @@ fieldset {
 }
 
 .button.minimal {
-	border: none;
 	font-size: 0.6em;
 	padding: 0.3em 0.6em;
 }
 
+.button.no-border {
+	border: none;
+}
+
 .button.danger {
-	color: #f32929 !important;
+	color: #f32929;
 	border-color: #f32929;
 }
 
@@ -422,6 +425,12 @@ fieldset {
 	background: white !important;
 	pointer-events: none;
 	border-color: #eaeaea !important;
+}
+
+.button.selected {
+	color: white;
+	background: #333;
+	border: 1px solid transparent;
 }
 
 /* Checkboxes */
@@ -1295,12 +1304,19 @@ svg.tea #steamR {
 		border-radius: 0.7em;
 	}
 	.button:hover {
-		color: #00a32c;
 		border-color: transparent;
+	}
+	.button:hover:not(.danger) {
+		color: #00a32c;
 		background: rgb(4, 222, 63, 0.2);
 	}
 	.button.danger:hover {
 		background: rgb(242, 38, 38, 0.2);
+	}
+	.button.selected:hover {
+		color: #333;
+		border-color: #333;
+		background-color: white;
 	}
 	.dropdown:hover>.dropdown-content {
 		top: 110%;
@@ -1385,12 +1401,19 @@ svg.tea #steamR {
 		transform: translateY(-9rem);
 	}
 	.button:active {
-		color: #00a32c;
 		border-color: transparent;
+	}
+	.button:active:not(.danger) {
+		color: #00a32c;
 		background: rgb(4, 222, 63, 0.2);
 	}
 	.button.danger:active {
 		background: rgb(242, 38, 38, 0.2);
+	}
+	.button.selected:active {
+		color: #333;
+		border-color: #333;
+		background-color: white;
 	}
 	.dropdown.dropped>.dropdown-content {
 		top: 110%;
