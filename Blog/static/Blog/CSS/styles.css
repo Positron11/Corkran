@@ -428,19 +428,16 @@ fieldset {
 
 input[type="checkbox"] {
 	opacity: 0;
-}
-
-input[type="checkbox"]:not(:checked), input[type="checkbox"]:checked {
 	position: absolute;
 }
 
-input[type="checkbox"]:not(:checked)+label, input[type="checkbox"]:checked+label {
+input[type="checkbox"]+label {
 	cursor: pointer;
 	position: relative;
 	padding: 0.1em 0 0.1em 2em;
 }
 
-input[type="checkbox"]:not(:checked)+label:before, input[type="checkbox"]:checked+label:before {
+input[type="checkbox"]+label:before {
 	top: 0;
 	left: 0;
 	content: '';
@@ -453,7 +450,7 @@ input[type="checkbox"]:not(:checked)+label:before, input[type="checkbox"]:checke
 	height: 1.2em;
 }
 
-input[type="checkbox"]:not(:checked)+label:after, input[type="checkbox"]:checked+label:after {
+input[type="checkbox"]+label:after {
 	top: 0.4em;
 	left: 0.5em;
 	color: #333;
@@ -473,6 +470,16 @@ input[type="checkbox"]:not(:checked)+label:after {
 input[type="checkbox"]:checked+label:after {
 	opacity: 1;
 	transform: scale(1);
+}
+
+input[type="checkbox"]:disabled+label:before {
+	border-color: #ccc;
+}
+
+input[type="checkbox"]:disabled+label {
+	color: #999;
+	pointer-events: none;
+	text-decoration: line-through;
 }
 
 input[type="file"] {
