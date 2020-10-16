@@ -9,6 +9,7 @@
 <div class="special card">
 	<div class="header">
 		<div class="heading single-line-text">{{ user }}</div>
+		<div class="subheading">{{ article.author.subscribed.all|length }} users have subscribed to you.</div>
 	</div>
 	
 	<div class="text">
@@ -49,7 +50,7 @@
 		<div class="list-box normal-spacing">
 			{% for article in articles %}
 			<a class="unformatted single-line-text word-card card" href="{{ article.get_absolute_url }}">
-				<span class="montserrat text">"{{ article.title }}"</span>
+				<span class="montserrat text">"{{ article.title }}" &nbsp; <span class="grey"><i class="small far fa-bookmark"></i> {{ article.libraries.all|length }}</span></span>
 			</a>
 			{% empty %}
 			<div class="special minimal card">
