@@ -255,11 +255,11 @@ p.montserrat, .text.montserrat {
 /* Vertically space items */
 
 .vertically-space-items>*:not(:last-child) {
-	margin-bottom: 2em;
+	margin-bottom: 2rem;
 }
 
 .vertically-space-items>*:not(:last-child).closer-below {
-	margin-bottom: 1em;
+	margin-bottom: 1rem;
 }
 
 /* Input bar */
@@ -1496,7 +1496,7 @@ svg.tea #steamR {
 
 @media only screen and (max-width: 800px) {
 	.vertically-space-items.responsive>*:not(:last-child) {
-		margin-bottom: 1em;
+		margin-bottom: 1rem;
 	}
 	.card {
 		padding: 2em;
