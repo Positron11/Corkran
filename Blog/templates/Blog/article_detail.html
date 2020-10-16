@@ -118,7 +118,7 @@
 
 	<!-- Subscribe or unsubscribe to author -->
 	<form method="post">{% csrf_token %}
-		<button class="small button" type="submit" name="subscribe" title="{% if subscribed %}Unsubscribe from author{% else %}Subscribe to author{% endif %}">
+		<button class="small button" type="submit" name="subscribe" title="{% if subscribed %}Unsubscribe from {{ article.author.username }}{% else %}Subscribe to {{ article.author.username }}{% endif %}">
 			{% if subscribed %}
 			<i class="fas fa-bell"></i>
 			{% else %}
