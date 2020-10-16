@@ -57,8 +57,8 @@
 {% if user == article.author %}
 <!-- Article edit buttons -->
 <div class="nowrap list-box split-items compact-spacing closer-below">
-	<a href="{% url 'edit-article' article.id %}" class="button small"><i class="fas fa-edit"></i> Edit</a>
-	<a href="{% url 'delete-article' article.id %}" class="small danger button split-item">Delete <i class="fas fa-trash-alt"></i></a>
+	<a href="{% url 'delete-article' article.id %}" class="small danger button">Delete <i class="fas fa-trash-alt"></i></a>
+	<a href="{% url 'edit-article' article.id %}" class="button small split-item"><i class="fas fa-edit"></i> Edit</a>
 </div>
 {% endif %}
 
