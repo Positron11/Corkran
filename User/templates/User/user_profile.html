@@ -9,7 +9,7 @@
 <div class="special card">
 	<div class="header">
 		<div class="heading single-line-text">{{ user }}</div>
-		<div class="subheading">{{ article.author.subscribed.all|length }} users have subscribed to you.</div>
+		<div class="subheading">{{ user.subscribed.all|length }} user{% if user.subscribed.all|length == 1 %} has{% else %}s have{% endif %} subscribed to you.</div>
 	</div>
 	
 	<div class="text">
