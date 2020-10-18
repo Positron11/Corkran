@@ -1123,7 +1123,7 @@ svg.tea #steamR {
 
 /* ARTICLE SUGGESTIONS */
 
-.article-suggestion {
+.article-widget {
 	flex-grow: 1;
 	min-width: 10em;
 	overflow: hidden;
@@ -1131,11 +1131,11 @@ svg.tea #steamR {
 	border-radius: 0.5em;
 }
 
-.article-suggestion .cutout-overlay {
+.article-widget .cutout-overlay {
 	font-size: 1.2em;
 }
 
-.article-suggestion .article-suggestion-thumbnail {
+.article-widget .article-widget-thumbnail {
 	width: 100%;
 	height: 8em;
 	position: relative;
@@ -1365,13 +1365,6 @@ svg.tea #steamR {
 	#zen_mode .close-btn:hover {
 		color: #f32929;
 	}
-	.article-suggestion .overlay:hover {
-		color: white;
-		background: transparent;
-	}
-	.article-suggestion:hover>.article-suggestion-thumbnail::after {
-		background: rgba(0,0,0,0.5);
-	}
 	#comments_container ul:hover {
 		border-left: 2px solid #ddd;
 	}
@@ -1475,13 +1468,6 @@ svg.tea #steamR {
 	#zen_mode .close-btn:active {
 		color: #f32929;
 	}
-	.article-suggestion:active>a .overlay {
-		color: white;
-		background: transparent;
-	}
-	.article-suggestion:active>.article-suggestion-thumbnail::after {
-		background: rgba(0,0,0,0.5);
-	}
 	.paginator a:active {
 		color: #999;
 	}
@@ -1566,7 +1552,7 @@ svg.tea #steamR {
 	#comments_container ul {
 		padding-left: 1em;
 	}
-	.article-suggestion {
+	.article-widget {
 		min-width: 8em;
 	}
 }

@@ -242,7 +242,7 @@
 <!-- Article suggestions list -->
 <div class="unselectable list-box compact-spacing">
 	{% for article in similar_articles %}
-	<div class="article-suggestion">
+	<div class="article-widget">
 		<!-- Article thumbnail -->
 		<div 
 			data-href="https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}" 
@@ -251,16 +251,16 @@
 				https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-900,h-600,fo-auto 1500w,
 				https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-840,h-560,fo-auto 1000w,
 				https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-570,h-380,fo-auto 600w"	  
-			data-sizes="100vw" class="progressive replace article-suggestion-thumbnail darken-overlay image-container">
+			data-sizes="100vw" class="progressive replace article-widget-thumbnail darken-overlay image-container">
 
 			<!-- Blurred loader image -->
 			<img src="https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-300,h-200,fo-auto" class="preview">
+	
+			<!-- Title overlay -->
+			<a href="{{ article.get_absolute_url }}">
+				<div class="cutout-overlay" data-vertical-truncator="4">{{ article.title }}</div>
+			</a>
 		</div>
-
-		<!-- Title overlay -->
-		<a href="{{ article.get_absolute_url }}">
-			<div class="cutout-overlay" data-vertical-truncator="4">{{ article.title }}</div>
-		</a>
 	</div>
 	{% empty %}
 	<!-- No similarly tagged articles -->
