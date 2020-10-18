@@ -13,10 +13,19 @@ from mptt.models import MPTTModel, TreeForeignKey
 class Category(models.Model):
 	name = models.CharField(max_length=50, unique=True)
 	parent = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True)
+	description = models.TextField(blank=True, null=True)
+	slug = models.SlugField()
 
 	# show self as category name when queried
 	def __str__(self):
 		return f"{self.name} ({self.parent.name})" if self.parent else self.name
+
+	# generate slug
+	def save(self): 
+		# create slug
+		self.slug = slugify(self.name)
+		# save 
+		super().save() 
 
 
 # article model

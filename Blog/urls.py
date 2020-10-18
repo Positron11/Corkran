@@ -27,7 +27,13 @@ urlpatterns = [
     # comment deletion view
     path('comments/<int:pk>/delete/', views.DeleteComment.as_view(), name='delete-comment'),
     
+    # category views
+    path('categories/', views.category_list, name='categories'),
+    path('categories/<str:slug>/', views.subcategory_list, name='subcategories'),
+    
     # sorted article views
 	path('users/<str:author>/', views.AuthorSortedArticles.as_view(), name='author-sorted-articles'),
     path('tags/<str:tag>/', views.TagSortedArticles.as_view(), name='tag-sorted-articles'),
+    path('categories/<str:slug>/all/', views.MainCategorySortedArticles.as_view(), name='category-sorted-articles'),
+    path('categories/<str:parent_slug>/<str:slug>/', views.SubCategorySortedArticles.as_view(), name='subcategory-sorted-articles'),
 ]

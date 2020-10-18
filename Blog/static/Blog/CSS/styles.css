@@ -132,6 +132,14 @@ p.montserrat, .text.montserrat {
 	-o-user-select: none;
 }
 
+.hide-scrollbar {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+	display: none;
+}
 
 /* GENERIC CONTAINERS */
 

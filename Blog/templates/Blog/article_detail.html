@@ -173,10 +173,10 @@
 		{% if categories %}
 		<!-- Categories -->
 		<div class="small closer-below">
-			<span class="bold">{{ categories.parent }}</span>
+			<a href="{% url 'subcategories' categories.parent.slug %}" class="unformatted bold">{{ categories.parent }}</a>
 			<span class="grey">
-				-{% for category in categories.subcategories %}
-				{{ category.name }}{% if not forloop.last %}, {% endif %}
+				||{% for category in categories.subcategories %}
+				<a href="{% url 'subcategory-sorted-articles' category.parent.slug category.slug %}" class="unformatted">{{ category.name }}</a>{% if not forloop.last %}, {% endif %}
 				{% endfor %}
 			</span>
 		</div>

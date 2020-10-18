@@ -497,3 +497,78 @@ class DeleteComment(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	# check if currently logged in user is author
 	def test_func(self):
 		return self.request.user == self.get_object().author or self.request.user == self.get_object().article.author
+
+
+# list of all categories
+def category_list(request):
+	# get all main categories
+	categories = Category.objects.filter(parent__isnull=True)
+	
+	# create dictionary of main categories and first eight articles in main category
+	articles = {category: set([article for subcategory in Category.objects.filter(parent=category) for article in subcategory.articles.all().order_by("-date")][:8]) for category in categories}
+	
+	# categories and articles as context
+	context = {
+		"articles": articles,
+	}
+
+	return render(request, "Blog/categories_list.html", context)
+
+
+# list of category's subcategories
+def subcategory_list(request, slug):
+	# get subcategories
+	main_category = get_object_or_404(Category, slug=slug)
+	categories = Category.objects.filter(parent=main_category.id)
+
+	# create dictionary of subcategories and latest eight articles of each
+	articles = {category: category.articles.all().order_by("-date")[:8] for category in categories}
+	
+	# categories and articles as context
+	context = {
+		"articles": articles,
+		"main_category": main_category,
+	}
+
+	return render(request, "Blog/subcategories_list.html", context)
+
+
+# sort articles by category
+class CategorySortedArticles(ArticleListView):
+	template_name = "Blog/category_sorted_articles.html"
+
+	# category and article count as context
+	def get_context_data(self, **kwargs):          
+		context = super().get_context_data(**kwargs)   
+
+		# get page's category
+		category = get_object_or_404(Category, slug=self.kwargs.get("slug"))
+
+		# add context
+		context["category"] = category
+		context["article_count"] = self.get_base_queryset().count()
+
+		return context
+
+
+# sort articles by main category
+class MainCategorySortedArticles(CategorySortedArticles, ArticleListView):
+
+	def get_base_queryset(self):
+		# get page's category
+		category = get_object_or_404(Category, slug=self.kwargs.get("slug"))
+		subcategories = Category.objects.filter(parent=category)
+
+		# return queryset of all articles in category
+		return Article.objects.filter(categories__in=subcategories).distinct()
+
+
+# sort articles by subcategory
+class SubCategorySortedArticles(CategorySortedArticles, ArticleListView):
+
+	def get_base_queryset(self):
+		# get page's category
+		category = get_object_or_404(Category, slug=self.kwargs.get("slug"))
+
+		# return queryset of all articles in category
+		return category.articles.all()

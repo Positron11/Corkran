@@ -1,0 +1,60 @@
+{% extends 'Blog/article_list.html' %}
+
+{% block title %}{{ category.name }} Articles{% endblock %}
+
+{% block search-dialogue %} articles categorized under {{ category.name|lower }}{% endblock %}
+{% block description %}{{ author }} has written {{ article_count }} article{% if article_count != 1 %}s{% endif %}, as of yet.{% endblock %}
+
+{% block header-card %}
+
+<!-- Header card -->
+<div class="special card">
+	<!-- Header -->
+	<div class="header">
+		<div class="heading">{{ category.name }}</div>
+		<div class="subheading">All {% if article_count > 1 %}{{ article_count }}{% else %}the{% endif %} articles categorized under {{ category.name }}.</div>
+	</div>
+
+	<!-- Category description -->
+	<div class="text">
+		{% if category.description %}
+		{{ category.description }}
+		{% else %}
+		The heading is rather self-explanatory, don't you think? It would seem a wasted effort to explain much further.
+		{% endif %}
+	</div>
+</div>
+
+{% endblock %}
+
+{% block no-articles-card %}
+
+<!-- No articles -->
+<div class="special card">
+	<!-- Header -->
+	<div class="header">
+		<div class="heading">No articles in this category.</div>
+		<div class="subheading">We simply haven't got a single article on the topic.</div>
+	</div>
+
+	<!-- Content -->
+	<div class="text">One day, there'll be an author, and this place will be empty no longer. Until then... That is, unless you're feeling especially motivated, and you'd like to <a href="{% url 'create-article' %}">write one yourself</a>.</div>
+</div>
+
+{% endblock %}
+
+{% block empty-search-card %}
+
+<!-- Empty search -->
+<div class="special card">
+	<div class="header">
+		<div class="heading">No Articles Found.</div>
+	</div>
+	
+	<div class="text">
+		Consider reconsidering your search query. Queries resembling "k3e#$%jbjvd" are not likely to take 
+		you very far.
+	</div>
+</div>
+
+{% endblock %}
