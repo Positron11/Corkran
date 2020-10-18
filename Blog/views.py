@@ -426,11 +426,15 @@ class ArticleFormView(LoginRequiredMixin):
 	model = Article
 	form_class = ArticleForm
 
+	# function for ordering categories
+	def sort_categories(self, category):
+		return len(category.name)
+
 	# all tags and categories as context
 	def get_context_data(self, **kwargs):          
 		context = super().get_context_data(**kwargs)  
 		context["tags"] = Article.tags.most_common()[:100]
-		context["categories"] = {group: [category for category in Category.objects.filter(parent=group.id)] for group in Category.objects.filter(parent__isnull=True)}       
+		context["categories"] = {group: sorted([category for category in Category.objects.filter(parent=group.id)], key=self.sort_categories) for group in Category.objects.filter(parent__isnull=True)}       
 		return context
 
 	# if form invalid
