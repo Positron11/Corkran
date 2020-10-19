@@ -27,6 +27,13 @@ class Category(models.Model):
 		# save 
 		super().save() 
 
+	# get this category's absolute url
+	def get_absolute_url(self):
+		if self.parent:
+			return reverse('subcategory-sorted-articles', kwargs={"slug": self.slug, "parent_slug": self.parent.slug})
+		else:
+			return reverse('subcategories', kwargs={"slug": self.slug})
+
 
 # article model
 class Article(models.Model):

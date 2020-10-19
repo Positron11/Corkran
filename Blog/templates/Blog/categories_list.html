@@ -69,7 +69,7 @@
 		<!-- See all articles or subcategories -->
 		<div class="list-box nowrap blur-overflow right-align compact-spacing">
 			<a href="{% url 'category-sorted-articles' category.slug %}" class="small button">All {{ category.name|lower }} articles</a>
-			<a href="{% url 'subcategories' category.slug %}" class="split-item small button">Subcategories <i class="fas fa-sort-amount-down"></i></a>
+			<a href="{{ category.get_absolute_url }}" class="split-item small button">Subcategories <i class="fas fa-sort-amount-down"></i></a>
 		</div>
 	</div>
 </fieldset>

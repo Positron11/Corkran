@@ -72,7 +72,7 @@
 
 		<!-- See all articles -->
 		<div class="right-align-text">
-			<a href="{% url 'subcategory-sorted-articles' category.parent.slug category.slug %}" class="small button">All {{ category.name|lower }} articles</a>
+			<a href="{{ category.get_absolute_url }}" class="small button">All {{ category.name|lower }} articles</a>
 		</div>
 	</div>
 </fieldset>

@@ -166,11 +166,11 @@
 		<!-- Categories -->
 		<div class="small closer-below">
 			<!-- Main category -->
-			<a href="{% url 'subcategories' categories.parent.slug %}" class="unformatted bold">{{ categories.parent }}</a>
+			<a href="{{ categories.parent.get_absolute_url }}" class="unformatted bold">{{ categories.parent.name }}</a>
 			<!-- Subcategories -->
 			<span class="grey">
 				||{% for category in categories.subcategories %}
-				<a href="{% url 'subcategory-sorted-articles' category.parent.slug category.slug %}" class="unformatted">{{ category.name }}</a>{% if not forloop.last %}, {% endif %}
+				<a href="{{ category.get_absolute_url }}" class="unformatted">{{ category.name }}</a>{% if not forloop.last %}, {% endif %}
 				{% endfor %}
 			</span>
 		</div>
