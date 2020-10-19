@@ -45,7 +45,10 @@
 	</div>
 
 	<!-- Image attribution -->
-	<div class="caption-overlay">{{ article.attribution|urlizetrunc:20 }}</div>
+	<div class="caption-overlay">
+		<a href="https://ik.imagekit.io/f92sz8hl8b{{ article.thumbnail.url }}?tr=orig-true" target="blank" title="Full image"><i class="fas fa-images"></i></a> 
+		{% if article.attribution %}| {{ article.attribution|urlizetrunc:20 }}{% endif %}
+	</div>
 </div>
 
 {% endif %}
