@@ -15,9 +15,14 @@ class Mailbox(LoginRequiredMixin, ListView):
 		# get queryset
 		queryset = Mail.objects.filter(recipient=self.request.user).order_by("-date")
 
+		# get unread mail
+		unread = [mail for mail in queryset.filter(read=False)]
+
 		# pass unread messages to context before marking as read
 		self.extra_context = dict()
-		self.extra_context["unread"] =  [mail for mail in queryset.filter(read=False)]
+		self.extra_context["unread"] = unread
+		self.extra_context["unread_count"] = len(unread)
+		self.extra_context["mailbox_count"] = queryset.count()
 		
 		# mark all unread messages as read when page visited
 		queryset.update(read=True)

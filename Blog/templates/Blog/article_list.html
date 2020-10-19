@@ -2,12 +2,8 @@
 
 {% load corkran_tags %}
 
-{% block title %}{% endblock %}
-
 {% block content %}
-
-<!-- Header special card -->
-{% block header-card %}{% endblock %}
+{% block header_card %}{% endblock %}
 
 
 <!-- Search bar anchor -->
@@ -25,9 +21,11 @@
 		<!-- Search suggestions -->
 		<div id="search_suggestions">
 			{% for category in search_suggestions %}
+			<!-- Suggestion group -->
 			<div id="suggestion_{{ category }}" class="search-suggestion-group" data-group-name="Search {{ category|title }}">
 				<div class="list-box compact-spacing">
 					{% for value in search_suggestions|get_item:category %}
+					<!-- Suggestion -->
 					<a href="{{ value.1 }}" class="unselectable clickable single-line-text unformatted card word-card search-suggestion"><span class="montserrat">{{ value.0 }}</span></a>
 					{% endfor %}
 				</div>
@@ -101,18 +99,29 @@
 		{% endif %}
 	</a>
 </div>
+
 {% empty %}
 
 {% if searched %}
 <!-- Empty search -->
-{% block empty-search-card %}{% endblock %}
+<div class="special card">
+	<!-- Header -->
+	<div class="header">
+		<div class="heading">No Articles Found.</div>
+	</div>
+	
+	<!-- Content -->
+	<div class="text">
+		Consider reconsidering your search query. Queries resembling "k3e#$%jbjvd" are not likely to take 
+		you very far. {% block additional_empty_search_text %}{% endblock %}
+	</div>
+</div>
 
 {% else %}
 
 <!-- No articles and not a search -->
-{% block no-articles-card %}{% endblock %}
+{% block no_articles_card %}{% endblock %}
 {% endif %}
-
 {% endfor %}
 
 
@@ -142,15 +151,11 @@
 	</a>
 </div>
 {% endif %}
-
 {% endblock %}
 
-
-{% block floating-button %}
-{% if user.is_authenticated %}
+{% block floating-button %}{% if user.is_authenticated %}
 <!-- New article button -->
 <a href="{% url 'create-article' %}" class="floating-btn" title="New Article">
 	<i class="fas fa-feather-alt"></i>
 </a>
-{% endif %}
-{% endblock %}
+{% endif %}{% endblock %}

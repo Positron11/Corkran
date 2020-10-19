@@ -6,8 +6,6 @@
 {% block description %}Corkran article editor.{% endblock %}
 
 {% block content %}
-
-<!-- New article -->
 <fieldset class="card">
 	<!-- Heading -->
 	<legend class="heading">Editor</legend>
@@ -41,14 +39,13 @@
 		<div>
 			<div class="list-box compact-spacing">
 				{% for group in categories %}
+				<!-- Category group -->
 				<div class="compact dropdown">
-					<!-- Dropdown button -->
 					<div class="solid minimal button dropdown-label category-group-label" id="{{ group.id }}_label">{{ group.name }}</div>
-					
-					<!-- Dropdown -->
 					<div class="dropdown-content" id="{{ group.id }}_content">
 						<div class="list-box compact-spacing category-container">
 							{% for category in categories|get_item:group %}
+							<!-- Category -->
 							<div>
 								<input type="checkbox" name="categories" class="category-select" value="{{ category.id }}" id="id_categories_{{ category.id }}" {% if category in form.instance.categories.all %}checked{% endif %}>
 								<label for="id_categories_{{ category.id }}" class="single-line-text">{{ category.name }}</label>
@@ -71,6 +68,7 @@
 				<legend class="montserrat grey">Suggested Tags</legend>
 				<div class="list-box compact-spacing">
 					{% for tag in tags %}
+					<!-- Suggestion -->
 					<div class="clickable tag">{{ tag }}</div>
 					{% endfor %}
 				</div>
@@ -104,10 +102,13 @@
 	</form>
 </fieldset>
 
-<!-- Integrated image search -->
+<!-- Integrated unsplash image search -->
 <div class="anchor" id="unsplash"></div>
 <fieldset class="card">
+	<!-- Heading -->
 	<legend class="heading">Image Search</legend>
+
+	<!-- Search form -->
 	<form id="unsplash_search_form" action="" autocomplete="off">
 		<label for="">Find a high-quality image for your article:</label>
 		<div class="input-bar">
@@ -116,9 +117,7 @@
 		</div>
 	</form>
 </fieldset>
-
 {% endblock %}
-
 
 {% block floating-button %}
 <!-- Scroll to top button -->

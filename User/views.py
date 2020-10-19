@@ -107,6 +107,7 @@ def account_settings(request):
 @login_required
 def profile(request):
 	articles = Article.objects.filter(author=request.user)
+	subscriber_count = request.user.subscribed.all().count()
 	random_user = random.choice(User.objects.all().exclude(id=request.user.id))
 	subscribed_authors = [user for user in request.user.profile.subscribed.all()]
 	tags = Tag.objects.filter(article__in=[article.id for article in articles]).annotate(c=Count('id')).order_by('-c')
@@ -115,6 +116,7 @@ def profile(request):
 		"tags":tags,
 		"articles": articles, 
 		"random_user": random_user,
+		"subscriber_count": subscriber_count,
 		"subscribed_authors": subscribed_authors
 	}
 

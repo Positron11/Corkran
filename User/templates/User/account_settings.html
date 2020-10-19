@@ -4,13 +4,14 @@
 {% block description %}Edit your profile, and manage your preferences.{% endblock %}
 
 {% block content %}
-
 <!-- Header card -->
 <div class="special card">
+	<!-- Header -->
 	<div class="header">
 		<div class="heading">Account Settings</div>
 	</div>
 	
+	<!-- Description -->
 	<div class="text">
 		Edit your profile, manage your preferences, or change your password.
 	</div>
@@ -27,7 +28,7 @@
 </div>
 
 
-<!-- Offset anchor -->
+<!-- Profile anchor -->
 <div id="profile" class="anchor"></div>
 
 <!-- Profile update container -->
@@ -50,7 +51,7 @@
 </fieldset>
 
 
-<!-- Offset anchor -->
+<!-- Email anchor -->
 <div id="email" class="anchor"></div>
 
 <!-- Change password container -->
@@ -69,7 +70,7 @@
 </fieldset>
 
 
-<!-- Offset anchor -->
+<!-- Password anchor -->
 <div id="password" class="anchor"></div>
 
 <!-- Change password container -->
@@ -89,19 +90,15 @@
 </fieldset>
 
 
-<!-- Offset anchor -->
-<div id="delete" class="anchor"></div>
-
 <!-- Account deletion container -->
 <fieldset class="card">
 	<!-- Heading -->
-	<legend class="heading">Danger!</legend>
+	<legend class="red heading">Danger!</legend>
 
+	<!-- Link to delete page -->
 	<a href="{% url 'delete-user' user.id %}" class="danger button">Delete Account</a>
 </fieldset>
-
 {% endblock %}
-
 
 {% block floating-button %}
 <!-- Scroll to top button -->

@@ -5,24 +5,24 @@
 {% block title %}Mailbox{% endblock %}
 
 {% block content %}
-
 {% if mailbox.count %}
-
 <!-- Header card -->
 <div class="special card">
+	<!-- Header -->
 	<div class="header">
 		<div class="heading">The Mailbox</div>
 	</div>
 	
+	<!-- Mailbox stats -->
 	<div class="text">
-		You have {% if unread|length > 0 %}{{ unread|length }}{% else %}no{% endif %} 
-		unread mail, and {{ mailbox.count }} in the mailbox. You won't be reminded about 
+		You have {% if unread_count %}{{ unread_count }}{% else %}no{% endif %} 
+		unread mail, and {{ mailbox_count }} in the mailbox. You won't be reminded about 
 		the same unread mail again, so get it over with, perhaps.
 	</div>
 </div>
 
 
-<!-- Offset anchor -->
+<!-- Mail filters anchor -->
 <div class="anchor" id="mail_filter_anchor"></div>
 
 <!-- Filter dock -->
@@ -57,10 +57,10 @@
 <!-- Mailbox -->
 <div id="mailbox" class="vertically-space-items responsive">
 	{% for mail in mailbox %}
-
 	<!-- Mail anchor -->
 	<div class="anchor" id="{{ mail.id }}"></div>
 
+	<!-- Mail -->
 	<div class="card mail {{ mail|to_class_name }} {% if mail in unread %}unread{% endif %}">
 		<!-- Heading and date -->
 		<div class="mail-header">
@@ -108,13 +108,18 @@
 			</form>
 		</div>
 	</div>		
+
 	{% empty %}
-	<!-- No messages card -->
+	
+	<!-- No mail card -->
 	<div class="special card">
+		<!-- Header -->
 		<div class="header">
 			<div class="heading">No Mail.</div>
 			<div class="subheading">It's damp, dark, and a little rusty. Might rain today.</div>
 		</div>
+
+		<!-- Content -->
 		<div class="text">
 			It would seem that you have an empty mailbox. Perhaps you've discarded all your mail, or maybe there's
 			just nothing happening. Might as well wait for a while.
@@ -122,5 +127,4 @@
 	</div>
 	{% endfor %}
 </div>
-
 {% endblock %}

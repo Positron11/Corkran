@@ -4,26 +4,29 @@
 {% block description %}Log in to Corkran.{% endblock %}
 
 {% block content %}
-
 <Fieldset class="card">
 	<!-- Heading -->
 	<legend class="heading">Log In</legend>
 
-	<!-- Form -->
 	<form class="vertically-space-items" method="post">{% csrf_token %}
+		<!-- Form -->
 		{{ form.as_table }}
+
+		<!-- Submit button -->
 		<div class="right-align-text">
 			<button class="button" type="submit">Log In</button>
 		</div>
+
+		<!-- Password reset portal -->
 		<div class="montserrat grey text">Forgot your password? <a href="{% url 'password-reset' %}">Ask for a new one</a>.</div>
 	</form>
 </Fieldset>
 
-<!-- Portal card -->
-<div class="special word-card card" >
-	<div class="montserrat text">
-		Don't already have an account? <a href="{% url 'registration' %}">Register</a>.<br>
-	</div>
-</div>
 
+<!-- Registration portal -->
+<div class="special word-card card" >
+	<span class="montserrat text">
+		Don't already have an account? <a href="{% url 'registration' %}">Register</a>.
+	</span>
+</div>
 {% endblock %}

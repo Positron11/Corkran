@@ -4,8 +4,6 @@
 {% block description %}New Corkran user registration.{% endblock %}
 
 {% block content %}
-
-<!-- Registration container -->
 <fieldset class="card">
 	<!-- Heading -->
 	<legend class="heading">Register</legend>
@@ -21,9 +19,11 @@
 	</form>
 </fieldset>
 
-<!-- Portal card -->
-<div class="special word-card card">
-	<div class="montserrat text">Already have an account? <a href="{% url 'login' %}">Login</a>.</div>
-</div>
 
+<!-- Login portal card -->
+<div class="special word-card card">
+	<span class="montserrat text">
+		Already have an account? <a href="{% url 'login' %}">Login</a>.
+	</span>
+</div>
 {% endblock %}

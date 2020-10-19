@@ -1,12 +1,11 @@
 {% extends 'Blog/article_list.html' %}
 
 {% block title %}{{ category.name }} Articles{% endblock %}
-
-{% block search-dialogue %} articles categorized under {{ category.name|lower }}{% endblock %}
 {% block description %}{{ author }} has written {{ article_count }} article{% if article_count != 1 %}s{% endif %}, as of yet.{% endblock %}
 
-{% block header-card %}
+{% block search-dialogue %} articles categorized under {{ category.name|lower }}{% endblock %}
 
+{% block header_card %}
 <!-- Header card -->
 <div class="special card">
 	<!-- Header -->
@@ -24,11 +23,9 @@
 		{% endif %}
 	</div>
 </div>
-
 {% endblock %}
 
-{% block no-articles-card %}
-
+{% block no_articles_card %}
 <!-- No articles -->
 <div class="special card">
 	<!-- Header -->
@@ -38,23 +35,6 @@
 	</div>
 
 	<!-- Content -->
-	<div class="text">One day, there'll be an author, and this place will be empty no longer. Until then... That is, unless you're feeling especially motivated, and you'd like to <a href="{% url 'create-article' %}">write one yourself</a>.</div>
+	<div class="text">One day, there'll be an author, and this place will be empty no more. Until then... That is, unless you're feeling especially motivated, and you'd like to <a href="{% url 'create-article' %}">write one yourself</a>.</div>
 </div>
-
-{% endblock %}
-
-{% block empty-search-card %}
-
-<!-- Empty search -->
-<div class="special card">
-	<div class="header">
-		<div class="heading">No Articles Found.</div>
-	</div>
-	
-	<div class="text">
-		Consider reconsidering your search query. Queries resembling "k3e#$%jbjvd" are not likely to take 
-		you very far.
-	</div>
-</div>
-
 {% endblock %}

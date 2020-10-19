@@ -3,9 +3,7 @@
 {% block title %}Home{% endblock %}
 {% block description %}The open blog.{% endblock %}
 
-{% block feature %}
-{% if featured_article %}
-
+{% block feature %}{% if featured_article %}
 <!-- Feature image -->
 <div 
 	data-href="https://ik.imagekit.io/f92sz8hl8b{% if featured_article.thumbnail %}{{ featured_article.thumbnail.url }}{% else %}/media/defaults/feature.jpg{% endif %}" 
@@ -31,12 +29,9 @@
 	<!-- Image attribution -->
 	<div class="caption-overlay">{% if featured_article.thumbnail and featured_article.attribution %}{{ featured_article.attribution|urlizetrunc:20 }}{% elif not featured_article.thumbnail %}Photo by Nahil Naseer on Unsplash{% endif %}</div>
 </div>
+{% endif %}{% endblock %}
 
-{% endif %}
-{% endblock %}
-
-{% block no-articles-card %}
-
+{% block no_articles_card %}
 <!-- No articles -->
 <div class="special card">
 	<!-- Header -->
@@ -51,21 +46,4 @@
 		<a href="{% url 'create-article' %}">writing the first article yourself</a>.
 	</div>
 </div>
-
-{% endblock %}
-
-{% block empty-search-card %}
-
-<!-- Empty search -->
-<div class="special card">
-	<div class="header">
-		<div class="heading">No Articles Found.</div>
-	</div>
-	
-	<div class="text">
-		Consider reconsidering your search query. Queries resembling "k3e#$%jbjvd" are not likely to take 
-		you very far.
-	</div>
-</div>
-
 {% endblock %}

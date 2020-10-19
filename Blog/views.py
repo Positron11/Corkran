@@ -413,6 +413,8 @@ def detail(request, pk, slug):
 		"article_in_library": article_in_library,
 		"random_article_url": random_article_url,
 		"categories": categories,
+		"author_sub_count": article.author.subscribed.all().count(),
+		"in_library_count": article.libraries.all().count(),
 		"similar_articles": article.tags.similar_objects()[:8],
 		"comment_form": comment_form, 
 		"feature_form": feature_form

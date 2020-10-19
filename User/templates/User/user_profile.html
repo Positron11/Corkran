@@ -4,14 +4,15 @@
 {% block description %}View your profile and activity.{% endblock %}
 
 {% block content %}
-
 <!-- Header card -->
 <div class="special card">
+	<!-- Header -->
 	<div class="header">
 		<div class="heading single-line-text">{{ user }}</div>
-		<div class="subheading">{{ user.subscribed.all|length }} user{% if user.subscribed.all|length == 1 %} has{% else %}s have{% endif %} subscribed to you.</div>
+		<div class="subheading">{{ subscriber_count }} user{% if subscriber_count == 1 %} has{% else %}s have{% endif %} subscribed to you.</div>
 	</div>
 	
+	<!-- User bio -->
 	<div class="text">
 		{% if user.profile.bio %}
 		"{{ user.profile.bio|urlizetrunc:40 }}"
@@ -34,7 +35,7 @@
 </div>
 	
 
-<!-- Offset anchor -->
+<!-- Articles anchor -->
 <div id="articles" class="anchor"></div>
 
 <!-- Articles by user -->
@@ -49,10 +50,13 @@
 		<!-- Articles list -->
 		<div class="list-box normal-spacing">
 			{% for article in articles %}
+			<!-- Article title card -->
 			<a class="unformatted single-line-text word-card card" href="{{ article.get_absolute_url }}">
 				<span class="montserrat text">"{{ article.title }}" &nbsp; <span class="grey"><i class="small far fa-bookmark"></i> {{ article.libraries.all|length }}</span></span>
 			</a>
+			
 			{% empty %}
+			
 			<div class="special minimal card">
 				<span>You haven't written any articles yet. Consider <a href="{% url 'create-article' %}">writing one now</a>.</span>
 			</div>
@@ -62,7 +66,7 @@
 </fieldset>
 
 
-<!-- Offset anchor -->
+<!-- Tags anchor -->
 <div id="tags" class="anchor"></div>
 
 <!-- Tags -->
@@ -77,8 +81,11 @@
 		<!-- Tags list -->
 		<div class="list-box compact-spacing">
 			{% for tag in tags %}
+			<!-- Tag -->
 			<a class="single-line-text tag" href="{% url 'tag-sorted-articles' tag %}">{{ tag }}</a>
+			
 			{% empty %}
+			
 			<div class="special minimal card">
 				<span>You haven't written any articles yet. Consider <a href="{% url 'create-article' %}">writing one now</a>.</span>
 			</div>
@@ -88,7 +95,7 @@
 </fieldset>
 
 
-<!-- Offset anchor -->
+<!-- Subscriptions anchor -->
 <div id="subscriptions" class="anchor"></div>
 
 <!-- Subscriptions -->
@@ -103,10 +110,13 @@
 		<!-- Tags list -->
 		<div class="list-box compact-spacing">
 			{% for author in subscribed_authors %}
+			<!-- Author name card -->
 			<a class="unformatted single-line-text card word-card" href="{% url 'author-sorted-articles' author %}">
 				<span class="montserrat text">{{ author.username }}</span>
 			</a>
+
 			{% empty %}
+
 			<div class="special minimal card">
 				<span>You haven't subscribed to any authors yet. <a href="{% url 'author-sorted-articles' random_user %}">Find an author you like</a>.</span>
 			</div>
@@ -114,9 +124,7 @@
 		</div>
 	</div>
 </fieldset>
-
 {% endblock %}
-
 
 {% block floating-button %}
 <!-- Scroll to top button -->

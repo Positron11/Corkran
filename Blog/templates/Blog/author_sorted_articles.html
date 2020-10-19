@@ -1,12 +1,11 @@
 {% extends 'Blog/article_list.html' %}
 
 {% block title %}{{ author }}'s Articles{% endblock %}
-
-{% block search-dialogue %} articles by {{ author }}{% endblock %}
 {% block description %}{{ author }} has written {{ article_count }} article{% if article_count != 1 %}s{% endif %}, as of yet.{% endblock %}
 
-{% block header-card %}
+{% block search-dialogue %} articles by {{ author }}{% endblock %}
 
+{% block header_card %}
 <!-- Header card -->
 <div class="special card">
 	<!-- Header -->
@@ -15,20 +14,18 @@
 		<div class="subheading">... has written {{ article_count }} article{% if article_count != 1 %}s{% endif %}, as of yet.</div>
 	</div>
 
-	<!-- author bio -->
+	<!-- Author bio -->
 	<div class="text">
 		{% if author.profile.bio %}
 		"{{ author.profile.bio|urlizetrunc:40 }}"
 		{% else %}
-		They seem to prefer the shadows. Or maybe they're just too lazy to fill in their bio.
+		They seem to prefer the shadows. Or perhaps they're just too lazy to fill in their bio.
 		{% endif %}
 	</div>
 </div>
-
 {% endblock %}
 
-{% block no-articles-card %}
-
+{% block no_articles_card %}
 <!-- No articles -->
 <div class="special card">
 	<!-- Header -->
@@ -40,22 +37,6 @@
 	<!-- Content -->
 	<div class="text">Consider going <a href="{% url 'home' %}">home</a>, to find some writers that do indeed write, or if you're feeling especially motivated, <a href="{% url 'create-article' %}">write one yourself</a>.</div>
 </div>
-
 {% endblock %}
 
-{% block empty-search-card %}
-
-<!-- Empty search -->
-<div class="special card">
-	<div class="header">
-		<div class="heading">No Articles Found.</div>
-	</div>
-	
-	<div class="text">
-		Consider reconsidering your search query. Queries resembling "k3e#$%jbjvd" are not likely to take 
-		you very far. Or perhaps it is simply that the author has not what written anything along the lines
-		of what you're looking for.
-	</div>
-</div>
-
-{% endblock %}
+{% additional_empty_search_text %}Or perhaps the author has not written what you're looking for.{% endblock %}

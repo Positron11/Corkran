@@ -45,6 +45,7 @@
 	<!-- Top of page anchor -->
 	<div class="anchor" id="top"></div>
 
+
 	<!-- Loading overlay -->
 	<div id="loading_overlay">
 		<svg class="tea" width="37" height="48" viewbox="0 0 37 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -69,6 +70,7 @@
 	<div id="main" class="vertically-space-items responsive">
 		<!-- Navbar -->
 		<div class="unselectable" id="navbar">
+			<!-- Links and banner container -->
 			<div id="nav_links_container">
 				<!-- General links -->
 				<a href="{% url 'home' %}" class="unformatted" id="nav_banner" title="Corkran">*Co.</a>
@@ -85,10 +87,7 @@
 				
 				<!-- Profile and logout dropdown -->
 				<div class="dropdown" id="account_dropdown">
-					<!-- Dropdown button -->
 					<div class="clickable unformatted link info-btn dropdown-label" id="account_btn" data-info="{{ user.username }}">Account</div>
-					
-					<!-- Dropdown -->
 					<div class="dropdown-content">
 						<div class="separator-bars center-align-text">
 							<a href="{% url 'profile' %}" class="unformatted link" title="Your profile">Profile</a>
@@ -98,8 +97,8 @@
 					</div>
 				</div>
 
-				<!-- Authentication -->
 				{% else %}
+				<!-- Authentication -->
 				<a href="{% url 'login' %}?next={{request.path}}" class="unformatted link" id="login_btn" title="Log in">Login</a>
 				<a href="{% url 'registration' %}" class="unformatted link" id="register_btn" title="Register">Register</a>
 				{% endif %}
@@ -110,7 +109,7 @@
 			</div>
 			
 
-			<!-- Progress bar -->
+			<!-- Reading progress bar -->
 			<div id="reading_progress_bar" data-progress="0%"></div>
 		</div>
 
@@ -137,24 +136,21 @@
 				<!-- Announcement -->
 				<div class="announcement text">
 					<label>Announcement:</label>
-					<a class="unformatted" href="{% url 'announcements' %}" title="Lastest Announcement">
-						{% latest_announcement %}
-					</a>
+					<a class="unformatted" href="{% url 'announcements' %}" title="Lastest Announcement">{% latest_announcement %}</a>
 				</div>
 			</div>
 
 
 			<!-- Main content -->
 			<div id="page_content" class="vertically-space-items responsive">
-				<!-- Messages -->
 				{% for message in messages %}
+				<!-- Message -->
 				<div class="alert {{ message.tags }}">
 					<div class="clickable message text single-line-text center-align-text">{{ message }}</div>
 					<i class="far fa-times-circle clickable close-btn"></i>
 				</div>
 				{% endfor%}
 
-				<!-- Content -->
 				{% block content %}{% endblock %}
 			</div>
 		</div>
@@ -188,17 +184,18 @@
 	{% block floating-button %}{% endblock %}
 
 
-	<!-- Scripts -->
-
 	<!-- Jquery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 	<!-- Plugins -->
 	<script src="{% static 'Blog/JS/are_you_sure.js' %}"></script>
 	<script src="{% static 'Blog/JS/truncator.js' %}"></script>
 	<script src="{% static 'Blog/JS/autosize.js' %}"></script>
 	<script src="{% static 'Blog/JS/easing.js' %}"></script>
-	<!-- Main -->
+
+	<!-- Main script -->
 	<script src="{% static 'Blog/JS/scripts.js' %}"></script>
+
 	<!--Lazy loading script-->
 	<script src="{% static 'Blog/JS/lazy.js' %}"></script>
 </body>

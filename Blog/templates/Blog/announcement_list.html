@@ -4,11 +4,10 @@
 {% block description %}Important announcements and updates for Corkran.{% endblock %}
 
 {% block content %}
-
 {% if request.user.is_superuser %}
 <!-- New announcement form -->
 <form method="post" class="vertically-space-items confirm-leave">{% csrf_token %}
-	<!-- Textarea -->
+	<!-- Announcement textarea -->
 	<textarea name="content" rows="5" required autocomplete="off" placeholder="New announcement..." class="closer-below"></textarea>
 
 	<!-- Submit button -->
@@ -17,13 +16,11 @@
 	</div>
 </form>
 
-<!-- Horizontal line -->
 <div class="horizontal-divider"></div>
 {% endif %}
 
 
 {% for announcement in announcements %}
-
 <!-- Announcement anchor -->
 <div class="anchor" id="{{ announcement.id }}"></div>
 
@@ -59,7 +56,5 @@
 	<!-- Content -->
 	<div class="text">You're either here very early, or something has gone horribly wrong. In either case, go ahead and relax.</div>
 </div>
-
 {% endfor %}
-
 {% endblock %}

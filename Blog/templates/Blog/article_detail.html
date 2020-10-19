@@ -21,9 +21,7 @@
 <meta name="twitter:card" content="summary_large_image">
 {% endblock %}
 
-{% block feature %}
-{% if article.thumbnail %}	
-
+{% block feature %}{% if article.thumbnail %}	
 <!-- Feature image -->
 <div 
 	data-href="https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}" 
@@ -50,13 +48,10 @@
 		{% if article.attribution %}| {{ article.attribution|urlizetrunc:20 }}{% endif %}
 	</div>
 </div>
-
-{% endif %}
-{% endblock %}
+{% endif %}{% endblock %}
 
 
 {% block content %}
-
 {% if user == article.author %}
 <!-- Article edit buttons -->
 <div class="nowrap list-box split-items compact-spacing closer-below">
@@ -82,15 +77,9 @@
 
 <!-- Article controls -->
 <div class="normal-spacing nowrap list-box split-items closer-below" id="article_controls">
-
-	<!-- Social media share buttons -->
+	<!-- Social media share buttons dropdown -->
 	<div class="compact dropdown">
-		<!-- Dropdown button -->
-		<div class="small button dropdown-label">
-			<i class="fas fa-share-alt"></i>
-		</div>
-
-		<!-- Dropdown -->
+		<div class="small button dropdown-label"><i class="fas fa-share-alt"></i></div>
 		<div class="dropdown-content">
 			<div class="nowrap list-box compact-spacing">
 				<!-- Twitter -->
@@ -127,7 +116,7 @@
 			{% else %}
 			<i class="far fa-bell"></i>
 			{% endif %}
-			&nbsp;{{ article.author.subscribed.all|length }}
+			&nbsp;{{ author_sub_count }}
 		</button>
 	</form>
 
@@ -139,7 +128,7 @@
 			{% else %}
 			<i class="far fa-bookmark"></i>
 			{% endif %}
-			&nbsp;{{ article.libraries.all|length }}
+			&nbsp;{{ in_library_count }}
 		</button>
 	</form>
 
@@ -164,7 +153,7 @@
 	
 	<!-- Next post -->
 	<a href="{{ next_article.get_absolute_url }}" class="button split-item single-line-text" id="next_post" title="Older">
-		<i class="fas fa-arrow-circle-right"></i>&nbsp;&nbsp;<bdi>{{ next_article.title }}</bdi>
+		<i class="fas fa-arrow-circle-right"></i>&nbsp;&nbsp;{{ next_article.title }}
 	</a>
 </div>
 
@@ -176,7 +165,9 @@
 		{% if categories %}
 		<!-- Categories -->
 		<div class="small closer-below">
+			<!-- Main category -->
 			<a href="{% url 'subcategories' categories.parent.slug %}" class="unformatted bold">{{ categories.parent }}</a>
+			<!-- Subcategories -->
 			<span class="grey">
 				||{% for category in categories.subcategories %}
 				<a href="{% url 'subcategory-sorted-articles' category.parent.slug category.slug %}" class="unformatted">{{ category.name }}</a>{% if not forloop.last %}, {% endif %}
@@ -235,7 +226,7 @@
 			</div>
 
 			<!-- Go to comments button -->
-			<a href="#comments" class="button" onclick="toggleZenMode();">
+			<a href="#comments" class="minimal selected button" onclick="toggleZenMode();">
 				Comments&nbsp;&nbsp;<i class="fas fa-comments"></i>
 			</a>
 		</div>
@@ -266,7 +257,9 @@
 			</a>
 		</div>
 	</div>
+
 	{% empty %}
+
 	<!-- No similarly tagged articles -->
 	<div class="word-card card special">
 		<span class="montserrat">
@@ -303,9 +296,7 @@
 		</div>
 	</form>
 
-	<!-- Horizontal line -->
 	<div class="horizontal-divider"></div>
-
 	{% endif %}
 
 	<!-- Heading -->
@@ -323,7 +314,9 @@
 			<div class="comment">
 				<!-- Author and date -->
 				<div class="info-container single-line-text">
+					<!-- Author -->
 					<a href="{% url 'author-sorted-articles' node.author %}" title="Articles by {{ node.author }}">{{ node.author }}</a>
+					<!-- Date -->
 					<span class="montserrat text grey"> ~ {{ node.date|date:"F jS, Y | g:i a e" }}</span>
 				</div>
 
@@ -387,18 +380,16 @@
 		</li>
 		{% endrecursetree %}
 	</ul>
+
 	{% else %}
+
 	<!-- No comments message -->
 	<div class="word-card card special">
-		<span class="montserrat">
-			No comments. Maybe it's new. Or confusing.
-		</span>
+		<span class="montserrat">No comments. Maybe it's new. Or confusing.</span>
 	</div>
 	{% endif %}
 </fieldset>
-
 {% endblock %}
-
 
 {% block floating-button %}
 <!-- Scroll to top button -->

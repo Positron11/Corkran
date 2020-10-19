@@ -1,0 +1,22 @@
+{% extends 'Blog/base.html' %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+<!-- Confirm delete -->
+<div class="card">
+	<!-- Header -->
+	<div class="header">
+		<div class="heading">{% block heading %}{% endblock %}</div>
+		<div class="subheading">{% block subheading %}{% endblock %}</div>
+	</div>
+
+	<!-- Confirm or cancel -->
+	<form method="post">{% csrf_token %}
+		<div class="nowrap list-box split-items compact-spacing">
+			<button class="danger button" type="submit">Delete</button>
+			<a href="{% block cancel %}{% endblock %}" class="button split-item">Cancel</a>
+		</div>
+	</form>
+</div>
+{% endblock %}
