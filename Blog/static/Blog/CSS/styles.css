@@ -185,6 +185,10 @@ p.montserrat, .text.montserrat {
 	margin: 0 1rem 1rem 0;
 }
 
+.list-box.wrap-all>* {
+	width: 100%;
+}
+
 .list-box.nowrap {
 	margin: 0;
 	padding: 0;
