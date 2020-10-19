@@ -190,9 +190,10 @@
 
 		<!-- Date and author -->
 		<div class="subheading">
-			{{ article.date|date:"F jS, Y, g:i a e" }} - By
-			<a href="{% url 'author-sorted-articles' article.author %}"
-				title="Articles by {{ article.author.username }}">
+			<!-- Date -->
+			<span title="{{ article.date|date:"F jS, Y, g:i a e" }}">{{ article.date|date:"F jS, Y" }}</span> - By
+			<!-- Author -->
+			<a href="{% url 'author-sorted-articles' article.author %}"	title="Articles by {{ article.author.username }}">
 				{{ article.author.username }}
 			</a>
 		</div>
