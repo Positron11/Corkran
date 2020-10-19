@@ -27,7 +27,7 @@ def register(request):
 			messages.success(request, "Your account has been created. You can now log in.")
 			return redirect('home')
 
-	return render(request, 'User/user_registration.html', {"form": form})
+	return render(request, 'User/registration.html', {"form": form})
 
 
 # account_settings page
