@@ -222,6 +222,12 @@ p.montserrat, .text.montserrat {
 	position: relative;
 	padding-bottom: 0.7rem;
 	margin-bottom: -0.7rem;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.list-box.nowrap.blur-overflow::-webkit-scrollbar {
+	display: none;
 }
 
 .list-box.nowrap.blur-overflow::before, .list-box.nowrap.blur-overflow::after {
@@ -258,6 +264,8 @@ p.montserrat, .text.montserrat {
 
 .list-box.nowrap.blur-overflow.blur-left::before, .list-box.nowrap.blur-overflow.blur-right::after {
 	opacity: 1;
+	cursor: pointer;
+	pointer-events: all;
 }
 
 /* Vertically space items */

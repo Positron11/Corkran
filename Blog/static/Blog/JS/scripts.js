@@ -66,7 +66,7 @@ $(function () {
 	autosize($('textarea'));
 	autosize.update($("textarea"));
 
-	// initialize are-you-sure form close manager plugin
+	// Initialize are-you-sure form close manager plugin
 	$('form.confirm-leave').areYouSure();
 
 
@@ -112,7 +112,7 @@ $(function () {
 	});
 
 
-	// toggle dropdown
+	// Toggle dropdown
 	$(document).on('click', '.dropdown-label', function (e) {
 		e.preventDefault();
 		$(this).parent(".dropdown").toggleClass("dropped");
@@ -128,7 +128,7 @@ $(function () {
 		}
 	});
 
-	// position dropdown
+	// Position dropdown
 	$(document).on('click mouseenter', '.dropdown-label', function (e) {
 		e.preventDefault();
 		positionDropdown(this);
@@ -219,7 +219,7 @@ $(function () {
 	});
 
 
-	// BLUR SIDES OF NOWRAP LISTBOXES
+	// Blur sides of nowrap listbox
 	$('.list-box.nowrap.blur-overflow').each(function () {
 		// initialize blur
 		blurListBox(this);
@@ -228,6 +228,25 @@ $(function () {
 		$(this).scroll(function () {
 			blurListBox(this);
 		});
+	});
+
+	// Click to scroll nowrap listbox
+	$(document).on('click', '.list-box.blur-overflow', function (e) {
+		var scroll_pos = $(this).scrollLeft();
+		var bounding_box = this.getBoundingClientRect();
+
+		// scroll right
+		if (e.pageX > bounding_box.right - 60 && e.pageX < bounding_box.right && $(this).hasClass("blur-right")) {
+			$(this).stop().animate({
+				scrollLeft: scroll_pos + 200
+			}, 1000, 'easeOutQuint');
+
+		// scroll left
+		} else if (e.pageX < bounding_box.left + 60 && e.pageX > bounding_box.left && $(this).hasClass("blur-left")) {
+			$(this).stop().animate({
+				scrollLeft: scroll_pos - 200
+			}, 1000, 'easeOutQuint');
+		}
 	});
 
 
