@@ -187,10 +187,16 @@ $(function () {
 	$(window).on("resize", function () {
 		resizeSidebar();
 		fadeTruncateArticles();
-		positionDropdown($(".dropdown.dropped .dropdown-label")[0]);
+
+		// blur nowrap listboxes
 		$('.list-box.nowrap.blur-overflow').each(function () {
 			blurListBox(this);
 		});
+
+		// reposition dropped dropdown
+		if ($(".dropdown.dropped .dropdown-label").length) {
+			positionDropdown($(".dropdown.dropped .dropdown-label")[0]);
+		}
 	});
 
 
