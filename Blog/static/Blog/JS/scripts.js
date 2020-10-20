@@ -737,6 +737,6 @@ function positionDropdown(dropdown) {
 
 // CALCULATE OVERFLOW COMPENSATION
 function calculateOverflowCompensation(overflow) {
-	var absolute_overflow = Math.min(0, overflow);
+	var absolute_overflow = Math.min(5, overflow);
 	return absolute_overflow != 0 ? absolute_overflow - 5 : absolute_overflow;
 }
