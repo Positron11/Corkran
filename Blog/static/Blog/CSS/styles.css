@@ -447,12 +447,6 @@ fieldset {
 	border-color: #eaeaea !important;
 }
 
-.button.selected {
-	color: white;
-	background: #333;
-	border: 1px solid transparent;
-}
-
 /* Checkboxes */
 
 input[type="checkbox"] {
@@ -510,6 +504,23 @@ input[type="checkbox"]:disabled+label {
 	pointer-events: none;
 	text-decoration: line-through;
 }
+
+/* Radio buttons */
+
+input[type="radio"] {
+	opacity: 0;
+	cursor: pointer;
+	position: absolute;
+	pointer-events: none;
+}
+
+input[type="radio"]:checked+label {
+	color: white !important;
+	background-color: #333 !important;
+	border: 1px solid transparent !important;
+}
+
+/* File input */
 
 input[type="file"] {
 	display: none;
@@ -1333,11 +1344,6 @@ svg.tea #steamR {
 	.button.danger:hover {
 		background: rgb(242, 38, 38, 0.2);
 	}
-	.button.selected:hover {
-		color: #333;
-		border-color: #333;
-		background-color: white;
-	}
 	.dropdown:hover>.dropdown-content {
 		top: 110%;
 		opacity: 1;
@@ -1422,11 +1428,6 @@ svg.tea #steamR {
 	}
 	.button.danger:active {
 		background: rgb(242, 38, 38, 0.2);
-	}
-	.button.selected:active {
-		color: #333;
-		border-color: #333;
-		background-color: white;
 	}
 	.dropdown.dropped>.dropdown-content {
 		top: 110%;

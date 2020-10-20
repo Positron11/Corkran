@@ -12,20 +12,11 @@ class AnnouncementForm(forms.ModelForm):
 
 # article form
 class ArticleForm(forms.ModelForm):
-	categories = forms.ModelMultipleChoiceField(widget=forms.CheckboxSelectMultiple, queryset=Category.objects.all(), required=False)
+	category = forms.ModelChoiceField(widget=forms.RadioSelect, queryset=Category.objects.all(), required=False)
 
 	class Meta:
 		model = Article
-		fields = ["thumbnail", "title", "content", "tags", "categories", "attribution"]
-
-	# restrict categories to one main group
-	def clean(self):
-		# get article's categories
-		categories = self.cleaned_data.get("categories")
-		# if subcategories under more than one main category raise error
-		if len(set([category.parent for category in categories])) > 1:
-			raise forms.ValidationError("You can only choose subcategories under one category.")	
-		return self.cleaned_data
+		fields = ["thumbnail", "title", "content", "tags", "category", "attribution"]
 
 
 # comment creation

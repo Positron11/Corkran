@@ -11,14 +11,13 @@ from mptt.models import MPTTModel, TreeForeignKey
 
 # category model
 class Category(models.Model):
+	slug = models.SlugField(blank=True)
 	name = models.CharField(max_length=50, unique=True)
-	parent = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True)
 	description = models.TextField(blank=True, null=True)
-	slug = models.SlugField()
 
 	# show self as category name when queried
 	def __str__(self):
-		return f"{self.name} ({self.parent.name})" if self.parent else self.name
+		return self.name
 
 	# generate slug
 	def save(self): 
@@ -29,10 +28,7 @@ class Category(models.Model):
 
 	# get this category's absolute url
 	def get_absolute_url(self):
-		if self.parent:
-			return reverse('subcategory-sorted-articles', kwargs={"slug": self.slug, "parent_slug": self.parent.slug})
-		else:
-			return reverse('subcategories', kwargs={"slug": self.slug})
+		return reverse('category-sorted-articles', kwargs={"slug": self.slug})
 
 
 # article model
@@ -41,7 +37,7 @@ class Article(models.Model):
 	attribution = models.CharField(max_length=100, blank=True)
 	date = models.DateTimeField(default=datetime.now, blank=True)
 	libraries = models.ManyToManyField(Profile, related_name="library", blank=True)
-	categories = models.ManyToManyField(Category, related_name="articles", blank=True)
+	category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
 	author = models.ForeignKey(User, on_delete=models.CASCADE)
 	title = models.CharField(max_length=50)
 	content = models.TextField()

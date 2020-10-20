@@ -34,29 +34,19 @@
 
 		<!-- Categories -->	
 		<div class="anchor" id="categorization"></div>
-		<label>{{ form.categories.label }}:</label>
-
+		<label>{{ form.category.label }}:</label>
 		<div>
-			<div class="list-box compact-spacing">
-				{% for group in categories %}
-				<!-- Category group -->
-				<div class="compact dropdown">
-					<div class="solid minimal button dropdown-label category-group-label" id="{{ group.id }}_label">{{ group.name }}</div>
-					<div class="dropdown-content" id="{{ group.id }}_content">
-						<div class="list-box wrap-all compact-spacing category-container">
-							{% for category in categories|get_item:group %}
-							<!-- Category -->
-							<div>
-								<input type="checkbox" name="categories" class="category-select" value="{{ category.id }}" id="id_categories_{{ category.id }}" {% if category in form.instance.categories.all %}checked{% endif %}>
-								<label for="id_categories_{{ category.id }}" class="single-line-text">{{ category.name }}</label>
-							</div>
-							{% endfor %}
-						</div>
-					</div>
+			<!-- Category list -->
+			<div class="list-box nowrap blur-overflow compact-spacing">
+				{% for category in categories %}
+				<!-- Category -->
+				<div>
+					<input type="radio" name="category" value="{{ category.id }}" id="id_category_{{ category.id }}" {% if category == article.category %}checked{% endif %}>
+					<label for="id_category_{{ category.id }}" class="minimal button">{{ category.name }}</label>
 				</div>
 				{% endfor %}
 			</div>
-		</div>	
+		</div>
 
 		<!-- Tags -->
 		<label>Tags separated by commas:</label>

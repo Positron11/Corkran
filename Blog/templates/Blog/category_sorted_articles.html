@@ -1,7 +1,7 @@
 {% extends 'Blog/article_list.html' %}
 
 {% block title %}{{ category.name }} Articles{% endblock %}
-{% block description %}{{ author }} has written {{ article_count }} article{% if article_count != 1 %}s{% endif %}, as of yet.{% endblock %}
+{% block description %}{{ article_count }} article{% if article_count != 1 %}s{% endif %} categorized under {{ category.name }} on Corkran.{% endblock %}
 
 {% block search-dialogue %} articles categorized under {{ category.name|lower }}{% endblock %}
 

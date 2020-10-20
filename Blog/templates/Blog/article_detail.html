@@ -162,32 +162,21 @@
 <div class="article main-article card">
 	<!-- Header -->
 	<div class="header vertically-space-items">
-		{% if categories %}
-		<!-- Categories -->
-		<div class="small closer-below">
-			<!-- Main category -->
-			<a href="{{ categories.parent.get_absolute_url }}" class="unformatted bold">{{ categories.parent.name }}</a>
-			<!-- Subcategories -->
-			<span class="grey">
-				||{% for category in categories.subcategories %}
-				<a href="{{ category.get_absolute_url }}" class="unformatted">{{ category.name }}</a>{% if not forloop.last %}, {% endif %}
-				{% endfor %}
-			</span>
-		</div>
-		{% endif %}
-
 		<!-- Title -->
 		<div class="heading closer-below">{{ article.title }}</div>
 
+		<!-- Category -->
+		{% if article.category %}<a href="{{ article.category.get_absolute_url }}" class="unformatted">{{ article.category.name }}</a> || {% endif %}
+
 		<!-- Date and author -->
-		<div class="subheading">
+		<span class="subheading">
 			<!-- Date -->
 			<span title="{{ article.date|date:"F jS, Y, g:i a e" }}">{{ article.date|date:"F jS, Y" }}</span> - By
 			<!-- Author -->
 			<a href="{% url 'author-sorted-articles' article.author %}"	title="Articles by {{ article.author.username }}">
 				{{ article.author.username }}
 			</a>
-		</div>
+		</span>
 	</div>
 	
 	<div class="vertically-space-items">
