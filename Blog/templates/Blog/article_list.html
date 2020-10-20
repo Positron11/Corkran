@@ -72,7 +72,7 @@
 		<div class="date subheading">{{ article.date|date:"F jS, Y" }}</div>
 
 		<!-- Title -->
-		<div class="heading single-line-text">
+		<div class="heading">
 			<a href="{% url 'article-detail' article.id article.slug %}" class="unformatted"
 				title='Read "{{ article.title }}"'>
 				{{ article.title }}
