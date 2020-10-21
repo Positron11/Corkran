@@ -6,17 +6,17 @@
 {% block feature %}{% if featured_article %}
 <!-- Feature image -->
 <div 
-	data-href="https://ik.imagekit.io/f92sz8hl8b{% if featured_article.thumbnail %}{{ featured_article.thumbnail.url }}{% else %}/media/defaults/feature.jpg{% endif %}" 
+	data-href="https://ik.imagekit.io/f92sz8hl8b{% if featured_article.thumbnail %}{{ featured_article.thumbnail.url }}{% else %}/media/defaults/article_thumbnail.jpg{% endif %}" 
 	data-srcset="
-		https://ik.imagekit.io/f92sz8hl8b{% if featured_article.thumbnail %}{{ featured_article.thumbnail.url }}{% else %}/media/defaults/feature.jpg{% endif %}?tr=w-1650,h-550,fo-auto 3000w, 
-		https://ik.imagekit.io/f92sz8hl8b{% if featured_article.thumbnail %}{{ featured_article.thumbnail.url }}{% else %}/media/defaults/feature.jpg{% endif %}?tr=w-1350,h-450,fo-auto 1500w,
-		https://ik.imagekit.io/f92sz8hl8b{% if featured_article.thumbnail %}{{ featured_article.thumbnail.url }}{% else %}/media/defaults/feature.jpg{% endif %}?tr=w-900,h-300,fo-auto 800w,
-		https://ik.imagekit.io/f92sz8hl8b{% if featured_article.thumbnail %}{{ featured_article.thumbnail.url }}{% else %}/media/defaults/feature.jpg{% endif %}?tr=w-750,h-250,fo-auto 600w"  
+		https://ik.imagekit.io/f92sz8hl8b{% if featured_article.thumbnail %}{{ featured_article.thumbnail.url }}{% else %}/media/defaults/article_thumbnail.jpg{% endif %}?tr=w-1650,h-550,fo-auto 3000w, 
+		https://ik.imagekit.io/f92sz8hl8b{% if featured_article.thumbnail %}{{ featured_article.thumbnail.url }}{% else %}/media/defaults/article_thumbnail.jpg{% endif %}?tr=w-1350,h-450,fo-auto 1500w,
+		https://ik.imagekit.io/f92sz8hl8b{% if featured_article.thumbnail %}{{ featured_article.thumbnail.url }}{% else %}/media/defaults/article_thumbnail.jpg{% endif %}?tr=w-900,h-300,fo-auto 800w,
+		https://ik.imagekit.io/f92sz8hl8b{% if featured_article.thumbnail %}{{ featured_article.thumbnail.url }}{% else %}/media/defaults/article_thumbnail.jpg{% endif %}?tr=w-750,h-250,fo-auto 600w"  
 	data-sizes="100vw"
 	class="progressive replace feature image-container unselectable darken-overlay">
 
 	<!-- Blurred loader image -->
-	<img src="https://ik.imagekit.io/f92sz8hl8b/{% if featured_article.thumbnail %}{{ featured_article.thumbnail.url }}{% else %}/media/defaults/feature.jpg{% endif %}?tr=w-300,h-100,fo-auto" class="preview">
+	<img src="https://ik.imagekit.io/f92sz8hl8b/{% if featured_article.thumbnail %}{{ featured_article.thumbnail.url }}{% else %}/media/defaults/article_thumbnail.jpg{% endif %}?tr=w-300,h-100,fo-auto" class="preview">
 
 	<!-- Overlay -->
 	<a href="{{ featured_article.get_absolute_url }}" class="unformatted">
@@ -27,7 +27,7 @@
 	</a>
 
 	<!-- Image attribution -->
-	<div class="caption-overlay">{% if featured_article.thumbnail and featured_article.attribution %}{{ featured_article.attribution|urlizetrunc:20 }}{% elif not featured_article.thumbnail %}Photo by Nahil Naseer on Unsplash{% endif %}</div>
+	<div class="caption-overlay">{% if featured_article.thumbnail and featured_article.attribution %}{{ featured_article.attribution|urlizetrunc:20 }}{% elif not featured_article.thumbnail %}Photo by Erwin Doorn on Unsplash{% endif %}</div>
 </div>
 {% endif %}{% endblock %}
 

@@ -43,30 +43,7 @@
 	<!-- Latest eight articles under category -->
 	<div class="responsive vertically-space-items">
 		<div class="closer-below">
-			<div class="unselectable list-box compact-spacing">
-				{% for article in articles|get_item:category %}
-				<div class="article-widget">
-					<!-- Article thumbnail -->
-					<div 
-						data-href="https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}" 
-						data-srcset="
-						https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-1500,h-1000,fo-auto 3000w, 
-						https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-900,h-600,fo-auto 1500w,
-						https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-840,h-560,fo-auto 1000w,
-						https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-570,h-380,fo-auto 600w"	  
-						data-sizes="100vw" class="progressive replace article-widget-thumbnail darken-overlay image-container">
-						
-						<!-- Blurred loader image -->
-						<img src="https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-300,h-200,fo-auto" class="preview">
-					
-						<!-- Title overlay -->
-						<a href="{{ article.get_absolute_url }}">
-							<div class="cutout-overlay" data-vertical-truncator="4">{{ article.title }}</div>
-						</a>
-					</div>
-				</div>
-				{% endfor %}
-			</div>
+			{% article_widget_grid articles|get_item:category %}
 		</div>
 		
 		<!-- See all articles or subcategories -->

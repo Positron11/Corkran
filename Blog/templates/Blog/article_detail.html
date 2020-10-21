@@ -1,6 +1,7 @@
 {% extends 'Blog/base.html' %}
 
 {% load mptt_tags %}
+{% load corkran_tags %}
 
 {% block title %}"{{ article.title }}" by {{ article.author.username }}{% endblock %}
 {% block description %}{{ article.content|truncatechars:300 }}{% endblock %}
@@ -15,7 +16,7 @@
 <meta property="og:title" content="{{ article.title }}">
 <meta property="og:article:author" content="{{ article.author.username }}">
 <meta property="og:description" content="{{ article.content|truncatechars:300 }}">
-<meta property="og:image" content="https://ik.imagekit.io/f92sz8hl8b{% if article.thumbnail %}{{ article.thumbnail.url }}{% else %}/media/defaults/feature.jpg{% endif %}?tr=w-1200,h-600,fo-auto">
+<meta property="og:image" content="https://ik.imagekit.io/f92sz8hl8b{% if article.thumbnail %}{{ article.thumbnail.url }}{% else %}/media/defaults/article_thumbnail.jpg{% endif %}?tr=w-1200,h-600,fo-auto">
 
 <!-- Twitter article meta tags -->
 <meta name="twitter:card" content="summary_large_image">
@@ -224,39 +225,7 @@
 
 
 <!-- Article suggestions list -->
-<div class="unselectable list-box compact-spacing">
-	{% for article in similar_articles %}
-	<div class="article-widget">
-		<!-- Article thumbnail -->
-		<div 
-			data-href="https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}" 
-			data-srcset="
-				https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-1500,h-1000,fo-auto 3000w, 
-				https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-900,h-600,fo-auto 1500w,
-				https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-840,h-560,fo-auto 1000w,
-				https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-570,h-380,fo-auto 600w"	  
-			data-sizes="100vw" class="progressive replace article-widget-thumbnail darken-overlay image-container">
-
-			<!-- Blurred loader image -->
-			<img src="https://ik.imagekit.io/f92sz8hl8b/{{ article.thumbnail.url }}?tr=w-300,h-200,fo-auto" class="preview">
-	
-			<!-- Title overlay -->
-			<a href="{{ article.get_absolute_url }}">
-				<div class="cutout-overlay" data-vertical-truncator="4">{{ article.title }}</div>
-			</a>
-		</div>
-	</div>
-
-	{% empty %}
-
-	<!-- No similarly tagged articles -->
-	<div class="word-card card special">
-		<span class="montserrat">
-			A unique article. Niche? Peerless? All we know is, nothing is tagged similarly to it.
-		</span>
-	</div>
-	{% endfor %}
-</div>
+{% article_widget_grid similar_articles %}
 
 
 <!-- Comments box anchor -->

@@ -1,5 +1,7 @@
 {% extends 'Blog/base.html' %}
 
+{% load corkran_tags %}
+
 {% block title %}Profile{% endblock %}
 {% block description %}View your profile and activity.{% endblock %}
 
@@ -48,20 +50,15 @@
 		<div class="subheading closer-below">Your articles on Corkran.</div>
 
 		<!-- Articles list -->
-		<div class="list-box normal-spacing">
-			{% for article in articles %}
-			<!-- Article title card -->
-			<a class="unformatted single-line-text word-card card" href="{{ article.get_absolute_url }}">
-				<span class="montserrat text">"{{ article.title }}" &nbsp; <span class="grey"><i class="small far fa-bookmark"></i> {{ article.libraries.all|length }}</span></span>
-			</a>
-			
-			{% empty %}
-			
-			<div class="special word-card card">
-				<span>You haven't written any articles yet. Consider <a href="{% url 'create-article' %}">writing one now</a>.</span>
-			</div>
-			{% endfor %}
+		{% if articles %}
+		{% article_widget_grid articles %}
+		
+		{% else %}
+
+		<div class="special word-card card">
+			<span>You haven't written any articles yet. Consider <a href="{% url 'create-article' %}">writing one now</a>.</span>
 		</div>
+		{% endif %}
 	</div>
 </fieldset>
 

@@ -1,0 +1,25 @@
+<!-- Article widget grid -->
+<div class="unselectable list-box compact-spacing">
+	{% for article in articles %}
+	<div class="article-widget">
+		<!-- Article thumbnail -->
+		<div 
+			data-href="https://ik.imagekit.io/f92sz8hl8b{% if article.thumbnail %}{{ article.thumbnail.url }}{% else %}/media/defaults/article_thumbnail.jpg{% endif %}" 
+			data-srcset="
+				https://ik.imagekit.io/f92sz8hl8b{% if article.thumbnail %}{{ article.thumbnail.url }}{% else %}/media/defaults/article_thumbnail.jpg{% endif %}?tr=w-1500,h-1000,fo-auto 3000w, 
+				https://ik.imagekit.io/f92sz8hl8b{% if article.thumbnail %}{{ article.thumbnail.url }}{% else %}/media/defaults/article_thumbnail.jpg{% endif %}?tr=w-900,h-600,fo-auto 1500w,
+				https://ik.imagekit.io/f92sz8hl8b{% if article.thumbnail %}{{ article.thumbnail.url }}{% else %}/media/defaults/article_thumbnail.jpg{% endif %}?tr=w-840,h-560,fo-auto 1000w,
+				https://ik.imagekit.io/f92sz8hl8b{% if article.thumbnail %}{{ article.thumbnail.url }}{% else %}/media/defaults/article_thumbnail.jpg{% endif %}?tr=w-570,h-380,fo-auto 600w"	  
+			data-sizes="100vw" class="progressive replace article-widget-thumbnail darken-overlay image-container">
+
+			<!-- Blurred loader image -->
+			<img src="https://ik.imagekit.io/f92sz8hl8b{% if article.thumbnail %}{{ article.thumbnail.url }}{% else %}/media/defaults/article_thumbnail.jpg{% endif %}?tr=w-300,h-200,fo-auto" class="preview">
+	
+			<!-- Title overlay -->
+			<a href="{{ article.get_absolute_url }}">
+				<div class="cutout-overlay" data-vertical-truncator="4">{{ article.title }}</div>
+			</a>
+		</div>
+	</div>
+	{% endfor %}
+</div>
