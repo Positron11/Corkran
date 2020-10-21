@@ -57,7 +57,7 @@
 			
 			{% empty %}
 			
-			<div class="special minimal card">
+			<div class="special word-card card">
 				<span>You haven't written any articles yet. Consider <a href="{% url 'create-article' %}">writing one now</a>.</span>
 			</div>
 			{% endfor %}
@@ -86,7 +86,7 @@
 			
 			{% empty %}
 			
-			<div class="special minimal card">
+			<div class="special word-card card">
 				<span>You haven't written any articles yet. Consider <a href="{% url 'create-article' %}">writing one now</a>.</span>
 			</div>
 			{% endfor %}
@@ -117,7 +117,7 @@
 
 			{% empty %}
 
-			<div class="special minimal card">
+			<div class="special word-card card">
 				<span>You haven't subscribed to any authors yet. <a href="{% url 'author-sorted-articles' random_user %}">Find an author you like</a>.</span>
 			</div>
 			{% endfor %}
