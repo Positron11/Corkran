@@ -297,9 +297,9 @@
 					</form>
 				</div>
 
-				{% if user.is_authenticated %}
 				<!-- Comment buttons -->
 				<div class="comment-btn-container">
+					{% if user.is_authenticated %}
 					<!-- Reply -->
 					<div class="minimal no-border button reply toggle-btn">Reply</div>
 					{% if user == article.author or user == node.author %}
@@ -310,8 +310,12 @@
 					<!-- Delete -->
 					<a href="{% url 'delete-comment' node.id %}" class="minimal no-border danger button">Delete</a>
 					{% endif %}
+
+					{% else %}
+
+					<a href="{% url 'login' %}?next={{ article.get_absolute_url }}#{{ node.id }}" class="minimal no-border button">Reply</a>
+					{% endif %}
 				</div>
-				{% endif %}
 
 				<!-- Reply to comment -->
 				<div class="reply editor">
