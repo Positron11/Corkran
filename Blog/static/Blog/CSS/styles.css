@@ -1180,9 +1180,10 @@ svg.tea #steamR {
 }
 
 #comments_container ul {
+	padding-left: 1em;
 	list-style-type: none;
 	border-left: 2px solid #eee;
-	transition: 0.3s ease;
+	transition: 0.2s ease;
 }
 
 #comments_container>ul {
@@ -1392,7 +1393,7 @@ svg.tea #steamR {
 		color: #f32929;
 	}
 	#comments_container ul:hover {
-		border-left: 2px solid #ddd;
+		border-color: #ddd;
 	}
 	#comments_container>ul:hover {
 		border-left: none;
@@ -1569,9 +1570,6 @@ svg.tea #steamR {
 	#zen_mode .close-btn{
 		top: 1.5em;
 		right: 1em;
-	}
-	#comments_container ul {
-		padding-left: 1em;
 	}
 	.article-widget {
 		min-width: 8em;
