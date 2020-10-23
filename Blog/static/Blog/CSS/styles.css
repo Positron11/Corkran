@@ -149,6 +149,7 @@ p.montserrat, .text.montserrat {
 	width: 100%;
 	overflow: hidden;
 	position: relative;
+	border-radius: 0.3em;
 }
 
 .image-container img {
@@ -887,7 +888,6 @@ svg.tea #steamR {
 .feature {
 	width: 100%;
 	height: 20em;
-	border-radius: 0.5em;
 }
 
 .feature .cutout-overlay {
@@ -1069,7 +1069,6 @@ svg.tea #steamR {
 .article-thumbnail {
 	height: 15em;
 	margin-bottom: 2em;
-	border-radius: 0.5em;
 }
 
 .article-preview {
@@ -1159,7 +1158,6 @@ svg.tea #steamR {
 	min-width: 10em;
 	overflow: hidden;
 	position: relative;
-	border-radius: 0.5em;
 }
 
 .article-widget .cutout-overlay {
