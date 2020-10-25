@@ -68,9 +68,6 @@
 
 	<!-- Header -->
 	<div class="header">
-		<!-- Date -->
-		<div class="date subheading">{{ article.date|date:"F jS, Y" }}</div>
-
 		<!-- Title -->
 		<div class="heading">
 			<a href="{% url 'article-detail' article.id article.slug %}" class="unformatted"
@@ -81,10 +78,8 @@
 
 		<!-- Author -->
 		<div class="subheading">
-			By
-			<a href="{% url 'author-sorted-articles' article.author %}"
-				title="Articles by {{ article.author.username }}">{{ article.author.username }}
-			</a>
+			{% if article.category %}<a href="{{ article.category.get_absolute_url }}" class="unformatted">{{ article.category.name }}</a> ||{% endif %}
+			By <a href="{% url 'author-sorted-articles' article.author %}"	title="Articles by {{ article.author.username }}">{{ article.author.username }}</a>
 		</div>
 	</div>
 
