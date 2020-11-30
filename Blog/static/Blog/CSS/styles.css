@@ -448,6 +448,19 @@ fieldset {
 	border-color: #eaeaea !important;
 }
 
+.button:active {
+	border-color: transparent;
+}
+
+.button:active:not(.danger) {
+	color: #00a32c;
+	background: rgb(4, 222, 63, 0.2);
+}
+
+.button.danger:active {
+	background: rgb(242, 38, 38, 0.2);
+}
+
 /* Checkboxes */
 
 input[type="checkbox"] {
@@ -634,6 +647,10 @@ input[type="file"] {
 	transition: 0.3s ease;
 }
 
+.darken-overlay:active:after {
+	background: rgb(0, 0, 0, 0.5);
+}
+
 /* Cutout text overlay */
 
 .cutout-overlay {
@@ -652,6 +669,11 @@ input[type="file"] {
 	overflow: hidden !important;
 	transform: translateY(-50%);
 	transition: 0.5s ease;
+}
+
+*:active>.cutout-overlay, *:active>a .cutout-overlay {
+	color: white;
+	background: transparent;
 }
 
 /* Caption overlay */
@@ -828,6 +850,10 @@ svg.tea #steamR {
 	font-size: 0.85em;
 	letter-spacing: 0.2em;
 	transition: 0.3s ease;
+}
+
+#nav_links_container .link:active {
+	color: #999;
 }
 
 #nav_links_container .link.info-btn {
@@ -1121,6 +1147,10 @@ svg.tea #steamR {
 	transition: 0.2s ease;
 }
 
+#zen_mode .close-btn:active {
+	color: #f32929;
+}
+
 #zen_mode.visible {
 	opacity: 1;
 	pointer-events: all;
@@ -1281,6 +1311,10 @@ svg.tea #steamR {
 	transition: 0.2s ease;
 }
 
+.paginator a:active {
+	color: #999;
+}
+
 .paginator .current {
 	width: 1.5em;
 	height: 1.5em;
@@ -1321,15 +1355,9 @@ svg.tea #steamR {
 }
 
 
-/* LARGE SCREENS ONLY */
+/* INPUT DEVICE SPECIFIC EVENTS */
 
-@media only screen and (min-width: 1201px) {
-	.anchor{
-		transform: translateY(-8.5rem);
-	}
-	.anchor.offset-alert {
-		transform: translateY(-11.5rem);
-	}
+@media (pointer:fine) {
 	input[type="checkbox"]+label:hover:before {
 		border-radius: 0.7em;
 	}
@@ -1356,32 +1384,8 @@ svg.tea #steamR {
 		color: white;
 		background: transparent;
 	}
-	#nav_links_container {
-		padding: 1em 0;
-		place-items: center;
-		grid-template: "link1 link2 banner link3 link4" / 1fr 1fr 1fr 1fr 1fr;
-	}
 	#nav_links_container .link:hover {
 		color: #999;
-	}
-	#nav_links_container .info-btn::after {
-		left: 50%;
-		transform: translate(-50%);
-	}
-	#nav_menu_btn, #nav_announcements_btn {
-		display: none;
-	}
-	#nav_banner {
-		font-size: 3em;
-	}
-	.attribution {
-		margin-top: -1em;
-	}
-	.alert {
-		top: 9em;
-	}
-	.alert.floating {
-		width: 97%;
 	}
 	.alert.floating:hover>.close-btn{
 		opacity: 1;
@@ -1402,6 +1406,42 @@ svg.tea #steamR {
 	.floating-btn:hover {
 		transform: scale(1.1);
 	}
+}
+
+
+/* LARGE SCREENS ONLY */
+
+@media only screen and (min-width: 1201px) {
+	.anchor{
+		transform: translateY(-8.5rem);
+	}
+	.anchor.offset-alert {
+		transform: translateY(-11.5rem);
+	}
+	#nav_links_container {
+		padding: 1em 0;
+		place-items: center;
+		grid-template: "link1 link2 banner link3 link4" / 1fr 1fr 1fr 1fr 1fr;
+	}
+	#nav_links_container .info-btn::after {
+		left: 50%;
+		transform: translate(-50%);
+	}
+	#nav_menu_btn, #nav_announcements_btn {
+		display: none;
+	}
+	#nav_banner {
+		font-size: 3em;
+	}
+	.attribution {
+		margin-top: -1em;
+	}
+	.alert {
+		top: 9em;
+	}
+	.alert.floating {
+		width: 97%;
+	}
 	.floating-btn:active {
 		transform: scale(0.9);
 		transition: 0.1s ease-out;
@@ -1418,28 +1458,11 @@ svg.tea #steamR {
 	.anchor.offset-alert {
 		transform: translateY(-9rem);
 	}
-	.button:active {
-		border-color: transparent;
-	}
-	.button:active:not(.danger) {
-		color: #00a32c;
-		background: rgb(4, 222, 63, 0.2);
-	}
-	.button.danger:active {
-		background: rgb(242, 38, 38, 0.2);
-	}
 	.dropdown.dropped>.dropdown-content {
 		top: 110%;
 		opacity: 1;
 		pointer-events: all;
 		top: calc(100% + 0.5rem);
-	}
-	.darken-overlay:active:after {
-		background: rgb(0, 0, 0, 0.5);
-	}
-	*:active>.cutout-overlay, *:active>a .cutout-overlay {
-		color: white;
-		background: transparent;
 	}
 	#nav_links_container {
 		padding: 0.5em 0;
@@ -1451,9 +1474,6 @@ svg.tea #steamR {
 	}
 	#nav_links_container #library_btn {
 		grid-area: library-btn;
-	}
-	#nav_links_container .link:active {
-		color: #999;
 	}
 	#nav_links_container>.link, #account_dropdown {
 		display: none;
@@ -1484,12 +1504,6 @@ svg.tea #steamR {
 	}
 	#sidebar {
 		display: none;
-	}
-	#zen_mode .close-btn:active {
-		color: #f32929;
-	}
-	.paginator a:active {
-		color: #999;
 	}
 	.floating-btn:active {
 		transform: scale(0.8);
