@@ -42,7 +42,7 @@
 				<!-- Category -->
 				<div>
 					<input type="radio" name="category" value="{{ category.id }}" id="id_category_{{ category.id }}" {% if category == article.category %}checked{% endif %}>
-					<label for="id_category_{{ category.id }}" class="minimal button">{{ category.name }}</label>
+					<label for="id_category_{{ category.id }}" class="minimal button" title="{{ category.name }}: {{ category.description }}">{{ category.name }}</label>
 				</div>
 				{% endfor %}
 			</div>
