@@ -25,4 +25,5 @@ urlpatterns = [
     path('', include('User.urls')),
     path('', include('Mailbox.urls')),
     path(f'{ADMIN_URL}/', admin.site.urls),
+    path('tz_detect/', include('tz_detect.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

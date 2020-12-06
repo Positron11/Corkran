@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 	'django_cleanup',
 	'django_cron',
 	'polymorphic',
+	'tz_detect',
 	'taggit',
 	'mptt',
 ]
@@ -58,6 +59,7 @@ MIDDLEWARE = [
 	'django.contrib.auth.middleware.AuthenticationMiddleware',
 	'django.contrib.messages.middleware.MessageMiddleware',
 	'django.middleware.clickjacking.XFrameOptionsMiddleware',
+	'tz_detect.middleware.TimezoneMiddleware',
 ]
 
 ROOT_URLCONF = 'Corkran.urls'
