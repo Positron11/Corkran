@@ -145,16 +145,26 @@ def user_delete_view(request):
 			# delete all user's mail
 			Mail.objects.filter(recipient=request.user).non_polymorphic().delete()
 
+			deleted_items = ["account"]
+
 			# if user wants to delete articles
 			if form.cleaned_data['delete_articles']:
 				request.user.article_set.all().delete()
+				deleted_items.append("articles")
 
 			# if user wants to delete comments
 			if form.cleaned_data['delete_comments']:
 				request.user.comment_set.all().delete()
+				deleted_items.append("comments")
+
+			# create formatted string of deleted items
+			if len(deleted_items) > 1:
+				deleted_message = ", ".join(deleted_items[:-1]) + ", and " + deleted_items[-1]
+			else:
+				deleted_message = "account"
 
 			# show final message
-			messages.error(request, f"Farewell, {request.user.username}. Our association is terminated.")
+			messages.error(request, f"Farewell, {request.user.username}. Our association is hereby terminated. We've permanently deleted your {deleted_message}.")
 
 			# delete user
 			request.user.delete()
