@@ -122,7 +122,7 @@ class Library(LoginRequiredMixin, ArticleListView):
 		queryset = self.get_base_queryset()
 
 		# get authors in library
-		authors = list(set([article.author.username for article in queryset]))
+		authors = list(set([article.author.username for article in queryset if article.author]))
 		authors_string = ", ".join(list(authors[:5])[:-1] if len(authors) > 1 else authors)
 
 		# variable suffix
@@ -367,7 +367,7 @@ def detail(request, pk, slug):
 					messages.success(request, f'"{article.title}" {featured_state}.')
 
 			# if subscribing or unsubscribing from author
-			elif "subscribe" in request.POST:
+			elif "subscribe" in request.POST and article.author:
 				if request.user != article.author:
 					if subscribed:
 						request.user.profile.subscribed.remove(article.author)
@@ -403,7 +403,7 @@ def detail(request, pk, slug):
 		"previous_article": previous_article, 
 		"article_in_library": article_in_library,
 		"random_article_url": random_article_url,
-		"author_sub_count": article.author.subscribed.all().count(),
+		"author_sub_count": article.author.subscribed.all().count() if article.author else None,
 		"in_library_count": article.libraries.all().count(),
 		"similar_articles": article.tags.similar_objects()[:8],
 		"comment_form": comment_form, 

@@ -78,8 +78,10 @@
 
 		<!-- Author -->
 		<div class="subheading">
-			{% if article.category %}<a href="{{ article.category.get_absolute_url }}" class="unformatted">{{ article.category.name }}</a> ||{% endif %}
-			By <a href="{% url 'author-sorted-articles' article.author %}"	title="Articles by {{ article.author.username }}">{{ article.author.username }}</a>
+			{% if article.category %}<a href="{{ article.category.get_absolute_url }}" class="unformatted">{{ article.category.name }}</a> ||{% endif %} By
+			{% if article.author %}
+			<a href="{% url 'author-sorted-articles' article.author %}"	title="Articles by {{ article.author.username }}">{{ article.author.username }}</a>
+			{% else %}[deleted]{% endif %}
 		</div>
 	</div>
 

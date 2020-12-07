@@ -3,7 +3,7 @@
 {% load mptt_tags %}
 {% load corkran_tags %}
 
-{% block title %}"{{ article.title }}" by {{ article.author.username }}{% endblock %}
+{% block title %}"{{ article.title }}" by {% if article.author %}{{ article.author.username }}{% else %}[deleted]{% endif %}{% endblock %}
 {% block description %}{{ article.content|truncatechars:300 }}{% endblock %}
 
 {% block meta_tags %}
@@ -40,7 +40,7 @@
 	<!-- Overlay -->
 	<div class="cutout-overlay">
 		<div data-vertical-truncator="3">{{ article.title }}</div>
-		<div class="right-align-text feature-caption">By {{ article.author.username }}</div>
+		<div class="right-align-text feature-caption">By {% if article.author %}{{ article.author.username }}{% else %}[deleted]{% endif %}</div>
 	</div>
 
 	<!-- Image attribution -->
@@ -109,6 +109,7 @@
 		<i class="fas fa-random"></i>
 	</a>
 
+	{% if article.author %}
 	<!-- Subscribe or unsubscribe to author -->
 	<form method="post">{% csrf_token %}
 		<button class="small button" type="submit" name="subscribe" title="{% if subscribed %}Unsubscribe from {{ article.author.username }}{% else %}Subscribe to {{ article.author.username }}{% endif %}">
@@ -120,6 +121,7 @@
 			&nbsp;{{ author_sub_count }}
 		</button>
 	</form>
+	{% endif %}
 
 	<!-- Add or remove article from user library -->
 	<form method="post" class="split-item">{% csrf_token %}
@@ -174,9 +176,9 @@
 			<!-- Date -->
 			<span title="{{ article.date|date:"F jS, Y, g:i a e" }}">{{ article.date|date:"F jS, Y" }}</span> - By
 			<!-- Author -->
-			<a href="{% url 'author-sorted-articles' article.author %}"	title="Articles by {{ article.author.username }}">
-				{{ article.author.username }}
-			</a>
+			{% if article.author %}
+			<a href="{% url 'author-sorted-articles' article.author %}"	title="Articles by {{ article.author.username }}">{{ article.author.username }}</a>
+			{% else %}[deleted]{% endif %}
 		</span>
 	</div>
 	
@@ -273,7 +275,9 @@
 				<!-- Author and date -->
 				<div class="info-container single-line-text">
 					<!-- Author -->
+					{% if node.author %}
 					<a href="{% url 'author-sorted-articles' node.author %}" title="Articles by {{ node.author }}">{{ node.author }}</a>
+					{% else %}[deleted]{% endif %}
 					<!-- Date -->
 					<span class="montserrat text grey"> ~ {{ node.date|date:"F jS, Y | g:i a e" }}</span>
 				</div>
