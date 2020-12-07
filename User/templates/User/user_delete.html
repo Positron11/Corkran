@@ -17,16 +17,21 @@
 
 	<!-- Confirm or cancel -->
 	<form method="post" class="vertically-space-items">{% csrf_token %}
+		<!-- Delete associated articles? -->
 		<div class="closer-below">
 			{{ form.delete_articles }}
 			<label for="id_delete_articles">Delete articles?</label>
 		</div>
 			
+		<!-- Delete associated comments? -->
 		<div>
 			{{ form.delete_comments }}
 			<label for="id_delete_comments">Delete comments?</label>
 		</div>
 
+		<!-- Password confirmation -->
+		<label>Enter your password to confirm:</label>
+		{{ form.confirm_password }}
 
 		<div class="nowrap list-box split-items compact-spacing">
 			<a href="{% url 'settings' %}" class="button">Cancel</a>

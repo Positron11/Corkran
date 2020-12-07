@@ -1,4 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
+from django.contrib.auth.hashers import check_password
 from django.contrib.auth.models import User
 from .models import Profile
 from django import forms
@@ -75,3 +76,17 @@ class PasswordForm(PasswordChangeForm):
 class UserDeleteForm(forms.Form):
 	delete_articles = forms.BooleanField(required=False)
 	delete_comments = forms.BooleanField(required=False)
+	confirm_password = forms.CharField(widget=forms.PasswordInput())
+
+	# get request user
+	def __init__(self, *args, **kwargs):
+		self.user = kwargs.pop('user', None)
+		super().__init__(*args, **kwargs)
+
+	# confirm password before deleting
+	def clean(self):
+		cleaned_data = super().clean()
+		confirm_password = cleaned_data.get('confirm_password')
+		if not check_password(confirm_password, self.user.password):
+			self.add_error('confirm_password', 'Incorrect password entered. Something subconsious, perhaps?')
+		 

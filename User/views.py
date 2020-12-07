@@ -139,7 +139,7 @@ def user_delete_view(request):
 	form = UserDeleteForm()
 
 	if request.method == 'POST':
-		form = UserDeleteForm(request.POST)
+		form = UserDeleteForm(request.POST, user=request.user)
 
 		if form.is_valid():
 			# delete all user's mail
@@ -171,15 +171,22 @@ def user_delete_view(request):
 
 			# redirect to profile
 			return redirect('home')
+		else:
+			# get first field that has an error 
+			first = list(form.errors.as_data().keys())[0]
+
+			# get first error message string from field
+			message = "".join(form.errors.as_data()[first][0])
+
+			# error message
+			messages.error(request, f"{message}")
+
 
 	# form as context
 	context = {
 		"form": form
 	}
 
-	# show message on view
-	messages.error(request, f"Reconsider, {request.user.username}, we implore you. It's not too late to turn back.")
-	
 	return render(request, 'User/user_delete.html', context)
 
 
