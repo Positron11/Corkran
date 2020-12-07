@@ -60,6 +60,9 @@ def account_settings(request):
 				# error message
 				messages.error(request, f"{message}")
 
+			# redirect to settings page with password form in view
+			return redirect(reverse_lazy('settings') + '#password')
+
 		# if updating profile
 		elif 'update_profile' in request.POST:
 			user_form = UserUpdateForm(request.POST, instance=request.user)
