@@ -9,7 +9,11 @@ body {
 }
 
 ::selection {
-	background: #ccf9d8;
+	background: rgb(4, 222, 63, 0.2);
+}
+
+.errorlist ::selection, .error ::selection {
+	background: rgb(242, 38, 38, 0.2);
 }
 
 
