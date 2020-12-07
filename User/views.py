@@ -12,6 +12,7 @@ from django.shortcuts import render
 from django.contrib import messages
 from django.db.models import Count
 from Blog.models import Article
+from Mailbox.models import Mail
 from taggit.models import Tag
 import random
 
@@ -141,6 +142,9 @@ def user_delete_view(request):
 		form = UserDeleteForm(request.POST)
 
 		if form.is_valid():
+			# delete all user's mail
+			Mail.objects.filter(recipient=request.user).non_polymorphic().delete()
+
 			# if user wants to delete articles
 			if form.cleaned_data['delete_articles']:
 				request.user.article_set.all().delete()
