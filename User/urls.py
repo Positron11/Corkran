@@ -41,5 +41,6 @@ urlpatterns = [
 	),
 
 	# user deletion
-	path('<int:pk>/suicide/', views.UserDeleteView.as_view(), name='delete-user'),
+	path('on-the-ledge/', views.user_confirm_delete_view, name='confirm-delete-user'),
+	path('making-the-leap/', views.user_delete_view, name='delete-user'),
 ]

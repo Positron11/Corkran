@@ -1,10 +1,26 @@
-{% extends 'Blog/confirm_delete.html' %}
-{% block title %}Delete Account{% endblock %}
+{% extends 'Blog/base.html' %}
 
-{% block heading %}Take a Minute, Now...{% endblock %}
-{% block subheading %}
-Deleting this is irreversible. That's made worse by the fact that along with your account, go all your 
-posts, and comments - in short, you'll be wiped off the face of Corkran, with nothing to show for it.
+{% block title %}Take a Minute, Now...{% endblock %}
+
+{% block content %}
+<!-- Confirm delete -->
+<div class="card">
+	<!-- Header -->
+	<div class="header">
+		<div class="heading">Take a Minute, Now...</div>
+		<div class="subheading">
+            Deleting your account is irreversible. That's made worse by the fact that along with your account, 
+            could go all your posts, and comments. in short, you'll be wiped off the face of Corkran, with 
+            nothing to show for it.
+        </div>
+	</div>
+
+	<!-- Confirm or cancel -->
+	<form method="post">{% csrf_token %}
+		<div class="nowrap list-box split-items compact-spacing">
+			<a href="{% url 'delete-user' %}" class="danger button">Delete</a>
+			<a href="{% url 'settings' %}" class="button split-item">Cancel</a>
+		</div>
+	</form>
+</div>
 {% endblock %}
-
-{% block cancel %}{% url 'settings' %}{% endblock %}

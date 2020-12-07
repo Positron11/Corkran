@@ -1,0 +1,37 @@
+{% extends 'Blog/base.html' %}
+
+{% block title %}Delete user{% endblock %}
+
+{% block content %}
+<!-- Confirm delete -->
+<div class="card">
+	<!-- Header -->
+	<div class="header">
+		<div class="heading">The End of the Line.</div>
+		<div class="subheading">
+			If you're absolutely sure, you'll find the deletion button below. Keep in mind that deleting your
+			account is permanent, and we will not be able to recover it. You may choose to let your comments
+			and articles remain, though - your account won't be associated with them.
+        </div>
+	</div>
+
+	<!-- Confirm or cancel -->
+	<form method="post" class="vertically-space-items">{% csrf_token %}
+		<div class="closer-below">
+			{{ form.delete_articles }}
+			<label for="id_delete_articles">Delete articles?</label>
+		</div>
+			
+		<div>
+			{{ form.delete_comments }}
+			<label for="id_delete_comments">Delete comments?</label>
+		</div>
+
+
+		<div class="nowrap list-box split-items compact-spacing">
+			<a href="{% url 'settings' %}" class="button">Cancel</a>
+			<button class="danger button split-item" type="submit">Delete</button>
+		</div>
+	</form>
+</div>
+{% endblock %}

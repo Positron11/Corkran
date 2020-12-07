@@ -1,8 +1,8 @@
-from .forms import UserRegistrationForm, UserUpdateForm, ProfileUpdateForm, PasswordForm, ToggleEmailNotificationForm
+from .forms import UserRegistrationForm, UserUpdateForm, ProfileUpdateForm, PasswordForm, ToggleEmailNotificationForm, UserDeleteForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.signals import user_logged_out, user_logged_in
+from django.contrib.auth import update_session_auth_hash, logout
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import update_session_auth_hash
 from django.views.generic import DeleteView
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
@@ -126,18 +126,44 @@ def profile(request):
 	return render(request, 'User/user_profile.html', context)
 
 
+# confirm delete user
+@login_required
+def user_confirm_delete_view(request):
+	return render(request, 'User/user_confirm_delete.html')
+
+
 # delete user
-class UserDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-	model = User
-	template_name = 'User/user_confirm_delete.html'
+@login_required
+def user_delete_view(request):
+	form = UserDeleteForm()
 
-	def get_success_url(self):
-		messages.success(self.request, "You no longer exist.")
-		return reverse_lazy('home')
+	if request.method == 'POST':
+		form = UserDeleteForm(request.POST)
 
-	# check if current user is the user being deleted
-	def test_func(self):
-		return self.request.user == self.get_object()
+		if form.is_valid():
+			# if user wants to delete articles
+			if form.cleaned_data['delete_articles']:
+				pass
+
+			# if user wants to delete comments
+			if form.cleaned_data['delete_comments']:
+				pass
+
+			# show final message
+			messages.error(request, f"Farewell, {request.user.username}. Our association is terminated.")
+
+			# redirect to profile
+			return redirect('home')
+
+	# form as context
+	context = {
+		"form": form
+	}
+
+	# show message on view
+	messages.error(request, f"Reconsider, {request.user.username}, we implore you. It's not too late to turn back.")
+	
+	return render(request, 'User/user_delete.html', context)
 
 
 # show message on login

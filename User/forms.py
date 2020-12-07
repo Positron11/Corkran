@@ -69,3 +69,9 @@ class PasswordForm(PasswordChangeForm):
 			self.fields[fieldname].help_text = None
 			self.fields[fieldname].widget.attrs.pop("autofocus", None)
 			self.fields[fieldname].widget.attrs["autocomplete"] = "new-password"
+
+
+# delete user form
+class UserDeleteForm(forms.Form):
+	delete_articles = forms.BooleanField(required=False)
+	delete_comments = forms.BooleanField(required=False)
