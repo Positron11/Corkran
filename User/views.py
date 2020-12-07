@@ -143,15 +143,16 @@ def user_delete_view(request):
 		if form.is_valid():
 			# if user wants to delete articles
 			if form.cleaned_data['delete_articles']:
-				pass
+				request.user.article_set.all().delete()
 
 			# if user wants to delete comments
 			if form.cleaned_data['delete_comments']:
-				pass
+				request.user.comment_set.all().delete()
 
 			# show final message
 			messages.error(request, f"Farewell, {request.user.username}. Our association is terminated.")
 
+			# delete user
 			request.user.delete()
 
 			# redirect to profile
