@@ -423,6 +423,11 @@ fieldset {
 	display: inline-block;
 	transition: 0.2s ease;
 	text-decoration: none;
+	user-select: none;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-o-user-select: none;
 }
 
 .button.small {
