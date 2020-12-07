@@ -152,6 +152,8 @@ def user_delete_view(request):
 			# show final message
 			messages.error(request, f"Farewell, {request.user.username}. Our association is terminated.")
 
+			request.user.delete()
+
 			# redirect to profile
 			return redirect('home')
 

@@ -38,7 +38,7 @@ class Article(models.Model):
 	date = models.DateTimeField(default=datetime.now, blank=True)
 	libraries = models.ManyToManyField(Profile, related_name="library", blank=True)
 	category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
-	author = models.ForeignKey(User, on_delete=models.CASCADE)
+	author = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
 	title = models.CharField(max_length=50)
 	content = models.TextField()
 	slug = models.SlugField()
@@ -66,7 +66,7 @@ class Article(models.Model):
 # comment model
 class Comment(MPTTModel):
 	content = models.TextField()
-	author = models.ForeignKey(User, on_delete=models.CASCADE)
+	author = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
 	date = models.DateTimeField(default=datetime.now, blank=True)
 	article = models.ForeignKey(Article, on_delete=models.CASCADE)
 	parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
