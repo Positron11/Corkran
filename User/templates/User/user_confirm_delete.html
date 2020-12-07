@@ -1,6 +1,6 @@
 {% extends 'Blog/base.html' %}
 
-{% block title %}Take a Minute, Now...{% endblock %}
+{% block title %}Reconsider user deletion{% endblock %}
 
 {% block content %}
 <!-- Confirm delete -->
@@ -15,7 +15,7 @@
         </div>
 	</div>
 
-	<!-- Confirm or cancel -->
+	<!-- Proceed or cancel -->
 	<form method="post">{% csrf_token %}
 		<div class="nowrap list-box split-items compact-spacing">
 			<a href="{% url 'delete-user' %}" class="danger button">Delete</a>
