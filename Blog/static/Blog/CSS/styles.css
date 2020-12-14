@@ -841,6 +841,10 @@ svg.tea #steamR {
 	font-family: 'Montserrat Alternates', sans-serif;
 }
 
+#account_dropdown.dropped #account_btn, #account_dropdown:hover #account_btn {
+	color: #999;
+}
+
 #nav_menu_btn {
 	color: #333;
 	padding: 0.5em;
