@@ -388,7 +388,7 @@ def detail(request, pk, slug):
 						request.user.profile.library.add(article)
 						messages.success(request, f'"{article.title}" saved to library.')
 				else:
-					messages.error(request, "Quite unnecessary, we assure you. Head over to your profile to see all your articles.")
+					messages.error(request, "Quite unnecessary, we assure you. Head over to your profile to see all your own articles.")
 				
 			return redirect(article.get_absolute_url())
 
