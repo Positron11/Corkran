@@ -86,7 +86,7 @@
 
 				{% if user.is_authenticated %}
 				<!-- Mailbox -->
-				<a href="{% url 'mailbox' %}" class="unformatted link {% mailbox_status user %}" id="nav_mailbox_btn" data-unread="{% unread_mail_count user %}" title="Mailbox">Mailbox</a>
+				<a href="{% url 'mailbox' %}" class="unformatted link {% mailbox_status user %} info-btn" id="nav_mailbox_btn" data-unread="{% unread_mail_count user %}" data-info="{{ request.user.mail.count|text_if_zero|upper }} {{ 'message'|pluralise:request.user.mail.count }}" title="Mailbox">Mailbox</a>
 				
 				<!-- Profile and logout dropdown -->
 				<div class="dropdown" id="account_dropdown">
