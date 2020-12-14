@@ -1,5 +1,7 @@
 {% extends 'Blog/article_list.html' %}
 
+{% load corkran_tags %}
+
 {% block title %}Library{% endblock %}
 {% block description %}Your personal collection of articles on Corkran.{% endblock %}
 
@@ -15,9 +17,9 @@
 
 	<!-- Library stats -->
 	<div class="text">
-		You have {% if article_count > 0 %}{{ article_count }}{% else %}no{% endif %}
-		article{% if article_count != 1 %}s{% endif %} in your library. You have articles 
-		by {{ authors }} ~ {{ latest_five }}...
+		You have {{ article_count|text_if_zero }} {{ 'article'|pluralise:article_count }} 
+		in your library. {% if article_count %}You have articles by {{ authors }} ~ 
+		{{ latest_five }}...{% endif %}
 	</div>
 </div>
 {% endblock %}

@@ -52,6 +52,16 @@ def latest_announcement():
 		return "Here's an announcement: \"There's nothing here\"."
 
 
+@register.filter
+def text_if_zero(value):
+	return value if value > 0 else "no"
+
+
+@register.filter
+def pluralise(text, value):
+	return f"{text}s" if value != 1 else text
+
+
 @register.filter(is_safe=True)
 def cut_page_range(page_range, page):
 	if len(page_range) <= 5:

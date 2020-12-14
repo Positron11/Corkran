@@ -1,7 +1,9 @@
 {% extends 'Blog/article_list.html' %}
 
+{% load corkran_tags %}
+
 {% block title %}{{ author }}'s Articles{% endblock %}
-{% block description %}{{ author }} has written {{ article_count }} article{% if article_count != 1 %}s{% endif %}, as of yet.{% endblock %}
+{% block description %}{{ author }} has written {{ article_count }} {{ 'article'|pluralise:article_count }}, as of yet.{% endblock %}
 
 {% block search-dialogue %} articles by {{ author }}{% endblock %}
 
@@ -11,7 +13,7 @@
 	<!-- Header -->
 	<div class="header">
 		<div class="heading">{{ author }}</div>
-		<div class="subheading">... has written {{ article_count }} article{% if article_count != 1 %}s{% endif %}, as of yet.</div>
+		<div class="subheading">... has written {{ article_count }} {{ 'article'|pluralise:article_count }}, as of yet.</div>
 	</div>
 
 	<!-- Author bio -->

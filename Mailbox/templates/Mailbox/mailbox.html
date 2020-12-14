@@ -15,7 +15,7 @@
 	
 	<!-- Mailbox stats -->
 	<div class="text">
-		You have {% if unread_count %}{{ unread_count }}{% else %}no{% endif %} 
+		You have {{ unread_count|text_if_zero }} 
 		unread mail, and {{ mailbox_count }} in the mailbox. You won't be reminded about 
 		the same unread mail again, so get it over with, perhaps.
 	</div>

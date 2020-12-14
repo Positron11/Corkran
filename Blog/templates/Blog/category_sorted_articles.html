@@ -1,7 +1,9 @@
 {% extends 'Blog/article_list.html' %}
 
+{% load corkran_tags %}
+
 {% block title %}{{ category.name }} Articles{% endblock %}
-{% block description %}{{ article_count }} article{% if article_count != 1 %}s{% endif %} categorized under {{ category.name }} on Corkran.{% endblock %}
+{% block description %}{{ article_count }} {{ 'article'|pluralise:article_count }} categorized under {{ category.name }} on Corkran.{% endblock %}
 
 {% block search-dialogue %} articles categorized under {{ category.name|lower }}{% endblock %}
 
