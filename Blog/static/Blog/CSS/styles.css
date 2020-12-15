@@ -801,6 +801,24 @@ svg.tea #steamR {
 	transition: 0.3s ease-out;
 }
 
+#navbar::before, #navbar::after {
+	top: 0;
+	width: 4em;
+	content: "";
+	height: 125%;
+	position: absolute;
+}
+
+#navbar::before {
+	right: 100%;
+	background: linear-gradient(145deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 80%, rgba(255,255,255,0.7021008232394521) 90%, rgba(255,255,255,0) 100%);
+}
+
+#navbar::after {
+	left: 100%;
+	background: linear-gradient(215deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 80%, rgba(255,255,255,0.7021008232394521) 90%, rgba(255,255,255,0) 100%);
+}
+
 #navbar.floating {
 	border-bottom: 1px solid white;
 	box-shadow: 0 5px 3px -3px rgba(0,0,0,0.1);
@@ -1548,6 +1566,9 @@ svg.tea #steamR {
 	}
 	#main {
 		padding: 0 1em 3em 1em;
+	}
+	#navbar::before, #navbar::after {
+		width: 1em;
 	}
 	.feature {
 		height: 15em;
