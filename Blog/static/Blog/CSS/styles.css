@@ -713,6 +713,7 @@ input[type="file"] {
 	bottom: 0;
 	z-index: 7;
 	opacity: 0;
+	cursor: wait;
 	display: none;
 	position: fixed;
 	background: white;
