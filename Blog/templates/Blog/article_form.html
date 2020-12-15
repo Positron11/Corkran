@@ -15,11 +15,13 @@
 		<!-- Form navigation -->
 		<label>Go to:</label>
 		<div>
-			<div class="nowrap list-box blur-overflow compact-spacing">
-				<a href="#content" class="small button">Article</a>
-				<a href="#categorization" class="small button">Categorization</a>
-				<a href="#image" class="small button">Image</a>
-				<a href="#unsplash" class="small button">Unsplash Search</a>
+			<div class="nowrap list-box blur-overflow button-container-wrapper">
+				<div class="nowrap list-box compact-spacing button-container">
+					<a href="#content" class="small button">Article</a>
+					<a href="#categorization" class="small button">Categorization</a>
+					<a href="#image" class="small button">Image</a>
+					<a href="#unsplash" class="small button">Unsplash Search</a>
+				</div>
 			</div>
 		</div>
 
@@ -37,14 +39,16 @@
 		<label>{{ form.category.label }}:</label>
 		<div>
 			<!-- Category list -->
-			<div class="list-box nowrap blur-overflow compact-spacing">
-				{% for category in categories %}
-				<!-- Category -->
-				<div>
-					<input type="radio" name="category" value="{{ category.id }}" id="id_category_{{ category.id }}" {% if category == article.category %}checked{% endif %}>
-					<label for="id_category_{{ category.id }}" class="minimal button" title="{{ category.name }}: {{ category.description }}">{{ category.name }}</label>
+			<div class="nowrap list-box blur-overflow button-container-wrapper">
+				<div class="nowrap list-box compact-spacing button-container">
+					{% for category in categories %}
+					<!-- Category -->
+					<div>
+						<input type="radio" name="category" value="{{ category.id }}" id="id_category_{{ category.id }}" {% if category == article.category %}checked{% endif %}>
+						<label for="id_category_{{ category.id }}" class="minimal button" title="{{ category.name }}: {{ category.description }}">{{ category.name }}</label>
+					</div>
+					{% endfor %}
 				</div>
-				{% endfor %}
 			</div>
 		</div>
 

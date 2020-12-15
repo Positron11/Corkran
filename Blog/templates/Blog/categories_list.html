@@ -23,12 +23,14 @@
 
 <!-- Navigation dock -->
 <div>
-	<div class="nowrap list-box blur-overflow center-align normal-spacing">
-		{% for category in articles %}
-		{% if articles|get_item:category %}
-		<a href="#{{ category.id }}" class="small button">{{ category.name }}</a>
-		{% endif %}
-		{% endfor %}
+	<div class="nowrap list-box blur-overflow center-align normal-spacing button-container-wrapper">
+		<div class="nowrap list-box compact-spacing button-container">
+			{% for category in articles %}
+			{% if articles|get_item:category %}
+			<a href="#{{ category.id }}" class="small button">{{ category.name }}</a>
+			{% endif %}
+			{% endfor %}
+		</div>
 	</div>
 </div>
 
