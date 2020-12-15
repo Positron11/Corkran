@@ -841,10 +841,6 @@ svg.tea #steamR {
 	font-family: 'Montserrat Alternates', sans-serif;
 }
 
-#account_dropdown.dropped #account_btn, #account_dropdown:hover #account_btn {
-	color: #999;
-}
-
 #nav_menu_btn {
 	color: #333;
 	padding: 0.5em;
@@ -1398,6 +1394,9 @@ svg.tea #steamR {
 	#nav_links_container .link:hover {
 		color: #999;
 	}
+	#account_dropdown:hover #account_btn {
+		color: #999;
+	}
 	.alert.floating:hover>.close-btn{
 		opacity: 1;
 		pointer-events: all;
@@ -1416,6 +1415,18 @@ svg.tea #steamR {
 	}
 	.floating-btn:hover {
 		transform: scale(1.1);
+	}
+}
+
+@media (pointer:coarse) {
+	.dropdown.dropped>.dropdown-content {
+		top: 110%;
+		opacity: 1;
+		pointer-events: all;
+		top: calc(100% + 0.5rem);
+	}
+	#account_dropdown.dropped #account_btn {
+		color: #999;
 	}
 }
 
@@ -1468,12 +1479,6 @@ svg.tea #steamR {
 	}
 	.anchor.offset-alert {
 		transform: translateY(-9rem);
-	}
-	.dropdown.dropped>.dropdown-content {
-		top: 110%;
-		opacity: 1;
-		pointer-events: all;
-		top: calc(100% + 0.5rem);
 	}
 	#nav_links_container {
 		padding: 0.5em 0;
