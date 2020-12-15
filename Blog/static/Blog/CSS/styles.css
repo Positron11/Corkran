@@ -1348,7 +1348,7 @@ svg.tea #steamR {
 	text-align: center;
 	border-radius: 50%;
 	color: #00a32c !important;
-	background: rgb(4, 222, 63, 0.3);
+	background: rgb(4, 222, 63, 0.25);
 	-webkit-tap-highlight-color: transparent;
 	transition: 0.3s ease;
 }
