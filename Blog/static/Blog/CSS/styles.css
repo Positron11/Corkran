@@ -321,6 +321,7 @@ p.montserrat, .text.montserrat {
 .card.special {
 	border: none;
 	background: rgb(4, 222, 63, 0.2);
+	box-shadow: 0 0 8px 5px rgb(4, 222, 63, 0.1);
 }
 
 .card.special * {
@@ -462,10 +463,12 @@ fieldset {
 .button:active:not(.danger) {
 	color: #00a32c;
 	background: rgb(4, 222, 63, 0.2);
+	box-shadow: 0 0 5px 3px rgb(4, 222, 63, 0.1);
 }
 
 .button.danger:active {
 	background: rgb(242, 38, 38, 0.2);
+	box-shadow: 0 0 5px 3px rgb(242, 38, 38, 0.1);
 }
 
 /* Checkboxes */
@@ -857,6 +860,7 @@ svg.tea #steamR {
 	transform: translateX(100%);
 	content: ""attr(data-unread)"";
 	background-color:  rgb(4, 222, 63, 0.2);
+	box-shadow: 0 0 3px 2px rgb(4, 222, 63, 0.1);
 	font-family: 'Montserrat Alternates', sans-serif;
 }
 
@@ -925,6 +929,7 @@ svg.tea #steamR {
 	padding: 0em 0.4em 0.4em 0.5em;
 	content: ""attr(data-progress)"";
 	transform: translateX(40%) scale(0);
+	box-shadow: 0 0 3px 2px rgb(4, 222, 63, 0.1);
 	font-family: 'Montserrat Alternates', sans-serif;
 	transition: 0.3s ease;
 }
@@ -1018,11 +1023,13 @@ svg.tea #steamR {
 .alert.success {
 	color: rgb(0, 163, 44);
 	background: rgb(4, 222, 63, 0.2);
+	box-shadow: 0 0 5px 3px rgb(4, 222, 63, 0.1);
 }
 
 .alert.error {
 	color: #f32929;
 	background: rgb(242, 38, 38, 0.2);
+	box-shadow: 0 0 5px 3px rgb(242, 38, 38, 0.1);
 }
 
 .alert .message {
@@ -1289,19 +1296,13 @@ svg.tea #steamR {
 
 .mail.unread::after {
 	top: 0.5em;
+	content: "";
 	right: 0.5em;
-	width: 0.8em;
-	height: 0.8em;
-	content: "•";
-	color: #00a32c;
-	font-weight: 900;
-	font-size: 1.2em;
-	line-height: 0.8em;
+	padding: 0.3em;
 	position: absolute;
-	text-align: center;
 	border-radius: 50%;
-	background-color: rgb(4, 222, 63, 0.2);
-	font-family: "Font Awesome 5 Free";
+	background-color: rgb(4, 222, 63, 0.3);
+	box-shadow: 0 0 3px 2px rgb(4, 222, 63, 0.1);
 }
 
 #mail_filter {
@@ -1366,6 +1367,7 @@ svg.tea #steamR {
 	border-radius: 50%;
 	color: #00a32c !important;
 	background: rgb(4, 222, 63, 0.25);
+	box-shadow: 0 0 5px 3px rgb(4, 222, 63, 0.1);
 	-webkit-tap-highlight-color: transparent;
 	transition: 0.3s ease;
 }
@@ -1373,6 +1375,7 @@ svg.tea #steamR {
 .floating-btn:active {
 	transform: scale(0.8);
 	transition: 0.1s ease-out;
+	box-shadow: 0 0 0 0 transparent;
 }
 
 
@@ -1397,9 +1400,14 @@ svg.tea #steamR {
 	.button:hover:not(.danger) {
 		color: #00a32c;
 		background: rgb(4, 222, 63, 0.2);
+		box-shadow: 0 0 5px 3px rgb(4, 222, 63, 0.1);
 	}
 	.button.danger:hover {
 		background: rgb(242, 38, 38, 0.2);
+		box-shadow: 0 0 5px 3px rgb(242, 38, 38, 0.1);
+	}
+	.button:active {
+		box-shadow: 0 0 0px 0px transparent !important;
 	}
 	.dropdown:hover>.dropdown-content {
 		top: 110%;
