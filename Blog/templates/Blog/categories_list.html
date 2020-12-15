@@ -40,17 +40,22 @@
 	<!-- Heading -->
 	<legend class="heading">{{ category.name }}</legend>
 	
-	<!-- Latest eight articles under category -->
-	<div class="responsive vertically-space-items">
-		<div class="closer-below">
-			{% article_widget_grid articles|get_item:category %}
-		</div>
+	<div class="vertically-space-items">
+		<!-- Category description -->
+		<div class="grey montserrat text">{{ category.description }}</div>
 		
-		<!-- See all articles or subcategories -->
-		<div class="right-align-text">
-			<a href="{{ category.get_absolute_url }}" class="split-item minimal no-border button">
-				See all {{ category.name|lower }} articles
-			</a>
+		<!-- Latest eight articles under category -->
+		<div class="responsive vertically-space-items">
+			<div class="closer-below">
+				{% article_widget_grid articles|get_item:category %}
+			</div>
+			
+			<!-- See all articles or subcategories -->
+			<div class="right-align-text">
+				<a href="{{ category.get_absolute_url }}" class="split-item minimal no-border button">
+					See all {{ category.name|lower }} articles
+				</a>
+			</div>
 		</div>
 	</div>
 </fieldset>
