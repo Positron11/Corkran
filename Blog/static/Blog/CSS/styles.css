@@ -1016,7 +1016,6 @@ svg.tea #steamR {
 .alert .close-btn{
 	opacity: 0;
 	padding: 0.5em;
-	color: #f32929;
 	align-self: start;
 	pointer-events: none;
 	transition: 0.2s ease;
