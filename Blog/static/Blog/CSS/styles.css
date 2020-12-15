@@ -1353,6 +1353,11 @@ svg.tea #steamR {
 	transition: 0.3s ease;
 }
 
+.floating-btn:active {
+	transform: scale(0.8);
+	transition: 0.1s ease-out;
+}
+
 
 /* FOOTER */
 
@@ -1417,6 +1422,9 @@ svg.tea #steamR {
 	.floating-btn:hover {
 		transform: scale(1.1);
 	}
+	.floating-btn:active {
+		transform: scale(0.9);
+	}
 }
 
 @media (pointer:coarse) {
@@ -1464,10 +1472,6 @@ svg.tea #steamR {
 	}
 	.alert.floating {
 		width: 97%;
-	}
-	.floating-btn:active {
-		transform: scale(0.9);
-		transition: 0.1s ease-out;
 	}
 }
 
@@ -1521,10 +1525,6 @@ svg.tea #steamR {
 	}
 	#sidebar {
 		display: none;
-	}
-	.floating-btn:active {
-		transform: scale(0.8);
-		transition: 0.1s ease-out;
 	}
 }
 
