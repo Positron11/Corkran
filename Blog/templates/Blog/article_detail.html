@@ -48,6 +48,19 @@
 		<a href="https://ik.imagekit.io/f92sz8hl8b{{ article.thumbnail.url }}?tr=orig-true" target="blank" title="Full image"><i class="fas fa-images"></i></a> 
 		{% if article.attribution %}| {{ article.attribution|urlizetrunc:20 }}{% endif %}
 	</div>
+
+	{% if request.user.is_superuser %} 
+	<!-- Feature article -->
+	<div id="feature_form">
+		<form method="post">{% csrf_token %}
+			<div>
+				{{ feature_form.featured }}
+				<label for="id_featured">Feature</label>
+				<input type="hidden" name="feature">
+			</div>
+		</form>
+	</div>
+	{% endif %}
 </div>
 {% endif %}{% endblock %}
 
@@ -58,20 +71,6 @@
 <div class="nowrap list-box split-items compact-spacing closer-below">
 	<a href="{% url 'delete-article' article.id %}" class="small danger button"><i class="fas fa-trash-alt"></i> Delete</a>
 	<a href="{% url 'edit-article' article.id %}" class="button small split-item">Edit <i class="fas fa-edit"></i></a>
-</div>
-{% endif %}
-
-
-{% if request.user.is_superuser %} 
-<!-- Feature article -->
-<div class="closer-below word-card card">
-	<form method="post">{% csrf_token %}
-		<div>
-			{{ feature_form.featured }}
-			<label for="id_featured">Feature</label>
-			<input type="hidden" name="feature">
-		</div>
-	</form>
 </div>
 {% endif %}
 

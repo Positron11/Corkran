@@ -972,6 +972,17 @@ svg.tea #steamR {
 	font-size: 0.4em;
 }
 
+#feature_form {
+	z-index: 1;
+	top: 0.2em;
+	right: 0.2em;
+	position: absolute;
+	border-radius: 0.2em;
+	padding: 0.2em 0.5em;
+	background-color: white;
+	box-shadow: 0 0 5px 3px rgba(0,0,0,0.2);
+}
+
 
 /* MAIN PAGE CONTAINING CONTENT AND SIDEBAR */
 
