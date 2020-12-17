@@ -1486,10 +1486,10 @@ svg.tea #steamR {
 
 @media only screen and (min-width: 1201px) {
 	.anchor{
-		transform: translateY(-8.5rem);
+		transform: translateY(-10rem);
 	}
 	.anchor.offset-alert {
-		transform: translateY(-11.5rem);
+		transform: translateY(-13rem);
 	}
 	#nav_links_container {
 		padding: 1em 0;
@@ -1522,10 +1522,10 @@ svg.tea #steamR {
 
 @media only screen and (max-width: 1200px) {
 	.anchor{
-		transform: translateY(-6rem);
+		transform: translateY(-7rem);
 	}
 	.anchor.offset-alert {
-		transform: translateY(-9rem);
+		transform: translateY(-10rem);
 	}
 	#nav_links_container {
 		padding: 0.5em 0;
