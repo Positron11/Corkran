@@ -94,7 +94,7 @@
 
 			<!-- New announcement mail -->
 			{% elif mail|to_class_name == "new_announcement_mail" %}
-			A new <a href="{% url 'announcements' %}" class="bold">announcement</a> has been made on Corkran. 
+			A new <a href="{% url 'announcements' %}#{{ mail.announcement.id }}" class="bold">announcement</a> has been made on Corkran. 
 			A short preview: "{{ mail.announcement.content|truncatewords:50}}"
 			{% endif %}
 		</div>
