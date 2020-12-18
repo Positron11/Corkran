@@ -302,6 +302,9 @@
 
 				<!-- Comment buttons -->
 				<div class="comment-btn-container">
+					<!-- Direct link -->
+					<span class="minimal no-border button" onclick="copyToClipboard('{{ request.build_absolute_uri }}#{{ node.id }}');" title="Copy direct link to comment">Link</span>
+					
 					{% if user.is_authenticated %}
 					<!-- Reply -->
 					<div class="minimal no-border button reply toggle-btn">Reply</div>

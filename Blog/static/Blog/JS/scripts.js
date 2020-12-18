@@ -743,3 +743,18 @@ function calculateOverflowCompensation(overflow) {
 	var absolute_overflow = Math.min(5, overflow);
 	return absolute_overflow != 0 ? absolute_overflow - 5 : absolute_overflow;
 }
+
+// COPY TEXT TO CLIPBOARD
+function copyToClipboard(text) {
+	// create dummy textarea and add required text
+    var dummy = document.createElement("textarea");
+    document.body.appendChild(dummy);
+    dummy.value = text;
+    
+    // select text and copy
+    dummy.select();
+    document.execCommand("copy");
+    
+    // remove dummy textarea
+	document.body.removeChild(dummy);
+}
