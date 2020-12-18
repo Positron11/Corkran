@@ -78,7 +78,7 @@
 				<!-- General links -->
 				<a href="{% url 'home' %}" class="unformatted" id="nav_banner" title="Corkran">*Co.</a>
 				{% if user.is_authenticated %}
-				<a href="{% url 'library' %}" class="unformatted link info-btn" id="library_btn" data-info="{{ user.profile.library.count|text_if_zero|upper }} {{ 'article'|pluralise:user.profile.library.count }}" title="Library">Library</a>
+				<a href="{% url 'library' %}" class="unformatted link info-btn" id="library_btn" data-info="{{ user.profile.library.count|text_if_zero|title }} {{ 'article'|pluralise:user.profile.library.count }}" title="Library">Library</a>
 				{% else %}
 				<a href="{% url 'home' %}" class="unformatted link" id="home_btn" title="Home">Home</a>
 				{% endif %}
@@ -86,7 +86,7 @@
 
 				{% if user.is_authenticated %}
 				<!-- Mailbox -->
-				<a href="{% url 'mailbox' %}" class="unformatted link {% mailbox_status user %} info-btn" id="nav_mailbox_btn" data-unread="{% unread_mail_count user %}" data-info="{{ request.user.mail.count|text_if_zero|upper }} {{ 'message'|pluralise:request.user.mail.count }}" title="Mailbox">Mailbox</a>
+				<a href="{% url 'mailbox' %}" class="unformatted link {% mailbox_status user %} info-btn" id="nav_mailbox_btn" data-unread="{% unread_mail_count user %}" data-info="{{ request.user.mail.count|text_if_zero|title }} {{ 'message'|pluralise:request.user.mail.count }}" title="Mailbox">Mailbox</a>
 				
 				<!-- Profile and logout dropdown -->
 				<div class="dropdown" id="account_dropdown">
