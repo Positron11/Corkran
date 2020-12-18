@@ -1,4 +1,3 @@
-from .forms import UserRegistrationForm, UserUpdateForm, ProfileUpdateForm, PasswordForm, ToggleEmailNotificationForm, UserDeleteForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.signals import user_logged_out, user_logged_in
 from django.contrib.auth import update_session_auth_hash, logout
@@ -14,6 +13,7 @@ from django.db.models import Count
 from Blog.models import Article
 from Mailbox.models import Mail
 from taggit.models import Tag
+from .forms import *
 import random
 
 # registration page
@@ -38,6 +38,7 @@ def account_settings(request):
 	user_form = UserUpdateForm(instance=request.user)
 	profile_form = ProfileUpdateForm(instance=request.user.profile)
 	email_form = ToggleEmailNotificationForm(instance=request.user.profile)
+	site_settings_form = SiteSettingsForm(instance=request.user.profile)
 
 	if request.method == 'POST':
 		# if changing password
@@ -80,6 +81,19 @@ def account_settings(request):
 				# error message
 				messages.error(request, "Error updating profile.")
 
+		# if updating site settings
+		elif "update_site_settings" in request.POST:
+			site_settings_form = SiteSettingsForm(request.POST, instance=request.user.profile)
+
+			if site_settings_form.is_valid():
+				site_settings_form.save()
+
+				# success message
+				messages.success(request, "Site settings updated.")
+
+			# redirect to settings page with email form in view
+			return redirect(reverse_lazy('settings') + '#site_settings')
+
 		# if updating email preferences
 		elif "update_email_notifications" in request.POST:
 			email_form = ToggleEmailNotificationForm(request.POST, instance=request.user.profile)
@@ -102,6 +116,7 @@ def account_settings(request):
 		"email_form": email_form,
 		"profile_form": profile_form, 
 		"password_form": password_form, 
+		"site_settings_form": site_settings_form,
 	}
 
 	return render(request, 'User/account_settings.html', context)

@@ -10,6 +10,7 @@ class Profile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	subscribed = models.ManyToManyField(User, related_name="subscribed", blank=True, symmetrical=False)
 	email_notifications = models.BooleanField(default=True)
+	dark_theme = models.BooleanField(default=False)
 
 	# show self as owner's username
 	def __str__(self):

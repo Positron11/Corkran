@@ -24,6 +24,7 @@
 	<div class="nowrap list-box blur-overflow center-align normal-spacing button-container-wrapper">
 		<div class="nowrap list-box compact-spacing button-container">
 			<a href="#profile" class="small button">Edit your profile</a>
+			<a href="#site_settings" class="small button">Site settings</a>
 			<a href="#email" class="small button">Email settings</a>
 			<a href="#password" class="small button">Change your password</a>
 		</div>
@@ -49,6 +50,25 @@
 		<!-- Submit button -->
 		<div class="right-align-text">
 			<button class="button" type="submit" name="update_profile">Update</button>
+		</div>
+	</form>
+</fieldset>
+
+
+<!-- Site settings anchor -->
+<div id="site_settings" class="anchor"></div>
+
+<!-- Site settings container -->
+<fieldset class="card">
+	<!-- Heading -->
+	<legend class="heading">Site Settings</legend>
+
+	<!-- Password form -->
+	<form method="post">{% csrf_token %}
+		<div>
+			{{ site_settings_form.dark_theme }}
+			<label for="id_dark_theme">Dark mode</label>
+			<input type="hidden" name="update_site_settings">
 		</div>
 	</form>
 </fieldset>

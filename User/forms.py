@@ -47,6 +47,19 @@ class ProfileUpdateForm(forms.ModelForm):
 		fields = ["bio"]
 
 
+# site settings update form
+class SiteSettingsForm(forms.ModelForm):
+
+	class Meta:
+		model = Profile
+		fields = ["dark_theme"]
+
+	# submit form on change 
+	def __init__(self, *args, **kwargs):
+		super().__init__(*args, **kwargs)
+		self.fields["dark_theme"].widget.attrs["onChange"] = "this.form.submit()"
+
+
 # profile update form
 class ToggleEmailNotificationForm(forms.ModelForm):
 
