@@ -672,7 +672,8 @@ input[type="file"] {
 	content: "";
 	bottom: -1em;
 	position: absolute;
-	background-color: #ddd;
+	background-color: #eaeaea;
+	background-color: var(--primary-border-color);
 	transform: translateX(-50%);
 }
 
@@ -1550,10 +1551,6 @@ svg.tea #steamR {
 .dark-mode input[type="radio"]:checked+label {
 	color: #ccc !important;
 	background-color: #1f2933 !important;
-}
-
-.dark-mode .separator-bars>*:not(:last-child)::after {
-	background-color: rgba(255, 255, 255, 0.1);
 }
 
 .dark-mode .list-box.nowrap.blur-overflow::before, .dark-mode .list-box.nowrap.blur-overflow::after {
