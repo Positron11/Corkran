@@ -1524,6 +1524,10 @@ svg.tea #steamR {
 
 /* Individual styles */
 
+.dark-mode img {
+	filter: brightness(80%);
+}
+
 .dark-mode .cutout-overlay {
 	color: #eee;
 	mix-blend-mode: normal;
