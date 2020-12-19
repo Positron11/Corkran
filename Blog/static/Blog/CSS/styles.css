@@ -261,7 +261,6 @@ p.montserrat, .text.montserrat {
 .list-box.nowrap.blur-overflow {
 	overflow: auto;
 	max-width: 100%;
-	position: relative;
 	-ms-overflow-style: none;
 	scrollbar-width: none;
 }
@@ -1370,7 +1369,7 @@ svg.tea #steamR {
 }
 
 #comments_container .comment .comment-btn-container{
-	margin-left: -0.36em;
+	margin: 0.3em 0 0 -0.36em;
 }
 
 #comments_container .comment .comment-btn-container .button {
@@ -1387,7 +1386,7 @@ svg.tea #steamR {
 }
 
 #comments_container .comment .editor.edit {
-	margin-bottom: -1.3em;
+	margin-bottom: -1.75em;
 }
 
 

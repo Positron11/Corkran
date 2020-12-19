@@ -302,23 +302,27 @@
 
 				<!-- Comment buttons -->
 				<div class="comment-btn-container">
-					<!-- Direct link -->
-					<span class="minimal no-border button" onclick="copyToClipboard('{{ request.build_absolute_uri }}#{{ node.id }}');" title="Copy direct link to comment">Link</span>
-					
-					{% if user.is_authenticated %}
-					<!-- Reply -->
-					<div class="minimal no-border button reply toggle-btn">Reply</div>
-					{% if user == node.author %}
-					<!-- Edit -->
-					<div class="minimal no-border button edit toggle-btn">Edit</div>
-					<!-- Delete -->
-					<a href="{% url 'delete-comment' node.id %}" class="minimal no-border danger button">Delete</a>
-					{% endif %}
-
-					{% else %}
-					<!-- Pseudo-reply -->
-					<a href="{% url 'login' %}?next={{ article.get_absolute_url }}#{{ node.id }}" class="minimal no-border button">Reply</a>
-					{% endif %}
+					<div class="list-box nowrap blur-overflow button-container-wrapper">
+						<div class="list-box nowrap button-container">
+							<!-- Direct link -->
+							<div class="minimal no-border button" onclick="copyToClipboard('{{ request.build_absolute_uri }}#{{ node.id }}');" title="Copy direct link to comment">Link</div>
+							
+							{% if user.is_authenticated %}
+							<!-- Reply -->
+							<div class="minimal no-border button reply toggle-btn">Reply</div>
+							{% if user == node.author %}
+							<!-- Edit -->
+							<div class="minimal no-border button edit toggle-btn">Edit</div>
+							<!-- Delete -->
+							<a href="{% url 'delete-comment' node.id %}" class="minimal no-border danger button">Delete</a>
+							{% endif %}
+							
+							{% else %}
+							<!-- Pseudo-reply -->
+							<a href="{% url 'login' %}?next={{ article.get_absolute_url }}#{{ node.id }}" class="minimal no-border button">Reply</a>
+							{% endif %}
+						</div>
+					</div>
 				</div>
 
 				<!-- Reply to comment -->
@@ -332,7 +336,7 @@
 
 						<!-- Submit button -->
 						<div class="right-align-text">
-							<button class="minimal no-border button" type="submit" name="reply">Post</button>
+							<button class="minimal no-border button" type="submit" name="reply">Publish reply</button>
 						</div>
 					</form>
 				</div>
