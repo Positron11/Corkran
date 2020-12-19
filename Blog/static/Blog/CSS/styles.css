@@ -25,8 +25,8 @@ body {
 	margin: 0;
 	padding: 0;
 	font-size: 20px;
-	background-color: #fff;
-	background-color: var(--primary-background-color);
+	background: #fff;
+	background: var(--primary-background-color);
 	font-family: 'Cormorant Garamond', serif;
 }
 
@@ -343,8 +343,8 @@ p.montserrat, .text.montserrat {
 .card {
 	padding: 4em;
 	border-radius: 0.5em;
-	background-color: #fff;
-	background-color: var(--secondary-background-color);
+	background: #fff;
+	background: var(--secondary-background-color);
 	border: #eaeaea solid 1px;
 	border-color: var(--secondary-border-color);
 }
@@ -365,7 +365,7 @@ p.montserrat, .text.montserrat {
 .card.special {
 	border: none;
 	background: rgb(4, 222, 63, 0.2);
-	background-color: var(--special-background-color);
+	background: var(--special-background-color);
 	box-shadow: 0 0 8px 5px rgb(4, 222, 63, 0.1);
 }
 
@@ -413,7 +413,7 @@ form ul.errorlist {
 	border-radius: 1em;
 	display: inline-block;
 	background: rgb(242, 38, 38, 0.2);
-	background-color: var(--danger-background-color);
+	background: var(--danger-background-color);
 	font-family: 'Montserrat Alternates', sans-serif;
 }
 
@@ -436,8 +436,8 @@ button {
 	outline: none;
 	font-size: 0.7em;
 	border-radius: 1em;
-	background-color: #fff;
-	background-color: var(--secondary-background-color);
+	background: #fff;
+	background: var(--secondary-background-color);
 	border: #eaeaea solid 1px;
 	border-color: var(--secondary-border-color);
 	-webkit-tap-highlight-color: transparent;
@@ -471,7 +471,7 @@ fieldset {
 	font-weight: 500;
 	text-align: center;
 	background: white;
-	background-color: var(--secondary-background-color);
+	background: var(--secondary-background-color);
 	white-space: nowrap;
 	display: inline-block;
 	transition: 0.2s ease;
@@ -508,7 +508,7 @@ fieldset {
 	color: #999 !important;
 	cursor: default;
 	background: white !important;
-	background-color: var(--secondary-background-color) !important;
+	background: var(--secondary-background-color) !important;
 	pointer-events: none;
 	border-color: #eaeaea !important;
 	border-color: var(--secondary-border-color) !important;
@@ -522,7 +522,7 @@ fieldset {
 	color: #00a32c;
 	color: var(--green-color);
 	background: rgb(4, 222, 63, 0.2);
-	background-color: var(--special-background-color);
+	background: var(--special-background-color);
 	box-shadow: 0 0 5px 3px rgb(4, 222, 63, 0.1);
 }
 
@@ -550,7 +550,7 @@ input[type="checkbox"]+label:before {
 	content: '';
 	position: absolute;
 	background: white;
-	background-color: var(--secondary-background-color);
+	background: var(--secondary-background-color);
 	border-radius: 0.5em;
 	transition: 0.2s ease;
 	border: #ddd solid 1px;
@@ -603,7 +603,7 @@ input[type="radio"] {
 input[type="radio"]:checked+label {
 	color: white !important;
 	box-shadow: none !important;
-	background-color: #333 !important;
+	background: #333 !important;
 	border: 1px solid transparent !important;
 }
 
@@ -629,8 +629,8 @@ input[type="file"] {
 	border-radius: 0.5em;
 	pointer-events: none;
 	top: calc(100% + 0rem);
-	background-color: white;
-	background-color: var(--primary-background-color);
+	background: white;
+	background: var(--primary-background-color);
 	box-shadow: 0 0 6px 3px rgb(0,0,0,0.1);
 	transition: opacity 0.3s ease, top 0.3s ease;
 }
@@ -642,7 +642,7 @@ input[type="file"] {
 	top: -0.5rem;
 	height: 0.5rem;
 	position: absolute;
-	background-color: transparent;
+	background: transparent;
 }
 
 .dropdown.compact .dropdown-content {
@@ -672,8 +672,8 @@ input[type="file"] {
 	content: "";
 	bottom: -1em;
 	position: absolute;
-	background-color: #eaeaea;
-	background-color: var(--primary-border-color);
+	background: #eaeaea;
+	background: var(--primary-border-color);
 	transform: translateX(-50%);
 }
 
@@ -766,7 +766,7 @@ input[type="file"] {
 	position: absolute;
 	padding: 0.4em 0.7em;
 	border-radius: 0.5em 0 0 0;
-	background-color: rgba(0,0,0,0.3);
+	background: rgba(0,0,0,0.3);
 	font-family: 'Montserrat Alternates', sans-serif;
 }
 
@@ -801,7 +801,7 @@ input[type="file"] {
 	display: none;
 	position: fixed;
 	background: white;
-	background-color: var(--primary-background-color);
+	background: var(--primary-background-color);
 	align-items: center;
 	justify-content: center;
 	transition: 0.5s ease;
@@ -883,7 +883,7 @@ svg.tea #steamR {
 	position: sticky;
 	box-shadow: none;
 	background: white;
-	background-color: var(--primary-background-color);
+	background: var(--primary-background-color);
 	border-bottom: 1px solid #eaeaea;
 	border-color: var(--primary-border-color);
 	transition: 0.3s ease-out;
@@ -947,8 +947,8 @@ svg.tea #steamR {
 	padding: 0 0.2em 0 0.4em;
 	transform: translateX(100%);
 	content: ""attr(data-unread)"";
-	background-color:  rgb(4, 222, 63, 0.2);
-	background-color: var(--special-background-color);
+	background:  rgb(4, 222, 63, 0.2);
+	background: var(--special-background-color);
 	box-shadow: 0 0 3px 2px rgb(4, 222, 63, 0.1);
 	font-family: 'Montserrat Alternates', sans-serif;
 }
@@ -1019,7 +1019,7 @@ svg.tea #steamR {
 	position: absolute;
 	border-radius: 0.7em;
 	box-sizing: border-box;
-	background-color: #ccf9d8;
+	background: #ccf9d8;
 	padding: 0em 0.4em 0.4em 0.5em;
 	content: ""attr(data-progress)"";
 	transform: translateX(40%) scale(0);
@@ -1056,8 +1056,8 @@ svg.tea #steamR {
 	position: absolute;
 	border-radius: 0.2em;
 	padding: 0.2em 0.5em;
-	background-color: white;
-	background-color: var(--primary-background-color);
+	background: white;
+	background: var(--primary-background-color);
 	box-shadow: 0 0 5px 3px rgba(0,0,0,0.2);
 }
 
@@ -1130,7 +1130,7 @@ svg.tea #steamR {
 	color: rgb(0, 163, 44);
 	color: var(--green-color);
 	background: rgb(4, 222, 63, 0.2);
-	background-color: var(--special-background-color);
+	background: var(--special-background-color);
 	box-shadow: 0 0 5px 3px rgb(4, 222, 63, 0.1);
 }
 
@@ -1138,7 +1138,7 @@ svg.tea #steamR {
 	color: #f32929;
 	color: var(--danger-color);
 	background: rgb(242, 38, 38, 0.2);
-	background-color: var(--danger-background-color);
+	background: var(--danger-background-color);
 	box-shadow: 0 0 5px 3px rgb(242, 38, 38, 0.1);
 }
 
@@ -1158,7 +1158,7 @@ svg.tea #steamR {
 
 .alert.floating {
 	background: white;
-	background-color: var(--primary-background-color);
+	background: var(--primary-background-color);
 	box-shadow: 0 0 5px 3px rgb(0,0,0,0.1);
 }
 
@@ -1180,8 +1180,8 @@ svg.tea #steamR {
 	font-size: 0.9em;
 	position: absolute;
 	border-radius: 0.7em;
-	background-color: white;
-	background-color: var(--primary-background-color);
+	background: white;
+	background: var(--primary-background-color);
 	border: 1px solid #eaeaea;
 	border-color: var(--primary-border-color);
 	padding: 1.5em 1.5em 1em 1.5em;
@@ -1215,8 +1215,8 @@ svg.tea #steamR {
 	font-size: 0.7em;
 	position: absolute;
 	padding-left: 0.5em;
-	background-color: white;
-	background-color: var(--primary-background-color);
+	background: white;
+	background: var(--primary-background-color);
 	transform: translateY(-60%);
 	content: ""attr(data-group-name)"";
 	font-family: 'Montserrat Alternates', sans-serif;
@@ -1270,8 +1270,8 @@ svg.tea #steamR {
 	overflow-y: auto;
 	text-align: center;
 	pointer-events: none;
-	background-color: white;
-	background-color: var(--primary-background-color);
+	background: white;
+	background: var(--primary-background-color);
 	transition: 0.3s ease-out;
 }
 
@@ -1311,7 +1311,7 @@ svg.tea #steamR {
 	color: #00a32c !important;
 	color: var(--green-color) !important;
 	background: rgb(4, 222, 63, 0.2);
-	background-color: var(--special-background-color);
+	background: var(--special-background-color);
 	font-family: 'Cormorant Garamond', serif;
 }
 
@@ -1416,7 +1416,7 @@ svg.tea #steamR {
 	padding: 0.3em;
 	position: absolute;
 	border-radius: 50%;
-	background-color: rgb(4, 222, 63, 0.3);
+	background: rgb(4, 222, 63, 0.3);
 	box-shadow: 0 0 3px 2px rgb(4, 222, 63, 0.1);
 }
 
@@ -1537,7 +1537,7 @@ svg.tea #steamR {
 .dark-mode .cutout-overlay {
 	color: #eee;
 	mix-blend-mode: normal;
-	background-color: rgba(0,0,0,0.3);
+	background: rgba(0,0,0,0.3);
 }
 
 .dark-mode .button.danger {
@@ -1550,7 +1550,7 @@ svg.tea #steamR {
 
 .dark-mode input[type="radio"]:checked+label {
 	color: #ccc !important;
-	background-color: #1f2933 !important;
+	background: #1f2933 !important;
 }
 
 .dark-mode .list-box.nowrap.blur-overflow::before, .dark-mode .list-box.nowrap.blur-overflow::after {
@@ -1562,13 +1562,13 @@ svg.tea #steamR {
 }
 
 .dark-mode #reading_progress_bar {
-	background-color: rgba(70, 90, 104, 0.5);
+	background: rgba(70, 90, 104, 0.5);
 }
 
 .dark-mode #reading_progress_bar::after {
 	color: #ccc;
 	box-shadow: 0 2px 2px 1px rgba(0,0,0,0.1);
-	background-color: #32414d;
+	background: #32414d;
 }
 
 .dark-mode .alert.success.floating {
@@ -1584,13 +1584,13 @@ svg.tea #steamR {
 }
 
 .dark-mode .mail.unread::after {
-	background-color: rgba(70, 90, 104, 1);
+	background: rgba(70, 90, 104, 1);
 }
 
 .dark-mode .floating-btn {
 	box-shadow: none;
 	color: #ccc !important;
-	background-color:  rgba(70, 90, 104, 0.5);
+	background:  rgba(70, 90, 104, 0.5);
 }
 
 /* Gradients */
@@ -1628,7 +1628,7 @@ svg.tea #steamR {
 }
 
 .dark-mode .tag::after {
-	background-color: #2b3843;
+	background: #2b3843;
 }
 
 
@@ -1645,12 +1645,12 @@ svg.tea #steamR {
 		color: #00a32c;
 		color: var(--green-color);
 		background: rgb(4, 222, 63, 0.2);
-		background-color: var(--special-background-color);
+		background: var(--special-background-color);
 		box-shadow: 0 0 5px 3px rgb(4, 222, 63, 0.1);
 	}
 	.button.danger:hover {
 		background: rgb(242, 38, 38, 0.2);
-		background-color: var(--danger-background-color);
+		background: var(--danger-background-color);
 		box-shadow: 0 0 5px 3px rgb(242, 38, 38, 0.1);
 	}
 	.button:active {
