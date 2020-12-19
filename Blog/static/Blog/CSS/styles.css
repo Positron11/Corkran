@@ -8,8 +8,8 @@
 	--heavy-text-color: #333;
 
 	/* Border colors */
-	--primary-border-color: #eaeaea;
-	--secondary-border-color: #eaeaea;
+	--primary-border-color: #eee;
+	--secondary-border-color: #eee;
 
 	/* Background colors */
 	--primary-background-color: #fff;
@@ -142,7 +142,7 @@ p.montserrat, .text.montserrat {
 .horizontal-divider {
 	width: 100%;
 	margin: 1em 0;
-	border-top: 1px solid #eaeaea;
+	border-top: 1px solid #eee;
 	border-color: var(--primary-border-color);
 }
 
@@ -345,7 +345,7 @@ p.montserrat, .text.montserrat {
 	border-radius: 0.5em;
 	background: #fff;
 	background: var(--secondary-background-color);
-	border: #eaeaea solid 1px;
+	border: #eee solid 1px;
 	border-color: var(--secondary-border-color);
 }
 
@@ -438,7 +438,7 @@ button {
 	border-radius: 1em;
 	background: #fff;
 	background: var(--secondary-background-color);
-	border: #eaeaea solid 1px;
+	border: #eee solid 1px;
 	border-color: var(--secondary-border-color);
 	-webkit-tap-highlight-color: transparent;
 	font-family: 'Montserrat Alternates', sans-serif;
@@ -510,7 +510,7 @@ fieldset {
 	background: white !important;
 	background: var(--secondary-background-color) !important;
 	pointer-events: none;
-	border-color: #eaeaea !important;
+	border-color: #eee !important;
 	border-color: var(--secondary-border-color) !important;
 }
 
@@ -672,7 +672,7 @@ input[type="file"] {
 	content: "";
 	bottom: -1em;
 	position: absolute;
-	background: #eaeaea;
+	background: #eee;
 	background: var(--primary-border-color);
 	transform: translateX(-50%);
 }
@@ -690,7 +690,7 @@ input[type="file"] {
 	text-align: center;
 	margin-bottom: 1em;
 	padding-bottom: 1em;
-	border-bottom: 1px solid #eaeaea;
+	border-bottom: 1px solid #eee;
 	border-color: var(--primary-border-color);
 }
 
@@ -884,7 +884,7 @@ svg.tea #steamR {
 	box-shadow: none;
 	background: white;
 	background: var(--primary-background-color);
-	border-bottom: 1px solid #eaeaea;
+	border-bottom: 1px solid #eee;
 	border-color: var(--primary-border-color);
 	transition: 0.3s ease-out;
 }
@@ -1182,7 +1182,7 @@ svg.tea #steamR {
 	border-radius: 0.7em;
 	background: white;
 	background: var(--primary-background-color);
-	border: 1px solid #eaeaea;
+	border: 1px solid #eee;
 	border-color: var(--primary-border-color);
 	padding: 1.5em 1.5em 1em 1.5em;
 	box-shadow: 0 0 6px 3px rgba(0,0,0,0.1);
@@ -1198,7 +1198,7 @@ svg.tea #steamR {
 	padding: 1em 0.5em;
 	position: relative;
 	margin-bottom: 0.5em;
-	border-top: 1px solid #eaeaea;
+	border-top: 1px solid #eee;
 	border-color: var(--primary-border-color);
 }
 
@@ -1401,7 +1401,7 @@ svg.tea #steamR {
 .mail-header {
 	margin-bottom: 1em;
 	padding-bottom: 1em;
-	border-bottom: 1px solid #eaeaea;
+	border-bottom: 1px solid #eee;
 	border-color: var(--primary-border-color);
 }
 
@@ -1500,7 +1500,7 @@ svg.tea #steamR {
 #footer {
 	margin-top: 3em;
 	padding: 2em 4vw;
-	border-top: 1px solid #eaeaea;
+	border-top: 1px solid #eee;
 	border-color: var(--primary-border-color);
 }
 
