@@ -535,7 +535,7 @@ function toggleCommentEditor(editor, button) {
 function fadeTruncateArticles() {
 	$(".article-preview").each(function () {
 		// If text overflows and is not already truncated
-		if (this.offsetHeight < this.scrollHeight && !$(this).find(".fade").length) {
+		if (this.offsetHeight < this.scrollHeight && !$(this).find(".fade-bottom-overlay").length) {
 			$(this).append("<div class='fade'></div>");
 		}
 	});

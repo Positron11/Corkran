@@ -85,16 +85,18 @@
 		</div>
 	</div>
 
-	<!-- Content container -->
-	<a class="unformatted" href="{% url 'article-detail' article.id article.title %}" title='Read "{{ article.title }}"'>
-		<!-- Content -->
-		<div class="clickable">{{ article.content|urlizetrunc:30|truncatechars:1000|linebreaks }}</div>
-
-		{% if article.content|length > 1000 %}
-		<!-- Fade truncate -->
-		<div class="fade"></div>
-		{% endif %}
-	</a>
+	<div class="content">
+		<!-- Content container -->
+		<a class="unformatted" href="{% url 'article-detail' article.id article.title %}" title='Read "{{ article.title }}"'>
+			<!-- Content -->
+			<div class="clickable">{{ article.content|urlizetrunc:30|truncatechars:1000|linebreaks }}</div>
+			
+			{% if article.content|length > 1000 %}
+			<!-- Fade truncate -->
+			<div class="fade-bottom-overlay"></div>
+			{% endif %}
+		</a>
+	</div>
 </div>
 
 {% empty %}
