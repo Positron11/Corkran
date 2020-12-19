@@ -24,8 +24,7 @@
 	<div class="nowrap list-box blur-overflow center-align normal-spacing button-container-wrapper">
 		<div class="nowrap list-box compact-spacing button-container">
 			<a href="#profile" class="small button">Edit your profile</a>
-			<a href="#site_settings" class="small button">Site settings</a>
-			<a href="#email" class="small button">Email settings</a>
+			<a href="#site_settings" class="small button">Update your settings</a>
 			<a href="#password" class="small button">Change your password</a>
 		</div>
 	</div>
@@ -61,35 +60,24 @@
 <!-- Site settings container -->
 <fieldset class="card">
 	<!-- Heading -->
-	<legend class="heading">Site Settings</legend>
+	<legend class="heading">Settings</legend>
 
-	<!-- Password form -->
-	<form method="post">{% csrf_token %}
-		<div>
-			{{ site_settings_form.dark_theme }}
-			<label for="id_dark_theme">Dark mode</label>
-			<input type="hidden" name="update_site_settings">
-		</div>
-	</form>
-</fieldset>
+	<div class="vertically-space-items">
+		<!-- Site settings form -->
+		<form method="post" class="vertically-space-items">{% csrf_token %}
+			<div class="closer-below">
+				{{ settings_form.dark_theme }}
+				<label for="id_dark_theme">Dark mode</label>
+			</div>
 
-
-<!-- Email anchor -->
-<div id="email" class="anchor"></div>
-
-<!-- Change password container -->
-<fieldset class="card">
-	<!-- Heading -->
-	<legend class="heading">Email Settings</legend>
-
-	<!-- Password form -->
-	<form method="post">{% csrf_token %}
-		<div>
-			{{ email_form.email_notifications }}
-			<label for="id_email_notifications">Email notifications</label>
-			<input type="hidden" name="update_email_notifications">
-		</div>
-	</form>
+			<div>
+				{{ settings_form.email_notifications }}
+				<label for="id_email_notifications">Email notifications</label>
+			</div>
+			
+			<input type="hidden" name="update_settings">
+		</form>
+	</div>
 </fieldset>
 
 

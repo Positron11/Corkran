@@ -37,8 +37,7 @@ def account_settings(request):
 	password_form = PasswordForm(request.user)
 	user_form = UserUpdateForm(instance=request.user)
 	profile_form = ProfileUpdateForm(instance=request.user.profile)
-	email_form = ToggleEmailNotificationForm(instance=request.user.profile)
-	site_settings_form = SiteSettingsForm(instance=request.user.profile)
+	settings_form = SiteSettingsForm(instance=request.user.profile)
 
 	if request.method == 'POST':
 		# if changing password
@@ -82,41 +81,26 @@ def account_settings(request):
 				messages.error(request, "Error updating profile.")
 
 		# if updating site settings
-		elif "update_site_settings" in request.POST:
-			site_settings_form = SiteSettingsForm(request.POST, instance=request.user.profile)
+		elif "update_settings" in request.POST:
+			settings_form = SiteSettingsForm(request.POST, instance=request.user.profile)
 
-			if site_settings_form.is_valid():
-				site_settings_form.save()
+			if settings_form.is_valid():
+				settings_form.save()
 
 				# success message
-				messages.success(request, "Site settings updated.")
+				messages.success(request, "Settings updated.")
 
-			# redirect to settings page with email form in view
+			# redirect to settings page with settings form in view
 			return redirect(reverse_lazy('settings') + '#site_settings')
-
-		# if updating email preferences
-		elif "update_email_notifications" in request.POST:
-			email_form = ToggleEmailNotificationForm(request.POST, instance=request.user.profile)
-
-			if email_form.is_valid():
-				email_form.save()
-
-				# success message
-				email_notifications_state = "on" if request.user.profile.email_notifications else "off"
-				messages.success(request, f"Email notifications turned {email_notifications_state}.")
-
-			# redirect to settings page with email form in view
-			return redirect(reverse_lazy('settings') + '#email')
 
 		# redirect to profile
 		return redirect('settings')
 
 	context = {
 		"user_form": user_form, 
-		"email_form": email_form,
 		"profile_form": profile_form, 
 		"password_form": password_form, 
-		"site_settings_form": site_settings_form,
+		"settings_form": settings_form,
 	}
 
 	return render(request, 'User/account_settings.html', context)
