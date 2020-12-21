@@ -108,7 +108,7 @@
 				A short preview: "{{ mail.article.content|truncatewords:50}}"
 
 				{% elif mail|to_class_name == "new_announcement_mail" %}
-				A new <a href="{{ protocol }}://{{ domain }}{% url 'announcements' %}">announcement</a> has been made on Corkran. 
+				A new <a href="{{ protocol }}://{{ domain }}{% url 'announcements' %}#{{ mail.announcement.id }}">announcement</a> has been made on Corkran. 
 				A short preview: "{{ mail.announcement.content|truncatewords:50}}"
 				{% endif %}
 			</div>
@@ -116,7 +116,7 @@
 		{% endfor %}<br><br>
 
 		<!-- Footer -->
-		<small class="grey">Don't want to be disturbed? <a href="{{ protocol }}://{{ domain }}{% url 'settings' %}#email">Unsubscribe</a>.</small><br><br>
+		<small class="grey">Don't want to be disturbed? <a href="{{ protocol }}://{{ domain }}{% url 'settings' %}#site_settings">Unsubscribe</a>.</small><br><br>
 		<div class="grey">~ Corkran ~</div>
 	</div>	
 </body>
