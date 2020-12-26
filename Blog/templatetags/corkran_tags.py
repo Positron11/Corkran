@@ -87,3 +87,8 @@ def param_replace(context, **kwargs):
 @register.inclusion_tag('Blog/article_widget_grid.html')
 def article_widget_grid(articles):
 	return {"articles": articles}
+
+
+@register.inclusion_tag('Blog/simple_error_form.html')
+def simple_error_form(form):
+	return {"form": form}

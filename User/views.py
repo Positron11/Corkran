@@ -27,6 +27,9 @@ def register(request):
 			form.save()
 			messages.success(request, "Your account has been created. You can now log in.")
 			return redirect('home')
+		else:
+			# error message
+			messages.error(request, f'Error registering user.')
 
 	return render(request, 'User/registration.html', {"form": form})
 
@@ -34,6 +37,7 @@ def register(request):
 # account_settings page
 @login_required
 def account_settings(request):
+	anchor = ""
 	password_form = PasswordForm(request.user)
 	user_form = UserUpdateForm(instance=request.user)
 	profile_form = ProfileUpdateForm(instance=request.user.profile)
@@ -52,17 +56,11 @@ def account_settings(request):
 				# success message
 				messages.success(request, "Password successfully updated.")
 			else:
-				# get first field that has an error 
-				first = list(password_form.errors.as_data().keys())[0]
-
-				# get first error message string from field
-				message = "".join(password_form.errors.as_data()[first][0])
-
 				# error message
-				messages.error(request, f"{message}")
+				messages.error(request, "Error changing password.")
 
-			# redirect to settings page with password form in view
-			return redirect(reverse_lazy('settings') + '#password')
+			# scroll to password form
+			anchor = "password"
 
 		# if updating profile
 		elif 'update_profile' in request.POST:
@@ -75,10 +73,13 @@ def account_settings(request):
 				profile_form.save()
 
 				# success message
-				messages.success(request, "Your details have been updated.")
+				messages.success(request, "Your profile has been updated.")
 			else:
 				# error message
 				messages.error(request, "Error updating profile.")
+
+			# scroll to profile form
+			anchor = "profile"
 
 		# if updating site settings
 		elif "update_settings" in request.POST:
@@ -93,10 +94,8 @@ def account_settings(request):
 			# redirect to settings page with settings form in view
 			return redirect(reverse_lazy('settings') + '#site_settings')
 
-		# redirect to profile
-		return redirect('settings')
-
 	context = {
+		"anchor": anchor,
 		"user_form": user_form, 
 		"profile_form": profile_form, 
 		"password_form": password_form, 

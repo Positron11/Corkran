@@ -1,4 +1,5 @@
 {% extends 'Blog/base.html' %}
+{% load corkran_tags %}
 
 {% block title %}Account Settings{% endblock %}
 {% block description %}Edit your profile, and manage your preferences.{% endblock %}
@@ -41,10 +42,10 @@
 
 	<form class="vertically-space-items confirm-leave" method="post" enctype="multipart/form-data">{% csrf_token %}
 		<!-- User info update form -->
-		{{ user_form.as_table }}
+		{% simple_error_form user_form%}
 
 		<!-- Profile update form -->
-		{{ profile_form.as_table }}
+		{% simple_error_form profile_form%}
 
 		<!-- Submit button -->
 		<div class="right-align-text">
@@ -91,7 +92,7 @@
 
 	<form class="vertically-space-items" method="post">{% csrf_token %}
 		<!-- Password form -->
-		{{ password_form.as_table }}
+		{% simple_error_form password_form%}
 
 		<!-- Submit button -->
 		<div class="right-align-text">
@@ -109,6 +110,12 @@
 	<!-- Link to delete page -->
 	<a href="{% url 'confirm-delete-user' %}" class="danger button">Delete Account</a>
 </fieldset>
+
+
+{% if anchor %}
+<!-- Autoscroll to anchor -->
+<script type='text/javascript'>window.location = '#{{ anchor }}';</script>
+{% endif %}
 {% endblock %}
 
 {% block floating-button %}

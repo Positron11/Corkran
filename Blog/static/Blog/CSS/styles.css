@@ -391,7 +391,7 @@ fieldset.card.compact {
 
 /* Form elements */
 
-form>* {
+form input, form>label {
 	display: block;
 }
 
@@ -406,15 +406,27 @@ form ul {
 form ul.errorlist {
 	color: #f32929;
 	color: var(--danger-color);
+	list-style: none;
+	font-size: 0.6em;
 	font-weight: 500;
-	line-height: 2em;
-	padding: 1em 2em;
-	font-size: 0.65em;
-	border-radius: 1em;
-	display: inline-block;
-	background: rgb(242, 38, 38, 0.2);
-	background: var(--danger-background-color);
+	margin-left: 1.8em;
 	font-family: 'Montserrat Alternates', sans-serif;
+}
+
+form ul.errorlist li {
+	line-height: 1.5em;
+}
+
+form ul.errorlist li:not(:first-child) {
+	margin-top: 0.5em;
+}
+
+form ul.errorlist li::before {
+	content: "\f071";
+	font-weight: 900;
+	margin-left: -1.8em;
+	margin-right: 0.65em;
+	font-family: "Font Awesome 5 Free";
 }
 
 label {
@@ -447,6 +459,7 @@ button {
 /* Input fields */
 
 input {
+	filter: none;
 	min-width: 0;
 }
 

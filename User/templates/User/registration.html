@@ -1,4 +1,5 @@
 {% extends 'Blog/base.html' %}
+{% load corkran_tags %}
 
 {% block title %}Registration{% endblock %}
 {% block description %}New Corkran user registration.{% endblock %}
@@ -10,7 +11,7 @@
 	
 	<form class="vertically-space-items" method="post">{% csrf_token %}
 		<!-- Form -->
-		{{ form.as_table }}
+		{% simple_error_form form%}
 
 		<!-- Submit button -->
 		<div class="right-align-text">
