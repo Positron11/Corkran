@@ -44,6 +44,7 @@ body {
 :-moz-ui-invalid, form .error-field input {
 	box-shadow:none;
 	border-color: #f32929;
+	border-color: var(--danger-color);
 }
 
 .fx-relay-email-input-wrapper {
