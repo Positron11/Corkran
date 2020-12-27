@@ -41,7 +41,7 @@ body {
 
 /* BROWSER RESETS */
 
-:-moz-ui-invalid {
+:-moz-ui-invalid, form .error-field input {
 	box-shadow:none;
 	border-color: #f32929;
 }

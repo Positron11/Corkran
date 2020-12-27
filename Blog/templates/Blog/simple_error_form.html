@@ -1,6 +1,6 @@
 {% for field in form %}
 {{ field.label_tag }}
-<div>
+<div {% if field.errors %}class="error-field"{% endif %}>
 	{{ field }}
 	{{ field.errors }}
 </div>
