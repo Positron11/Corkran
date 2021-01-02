@@ -305,7 +305,7 @@
 					<div class="list-box nowrap blur-overflow button-container-wrapper">
 						<div class="list-box nowrap button-container">
 							<!-- Direct link -->
-							<div class="minimal no-border button" onclick="copyToClipboard('{{ request.build_absolute_uri }}#{{ node.id }}');" title="Copy direct link to comment">Link</div>
+							<div class="minimal no-border button direct-linker" onclick="copyToClipboard('{{ request.build_absolute_uri }}#{{ node.id }}');" title="Copy direct link to comment">Link</div>
 							
 							{% if user.is_authenticated %}
 							<!-- Reply -->

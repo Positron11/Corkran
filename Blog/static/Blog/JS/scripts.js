@@ -79,6 +79,30 @@ $(function () {
 	});
 
 
+	// On scroll...
+	$(window).on("scroll", function () {
+		styleNavbar();
+		floatMessage();
+		scrollTopButton();
+	});
+
+	// On resize...
+	$(window).on("resize", function () {
+		resizeSidebar();
+		fadeTruncateArticles();
+
+		// blur nowrap listboxes
+		$('.list-box.nowrap.blur-overflow').each(function () {
+			blurListBox(this);
+		});
+
+		// reposition dropped dropdown
+		if ($(".dropdown.dropped .dropdown-label").length) {
+			positionDropdown($(".dropdown.dropped .dropdown-label")[0]);
+		}
+	});
+
+
 	// When clicking alert...
 	$(document).on('click', '.alert', function (e) {
 		// close alert on clicking close button
@@ -178,28 +202,14 @@ $(function () {
 		toggleCommentEditor("edit", $(this));
 	});
 
-
-	// On scroll...
-	$(window).on("scroll", function () {
-		styleNavbar();
-		floatMessage();
-		scrollTopButton();
-	});
-
-	// On resize...
-	$(window).on("resize", function () {
-		resizeSidebar();
-		fadeTruncateArticles();
-
-		// blur nowrap listboxes
-		$('.list-box.nowrap.blur-overflow').each(function () {
-			blurListBox(this);
-		});
-
-		// reposition dropped dropdown
-		if ($(".dropdown.dropped .dropdown-label").length) {
-			positionDropdown($(".dropdown.dropped .dropdown-label")[0]);
-		}
+	// Toggle comment linker text
+	$(document).on('click', '.direct-linker', function() {
+		var button = $(this);
+		var orig_text = $(this).text()
+		button.text("Link copied");
+		setTimeout(function () {
+			button.text(orig_text);
+		}, 3000);
 	});
 
 
