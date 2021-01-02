@@ -35,12 +35,15 @@
 	<!-- Content -->
 	{{ announcement.content|urlizetrunc:40|linebreaks }}
 
-	{% if request.user.is_superuser %}
-	<!-- Delete button -->
 	<div class="right-align-text">
+		<!-- Direct link -->
+		<div class="minimal no-border button direct-linker" onclick="copyToClipboard('{{ request.build_absolute_uri }}#{{ announcement.id }}');" title="Copy direct link to announcement">Link</div>
+
+		<!-- Delete button -->
+		{% if request.user.is_superuser %}
 		<a href="{% url 'delete-announcement' announcement.id %}" class="minimal no-border danger button">Delete</a>
+		{% endif %}
 	</div>
-	{% endif %}
 </div>
 
 {% empty %}
