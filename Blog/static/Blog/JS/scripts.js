@@ -435,9 +435,9 @@ function calculateProgressBar() {
 
 		// show progress percentage badge if reading
 		if (completed > 0 && completed < 100) {
-			$("#reading_progress_bar").addClass("show-percentage");
+			$("#reading_progress_bar").addClass("show-progress");
 		} else {
-			$("#reading_progress_bar").removeClass("show-percentage")
+			$("#reading_progress_bar").removeClass("show-progress")
 		}
 	}
 }

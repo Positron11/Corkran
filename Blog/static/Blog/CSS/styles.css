@@ -1014,7 +1014,8 @@ svg.tea #steamR {
 	max-width: 100%;
 	position: relative;
 	margin-bottom: -1px;
-	background: #ccf9d8;
+	background: transparent;
+	transition: 0.3s ease background;
 }
 
 #reading_progress_bar::after {
@@ -1042,7 +1043,11 @@ svg.tea #steamR {
 	transition: 0.3s ease;
 }
 
-#reading_progress_bar.show-percentage::after {
+#reading_progress_bar.show-progress {
+	background-color: #ccf9d8;
+}
+
+#reading_progress_bar.show-progress::after {
 	opacity: 1;
 	transform: translateX(40%) scale(1);
 }
