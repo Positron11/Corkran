@@ -91,9 +91,9 @@ $(function () {
 		resizeSidebar();
 		fadeTruncateArticles();
 
-		// blur nowrap listboxes
-		$('.list-box.nowrap.blur-overflow').each(function () {
-			blurListBox(this);
+		// blur overflow boxes
+		$(".blur-overflow").each(function () {
+			blurOverflowBox(this);
 		});
 
 		// reposition dropped dropdown
@@ -237,33 +237,53 @@ $(function () {
 		autosize.update($("textarea"));
 	});
 
-
-	// Blur sides of nowrap listbox
-	$('.list-box.nowrap.blur-overflow').each(function () {
+	
+	// Blur overflow blur box
+	$('.blur-overflow').each(function () {
 		// initialize blur
-		blurListBox(this);
+		blurOverflowBox(this);
 
 		// calculate blur on scroll
 		$(this).scroll(function () {
-			blurListBox(this);
+			blurOverflowBox(this);
 		});
 	});
 
-	// Click to scroll nowrap listbox
+	// Click to scroll horizontal listbox
 	$(document).on('click', '.list-box.blur-overflow', function (e) {
 		var scroll_pos = $(this).scrollLeft();
 		var bounding_box = this.getBoundingClientRect();
-
+		
 		// scroll right
 		if (e.pageX > bounding_box.right - 60 && e.pageX < bounding_box.right && $(this).hasClass("blur-right")) {
 			$(this).stop().animate({
 				scrollLeft: scroll_pos + 200
 			}, 1000, 'easeOutQuint');
-
-		// scroll left
+			
+			// scroll left
 		} else if (e.pageX < bounding_box.left + 60 && e.pageX > bounding_box.left && $(this).hasClass("blur-left")) {
 			$(this).stop().animate({
 				scrollLeft: scroll_pos - 200
+			}, 1000, 'easeOutQuint');
+		}
+	});
+
+	// Click to scroll vertical blur box
+	$(document).on('click', '.blur-overflow.vertical', function (e) {
+		var scroll_pos = $(this).scrollTop();
+		var bounding_box = this.getBoundingClientRect();
+		
+		// scroll up
+		if (e.clientY > bounding_box.top && e.clientY < bounding_box.bottom + 40 && $(this).hasClass("blur-top")) {
+			$(this).stop().animate({
+				scrollTop: scroll_pos - 200
+			}, 1000, 'easeOutQuint');
+		}
+
+		// scroll down
+		if (e.clientY < bounding_box.bottom && e.clientY > bounding_box.bottom - 40 && $(this).hasClass("blur-bottom")) {
+			$(this).stop().animate({
+				scrollTop: scroll_pos + 200
 			}, 1000, 'easeOutQuint');
 		}
 	});
@@ -635,23 +655,29 @@ function containsAny(text, array) {
 }
 
 
-// BLUR RIGHT AND LEFT SIDES OF NOWRAP LISTBOX
-function blurListBox(listbox) {
-	// handle left blur
-	if (listbox.scrollLeft > 0) {
-		$(listbox).addClass("blur-left");
+// BLUR OVERFLOW BOX
+function blurOverflowBox(overflow_box) {
+	// get blur class
+	var blur_class = $(overflow_box).hasClass("vertical") ? "blur-top" : "blur-left";
+	
+	// handle left/top blur
+	if ($(overflow_box).hasClass("vertical") && overflow_box.scrollTop > 0 || $(overflow_box).hasClass("horizontal") && overflow_box.scrollLeft > 0) {
+		$(overflow_box).addClass(blur_class);
 	} else {
-		$(listbox).removeClass("blur-left");
+		$(overflow_box).removeClass(blur_class);
 	};
 
-	// get total width of children in listbox
-	var content_width = listbox.scrollWidth;
+	// get total width of children in overflow_box
+	var content_size = $(overflow_box).hasClass("vertical") ? overflow_box.scrollHeight : overflow_box.scrollWidth;
 
-	// handle right blur
-	if ((content_width - 5) - listbox.scrollLeft > $(listbox).width()) {
-		$(listbox).addClass("blur-right");
+	// get blur class
+	blur_class = $(overflow_box).hasClass("vertical") ? "blur-bottom" : "blur-right";
+	
+	// handle right/bottom blur
+	if ($(overflow_box).hasClass("vertical") && (content_size - 5) - overflow_box.scrollTop > $(overflow_box).height() || $(overflow_box).hasClass("horizontal") && (content_size - 5) - overflow_box.scrollLeft > $(overflow_box).width()) {
+		$(overflow_box).addClass(blur_class);
 	} else {
-		$(listbox).removeClass("blur-right");
+		$(overflow_box).removeClass(blur_class);
 	};
 }
 
