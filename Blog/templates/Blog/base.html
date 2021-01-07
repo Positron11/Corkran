@@ -111,10 +111,6 @@
 				<a href="{% url 'announcements' %}" class="unformatted link" id="nav_announcements_btn" title="Announcements">Announcements</a>
 				<a href="" class="unformatted" id="nav_menu_btn"><i class="far fa-compass"></i></a>
 			</div>
-			
-
-			<!-- Reading progress bar -->
-			<div id="reading_progress_bar" data-progress="0%"></div>
 		</div>
 
 
@@ -127,23 +123,42 @@
 			<div id="sidebar">
 				<!-- Header -->
 				<div class="header">
-					<div class="heading">Savoir</div>
-					<div class="subheading">Updates and Information</div>
+					<div id="sidebar_heading_wrapper">
+						<div class="default"><div class="sidebar-heading heading">Savoir</div></div>
+						<div class="alt sidebar-heading">{% block sidebar_alt_heading %}{% endblock %}</div>
+					</div>
+					
+					<div id="sidebar_subheading_wrapper">
+						<div class="default"><div class="sidebar-subheading subheading">Updates and Information</div></div>
+						<div class="alt sidebar-subheading">{% block sidebar_alt_subheading %}{% endblock %}</div>
+					</div>
 				</div>
 
-				<!-- Latest post -->
-				<div class="latest-post text single-line-text">
-					<label>Latest Article:</label>
-					<a href="{% latest_article_link %}" title="Latest article on Corkran">{% latest_article_title %}</a>
-				</div>
+				<!-- Reading progress bar -->
+				<div id="reading_progress_bar" data-progress="0%"></div>
 
-				<!-- Announcement -->
-				<div class="announcement text">
-					<label>Announcement:</label>
-					<a class="unformatted" href="{% url 'announcements' %}" title="Lastest Announcement">{% latest_announcement %}</a>
-				</div>
+				<div id="sidebar_content_wrapper">	
+					<div class="default content">
+						<!-- Latest post -->
+						<div class="latest-post text single-line-text">
+							<label>Latest Article:</label>
+							<a href="{% latest_article_link %}" title="Latest article on Corkran">{% latest_article_title %}</a>
+						</div>
 
-				<div class="fade-bottom-overlay"></div>
+						<!-- Announcement -->
+						<div class="announcement text">
+							<label>Announcement:</label>
+							<a class="unformatted" href="{% url 'announcements' %}" title="Lastest Announcement">{% latest_announcement %}</a>
+						</div>
+					</div>
+					
+					<div class="alt content">
+						{% block sidebar_alt_content %}		
+						{% endblock %}
+					</div>
+
+					<div class="fade-bottom-overlay"></div>
+				</div>
 			</div>
 
 
