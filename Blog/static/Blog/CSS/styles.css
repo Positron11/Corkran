@@ -302,7 +302,6 @@ p.montserrat, .text.montserrat {
 	z-index: 1;
 	opacity: 0;
 	display: flex;
-	min-height: 2em;
 	font-weight: 900;
 	font-size: 0.8em;
 	position: sticky;
@@ -330,6 +329,7 @@ p.montserrat, .text.montserrat {
 
 .blur-overflow.vertical::before, 
 .blur-overflow.vertical::after {
+	min-height: 2em;
 	justify-content: center;
 }
 
