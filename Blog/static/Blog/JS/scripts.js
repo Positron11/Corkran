@@ -255,13 +255,13 @@ $(function () {
 		var bounding_box = this.getBoundingClientRect();
 		
 		// scroll right
-		if (e.pageX > bounding_box.right - 60 && e.pageX < bounding_box.right && $(this).hasClass("blur-right")) {
+		if (e.pageX > bounding_box.right - 60 && $(this).hasClass("blur-right")) {
 			$(this).stop().animate({
 				scrollLeft: scroll_pos + 200
 			}, 1000, 'easeOutQuint');
 			
 			// scroll left
-		} else if (e.pageX < bounding_box.left + 60 && e.pageX > bounding_box.left && $(this).hasClass("blur-left")) {
+		} else if (e.pageX < bounding_box.left + 60 && $(this).hasClass("blur-left")) {
 			$(this).stop().animate({
 				scrollLeft: scroll_pos - 200
 			}, 1000, 'easeOutQuint');
@@ -274,14 +274,14 @@ $(function () {
 		var bounding_box = this.getBoundingClientRect();
 		
 		// scroll up
-		if (e.clientY > bounding_box.top && e.clientY < bounding_box.bottom + 40 && $(this).hasClass("blur-top")) {
+		if (e.clientY < bounding_box.top + 40 && $(this).hasClass("blur-top")) {
 			$(this).stop().animate({
 				scrollTop: scroll_pos - 200
 			}, 1000, 'easeOutQuint');
 		}
 
 		// scroll down
-		if (e.clientY < bounding_box.bottom && e.clientY > bounding_box.bottom - 40 && $(this).hasClass("blur-bottom")) {
+		if (e.clientY > bounding_box.bottom - 40 && $(this).hasClass("blur-bottom")) {
 			$(this).stop().animate({
 				scrollTop: scroll_pos + 200
 			}, 1000, 'easeOutQuint');
