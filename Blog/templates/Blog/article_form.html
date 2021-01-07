@@ -44,10 +44,8 @@
 				<div class="nowrap list-box compact-spacing button-container">
 					{% for category in categories %}
 					<!-- Category -->
-					<div>
-						<input type="radio" name="category" value="{{ category.id }}" id="id_category_{{ category.id }}" {% if category == article.category %}checked{% endif %}>
-						<label for="id_category_{{ category.id }}" class="minimal button" title="{{ category.name }}: {{ category.description }}">{{ category.name }}</label>
-					</div>
+					<input type="radio" name="category" value="{{ category.id }}" id="id_category_{{ category.id }}" {% if category == article.category %}checked{% endif %}>
+					<label for="id_category_{{ category.id }}" class="minimal button" title="{{ category.name }}: {{ category.description }}">{{ category.name }}</label>
 					{% endfor %}
 				</div>
 			</div>
