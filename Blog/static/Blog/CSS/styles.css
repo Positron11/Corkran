@@ -118,7 +118,7 @@ p.montserrat, .text.montserrat {
 	color: #333;
 	color: var(--heavy-text-color);
 	font-size: 2em;
-	font-weight: 300;
+	font-weight: 500;
 }
 
 .bold {
