@@ -338,7 +338,7 @@ p.montserrat, .text.montserrat {
 	content: "\f077";
 	margin-bottom: -3em;
 	align-items: flex-start;
-	background: linear-gradient(180deg, rgba(255,255,255,1) 30%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.5) 70%, rgba(255,255,255,0) 100%);
+	background: linear-gradient(180deg, rgba(255,255,255,1) 30%, rgba(255,255,255,0.8) 60%, rgba(255,255,255,0.5) 80%, rgba(255,255,255,0) 100%);
 }
 
 .blur-overflow.vertical::after {
@@ -346,7 +346,7 @@ p.montserrat, .text.montserrat {
 	content: "\f078";
 	margin-bottom: -3em;
 	align-items: flex-end;
-	background: linear-gradient(0deg, rgba(255,255,255,1) 30%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.5) 70%, rgba(255,255,255,0) 100%);
+	background: linear-gradient(0deg, rgba(255,255,255,1) 30%, rgba(255,255,255,0.8) 60%, rgba(255,255,255,0.5) 80%, rgba(255,255,255,0) 100%);
 }
 
 /* Horizontal */
@@ -1680,11 +1680,11 @@ svg.tea #steamR {
 /* Gradients */
 
 .dark-mode .blur-overflow.vertical::before {
-	background: linear-gradient(180deg, rgba(31,41,51,1) 30%, rgba(31,41,51,0.8) 50%, rgba(31,41,51,0.5) 70%, rgba(31,41,51,0) 100%);
+	background: linear-gradient(180deg, rgba(31,41,51,1) 30%, rgba(31,41,51,0.8) 60%, rgba(31,41,51,0.5) 80%, rgba(31,41,51,0) 100%);
 }
 
 .dark-mode .blur-overflow.vertical::after {
-	background: linear-gradient(0deg, rgba(31,41,51,1) 30%, rgba(31,41,51,0.8) 50%, rgba(31,41,51,0.5) 70%, rgba(31,41,51,0) 100%);
+	background: linear-gradient(0deg, rgba(31,41,51,1) 30%, rgba(31,41,51,0.8) 60%, rgba(31,41,51,0.5) 80%, rgba(31,41,51,0) 100%);
 }
 
 .dark-mode .blur-overflow.horizontal::before {
@@ -1696,11 +1696,11 @@ svg.tea #steamR {
 }
 
 .dark-mode .card .blur-overflow.vertical::before {
-	background: linear-gradient(180deg, rgba(43,56,67,1) 30%, rgba(43,56,67,0.8) 50%, rgba(43,56,67,0.5) 70%, rgba(43,56,67,0) 100%);
+	background: linear-gradient(180deg, rgba(43,56,67,1) 30%, rgba(43,56,67,0.8) 60%, rgba(43,56,67,0.5) 80%, rgba(43,56,67,0) 100%);
 }
 
 .dark-mode .card .blur-overflow.vertical::after {
-	background: linear-gradient(0deg, rgba(43,56,67,1) 30%, rgba(43,56,67,0.8) 50%, rgba(43,56,67,0.5) 70%, rgba(43,56,67,0) 100%);
+	background: linear-gradient(0deg, rgba(43,56,67,1) 30%, rgba(43,56,67,0.8) 60%, rgba(43,56,67,0.5) 80%, rgba(43,56,67,0) 100%);
 }
 
 .dark-mode .card .blur-overflow.horizontal::before {
