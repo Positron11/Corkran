@@ -410,6 +410,8 @@ p.montserrat, .text.montserrat {
 
 .card.special {
 	border: none;
+	color: #00a32c;
+	color: var(--green-color);
 	background: rgb(4, 222, 63, 0.2);
 	background: var(--special-background-color);
 	box-shadow: 0 0 8px 5px rgb(4, 222, 63, 0.1);
