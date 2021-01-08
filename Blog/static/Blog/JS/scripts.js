@@ -274,14 +274,14 @@ $(function () {
 		var bounding_box = this.getBoundingClientRect();
 		
 		// scroll up
-		if (e.clientY < bounding_box.top + 40 && $(this).hasClass("blur-top")) {
+		if (e.clientY < bounding_box.top + 60 && $(this).hasClass("blur-top")) {
 			$(this).stop().animate({
 				scrollTop: scroll_pos - 200
 			}, 1000, 'easeOutQuint');
 		}
 
 		// scroll down
-		if (e.clientY > bounding_box.bottom - 40 && $(this).hasClass("blur-bottom")) {
+		if (e.clientY > bounding_box.bottom - 60 && $(this).hasClass("blur-bottom")) {
 			$(this).stop().animate({
 				scrollTop: scroll_pos + 200
 			}, 1000, 'easeOutQuint');

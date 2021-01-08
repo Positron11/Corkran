@@ -329,24 +329,24 @@ p.montserrat, .text.montserrat {
 
 .blur-overflow.vertical::before, 
 .blur-overflow.vertical::after {
-	min-height: 2em;
+	min-height: 3em;
 	justify-content: center;
 }
 
 .blur-overflow.vertical::before {
 	top: 0;
 	content: "\f077";
-	margin-bottom: -2em;
+	margin-bottom: -3em;
 	align-items: flex-start;
-	background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0.5) 75%, rgba(255,255,255,0) 100%);
+	background: linear-gradient(180deg, rgba(255,255,255,1) 30%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.5) 70%, rgba(255,255,255,0) 100%);
 }
 
 .blur-overflow.vertical::after {
 	bottom: 0;
 	content: "\f078";
-	margin-top: -2em;
+	margin-bottom: -3em;
 	align-items: flex-end;
-	background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0.5) 75%, rgba(255,255,255,0) 100%);
+	background: linear-gradient(0deg, rgba(255,255,255,1) 30%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.5) 70%, rgba(255,255,255,0) 100%);
 }
 
 /* Horizontal */
