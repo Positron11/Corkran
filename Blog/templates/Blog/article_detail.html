@@ -65,17 +65,33 @@
 {% endif %}{% endblock %}
 
 
-{% block sidebar_alt_heading %}<div class="section-heading">{{ article.title }}</div>{% endblock %}
-{% block sidebar_alt_subheading %}<div class="subheading">By {{ article.author.username }}</div>{% endblock %}
+<!-- Article detail sidebar header -->
+{% block sidebar_alt_heading %}<div class="section-heading" data-sidebar="article_detail">{{ article.title }}</div>{% endblock %}
+{% block sidebar_alt_subheading %}<div class="subheading" data-sidebar="article_detail">By {{ article.author.username }}</div>{% endblock %}
 
-{% block sidebar_alt_content %}	
-<!-- Tags box -->
-<div class="list-box compact-spacing">
-	{% for tag in article.tags.all %}
-	<a href="{% url 'tag-sorted-articles' tag %}" class="unselectable clickable single-line-text tag">
-		{{ tag }}
-	</a>
-	{% endfor %}
+<!-- Article sidebar content -->
+{% block sidebar_alt_content %}
+<div data-sidebar="article_detail">
+	<div class="content vertical blur-overflow">
+		<div class="vertically-space-items">
+			<!-- Article category -->
+			<div class="minimal card closer-below">
+				<label>Category:</label>
+				<span class="small"><a href="{{ article.category.get_absolute_url }}" class="unformatted">{{ article.category.name }}</a></span>
+			</div>
+			
+			<!-- Article lede -->
+			<div class="minimal card">
+				<div class="small text">
+					{% if article.lede %}
+					{{ article.lede }}
+					{% else %}
+					"{{ article.title }}", written by {{ article.author.username }}, has nothing in the way of a <a href="https://en.wikipedia.org/wiki/Lead_paragraph" target="blank">lede</a>. One might as well "just jump right into it", as they say.
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 {% endblock %}
 
@@ -183,7 +199,7 @@
 		<div class="heading closer-below">{{ article.title }}</div>
 
 		<!-- Category -->
-		{% if article.category %}<a href="{{ article.category.get_absolute_url }}" class="unformatted">{{ article.category.name }}</a> || {% endif %}
+		<a href="{{ article.category.get_absolute_url }}" class="unformatted">{{ article.category.name }}</a> ||
 
 		<!-- Date and author -->
 		<span class="subheading">
@@ -197,8 +213,18 @@
 	</div>
 	
 	<div class="vertically-space-items">
-		<!-- Content -->
-		<div class="content">{{ article.content|urlizetrunc:40|linebreaks }}</div>
+		<div class="content">
+			{% if article.lede %}
+			<!-- Article lede -->
+			<div class="mobile">
+				<div class="small"><i>{{ article.lede|linebreaks|urlizetrunc:40 }}</i></div>
+				<div class="horizontal-divider"></div>
+			</div>
+			{% endif %}
+
+			<!-- Article content -->
+			{{ article.content|urlizetrunc:40|linebreaks }}
+		</div>
 		
 		<!-- Tags box -->
 		<div class="list-box compact-spacing">

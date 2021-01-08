@@ -50,15 +50,24 @@ $(window).on("load", function () {
 });
 
 
+// Set global variables
+var reading_progress = 0;
+
+
 // Main
 $(function () {
 	// Initialize page
 	styleNavbar();
 	floatMessage();
 	resizeSidebar();
-	scrollTopButton();
 	fadeTruncateArticles();
 	calculateProgressBar();
+	scrollTopButton();
+
+	// Set sidebar
+	if ($(".main-article").length) {
+		switchSidebar(reading_progress > 0 && reading_progress < 100 ? "article_detail" : "default");
+	}
 
 	// Initialize vertical truncator plugin
 	vertically_truncate();
@@ -84,8 +93,13 @@ $(function () {
 	$(window).on("scroll", function () {
 		styleNavbar();
 		floatMessage();
-		scrollTopButton();
 		calculateProgressBar();
+		scrollTopButton();
+
+		// Set sidebar
+		if ($(".main-article").length) {
+			switchSidebar(reading_progress > 0 && reading_progress < 100 ? "article_detail" : "default");
+		}
 	});
 
 	// On resize...
@@ -450,18 +464,19 @@ function calculateProgressBar() {
 		}
 
 		// update progress bar width and data
-		$("#reading_progress_bar")
+		$(".reading-progress-bar")
 			.css("width", completed + "%")
 			.attr("data-progress", Math.max(0, Math.min(parseInt(completed), 100)) + "%");
 
 		// show progress percentage badge if reading
 		if (completed > 0 && completed < 100) {
-			$("#reading_progress_bar").addClass("show-progress");
-			$("#sidebar").addClass("alt");
+			$(".reading-progress-bar").addClass("show-progress");
 		} else {
-			$("#reading_progress_bar").removeClass("show-progress");
-			$("#sidebar").removeClass("alt");
+			$(".reading-progress-bar").removeClass("show-progress");
 		}
+
+		// update global reading progress var
+		reading_progress = completed;
 	}
 }
 
@@ -471,7 +486,7 @@ function scrollTopButton() {
 	var state;
 
 	// if on article detail page and started reading article...
-	if ($(".main-article").length && parseFloat($("#reading_progress_bar").css("width")) >= 1) {
+	if ($(".main-article").length && reading_progress > 1) {
 		state = "show";
 	// otherwise if not on detail page and at least scrolled down a bit...
 	} else if (!$(".main-article").length && window.pageYOffset >= 100) {
@@ -490,10 +505,22 @@ function scrollTopButton() {
 // TRUNCATE ANNOUNCEMENT IN SIDEBAR
 function resizeSidebar() {
 	// approximate fixed value for distance from top of sidebar to bottom of page
-	var height = window.innerHeight - parseFloat($("#sidebar").css("top"));
+	var sidebar_height = window.innerHeight - parseFloat($("#sidebar").css("top"));
+	var sidebar_content_height = sidebar_height - $("#sidebar").find(".header").outerHeight(true) - 40;
 
 	// set sidebar height
-	$('#sidebar').css("height", height);
+	$('#sidebar').css("max-height", sidebar_height);
+	$('#sidebar .content').css("max-height", sidebar_content_height);
+}
+
+// SWITCH SIDEBARS
+function switchSidebar(sidebar) {
+	// show selected sidebar's elements
+	$("[data-sidebar]").hide();
+	$("[data-sidebar='" + sidebar + "']").show();
+	
+	// resize sidebar to account for possible changed header size
+	resizeSidebar();
 }
 
 

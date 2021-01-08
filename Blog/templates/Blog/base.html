@@ -34,7 +34,7 @@
 	
 	<!-- Webfonts -->
 	<link rel="preconnect" href="https://fonts.gstatic.com"> 
-	<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat+Alternates:wght@400;500;600&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat+Alternates:wght@400;500;600&display=swap" rel="stylesheet">
 	
 	<!-- CSS styling -->
 	<link rel="stylesheet" type="text/css" href="{% static 'Blog/CSS/styles.css' %}">
@@ -111,6 +111,9 @@
 				<a href="{% url 'announcements' %}" class="unformatted link" id="nav_announcements_btn" title="Announcements">Announcements</a>
 				<a href="" class="unformatted" id="nav_menu_btn"><i class="far fa-compass"></i></a>
 			</div>
+
+			<!-- Mobile reading progress bar -->
+			<div id="navbar_reading_progress_bar" class="mobile reading-progress-bar" data-progress="0%"></div>
 		</div>
 
 
@@ -123,41 +126,41 @@
 			<div id="sidebar">
 				<!-- Header -->
 				<div class="header">
-					<div id="sidebar_heading_wrapper">
-						<div class="default"><div class="sidebar-heading heading">Savoir</div></div>
-						<div class="alt sidebar-heading">{% block sidebar_alt_heading %}{% endblock %}</div>
-					</div>
-					
-					<div id="sidebar_subheading_wrapper">
-						<div class="default"><div class="sidebar-subheading subheading">Updates and Information</div></div>
-						<div class="alt sidebar-subheading">{% block sidebar_alt_subheading %}{% endblock %}</div>
-					</div>
+					<!-- Default heading -->
+					<div class="heading" data-sidebar="default">Savoir</div>
+					<!-- Alternate heading -->
+					{% block sidebar_alt_heading %}{% endblock %}
+
+					<!-- Default subheading -->
+					<div class="subheading" data-sidebar="default">Updates and Information</div>
+					<!-- Alternate subheading -->
+					{% block sidebar_alt_subheading %}{% endblock %}
 				</div>
 
 				<!-- Reading progress bar -->
-				<div id="reading_progress_bar" data-progress="0%"></div>
+				<div id="sidebar_reading_progress_bar" class="reading-progress-bar" data-progress="0%"></div>
 
-				<div id="sidebar_content_wrapper">	
-					<div class="default content">
-						<!-- Latest post -->
-						<div class="latest-post text single-line-text">
-							<label>Latest Article:</label>
-							<a href="{% latest_article_link %}" title="Latest article on Corkran">{% latest_article_title %}</a>
-						</div>
-
-						<!-- Announcement -->
-						<div class="announcement text">
-							<label>Announcement:</label>
-							<a class="unformatted" href="{% url 'announcements' %}" title="Lastest Announcement">{% latest_announcement %}</a>
+				<!-- Alternate content -->
+				{% block sidebar_alt_content %}		
+				{% endblock %}
+				
+				<!-- Default content -->
+				<div data-sidebar="default">					
+					<div class="content vertical blur-overflow">
+						<div class="vertically-space-items">
+							<!-- Latest post -->
+							<div id="latest-post" class="minimal card closer-below single-line-text">
+								<label>Latest Article:</label>
+								<a class="small" href="{% latest_article_link %}" title="Latest article on Corkran">{% latest_article_title %}</a>
+							</div>
+							
+							<!-- Announcement -->
+							<div class="minimal card text small">
+								<label style="font-size: 0.9rem;">Announcement:</label>
+								<a class="unformatted" href="{% url 'announcements' %}" title="Lastest Announcement">{% latest_announcement %}</a>
+							</div>
 						</div>
 					</div>
-					
-					<div class="alt content">
-						{% block sidebar_alt_content %}		
-						{% endblock %}
-					</div>
-
-					<div class="fade-bottom-overlay"></div>
 				</div>
 			</div>
 
