@@ -58,6 +58,7 @@ $(function () {
 	resizeSidebar();
 	scrollTopButton();
 	fadeTruncateArticles();
+	calculateProgressBar();
 
 	// Initialize vertical truncator plugin
 	vertically_truncate();
@@ -84,6 +85,7 @@ $(function () {
 		styleNavbar();
 		floatMessage();
 		scrollTopButton();
+		calculateProgressBar();
 	});
 
 	// On resize...
@@ -421,7 +423,6 @@ $(function () {
 
 // STYLE NAVBAR
 function styleNavbar() {
-	calculateProgressBar();
 	if (window.pageYOffset > 0) {
 		$("#navbar").addClass("floating");
 	} else {
