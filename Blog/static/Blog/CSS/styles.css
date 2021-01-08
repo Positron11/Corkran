@@ -95,11 +95,19 @@ p.montserrat, .text.montserrat {
 	line-height: 2em;
 }
 
+.bold {
+	font-weight: 600;
+}
+
+.montserrat.bold, .montserrat .bold {
+	font-weight: 500;
+}
+
 .small {
 	font-size: 0.9em;
 }
 
-.montserrat.small {
+.montserrat.small, .montserrat .small {
 	font-size: 0.6em;
 }
 
@@ -118,10 +126,6 @@ p.montserrat, .text.montserrat {
 	color: #333;
 	color: var(--heavy-text-color);
 	font-size: 2em;
-	font-weight: 500;
-}
-
-.bold {
 	font-weight: 500;
 }
 
