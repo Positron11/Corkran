@@ -27,6 +27,13 @@ class ArticleForm(forms.ModelForm):
 		self.fields["content"].widget.attrs["placeholder"] = "Il n'y a pas de hors-texte..."
 		self.fields["tags"].widget.attrs["placeholder"] = "Eg. Halfling, Vigeneré..."
 
+	# make category mandatory in form
+	def clean(self):
+		cleaned_data = super().clean()
+		category = cleaned_data.get('category')
+		if not category:
+			raise forms.ValidationError("You have not selected a category.")
+
 
 # comment creation
 class CommentForm(forms.ModelForm):
