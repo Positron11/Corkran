@@ -1433,6 +1433,16 @@ svg.tea #steamR {
 }
 
 
+/* ARTICLE FORM */
+
+#categories_selector {
+	padding: 0.55em;
+	border-radius: 0.7em;
+	border: 1px solid #eee;
+	border-color: var(--secondary-border-color);
+}
+
+
 /* COMMENTS */
 
 #comments_container {
