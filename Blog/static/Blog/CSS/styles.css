@@ -1636,7 +1636,8 @@ svg.tea #steamR {
 	background: #1f2933 !important;
 }
 
-.dark-mode .list-box.nowrap.blur-overflow::before, .dark-mode .list-box.nowrap.blur-overflow::after {
+.dark-mode .blur-overflow::before, 
+.dark-mode .blur-overflow::after {
 	color: #ccc;
 }
 
@@ -1678,12 +1679,28 @@ svg.tea #steamR {
 
 /* Gradients */
 
+.dark-mode .blur-overflow.vertical::before {
+	background: linear-gradient(180deg, rgba(31,41,51,1) 30%, rgba(31,41,51,0.8) 50%, rgba(31,41,51,0.5) 70%, rgba(31,41,51,0) 100%);
+}
+
+.dark-mode .blur-overflow.vertical::after {
+	background: linear-gradient(0deg, rgba(31,41,51,1) 30%, rgba(31,41,51,0.8) 50%, rgba(31,41,51,0.5) 70%, rgba(31,41,51,0) 100%);
+}
+
 .dark-mode .blur-overflow.horizontal::before {
 	background: linear-gradient(90deg, rgba(31,41,51,1) 0%, rgba(31,41,51,1) 30%, rgba(31,41,51,0.5) 70%, rgba(31,41,51,0) 100%);
 }
 
 .dark-mode .blur-overflow.horizontal::after {
 	background: linear-gradient(270deg, rgba(31,41,51,1) 0%, rgba(31,41,51,1) 30%, rgba(31,41,51,0.5) 70%, rgba(31,41,51,0) 100%);
+}
+
+.dark-mode .card .blur-overflow.vertical::before {
+	background: linear-gradient(180deg, rgba(43,56,67,1) 30%, rgba(43,56,67,0.8) 50%, rgba(43,56,67,0.5) 70%, rgba(43,56,67,0) 100%);
+}
+
+.dark-mode .card .blur-overflow.vertical::after {
+	background: linear-gradient(0deg, rgba(43,56,67,1) 30%, rgba(43,56,67,0.8) 50%, rgba(43,56,67,0.5) 70%, rgba(43,56,67,0) 100%);
 }
 
 .dark-mode .card .blur-overflow.horizontal::before {
