@@ -16,11 +16,12 @@ class ArticleForm(forms.ModelForm):
 
 	class Meta:
 		model = Article
-		fields = ["thumbnail", "title", "content", "tags", "category", "attribution"]
+		fields = ["thumbnail", "title", "lede", "content", "tags", "category", "attribution"]
 
-	# set field placeholders 
+	# set lede textbox height and field placeholders 
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
+		self.fields["lede"].widget.attrs["rows"] = "3"
 		self.fields["lede"].widget.attrs["placeholder"] = "Short paragraph of introduction, or summary..."
 		self.fields["title"].widget.attrs["placeholder"] = "Give it a name..."
 		self.fields["content"].widget.attrs["placeholder"] = "Il n'y a pas de hors-texte..."

@@ -40,6 +40,7 @@ class Article(models.Model):
 	category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
 	author = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
 	title = models.CharField(max_length=50)
+	lede = models.TextField(max_length=350, blank=True, null=True)
 	content = models.TextField()
 	slug = models.SlugField()
 	tags = TaggableManager()
