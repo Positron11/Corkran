@@ -18,6 +18,14 @@ class ArticleForm(forms.ModelForm):
 		model = Article
 		fields = ["thumbnail", "title", "content", "tags", "category", "attribution"]
 
+	# set field placeholders 
+	def __init__(self, *args, **kwargs):
+		super().__init__(*args, **kwargs)
+		self.fields["lede"].widget.attrs["placeholder"] = "Short paragraph of introduction, or summary..."
+		self.fields["title"].widget.attrs["placeholder"] = "Give it a name..."
+		self.fields["content"].widget.attrs["placeholder"] = "Il n'y a pas de hors-texte..."
+		self.fields["tags"].widget.attrs["placeholder"] = "Eg. Halfling, Vigeneré..."
+
 
 # comment creation
 class CommentForm(forms.ModelForm):
