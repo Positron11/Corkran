@@ -53,8 +53,8 @@ def account_settings(request):
 				user = password_form.save()
 				update_session_auth_hash(request, user)
 
-				# success message
-				messages.success(request, "Password successfully updated.")
+				# redirect to settings page with password form in view
+				return redirect(reverse_lazy('settings') + '#password')
 			else:
 				# error message
 				messages.error(request, "Error changing password.")
@@ -74,6 +74,9 @@ def account_settings(request):
 
 				# success message
 				messages.success(request, "Your profile has been updated.")
+
+				# redirect to settings page with profile form in view
+				return redirect(reverse_lazy('settings') + '#profile')
 			else:
 				# error message
 				messages.error(request, "Error updating profile.")
@@ -91,8 +94,8 @@ def account_settings(request):
 				# success message
 				messages.success(request, "Settings updated.")
 
-			# redirect to settings page with settings form in view
-			return redirect(reverse_lazy('settings') + '#site_settings')
+				# redirect to settings page with settings form in view
+				return redirect(reverse_lazy('settings') + '#site_settings')
 
 	context = {
 		"anchor": anchor,
