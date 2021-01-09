@@ -97,6 +97,7 @@
 							<a href="{% url 'profile' %}" class="unformatted link" title="Your profile">Profile</a>
 							<a href="{% url 'settings' %}" class="unformatted link" title="Account settings">Settings</a>
 							<a href="{% url 'logout' %}?next={{request.path}}" class="unformatted link" title="Log out">Logout</a>
+							{% if request.user.is_superuser %}<a href="{% admin_url %}" class="unformatted link">Admin</a>{% endif %}
 						</div>
 					</div>
 				</div>

@@ -1,6 +1,7 @@
 from django.template.defaultfilters import linebreaks, urlizetrunc
 from django.utils.safestring import mark_safe
 from Blog.models import Article, Announcement
+from django.conf import settings
 from Mailbox.models import Mail
 from django import template
 import re
@@ -17,6 +18,11 @@ def get_item(dictionary, key):
 @register.filter
 def to_class_name(value):
     return "_".join(re.findall('[A-Z][^A-Z]*', value.__class__.__name__)).lower()
+
+
+@register.simple_tag
+def admin_url():
+	return settings.ADMIN_URL
 
 
 @register.simple_tag
