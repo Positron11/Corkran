@@ -517,8 +517,16 @@ function resizeSidebar() {
 function switchSidebar(sidebar) {
 	// show selected sidebar's elements
 	$("[data-sidebar]").hide();
-	$("[data-sidebar='" + sidebar + "']").show();
-	
+
+	// get and show requested sidebar
+	var sidebar = $("[data-sidebar='" + sidebar + "']");
+	sidebar.show();
+
+	// blur sidebar overflow boxes
+	sidebar.find(".blur-overflow").each(function () {
+		blurOverflowBox(this);
+	});
+
 	// resize sidebar to account for possible changed header size
 	resizeSidebar();
 }
