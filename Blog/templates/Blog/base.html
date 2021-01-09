@@ -91,7 +91,7 @@
 				
 				<!-- Profile and logout dropdown -->
 				<div class="dropdown" id="account_dropdown">
-					<div class="clickable unformatted link info-btn dropdown-label" id="account_btn" data-info="{{ user.username }}">Account</div>
+					<div class="clickable unformatted link info-btn dropdown-label" id="account_btn" data-info="{% block navbar_username %}{{ request.user.username }}{% endblock %}">Account</div>
 					<div class="dropdown-content">
 						<div class="separator-bars center-align-text">
 							<a href="{% url 'profile' %}" class="unformatted link" title="Your profile">Profile</a>

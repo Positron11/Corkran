@@ -38,6 +38,7 @@ def register(request):
 @login_required
 def account_settings(request):
 	anchor = ""
+	backup_username = request.user.username
 	password_form = PasswordForm(request.user)
 	user_form = UserUpdateForm(instance=request.user)
 	profile_form = ProfileUpdateForm(instance=request.user.profile)
@@ -103,6 +104,7 @@ def account_settings(request):
 		"profile_form": profile_form, 
 		"password_form": password_form, 
 		"settings_form": settings_form,
+		"backup_username" :backup_username, 
 	}
 
 	return render(request, 'User/account_settings.html', context)

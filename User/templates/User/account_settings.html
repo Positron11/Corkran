@@ -4,6 +4,8 @@
 {% block title %}Account Settings{% endblock %}
 {% block description %}Edit your profile, and manage your preferences.{% endblock %}
 
+{% block navbar_username %}{% if user_form.errors %}{{ backup_username }}{% else %}{{ user.username }}{% endif %}{% endblock %}
+
 {% block content %}
 <!-- Header card -->
 <div class="special card">
