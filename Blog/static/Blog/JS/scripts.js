@@ -554,38 +554,30 @@ function toggleCommentEditor(editor, button) {
 	}
 
 	// close all other editors of same type
-	$(".comments")
-		.find(".comment")
-		.not(button.closest(".comment"))
+	$("#comments_container .comment").not(button.closest(".comment"))
 		.find(".editor" + type).hide().end()
 		.find(".toggle-btn" + type).text(text);
 
 	// close all editors of other type
-	$(".comments")
-		.find(".comment")
+	$("#comments_container .comment")
 		.find(".editor" + other).hide().end()
 		.find(".toggle-btn" + other).text(other_text);
 
 	// if edit button, show all other comment contents
 	if (editor == "edit") {
-		$(".comments")
-			.find(".comment")
-			.not(button.closest(".comment"))
-			.find($(".content")).show();
+		$("#comments_container .comment").not(button.closest(".comment")).find($(".content")).show();
 	}
 
 	// if reply button, reset all comment contents
 	if (editor == "reply") {
-		$(".comments .comment .content").show();
+		$("#comments_container .comment .content").show();
 	}
 
 	// hide other buttons in same button box
 	button.closest(".comment-btn-container").find(".button").not(button).toggle();
 
 	// show all other buttons in other button boxes
-	$(".comments")
-		.find(".comment")
-		.not(button.closest(".comment"))
+	$("#comments_container .comment").not(button.closest(".comment"))
 		.find($(".comment-btn-container .button")).show();
 
 	// toggle textbox and button text
