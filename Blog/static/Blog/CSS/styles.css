@@ -407,6 +407,14 @@ p.montserrat, .text.montserrat {
 	padding: 0.5em 0.8em;
 }
 
+.card.minimal p:first-child {
+	margin-top: 0;
+}
+
+.card.minimal p:last-child {
+	margin-bottom: 0;
+}
+
 .card.word-card {
 	padding: 0.3em 0.6em;
 	display: inline-block;

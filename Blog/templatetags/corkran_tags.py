@@ -1,3 +1,5 @@
+from django.template.defaultfilters import linebreaks, urlizetrunc
+from django.utils.safestring import mark_safe
 from Blog.models import Article, Announcement
 from Mailbox.models import Mail
 from django import template
@@ -47,7 +49,7 @@ def latest_article_link():
 def latest_announcement():
 	if len(Announcement.objects.all()):
 		content = Announcement.objects.order_by('-date').first().content
-		return content
+		return mark_safe(linebreaks(f"<label style='font-size: 0.9rem;'>Announcement:</label> {urlizetrunc(content, 20)}"))
 	else:
 		return "Here's an announcement: \"There's nothing here\"."
 

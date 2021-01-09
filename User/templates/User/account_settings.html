@@ -32,7 +32,7 @@
 			</div>
 			
 			<div class="minimal small text card closer-below">
-				<label style="font-size: 0.9rem;">Bio:</label> {{ user.profile.bio }}
+				<label style="font-size: 0.9rem;">Bio:</label> {{ user.profile.bio|urlizetrunc:20 }}
 			</div>
 		</div>
 	</div>

@@ -84,7 +84,7 @@
 			<div class="minimal card">
 				<div class="small text">
 					{% if article.lede %}
-					{{ article.lede }}
+					{{ article.lede|linebreaks|urlizetrunc:20 }}
 					{% else %}
 					"{{ article.title }}", written by {{ article.author.username }}, has nothing in the way of a <a href="https://en.wikipedia.org/wiki/Lead_paragraph" target="blank">lede</a>. One might as well "just jump right into it", as they say.
 					{% endif %}
