@@ -253,6 +253,12 @@
 					<div class="subheading">By {{ article.author.username }}</div>
 				</div>
 
+				{% if article.lede %}
+				<!-- Article lede -->
+				<div class="small"><i>{{ article.lede|linebreaks|urlizetrunc:40 }}</i></div>
+				<div class="horizontal-divider"></div>
+				{% endif %}
+
 				<!-- Article content -->
 				{{ article.content|linebreaks|urlizetrunc:40 }}
 			</div>
