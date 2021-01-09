@@ -198,6 +198,26 @@ $(function () {
 	});
 
 
+	// KEYBOARD SHORTCUTS
+	$(document).on('keydown', function(evt) {
+		// On press escape...
+		if (evt.keyCode == 27) {
+			// leave zen mode
+			if ($("#zen_mode").hasClass("visible")) {
+				toggleZenMode();
+
+			// exit comment editors
+			} else if ($("#comments_container .editor").is(":visible")) {
+				$("#comments_container .editor").hide();
+				$("#comments_container .comment .content").show();
+				$("#comments_container .toggle-btn.edit").text("Edit");
+				$("#comments_container .toggle-btn.reply").text("Reply");
+				$("#comments_container .comment-btn-container .button").show();
+			}
+		}
+	});
+
+
 	// Toggle comment reply box
 	$(document).on('click', '.toggle-btn.reply', function (e) {
 		e.preventDefault();
