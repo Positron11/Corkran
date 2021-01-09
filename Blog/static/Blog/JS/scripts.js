@@ -72,6 +72,11 @@ $(function () {
 	autosize($('textarea'));
 	autosize.update($("textarea"));
 
+	// Initialize dropdowns
+	$(".dropdown-label").each(function () {
+		positionDropdown(this);
+	})
+
 	// Initialize are-you-sure form close manager plugin
 	$('form.confirm-leave').areYouSure();
 
