@@ -6,6 +6,39 @@
 
 {% block navbar_username %}{% if user_form.errors %}{{ backup_username }}{% else %}{{ user.username }}{% endif %}{% endblock %}
 
+<!-- Article detail sidebar header -->
+{% block sidebar_alt_heading %}<div class="section-heading" data-sidebar="navigation">Your Settings</div>{% endblock %}
+{% block sidebar_alt_subheading %}<div class="subheading" data-sidebar="navigation">Navigation & Profile Preview</div>{% endblock %}
+
+<!-- Account settings sidebar content -->
+{% block sidebar_alt_content %}
+<div data-sidebar="navigation">
+	<div class="content vertical blur-overflow">
+		<div class="vertically-space-items">
+			<!-- Navigation -->
+			<div class="closer-below">				
+				<div class="nowrap list-box horizontal blur-overflow center-align normal-spacing button-container-wrapper" style="margin: 0">
+					<div class="nowrap list-box compact-spacing button-container">
+						<a href="#profile" class="small button">Profile</a>
+						<a href="#site_settings" class="small button">Settings</a>
+						<a href="#password" class="small button">Password</a>
+					</div>
+				</div>
+			</div>
+
+			<!-- Profile preview -->
+			<div class="minimal small text card closer-below">
+				<label style="font-size: 0.9rem;">Username:</label> {% if user_form.errors %}{{ backup_username }}{% else %}{{ user.username }}{% endif %}
+			</div>
+			
+			<div class="minimal small text card closer-below">
+				<label style="font-size: 0.9rem;">Bio:</label> {{ user.profile.bio }}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
 {% block content %}
 <!-- Header card -->
 <div class="special card">
@@ -24,7 +57,7 @@
 <!-- Navigation dock -->
 <div>
 	<div id="navigation" class="anchor"></div>
-	<div class="nowrap list-box horizontal blur-overflow center-align normal-spacing button-container-wrapper">
+	<div class="nowrap list-box horizontal blur-overflow center-align normal-spacing button-container-wrapper sidebar-switch-navigation">
 		<div class="nowrap list-box compact-spacing button-container">
 			<a href="#profile" class="small button">Edit your profile</a>
 			<a href="#site_settings" class="small button">Update your settings</a>
@@ -44,10 +77,10 @@
 
 	<form class="vertically-space-items confirm-leave" method="post" enctype="multipart/form-data">{% csrf_token %}
 		<!-- User info update form -->
-		{% simple_error_form user_form%}
+		{% simple_error_form user_form %}
 
 		<!-- Profile update form -->
-		{% simple_error_form profile_form%}
+		{% simple_error_form profile_form %}
 
 		<!-- Submit button -->
 		<div class="right-align-text">

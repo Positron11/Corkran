@@ -63,11 +63,7 @@ $(function () {
 	fadeTruncateArticles();
 	calculateProgressBar();
 	scrollTopButton();
-
-	// Set sidebar
-	if ($(".main-article").length) {
-		switchSidebar(reading_progress > 0 && reading_progress < 100 ? "article_detail" : "default");
-	}
+	setSidebar();
 
 	// Initialize vertical truncator plugin
 	vertically_truncate();
@@ -95,11 +91,7 @@ $(function () {
 		floatMessage();
 		calculateProgressBar();
 		scrollTopButton();
-
-		// Set sidebar
-		if ($(".main-article").length) {
-			switchSidebar(reading_progress > 0 && reading_progress < 100 ? "article_detail" : "default");
-		}
+		setSidebar();
 	});
 
 	// On resize...
@@ -529,6 +521,18 @@ function switchSidebar(sidebar) {
 
 	// resize sidebar to account for possible changed header size
 	resizeSidebar();
+}
+
+// SET SIDEBAR
+function setSidebar() {
+	// if article detail page
+	if ($(".main-article").length) {
+		switchSidebar(reading_progress > 0 && reading_progress < 100 ? "article_detail" : "default");
+
+	// if switchable navigation
+	} else if ($(".sidebar-switch-navigation").length && $("[data-sidebar='navigation']").length) {
+		switchSidebar($(".sidebar-switch-navigation").offset().top - ($(window).scrollTop() + $("#navbar").height()) < 0 ? "navigation" : "default");
+	}
 }
 
 
