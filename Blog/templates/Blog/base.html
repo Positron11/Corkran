@@ -17,9 +17,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="{% block description %}{% endblock %}">
 
-	<!-- Canonical URL -->
-	<link rel="canonical" href="{{ request.build_absolute_uri }}{% url 'home' %}">
-	
 	<!-- OG meta -->
 	<meta property="og:site_name" content="Corkran">
 	<meta property="og:url" content="{{ request.build_absolute_uri }}{{ object.get_absolute_url }}">
