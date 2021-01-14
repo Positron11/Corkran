@@ -376,7 +376,7 @@
 				<div class="reply editor">
 					<form class="confirm-leave" method="post" autocomplete="off">{% csrf_token %}
 						<!-- Textarea -->
-						<textarea name="content" rows="2" placeholder='Reply to: "{{ node.content|truncatechars:25 }}"' required></textarea>
+						<textarea name="content" rows="2" placeholder='Reply to: "{{ node.content|truncatechars:50 }}"' required></textarea>
 
 						<!-- Parent id -->
 						<input type="hidden" name="parent_id" value="{{ node.id }}">
