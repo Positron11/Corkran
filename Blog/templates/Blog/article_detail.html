@@ -172,7 +172,7 @@
 	
 	<!-- Go to comments -->
 	<a href="#comments" class="small button" title="Comments">
-		<i class="fas fa-comments"></i>
+		<i class="fas fa-comments"></i>&nbsp;&nbsp;{{ article.comment_set.count }}
 	</a>
 </div>
 
@@ -297,8 +297,9 @@
 		<textarea name="content" rows="4" required autocomplete="off" placeholder="New comment..." class="closer-below"></textarea>
 
 		<!-- Submit button -->
-		<div class="right-align-text">
-			<button class="button" type="submit" name="comment">Comment</button>
+		<div class="list-box nowrap split-items">
+			<div class="grey montserrat">{% if article.comment_set.count > 0 %}Join the discussion ({{ article.comment_set.count }} comments).{% else %}Be the first to comment.{% endif %}</div>
+			<button class="split-item button" type="submit" name="comment">Comment</button>
 		</div>
 	</form>
 
@@ -402,7 +403,7 @@
 
 	<!-- No comments message -->
 	<div class="word-card card special">
-		<span class="montserrat">No comments. Maybe it's new. Or confusing.</span>
+		<span class="montserrat">No comments. Maybe it's new. Or just abstruse.</span>
 	</div>
 	{% endif %}
 </fieldset>
