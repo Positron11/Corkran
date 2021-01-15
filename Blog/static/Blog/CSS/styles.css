@@ -1665,6 +1665,10 @@ svg.tea #steamR {
 	box-shadow: none !important;
 }
 
+.dark-mode #categories_selector {
+	padding: 0.2em 0 0 0;
+}
+
 .dark-mode .mail.unread::after {
 	background: rgba(70, 90, 104, 1);
 }
