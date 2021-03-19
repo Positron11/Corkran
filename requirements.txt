@@ -6,7 +6,7 @@ django-mptt==0.11.0
 django-next-prev==1.0.1
 django-taggit==1.2.0
 django-unused-media==0.1.13
-Pillow==7.1.1
+Pillow==8.1.1
 pytz==2019.3
 six==1.14.0
 sqlparse==0.3.1
