@@ -28,15 +28,15 @@
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" type="image/png" href="{% static 'Blog/Favicon/favicon.png' %}">
-	
+
 	<!-- Webfonts -->
-	<link rel="preconnect" href="https://fonts.gstatic.com"> 
+	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat+Alternates:wght@400;500&display=swap" rel="stylesheet">
-	
+
 	<!-- CSS styling -->
 	<link rel="stylesheet" type="text/css" href="{% static 'Blog/CSS/styles.css' %}">
 	<link rel="stylesheet" href="{% static 'Blog/CSS/lazy.css' %}">
-	
+
 	<!-- Fontawesome -->
 	<link rel="stylesheet" href="{% static 'Blog/Fontawesome/CSS/all.min.css' %}">
 </head>
@@ -85,7 +85,7 @@
 				{% if user.is_authenticated %}
 				<!-- Mailbox -->
 				<a href="{% url 'mailbox' %}" class="unformatted link {% mailbox_status user %} info-btn" id="nav_mailbox_btn" data-unread="{% unread_mail_count user %}" data-info="{{ request.user.mail.count|text_if_zero|title }} {{ 'message'|pluralise:request.user.mail.count }}" title="Mailbox">Mailbox</a>
-				
+
 				<!-- Profile and logout dropdown -->
 				<div class="dropdown" id="account_dropdown">
 					<div class="clickable unformatted link info-btn dropdown-label" id="account_btn" data-info="{% block navbar_username %}{{ request.user.username }}{% endblock %}">Account</div>
@@ -139,11 +139,11 @@
 				<div id="sidebar_reading_progress_bar" class="reading-progress-bar" data-progress="0%"></div>
 
 				<!-- Alternate content -->
-				{% block sidebar_alt_content %}		
+				{% block sidebar_alt_content %}
 				{% endblock %}
-				
+
 				<!-- Default content -->
-				<div data-sidebar="default">					
+				<div data-sidebar="default">
 					<div class="content vertical blur-overflow">
 						<div class="vertically-space-items">
 							<!-- Latest post -->
@@ -151,7 +151,7 @@
 								<label>Latest Article:</label>
 								<a class="small" href="{% latest_article_link %}" title="Latest article on Corkran">{% latest_article_title %}</a>
 							</div>
-							
+
 							<!-- Announcement -->
 							<div class="minimal card text small">
 								<a class="unformatted" href="{% url 'announcements' %}" title="Lastest Announcement">{% latest_announcement %}</a>
@@ -181,16 +181,16 @@
 		<div id="footer" class="vertically-space-items">
 			<!-- Statement -->
 			<div class="small grey montserrat text center-align-text closer-below">
-				Copyright ©  {% now "Y" %} Corkran Inc. All rights reserved. Registration on or use of this site 
-				constitutes acceptance of our <a href="{% url 'privacy' %}">privacy policy</a> and
+			    Registration on or use of this site constitutes acceptance of our
+				<a href="{% url 'privacy' %}">privacy policy</a> and
 				<a href="{% url 'terms-and-conditions' %}">terms and conditions</a>.
 			</div>
 
 			<!-- Links -->
 			<div class="small grey montserrat text center-align-text closer-below">
-				<a href="{% url 'about' %}">About</a> | 
-				<a href="{% url 'privacy' %}">Privacy Policy</a> | 
-				<a href="{% url 'disclaimer' %}">Content Disclaimer</a> | 
+				<a href="{% url 'about' %}">About</a> |
+				<a href="{% url 'privacy' %}">Privacy Policy</a> |
+				<a href="{% url 'disclaimer' %}">Content Disclaimer</a> |
 				<a href="{% url 'terms-and-conditions' %}">terms and conditions</a>
 			</div>
 
