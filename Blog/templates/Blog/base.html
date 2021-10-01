@@ -93,7 +93,7 @@
 						<div class="separator-bars center-align-text">
 							<a href="{% url 'profile' %}" class="unformatted link" title="Your profile">Profile</a>
 							<a href="{% url 'settings' %}" class="unformatted link" title="Account settings">Settings</a>
-							<a href="{% url 'logout' %}?next={{request.path}}" class="unformatted link" title="Log out">Logout</a>
+							<a href="{% url 'logout' %}?next={{request.path}}" class="unformatted link" title="Log out">Log Out</a>
 							{% if request.user.is_superuser %}<a href="/{% admin_url %}" class="unformatted link">Admin</a>{% endif %}
 						</div>
 					</div>
@@ -101,7 +101,7 @@
 
 				{% else %}
 				<!-- Authentication -->
-				<a href="{% url 'login' %}?next={{request.path}}" class="unformatted link" id="login_btn" title="Log in">Login</a>
+				<a href="{% url 'login' %}?next={{request.path}}" class="unformatted link" id="login_btn" title="Log in">Log In</a>
 				<a href="{% url 'registration' %}" class="unformatted link" id="register_btn" title="Register">Register</a>
 				{% endif %}
 
